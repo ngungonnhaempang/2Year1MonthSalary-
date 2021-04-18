@@ -1,0 +1,162 @@
+<script type="text/javascript">
+        function ContractorQuaProcess_check($scope, EngineApi, $http, $timeout, Notifications, $upload, $compile, $filter, Auth, GateGuest, ConQuaService, $translatePartialLoader, $translate) {
+                $scope.passOrNot = GateGuest.GetCheckList();
+                $scope.note = {}
+                console.log($scope.variable);
+                $scope._IsNotSubmit = false;
+                $scope._IsExpired = false;
+                $scope.detail = false;
+                ConQuaService.GetContractorCheck().get({
+                        VoucherID: $scope.variable.eventStart_Employer,
+                        Language: window.localStorage.lang
+                }).$promise.then(function (res) {
+				debugger;
+                        $scope.note = res[0];
+                        $scope.note.VoucherID = $scope.variable.eventStart_Employer;
+                        $scope.note.ContractorName = res[0].ContractorName;
+                        $scope.note.ContracorKind = res[0].ContracorKind;
+                        $scope.note.ContracorType = res[0].ContracorType;
+                        $scope.EmployeeList = [];
+                        $scope.note.StartDate = res[0].StartDate;
+                        $scope.note.EndDate = res[0].EndDate;
+                        $scope._status = res[0].Status;
+                        if ($scope._status != 'F') {
+                                $scope._IsNotSubmit = true;
+                        }
+
+                        if ($scope._status == 'E') {
+                                $scope._IsExpired = true;
+                        }
+
+
+
+                        if (res[0].IsForeign == 1) {
+                                $scope.IsForeign = true;
+                        } else $scope.IsForeign = false;
+
+                        res.forEach(element => {
+                                var x = {};
+                                x.Name = element.Name;
+                                x.IdCard = element.IdCard;
+                                x.Sex = element.Sex;
+                                x.Birthday = element.Birthday;
+                                x.Job = element.Job;
+                                x.Region = element.Region;
+                                x.Remark = element.Remark;
+                                x.InsuranceDuration = element.InsuranceDuration;
+                                x.SafetyCerDuration = element.SafetyCerDuration;
+                                x.Phone = element.Phone;
+                                if ($scope.IsForeign) {
+                                        x.PassPort_Expiry = element.PassPort_Expiry;
+                                        x.PassPort_Nationality = element.PassPort_Nationality;
+                                        x.WorkPermit_No = element.WorkPermit_No;
+                                        x.WorkPermit_Start = element.WorkPermit_Start;
+                                        x.WorkPermit_End = element.WorkPermit_End;
+                                        x.CategoryCard = element.CategoryCard;
+                                        x.Card_Type = element.Card_Type;
+                                        x.Card_No = element.Card_No;
+                                        x.Card_Start = element.Card_Start;
+                                        x.Card_End = element.Card_End;
+                                }
+                                $scope.EmployeeList.push(x);
+                        });
+                }, function (errResponse) {
+                        Notifications.addError({ 'status': 'error', 'message': errResponse });
+                });
+
+                $scope.btSelect = function (p) {
+                        if (p === "YES") {
+                                $scope.formVariables.push({ name: "agree", value: "YES" });
+                        } else {
+                                $scope.formVariables.push({ name: "agree", value: "NO" });
+                        }
+                };
+
+                $scope.returnFlow = function () {
+                        $scope.formVariables.push({ name: "agree", value: "NO" });
+                        $scope.formVariables.push({ name: "eventCheck_passOrNot", value: "NO" });
+                        if ($scope._IsExpired) {
+                                $scope.formVariables.push({ name: "eventSafe_advice", value: "Contractor_Expire_MSG" });
+                        } else {
+                                $scope.formVariables.push({ name: "eventSafe_advice", value: "Contractor_Suspended_MSG" });
+                        }
+                        $scope.formVariables.push({ name: "IsDelete", value: "YES" });
+                        sendMailSubmit("c_return");
+                        $scope.submit();
+                }
+
+                $scope.CheckSubmit = function () {
+                        if ($scope.eventCheck_passOrNot === "YES") {
+                                sendMailSubmit("c_submit");
+                                $scope.submit();
+                        } else {
+                                sendMailSubmit("c_return");
+                                $scope.submit();
+                        }
+
+                }
+
+                function sendMailSubmit(_mailKind) {
+                        ConQuaService.SendMailSubmit().get({
+                                flowname: "GateContractorQuaProcess",
+                                IdVoucher: $scope.variable.eventStart_Employer,
+                                FromUser: Auth.username,
+                                MailKind: _mailKind
+                        }, {}).$promise.then(function (res) {
+                                console.log(res);
+                        }, function (err) {
+                                Notifications.addError({
+                                        'status': 'error',
+                                        'message': 'Send Mail Err: ' + err
+                                });
+                        });
+                }
+        }
+</script>
+
+<div ng-controller="ContractorQuaProcess_check">
+        <form class="form-horizontal" role="form" name="form" novalidate>
+                <div ng-include="'forms/ContractorQua/detail.html'"></div>
+                <H4 ng-if="!_IsNotSubmit" style="background-color: #ececec; padding: 5px">
+                        {{'leaderCheck'|translate}}</H4>
+
+                <H4 ng-if="_IsNotSubmit && !_IsExpired" style="color:red; padding: 5px">
+                        {{'Return_Suspended_MSG'|translate}}</H4>
+
+                <H4 ng-if="_IsNotSubmit && _IsExpired" style="color:red; padding: 5px">
+                        {{'Return_Expire_MSG'|translate}}</H4>
+
+                <div ng-show="!_IsNotSubmit">
+                        <div class="form-group">
+                                <label class="col-sm-2 control-label">{{'IsPass'|translate}}</label>
+                                <div class="col-sm-3">
+                                        <select ng-change="btSelect(eventCheck_passOrNot)" class="form-control"
+                                                history-field="IsPass" form-field name="eventCheck_passOrNot"
+                                                ng-model="eventCheck_passOrNot"
+                                                ng-options="c.value as c.name for c in passOrNot" required>
+                                        </select>
+                                </div>
+                        </div>
+
+
+                        <div class="form-group" ng-if="eventCheck_passOrNot == 'NO'">
+                                <label class="col-sm-2 control-label">{{'DenyReason'|translate}}</label>
+                                <div class="col-sm-6 ">
+                                        <textarea class="form-control" name="eventCheck_advice"
+                                                history-field="DenyReason" form-field type="string"
+                                                ng-model="eventCheck_advice" field-validate rows="3" required />
+                                        </div>
+                        </div>   
+                </div> 
+
+                <div class="form-group">
+                        <div ng-show="!_IsNotSubmit" class="col-sm-offset-2 col-sm-10">
+                                <button class="btn btn-primary" ng-click="CheckSubmit()"
+                                        ng-disabled="(form.$invalid)">{{'submit'|translate}}</button>
+                        </div>
+                        <div ng-if="_IsNotSubmit" class="col-sm-offset-2 col-sm-10">
+                                <button class="btn btn-primary" ng-click="returnFlow()">{{'ReturnVoucher'|translate}}</button>
+                        </div>
+                </div>
+        </form>
+</div>

@@ -1,0 +1,159 @@
+<script type="text/javascript">
+    function ContractorInfoProcess_check($scope, EngineApi, $http, $timeout, Notifications, $upload, $compile, $filter, Auth, ConQuaService, $routeParams, GateGuest, $translate) {
+        console.log("Contractor:" + $scope.variable.ContractorID);
+        console.log($scope.variable);
+        var lang = window.localStorage.lang;
+        $scope.passOrNot = GateGuest.GetCheckList();
+
+        if ($scope.variable.start_remark == "Renew") {
+            $scope._signRenew = true;
+        } else $scope._signRenew = false;
+
+        ConQuaService.ContractorQualification().getDetailHeader({
+            contractorID: $scope.variable.EmployerId,
+            language: lang
+        }).$promise.then(function (res) {
+            console.log(res);
+            $scope.project = res[0];
+
+            /*check contract term*/
+            if (res[0].isvalid == 0) {
+                $scope._isExpire = true;
+            } else {
+                $scope._isExpire = false;
+            }
+        });
+
+        function sendMailSubmit(_mailKind) {
+            ConQuaService.SendMailSubmit().get({
+                flowname: "GateContractorInfoProcess",
+                IdVoucher: $scope.variable.EmployerId,
+                FromUser: Auth.username,
+                MailKind: _mailKind
+            }, {}).$promise.then(function (res) {
+                console.log(res);
+            }, function (err) {
+                Notifications.addError({
+                    'status': 'error',
+                    'message': 'error send mail: ' + err
+                });
+            });
+        }
+
+        $scope.saveSubmit = function () {
+            if ($scope.agree === "YES") {
+                if ($scope.variable.start_remark == "Renew") {
+                    saveRenewDate(function (contractorID, errMessage) {
+                        if (errMessage && !contractorID) {
+                            $timeout(function () {
+                                Notifications.addError({ 'status': 'error', 'message': errMessage });
+                            }, 400);
+                        } else {
+                            $scope.submit();
+                            ConQuaService.ExtendMail().get({
+                                ContractorID: $scope.variable.EmployerId
+                            }, {}).$promise.then(function (res) {
+                                console.log(res);
+                            }, function (err) {
+                                Notifications.addError({
+                                    'status': 'error',
+                                    'message': 'Update status error: ' + err
+                                });
+                            }
+                            );
+                        }
+                    })
+                } else {
+                    $scope.submit();
+                    sendMailSubmit("c_submit");
+                }
+            } else {
+                $scope.submit();
+                sendMailSubmit("c_return");
+
+            }
+        }
+
+        function saveRenewDate(callback) {
+            $scope.project.EndDate = $scope.variable.Renew_Date;
+
+            if ($scope.project.ContractorFile != "") {
+                $scope.project.ContractorFile = $scope.fileAttached;
+            } else $scope.project.ContractorFile = null;
+            
+            ConQuaService.CreateContractorQualification().save($scope.project).$promise.then(function (rese) {
+                $scope.project.ContractorID = JSON.parse(rese.contractorID).contractorID;
+                callback($scope.project.ContractorID, "")
+            }, function (errResponse) {
+                callback("", errResponse);
+            });
+
+        }
+
+        $scope.returnFlow = function () {
+            $scope.formVariables.push({ name: "agree", value: "NO" });
+            $scope.formVariables.push({ name: "leadercheck_remark", value: 'Contractor_Expire_MSG' });
+            $scope.historyVariable.push({ name: "IsPass", value: "NO" });
+            $scope.historyVariable.push({ name: "DenyReason", value: 'Contractor_Expire_MSG' });
+            $scope.submit();
+        }
+
+    }
+
+
+
+</script>
+
+<div ng-controller="ContractorInfoProcess_check">
+    <form class="form-horizontal" role="form" novalidate name="form">
+
+        <h3 ng-if="_signRenew">{{'Renew'|translate}} </h3>
+
+        <div ng-include="'forms/ConQua/detail.html'"></div>
+
+        <h4 ng-show="_isExpire" style="color:red; padding: 5px">
+            {{'Return_Expire_MSG'|translate}}
+        </h4>
+
+        <div class="form-group" ng-if="_signRenew">
+            <label class="col-sm-2 control-label ">{{'RenewalDate'|translate}}:</label>
+            <div class="col-lg-3 col-sm-3">
+                <input class="form-control" type="text" ng-model="variable.Renew_Date" readonly />
+            </div>
+        </div>
+
+        <div ng-hide="_isExpire">
+            <div class="form-group">
+                <label class="col-sm-2 control-label">{{'IsPass'|translate}}:</label>
+                <div class="col-sm-3">
+                    <select class="form-control" history-field="IsPass" form-field name="agree" ng-model="agree"
+                        ng-options="c.value as c.name for c in passOrNot" required> </select>
+                </div>
+            </div>
+
+            <div class="form-group" ng-if="agree=='NO'">
+                <label class="col-sm-2  control-label">*{{'DenyReason'|translate}}:</label>
+                <div class="col-sm-6">
+                    <textarea class="form-control" name="leadercheck_remark" type="text" form-field required=""
+                        history-field="DenyReason" ng-model="leadercheck_remark" field-validate rows="3">
+                    </textarea>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10" ng-hide="_isExpire">
+                <button class="btn btn-primary" ng-click="saveSubmit()" ng-disabled="form.$invalid">
+                    {{'submit'|translate}}
+                </button>
+            </div>
+
+            <div class="col-sm-offset-2 col-sm-10" ng-show="_isExpire">
+                <button class="btn btn-primary" ng-click="returnFlow()">
+                    {{'ReturnVoucher'|translate}}
+                </button>
+            </div>
+
+        </div>
+    </form>
+</div>

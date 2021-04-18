@@ -1,0 +1,74 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <style>
+        #tbReject {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        #tbReject td,
+        #tbReject th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        #tbReject th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #F2F2F2;
+            width: 35%;
+        }
+
+        .linksystem {
+            font-weight: bold;
+            color: darkblue;
+        }
+
+        .fontchina {
+            font-family: "Times New Roman", "DFKai-SB";
+            font-size: 15pt;
+        }
+    </style>
+</head>
+
+
+
+<body>
+    <div class="fontchina">
+        Chào Anh/Chị, Chức năng <b>“Đăng ký ra vào cty tại cổng đông”</b> xin thông báo, Anh/Chị có đơn sau cần xử lý:
+        <br> 您好，<b>《進出東門登記》</b> 通知您有以下文件待處理：
+
+        <br><br>
+        <table id="tbReject">
+            <tr>
+                <th> Mã đơn / 單據號 </th>
+                <td> <b> ${VoucherID} </b></td>
+            </tr>
+
+            <tr>
+                <th> Người nộp đơn / 申請人 </th>
+                <td>${initiator} - ${initiatorName}</td>
+            </tr>
+
+            <tr>
+                <th> Lý do trả về / 否決原因 </th>
+                <td><b style="background-color:yellow">Thời gian đăng ký đã hết / 登记時間已過期 </b> </td>
+            </tr>
+        </table>
+
+        <br>
+        <b><u>Lời nhắc | 溫馨提示:</u></b>
+        <br> (1) Hệ thống có biểu đơn chờ Anh/ Chị xử lý, vui lòng vào <a href="http://10.20.46.23:843/" class="linksystem">hệ thống</a> để xác nhận.
+        <br> &nbsp&nbsp&nbsp 系統有您待處理文件，請登錄<a href="http://10.20.46.23:843/" class="linksystem">系統</a>確認。
+        <br> (2) Nếu Anh/Chị đã xử lý biểu đơn này, hãy bỏ qua lời nhắc này.
+        <br> &nbsp&nbsp&nbsp 若您已完成本案件之處理，請忽略本提示。
+        <br> (3) Nếu có bất kỳ vấn đề nào về hệ thống, vui lòng liên hệ với 
+            <b>IT - Team MES <span style="color:blue;font-style: italic;">(Ms. Hana: ntthuong@fenc.vn - ĐT: #4419 8888)</span></b> để được hỗ trợ. Xin cảm ơn!
+        <br> &nbsp&nbsp&nbsp 如系統有任何問題，請聯絡 <b>IT - Team MES</b> 處理 <b><span style="color:blue;font-style: italic;">(Ms. Hana: ntthuong@fenc.vn - 分機號: #4419 8888)</span></b>。謝謝!
+    </div>
+</body>
+
+</html>

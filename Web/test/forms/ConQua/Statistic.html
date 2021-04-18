@@ -1,0 +1,202 @@
+<style>
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    .form-form-horizontal {
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif, 'DFKai-SB';
+    }
+
+    .note {
+        font-family: "Comic Sans MS", cursive, sans-serif, 'DFKai-SB';
+        font-size: 14pt;
+    }
+
+    .title {
+        width: 100%;
+        background-color: #ececec;
+        padding: 5px 0px 5px 10px;
+        border: 1px solid #ececec;
+        border-radius: 6px;
+    }
+
+    .btn {
+        border: 1px solid black;
+        font-weight: bold;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif, 'DFKai-SB';
+    }
+</style>
+
+
+<form class="form-horizontal" novalidate name="form">
+    <legend>
+        <div class="form-group" style="margin-top: 30px;">
+            <div class="col-sm-2">
+                <button class="btn btn-default" data-ng-click="statistic()" id="btnStatistic">
+                    <img src="/css/image/contractor/chart.png" style="width:40px;">
+                    {{'Statistic'|translate}}
+                </button>
+            </div>
+            <div class="col-sm-1">
+                <button class="btn btn-default" data-ng-click="viewLog()" id="btnViewLog">
+                    <img src="/css/image/contractor/viewLog.png" style="width:40px;">
+                    {{'ViewLog'|translate}}
+                </button>
+            </div>
+           
+        </div>
+    </legend>
+
+    <div ng-if="!IsStatistic">
+        <div class="form-group">
+            <label class="col-sm-2 control-label">{{'From'|translate}}</label>
+            <div class="col-sm-3">
+                <div class='input-group date'>
+                    <input type='text' class="form-control" ng-model="query.FromDate" date-picker />
+                    <span class="input-group-addon">
+                        <label class="glyphicon glyphicon-calendar" style="color: grey"></label>
+                    </span>
+                </div>
+            </div>
+
+            <label class="col-sm-2 control-label">{{'To'|translate}}</label>
+            <div class="col-sm-3">
+                <div class='input-group date'>
+                    <input type='text' class="form-control" ng-model="query.ToDate" date-picker max="0"/>
+                    <span class="input-group-addon">
+                        <label class="glyphicon glyphicon-calendar" style="color: grey"></label>
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label">{{'Contractor'|translate}}</label>
+            <div class="col-sm-3">
+                <select style="width:100%; height: 120%" ui-select2 ng-model="query.ContractorName">
+                    <option value="">----- {{'Show All'|translate}} ------</option>
+                    <option ng-repeat="item in ContractorList" value="{{item.ContractorName}}">
+                        {{item.ContractorName}}
+                    </option>
+                </select>
+            </div>
+
+            <label class="col-sm-2 control-label">{{'Classify'|translate}}</label>
+            <div class="col-sm-3">
+                <select class="form-control" ng-model="query.Classify">
+                    <option value="">{{'Contractor'|translate}}</option>
+                    <option value="3">{{'Vendor'|translate}}</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label">{{'WorkerName'|translate}}</label>
+            <div class="col-sm-3">
+                <input class="form-control" type="text" ng-model="query.EmpName" />
+            </div>
+
+            <label class="col-sm-2 control-label">{{'IdCard'|translate}}</label>
+            <div class="col-sm-3">
+                <input class="form-control" type="text" ng-model="query.IdCard" />
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label">{{'Area'|translate}}</label>
+            <div class="col-sm-3">
+                <select class="form-control" ng-model="query.Region"
+                    ng-options="item.ContractorRegionID as item.ContractorRegion  for item in RegionList">
+                </select>
+            </div>
+
+            <div class="col-sm-offset-2 col-sm-1">
+                <button class="btn btn-default btn-icon" data-ng-click="searchLog()">
+                    <img src="/css/image/search-icon.png" style="width: 25px;">
+                    {{'Search'|translate}}
+                </button>
+            </div>
+
+            <div class="col-sm-1" style="margin-left: 65px;">
+                <button class="btn btn-default btn-icon" data-ng-click="exportLog()">
+                    <img src="/css/image/Excel.png" style="width: 25px;">
+                    {{'ExportFile'|translate}}
+                </button>
+            </div>
+        </div>
+
+        <div class="form-group" style="width: 100%;margin-top:30px">
+            <div id="Grid" ui-grid="gridOptionsLog" class="grid" ui-grid-selection ui-grid-resize-columns ui-grid-core
+                ui-grid-exporter external-scopes="gridHandlers"></div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-12">
+                <b class="note" style="background-color: yellow;"> 📌
+                    {{'Note_Statistic'|translate}}</b>
+                <br>
+                <p class="note"> - {{'Note_Statistic_Count'|translate}}
+                    <br>- {{'Note_Statistic_OT'|translate}} </p>
+            </div>
+
+        </div>
+    </div>
+
+    <div ng-if="IsStatistic">
+        <div class="form-group">
+            <label class="col-sm-2 control-label">{{'From'|translate}}</label>
+            <div class="col-sm-3">
+                <div class='input-group date'>
+                    <input type='text' class="form-control" ng-model="query.FromDate" date-picker />
+                    <span class="input-group-addon">
+                        <label class="glyphicon glyphicon-calendar" style="color: grey"></label>
+                    </span>
+                </div>
+            </div>
+
+            <label class="col-sm-2 control-label">{{'To'|translate}}</label>
+            <div class="col-sm-3">
+                <div class='input-group date'>
+                    <input type='text' class="form-control" ng-model="query.ToDate" date-picker max="0"/>
+                    <span class="input-group-addon">
+                        <label class="glyphicon glyphicon-calendar" style="color: grey"></label>
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label">{{'Contractor'|translate}}</label>
+            <div class="col-sm-3">
+                <select style="width:100%; height: 120%" ui-select2 ng-model="query.ContractorName">
+                    <option value="">----- {{'Show All'|translate}} ------</option>
+                    <option ng-repeat="item in ContractorList" value="{{item.ContractorName}}">
+                        {{item.ContractorName}}
+                    </option>
+                </select>
+            </div>
+
+            <div class="col-sm-offset-2 col-sm-1">
+                <button class="btn btn-default btn-icon" data-ng-click="searchStatistic()">
+                    <img src="/css/image/Search-icon.png" style="width: 25px;">
+                    {{'Search'|translate}}
+                </button>
+            </div>
+
+            <div class="col-sm-1" style="margin-left: 65px;">
+                <button class="btn btn-default btn-icon" data-ng-click="exportStatistic()">
+                    <img src="/css/image/Excel.png" style="width: 25px;">
+                    {{'ExportFile'|translate}}
+                </button>
+            </div>
+
+        </div>
+
+        <div style="width: 100%;margin-top:30px">
+            <div id="Grid" ui-grid="gridOptionsStatistic" class="grid" ui-grid-selection ui-grid-resize-columns
+                ui-grid-core ui-grid-exporter external-scopes="gridHandlers"></div>
+        </div>
+    </div>
+</form>

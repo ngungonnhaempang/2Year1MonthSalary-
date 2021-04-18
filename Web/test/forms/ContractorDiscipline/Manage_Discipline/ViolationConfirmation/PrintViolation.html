@@ -1,0 +1,249 @@
+<style>
+    .buttonApp {
+        font-weight: bold;
+        font-family: tahoma, 'DFKai-SB';
+        box-shadow: 4px 2px 2px 2px #999
+    }
+
+    #page-contain {
+        font-size: 12pt;
+        font-family: 'Times New Roman', 'DFKai-SB';
+    }
+
+    page {
+        background: white;
+        display: block;
+        margin: 10px auto;
+        margin-bottom: 0.5cm;
+        box-shadow: 0 0 0.5cm rgba(0, 0, 0, 0.5);
+    }
+
+    page[size="A4 landscape"] {
+        padding: 5% 5% 5% 5%;
+    }
+
+    #footer {
+        display: none;
+    }
+
+    table,
+    th,
+    td {
+        border: 1px solid black;
+        padding: 5px;
+    }
+
+    th {
+        text-align: center;
+    }
+
+    body {
+        padding: 0;
+    }
+
+    .colorGray {
+        background-color: lightgray;
+        text-align: center;
+        /* white-space: nowrap; */
+    }
+
+
+    .checkboxPseudo {
+        display: block;
+        position: relative;
+        padding-left: 20px;
+        font-weight: normal;
+    }
+
+    /* Hide the browser's default checkbox button */
+    .checkboxPseudo input {
+        position: absolute;
+        opacity: 0;
+        margin-left: -16px;
+
+    }
+
+    /* Create a custom checkbox button */
+    .checked {
+        position: absolute;
+        margin: 6px 1px 0px -20px;
+        width: 15px;
+        height: 15px;
+        background-color: white;
+        border: 1px solid black;
+        cursor: not-allowed;
+    }
+
+    /* Create the indicator (the dot/tick - hidden when not checked) */
+    .checked:after {
+        content: "";
+        position: absolute;
+        display: none;
+    }
+
+    /* Show the indicator (dot/tick) when checked */
+    .checkboxPseudo input:checked~.checked:after {
+        display: block;
+    }
+
+    /* Style the indicator (dot/tick) */
+    .checkboxPseudo .checked:after {
+        left: 5px;
+        width: 5px;
+        height: 10px;
+        border: solid black;
+        border-width: 0 2px 2px 0;
+        -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        transform: rotate(45deg);
+    }
+
+    .text-right {
+        text-align: right
+    }
+
+    @media print {
+        .container {
+            padding: 0px 4px 0px 13px !important;
+        }
+
+        @page {
+            size: landscape;
+            margin: 5mm 17mm 8mm 10mm;
+        }
+
+        #page-contain {
+            font-size: 10pt !important;
+            font-family: 'Times New Roman', 'DFKai-SB';
+        }
+
+        .colorGray {
+            background-color: lightgray !important;
+            -webkit-print-color-adjust: exact !important;
+        }
+
+        .buttonApp {
+            visibility: hidden;
+        }
+
+        .text-right {
+            text-align: right
+        }
+    }
+</style>
+
+<page size="A4 landscape" id="page-contain" class="container">
+    <div style="text-align: center;font-size: 14pt;">
+        <Strong> CÔNG TY TNHH POLYTEX FAR EASTERN (VIỆT NAM)
+            <br> 遠東紡纖(越南)有限公司
+            <br>ĐƠN XÁC NHẬN VI PHẠM
+            <br>違規確認單
+        </Strong>
+    </div>
+
+    <span><b>Mã số đơn 流水號:</b> {{data.ViolationCode}}</span>
+    <span style="float: right;"><b>Ngày lập đơn 立案時間：</b>
+        Năm {{data.CreateDate|date: 'yyyy'}} 年 tháng {{data.CreateDate|date: 'MM'}} 月 ngày {{data.CreateDate|date: 'dd'}} 日
+    </span>
+
+    <table>
+        <tr>
+            <th style="width:15%;" class="colorGray">Đơn vị phát thầu <br> 發包單位 </th>
+            <td style="width:35%;">{{data.Department}} - {{data.Specification_VN}} {{data.Specification_TW}}</td>
+            <th style="width:15%;" class="colorGray">Hạng mục thi công<br> 施工項目</th>
+            <td style="width:35%;">{{data.ConstructionItems}}</td>
+        </tr>
+
+        <tr>
+            <th class="colorGray">Nhà thầu vi phạm <br> 違規承攬商 </th>
+            <td>{{data.ContractorName}}</td>
+            <th class="colorGray">Thời gian vi phạm <br> 違規時間</th>
+            <td>{{data.TimeViolation|date: "yyyy-MM-dd hh:mm:ss"}}</td>
+        </tr>
+
+        <tr>
+            <th class="colorGray"> Hạng mục vi phạm <br> 違規事項 </th>
+            <td style="white-space: break-spaces;">{{data.PrintCategoryViolation}} </td>
+
+            <th class="colorGray">Địa điểm vi phạm <br> 違規地點</th>
+            <td>{{data.LocationViolation}}</td>
+        </tr>
+
+        <tr>
+            <th class="colorGray"> Số vi phạm <br> 總違規數</th>
+            <td>{{data.Quantity}} </td>
+
+            <th class="colorGray">Biện pháp xử lý <br> 處理方式</th>
+            <td>
+                <label class="checkboxPseudo">
+                    <input type="checkbox" ng-model="data.DisciplineContractor" disabled>
+                    <span class="checked"></span>
+                    Xử phạt 罰扣
+                </label>
+
+                <label class="checkboxPseudo">
+                    <input type="checkbox" ng-model="data.SuspendContractor" disabled>
+                    <span class="checked"></span>
+                    Đình chỉ vào cổng 禁止入廠
+                </label>
+            </td>
+        </tr>
+
+        <tr>
+            <th class="colorGray"> Mô tả vi phạm <br> 違規簡要</th>
+            <td colspan="3" style="white-space: break-spaces;">{{data.DescriptionViolation}} </td>
+        </tr>
+
+        <tr>
+            <th class="colorGray" rowspan="2"> Chú ý <br> 注意</th>
+            <td colspan="3" class="colorGray" style="text-align:left">
+                <ol type="1">
+                    <li>
+                        Nhà thầu vui lòng xác minh thông tin và nội dung vi phạm trong đơn này là đúng sự thật và ký
+                        xác
+                        nhận.
+                        Trường hợp có thắc mắc trong vòng 2 ngày kể từ ngày ký xác nhận phải liên hệ Bộ phận an toàn
+                        môi
+                        trường
+                        để giải quyết. 請驗證此單中的違規信息和內容是否屬實，並簽名以確認。 若有疑義時自簽署
+                        日起兩個工作日內向安環處提出申訴，逾期不受理
+                    </li>
+                    <li>
+                        Bộ phận an toàn môi trường căn cứ vào đơn xác nhận vi phạm này kèm hình ảnh, địa điểm, thời
+                        gian
+                        vi phạm để xử phạt, hoặc đình chỉ vào cổng.安環處根據本單與違規照片、地點、時間按流程進行
+                    </li>
+                </ol>
+            </td>
+        </tr>
+
+        <tr>
+            <th style="text-align:left;height: 60px;">Ý kiến đơn vị vi phạm nếu có 違規單位意見: </th>
+            <td colspan="2"></td>
+        </tr>
+
+        <tr colspan='4'>
+            <table style="page-break-inside: avoid;">
+                <tr class="colorGray">
+                    <th colspan="2" style="width: 529px;">Người lập đơn (Ký và đóng dấu) 製表者（簽名與蓋章）</th>
+                    <th colspan="2" style="width: 527px;">Đơn vị vi phạm (Ký và ghi rõ họ tên) 違規單位（簽名與寫姓名）</th>
+                </tr>
+        
+                <tr style="height:50pt; vertical-align: top">
+                    <td colspan="2"></td>
+                    <td colspan="2"></td>
+                </tr>
+            </table>
+        </tr>
+
+       
+   
+     
+    </table>
+    <div style="float: right; margin-top: 10px; margin-bottom: 20px;">
+        <button class="btn btn-success buttonApp" ng-click="printApp()">
+            <i class="glyphicon glyphicon-print" style="color: white;vertical-align: text-bottom;"></i>
+            &nbsp;{{'Print_voucher'|translate}}
+        </button>
+    </div>
+</page>

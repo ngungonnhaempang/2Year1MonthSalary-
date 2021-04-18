@@ -1,0 +1,498 @@
+<style ng-if="!Print">
+    .form-horizontal {
+        font-size: 13pt;
+        font-family: 'Times New Roman', 'DFKai-SB';
+    }
+
+    .note {
+        font-size: 11pt;
+        font-family: 'Times New Roman', 'DFKai-SB';
+
+    }
+
+    #footer {
+        display: none;
+    }
+
+
+    .buttonApp {
+        font-weight: bold;
+        font-family: tahoma, 'DFKai-SB';
+        box-shadow: 4px 2px 2px 2px #999
+    }
+
+    .form-group {
+        margin-bottom: 10px;
+    }
+
+    .select2-choices {
+        border-radius: 4px;
+    }
+
+    ul,
+    li {
+        list-style-type: none;
+    }
+
+    .checkboxPseudo {
+        display: block;
+        /* display: initial; */
+        position: relative;
+        padding-left: 35px;
+        margin-bottom: 12px;
+        cursor: pointer;
+        font-weight: normal;
+    }
+
+    /* Hide the browser's default checkbox button */
+    .checkboxPseudo input {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+        margin-left: -16px;
+
+    }
+
+    /* Create a custom checkbox button */
+    .checked {
+        position: absolute;
+        left: 1px;
+        margin: 2px;
+        width: 18px;
+        height: 18px;
+        background-color: white;
+        border: solid #94C855;
+        border-radius: 5px;
+    }
+
+    /* Create the indicator (the dot/tick - hidden when not checked) */
+    .checked:after {
+        content: "";
+        position: absolute;
+        display: none;
+    }
+
+    /* Show the indicator (dot/tick) when checked */
+    .checkboxPseudo input:checked~.checked:after {
+        display: block;
+    }
+
+    /* Style the indicator (dot/tick) */
+    .checkboxPseudo .checked:after {
+        left: 5px;
+        width: 5px;
+        height: 10px;
+        border: solid black;
+        border-width: 0 2px 2px 0;
+        -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        transform: rotate(45deg);
+    }
+
+    .checkboxPseudo .halfCheck:after {
+        top: 4px;
+        left: 4px;
+        width: 4px;
+        height: 4px;
+        border: solid black;
+        border-radius: 50%;
+
+    }
+
+    .arrow {
+        width: 14px;
+        height: 14px;
+        /* margin: 10px -15px 0; */
+        margin: 3px 5px 0px -15px;
+        cursor: pointer;
+        float: left;
+    }
+
+    .collapsed {
+        background: url(/css/image/checktree_icon.png) no-repeat;
+        background-position: 0px -22px;
+    }
+
+    .expanded {
+        background: url(/css/image/checktree_icon.png) no-repeat;
+        background-position: -14px -22px;
+    }
+
+    .other {
+        margin-left: 28px;
+        width: -webkit-fill-available;
+    }
+
+    .fitCheckPosition {
+        padding-left: 28px;
+    }
+
+    .fold {
+        visibility: hidden;
+    }
+
+    .info {
+        font-weight: unset;
+        padding-top: 7px;
+        margin-top: 0;
+        margin-bottom: 0;
+        /* width: max-content; */
+    }
+
+    .form-control {
+        font-size: 13pt;
+    }
+</style>
+
+<div ng-if="!Print">
+    <form class="form-horizontal" novalidate name="ModificationAppform">
+        <legend>
+            <h2 class="appname">{{'MDApp'|translate}} - {{data.ISO_AppCode}}</h2>
+        </legend>
+
+        <div style="margin-top: 15px;" ng-include="'forms/EHS/Modification/Manage_Modification/ReasonReject.html'">
+        </div>
+        <hr>
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label">{{'Dept_Proposed'|translate}}</label>
+            <div class="col-sm-4">
+                <label class="info">
+                    {{data.Department}}
+                </label>
+            </div>
+
+            <label class="col-sm-2 control-label">*{{'Create_date'|translate}}</label>
+            <div class="col-sm-3">
+                <div class="input-group date">
+                    <input type='text' class="form-control" date-picker ng-model="data.CreateDate" ng-change="getProjectID(data.CostCenter,data.CreateDate)"
+                        required />
+                    <span class="input-group-addon">
+                        <label class="glyphicon glyphicon-calendar" style="color: grey" for='DATE'></label>
+                    </span>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="form-group">
+            <div >
+                <label class="col-sm-2 control-label">{{'Expected_code'|translate}}</label>
+                <p class="col-sm-4 control-label" style="text-align: left; white-space: nowrap;">
+                    {{PreMDProjectID}} -
+                    <b><mark>{{NumberMDProjectID}}</mark>&nbsp;
+                    <br><span style="color: crimson;">
+                            {{'Note_MDprojectID'|translate}}
+                        </span>
+                    </b>
+                </p>
+            </div>
+
+            <!-- <div ng-if="isUpdateSubmit">
+                <label class="col-sm-2 control-label">{{'MD_ProjectID'|translate}}</label>
+                <p class="col-sm-4 control-label" style="text-align: left;">{{data.MD_ProjectID}}</p>
+            </div> -->
+
+            <label class="col-sm-2 control-label ">* {{'MD_type'|translate}}</label>
+            <div class="col-sm-3">
+                <select class="form-control" ng-model="data.MD_Type" required>
+                    <option value="longTerm" required> {{'Long'|translate}}</option>
+                    <option value="shortTerm" required> {{'Temporary'|translate}} </option>
+                </select>
+            </div>
+
+            <label ng_if="data.MD_Type=='shortTerm'" class="col-sm-offset-8 col-sm-3" style="padding-top: 20px;">*
+                {{'Intend_date'|translate}}
+            </label>
+
+        </div>
+
+        <div class="form-group">
+            <table>
+                <tr id="MDType">
+                    <th rowspan="2" style="padding-right: 13px; text-align: right; width: 203px;">
+                        * {{'MD_Name'|translate}}
+                    </th>
+
+                    <td style="width: 420px;" rowspan="2">
+                        <textarea type="text" class="form-control" rows="3" ng-model="data.MD_Name" required></textarea>
+                    </td>
+
+                    <th style="padding-right: 13px; text-align: right;width: 180px;">
+                        <div ng_if="data.MD_Type=='shortTerm'">* {{'From'|translate}}</div>
+                    </th>
+
+                    <td style="width: 270px;">
+                        <div class="input-group date" style="width:277px" ng_if="data.MD_Type=='shortTerm'">
+                            <input type='text' class="form-control" date-picker min="0" ng-model="data.ExpectDateBegin"
+                                required />
+                            <span class="input-group-addon">
+                                <label class="glyphicon glyphicon-calendar" style="color: grey" for='DATE'></label>
+                            </span>
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <th style="padding-right: 13px;text-align: right;">
+                        <div ng_if="data.MD_Type=='shortTerm'">
+                            * {{'To'|translate}}
+                        </div>
+
+                    </th>
+
+                    <td>
+                        <div class="input-group date" style="width:277px" ng_if="data.MD_Type=='shortTerm'">
+                            <input type='text' class="form-control" date-picker min="0" ng-model="data.ExpectDateEnd"
+                                required>
+                            <span class="input-group-addon">
+                                <label class="glyphicon glyphicon-calendar" style="color: grey" for='DATE'></label>
+                            </span>
+                        </div>
+
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label ">* {{'Risk_level'|translate}}</label>
+            <div class="col-sm-9">
+                <select class="form-control" ng-model="data.RiskLevel" ng-change="changeRiskLevel()" required>
+                    <option value="Level_1" required> {{'Level1'|translate}}
+                    </option>
+                    <option value="Level_2" required> {{'Level2'|translate}} </option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <div ng-if="data.RiskLevel=='Level_2'">
+                <label class="col-sm-2 control-label">* {{'Affect_Dept'|translate}}</label>
+                <div class="col-sm-9">
+                    <select style="width: 100%" ui-select2 ng-model="data.AffectDivision" multiple required>
+                        <option ng-repeat="c in DepartmentList" value="{{c.DepartmentID}}">
+                            {{c.Specification_TW}} / {{c.Specification_VN}}
+                        </option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label">* {{'Reason_main'|translate}}</label>
+            <div class="col-sm-9">
+                <textarea type="text" class="form-control" rows="3" ng-model="data.Reason" required></textarea>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label">
+                * {{'Location_attached'|translate}}
+                <br> {{'Attaching_img'|translate}}
+            </label>
+            <div class="col-sm-9">
+                <textarea type="text" class="form-control" rows="3" ng-model="data.Area" required></textarea>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-1">
+                <div class="btn btn-default  my-btn-file">
+                    <img src="/css/image/zipUpload.png" style="width:18px;">
+                    <input type="file" accept=".zip,.rar" ng-file-select="onFileSelect($files,'MD_Area')">
+                </div>
+                <br><code class="note"><b>📌 {{'FileUploadNote'|translate}}</b></code>
+            </div>
+
+            <div class="col-sm-2 control-label" ng-if="fileArea!=''" style="width: fit-content; margin-left: -27px;">
+                <a href="\{{fileArea}}" target="_blank">{{fileArea}}</a>
+                <a class="btn btn-danger btn-xs" role="button" ng-click="getRemoveFileName(fileArea,'MD_Area')">X</a>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label">* {{'MD_Description'|translate}}</label>
+            <div class="col-sm-9">
+                <textarea type="text" class="form-control" rows="3" ng-model="data.Description" required></textarea>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-9">
+                <div class="form-group">
+                    <label class="checkboxPseudo fitCheckPosition col-sm-5"
+                        style="font-weight: bold;margin-left: -10px;">
+                        <input type="checkbox" ng-model="data.category" ng-change="checkAllCategory(data.category)">
+                        <span ng-class="{checked:true, halfCheck:rootCateoryHalfCheck}"></span>
+                        * {{'Category'|translate}}
+                    </label>
+                </div>
+                <div id="showCategory" style="margin-left: -22px; margin-bottom: -10px;"></div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-9">
+                <div class="form-group">
+                    <label class="checkboxPseudo fitCheckPosition col-sm-5"
+                        style="font-weight:bold;margin-left: -10px;">
+                        <input type="checkbox" ng-model="data.range" ng-change="checkAllRange(data.range)">
+                        <span ng-class="{checked:true, halfCheck:rootRangeHalfCheck}"></span>
+                        * {{'MD_AffRange'|translate}}
+                    </label>
+                </div>
+
+                <div style="margin-left: -39px;">
+                    <ul>
+                        <li ng-repeat="r in AffectRangeList">
+                            <label class="checkboxPseudo fitCheckPosition">
+                                <input type="checkbox" ng-model="r.checked" ng-change="checkRange(r)">
+                                <span class="checked"></span>
+                                {{r.AffectRangeContent}}</label>
+                            <div ng-if="r.Other && r.checked">
+                                <textarea type="text" class="form-control other" rows="3" ng-model="r.OtherContent"
+                                    required></textarea>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-offset-2 col-sm-3" style="padding-top: 7px;">
+                {{'Related_project'|translate}}</label>
+        </div>
+
+        <div class="form-group">
+
+            <div class="col-sm-offset-2 col-sm-3">
+                <label class="checkboxPseudo fitCheckPosition">
+                    <input type="checkbox" ng-model="data.ConstructionCheck" />
+                    <span class="checked"></span>
+                    {{'Construction_Name'|translate}}
+                </label>
+            </div>
+
+            <div class="col-sm-6" ng-if="data.ConstructionCheck">
+                <input type="text" class="form-control" ng-model="data.ConstructionName" required />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-3">
+                <label class="checkboxPseudo fitCheckPosition">
+                    <input type="checkbox" ng-model="data.CapitalCodeCheck" />
+                    <span class="checked"></span>
+                    {{'Capital_Code'|translate}}
+                </label>
+            </div>
+
+            <div class="col-sm-6" ng-if="data.CapitalCodeCheck">
+                <input type="text" class="form-control" ng-model="data.CapitalCode" required />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-3">
+                <label class="checkboxPseudo fitCheckPosition">
+                    <input type="checkbox" ng-model="data.ProjectIDCheck" />
+                    <span class="checked"></span>
+                    {{'Project_Code'|translate}}
+                </label>
+            </div>
+
+            <div class="col-sm-6" ng-if="data.ProjectIDCheck">
+                <input type="text" class="form-control" ng-model="data.ProjectID" required />
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-3" style="font-size: 16pt;">
+                <img src="/css/image/attached_icon.png" style="width:18px;">
+                <strong><ins>{{'Attachments'|translate}}</ins></strong>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-offset-2 col-sm-6">*
+                {{'Document_diagram'|translate}}<code class="note"> 📌 {{'FileUploadNote'|translate}} </code></label>
+
+            <div class=" col-sm-1" style="margin-top: -10px;">
+                <div class="btn btn-default my-btn-file">
+                    <img src="/css/image/zipUpload.png" style="width:18px;">
+                    <input type="file" accept=".zip,.rar" ng-file-select="onFileSelect($files,'MD_Document')">
+                </div>
+            </div>
+
+            <div style="padding-top: 7px;" ng-if="fileDocument!=''">
+                <a href="\{{fileDocument}}" target="_blank">{{fileDocument}}</a>
+                <a class="btn btn-danger btn-xs" role="button"
+                    ng-click="getRemoveFileName(fileDocument,'MD_Document')">X</a>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-offset-2 col-sm-6">* {{'MD_Record'|translate}}
+                <code class="note"> 📌 {{'FileRecordNote'|translate}} </code></label>
+
+            <div class=" col-sm-1">
+                <div class="btn btn-default my-btn-file">
+                    <img src="/css/image/zipUpload.png" style="width:18px;"></i>
+                    <input type="file" accept=".zip,.rar,.pdf" ng-file-select="onFileSelect($files,'MD_Record')">
+                </div>
+            </div>
+
+            <div style="padding-top: 7px;" ng-if="fileRecord!=''">
+                <a href="\{{fileRecord}}" target="_blank">{{fileRecord}}</a>
+                <a class="btn btn-danger btn-xs" role="button"
+                    ng-click="getRemoveFileName(fileRecord,'MD_Record')">X</a>
+            </div>
+        </div>
+
+
+        <div class="modal-footer" ng-if="!isUpdateSubmit">
+            <button class="btn btn-primary buttonApp" ng-disabled="ModificationAppform.$invalid || checkValidate()"
+                ng-click="saveModificationApp('N')">
+                <img src="/css/image/savefile.png" style="width:25px;">
+                {{'saveDraft'|translate}}
+            </button>
+
+            <button class="btn btn-warning buttonApp" ng-disabled="ModificationAppform.$invalid || checkValidate()"
+                ng-click="saveModificationApp('Submit')">
+                <img src="/css/image/send.png" style="width:25px;">
+                {{'submit'|translate}}
+            </button>
+
+            <button class="btn btn-default buttonApp" ng-click="goBack()">
+                <img src="/css/image/comeback.png" style="width:25px;">
+                {{'goBack'|translate}}
+            </button>
+        </div>
+
+        <div class="modal-footer" ng-if="isUpdateSubmit">
+            <button class="btn btn-warning buttonApp" ng-disabled="ModificationAppform.$invalid || checkValidate()"
+                ng-click="saveModificationApp('ReSubmit')">
+                <img src="/css/image/send.png" style="width:25px;">
+                {{'submit'|translate}}
+            </button>
+
+            <button class="btn btn-danger buttonApp" style="height: 40px;" ng-click="deleteRejectApp()">
+                <i class="glyphicon glyphicon-trash"></i>
+                {{'MD_Cancel'|translate}}
+            </button>
+
+            <button class="btn btn-default buttonApp" ng-click="goBack()">
+                <img src="/css/image/comeback.png" style="width:25px;">
+                {{'goBack'|translate}}
+            </button>
+        </div>
+    </form>
+</div>
+
+<div ng-if="Print">
+    <div ng-include="'forms/EHS/Modification/Manage_Modification/Modification/PrintModification.html'"></div>
+</div>

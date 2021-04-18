@@ -1,0 +1,14 @@
+<script type="text/javascript">
+    function DenounceContractor_Leadercheck($scope, $routeParams, EngineApi, $http, $timeout, Notifications, $upload, $compile, $filter, Auth, GateGuest, ConQuaService, $translatePartialLoader, $translate) {
+        console.log($scope.variable);
+        $scope.detail = true;
+        $scope.viewdetail = false;
+        $routeParams.code = 'Checker';
+        $routeParams.VoucherID = $scope.variable.VoucherID;
+        $scope.checker = "Leader";
+    }
+</script>
+
+<div ng-controller="DenounceContractor_Leadercheck">
+    <view-denounce></view-denounce>
+</div>

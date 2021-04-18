@@ -1,0 +1,79 @@
+<style>
+  
+</style>
+
+<H4 class="title">{{'ISO_Info'|translate}}</H4>
+<form class="form-horizontal model-form" autocomplete="off" name="ISOform" style="margin-top:15px;"
+    enctype="multipart/form-data" novalidate>
+    <div class="form-group">
+        <label class="col-sm-4 control-label">* {{'VoucherType'|translate}}</label>
+        <div class="col-sm-7">
+            <select class="form-control" ng-model="data.ApplicationType"
+                ng-change="checkCode()"
+                ng-options="a.ApplicationType as a.Remark for a in ApplicationTypeList"
+                ng-disabled="_AppTypeDisabled"
+                required>
+            </select>
+
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-4 control-label">* {{'ISO_AppCode'|translate}}</label>
+        <div class="col-sm-7">
+            <input class="form-control" type="text" ng-model="data.ISO_AppCode" disabled required />
+        </div>
+    </div>
+
+    <div class="form-group" ng-if="_isUpgrade">
+        <label class="col-sm-4 control-label">* {{'MD_Version'|translate}}</label>
+        <div class="col-sm-7">
+            <input class="form-control" type="text" ng-model="data.Version" disabled />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-4 control-label">* {{'MD_StartDate'|translate}}</label>
+        <div class='input-group date col-sm-7'>
+            <input type='text' class="form-control" date-picker min="0" ng-model="data.StartDate" ng-disabled="_DateDisabled" required />
+            <span class="input-group-addon">
+                <label class="glyphicon glyphicon-calendar" style="color: grey"></label>
+            </span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-4 control-label">* {{'MD_EndDate'|translate}}</label>
+        <div class='input-group date col-sm-7'>
+            <input type='text' class="form-control" date-picker min="0" ng-model="data.EndDate" required />
+            <span class="input-group-addon">
+                <label class="glyphicon glyphicon-calendar" style="color: grey"></label>
+            </span>
+        </div>
+    </div>
+
+    <div class="form-group" ng-if="_isUpdate">
+        <label class="col-sm-4 control-label">* {{'Reason_edit'|translate}}</label>
+        <div class="col-sm-7">
+            <input class="form-control" type="text" ng-model="data.ModifyReason" required />
+        </div>
+    </div>
+
+    <div class="form-group" ng-if="_isUpgrade">
+        <label class="col-sm-4 control-label">* {{'Reason_upgrade'|translate}}</label>
+        <div class="col-sm-7">
+            <input class="form-control" type="text" ng-model="data.UpgradeReason" required />
+        </div>
+    </div>
+
+    <div class="modal-footer">
+        <button type="button" class="btn btn-primary" ng-click="saveISO()" ng-disabled="ISOform.$invalid || _IsExist">
+            {{'Save'|translate}}
+        </button>
+        <button class="btn btn-default" data-dismiss="modal" ng-click="resetISOModal()">
+            <i class="glyphicon glyphicon-remove" style="color: grey;vertical-align: text-bottom;"></i>
+            {{'Close'|translate}}
+        </button>
+    </div>
+
+</form>

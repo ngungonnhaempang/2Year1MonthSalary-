@@ -1,0 +1,731 @@
+<style>
+    .buttonApp {
+        font-weight: bold;
+        font-family: tahoma, 'DFKai-SB';
+        box-shadow: 4px 2px 2px 2px #999
+    }
+
+    #page-contain {
+        font-size: 12pt;
+        font-family: 'Times New Roman', 'DFKai-SB';
+    }
+
+    page {
+        background: white;
+        display: block;
+        margin: 10px auto;
+        margin-bottom: 0.5cm;
+        box-shadow: 0 0 0.5cm rgba(0, 0, 0, 0.5);
+    }
+
+    page[size="landscape"] {
+        padding: 5% 5% 5% 5%;
+    }
+
+    #footer {
+        display: none;
+    }
+
+    table {
+        border-collapse: collapse;
+        width: 100%;
+
+    }
+
+    table,
+    th,
+    td {
+        border: 1px solid black;
+        padding: 5px;
+    }
+
+    th {
+        text-align: center;
+    }
+
+    .radio {
+        display: inline;
+        position: relative;
+        cursor: pointer;
+        font-weight: normal;
+    }
+
+    /* Hide the browser's default radio button */
+    .radio input {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+        height: 0;
+        width: 0;
+    }
+
+    /* Create a custom radio button */
+    .checkmark {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 15px;
+        height: 15px;
+        background-color: white;
+        border: 1px solid black;
+        cursor: not-allowed;
+    }
+
+    /* Create the indicator (the dot/circle - hidden when not checked) */
+    .checkmark:after {
+        content: "";
+        position: absolute;
+        display: none;
+    }
+
+    /* Show the indicator (dot/circle) when checked */
+    .radio input:checked~.checkmark:after {
+        display: block;
+    }
+
+    /* Style the indicator (dot/circle) */
+    .radio .checkmark:after {
+        left: 5px;
+        width: 5px;
+        height: 10px;
+        border: solid black;
+        border-width: 0 2px 2px 0;
+        -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        transform: rotate(45deg);
+    }
+
+    .requiredCheck {
+        border: 1px solid red;
+        cursor: pointer;
+    }
+
+    .top {
+        top: 10px;
+    }
+
+    body {
+        padding: 0;
+    }
+
+    .colorGray {
+        background-color: lightgray;
+        text-align: center;
+        white-space: nowrap;
+    }
+
+    .page-footer {
+        width: 97%;
+        text-align: right;
+    }
+
+    @media print {
+        .container {
+            padding: 0px 4px 0px 14px !important;
+        }
+
+        @page {
+            size: landscape;
+            margin: 5mm 17mm 4mm 10mm;
+        }
+
+        #page-contain {
+            font-size: 12pt !important;
+            font-family: 'Times New Roman', 'DFKai-SB';
+        }
+
+        a[href]:after {
+            content: none;
+        }
+
+        .page-footer {
+            background-color: white !important;
+            -webkit-print-color-adjust: exact !important;
+            position: fixed;
+            bottom: 0;
+            height: 30px;
+        }
+
+        .page-footer p {
+            padding-top: 4px
+        }
+
+        .page-footer-space {
+            height: 9px;
+
+        }
+
+        .colorGray {
+            background-color: lightgray !important;
+            -webkit-print-color-adjust: exact !important;
+        }
+        .buttonApp {
+            visibility: hidden;
+        }
+    }
+</style>
+
+<page size="A4" id="page-contain" class="container">
+
+    <div class="header">
+        <div class="col-lg-12" style="text-align: center; font-size: 16pt;">
+            <Strong> 遠東紡纖(越南)有限公司-化纖廠
+                <br> CÔNG TY TNHH POLYTEX FAR EASTERN (VIỆT NAM)-XƯỞNG HÓA SỢI
+                <br>啟用前評估表 BẢNG ĐÁNH GIÁ TRƯỚC KHI VẬN HÀNH
+            </Strong>
+        </div>
+    </div>
+    <div ng-if="!checker">
+        <table>
+            <tr>
+                <th style="width:23%;">申請單位 Bộ phận đề xuất </th>
+                <td colspan="2" style="width:43%;">{{data.Department}}</td>
+                <th style="width:20%;">評估日期 <br> Ngày đánh giá</th>
+                <td>{{data.CreateDate}}</td>
+            </tr>
+
+            <tr>
+                <th>變更名稱 Tên sự thay đổi </th>
+                <td colspan="4">{{data.MD_Name}} </td>
+            </tr>
+
+            <tr>
+                <th>變更案號 <br> Mã số dự án thay đổi</th>
+                <td colspan="2">{{data.MD_ProjectID}}</td>
+                <th>預計啟用時間 <br>Thời gian dự kiến vận hành</th>
+                <td>{{data.ExpectOperateDate}} </td>
+            </tr>
+
+            <tr class="colorGray">
+                <th colspan="3">評估項目 Hạng mục đánh giá</th>
+                <th>申請單位自評 <br> Đơn vị đề xuất tự đánh giá</th>
+                <th>稽核單位 <br> Đơn vị kiểm tra đánh giá </th>
+            </tr>
+
+            <tbody ng-repeat="p in ParentList">
+                <td style="text-align: center; white-space: break-spaces;" rowspan="15">{{p.Content}}</td>
+                <tr ng-repeat="c in ChildList | filter: {Parent:p.Code}:true">
+                    <td colspan="2">{{c.Content}}</td>
+
+                    <td style="width:16%; vertical-align: top;">
+                        <label class="radio">
+                            <input type="radio" ng-model="c.Option" value="Yes" disabled>
+                            <span class="checkmark"></span>
+                            是 Có
+                        </label>
+
+                        <label class="radio">
+                            <input type="radio" ng-model="c.Option" value="No" disabled>
+                            <span class="checkmark"></span>
+                            否 Không
+                        </label>
+                    </td>
+
+                    <td style="vertical-align: top;">
+                        <label class="radio">
+                            <input type="radio" ng-model="c.IsPass" value="Yes" disabled>
+                            <span class="checkmark"></span>
+                            合格 Đạt 
+                        </label>
+                        <br>
+                        <label class="radio">
+                            <input type="radio" ng-model="c.IsPass" value="No" disabled>
+                            <span class="checkmark"></span>
+                            不合格 Không đạt 
+                        </label>
+                    </td>
+                </tr>
+            </tbody>
+
+            <tr style="text-align: center;">
+                <th><i>評估結果 Kết quả đánh giá:</i></th>
+                <td style="border-right: hidden;" colspan="2">
+                    <label class="radio">
+                        <input type="radio" ng-model="data.Result" value="Yes" disabled>
+                        <span class="checkmark"></span>
+                        可啟用 Được phép vận hành
+                    </label>
+                </td>
+
+                <td colspan="2"> <label class="radio">
+                        <input type="radio" ng-model="data.Result" value="No" disabled>
+                        <span class="checkmark"></span>
+                        不可啟用 Chưa được phép vận hành
+                    </label>
+                </td>
+            </tr>
+
+            <!--Request-->
+            <tr>
+                <td  style="text-align: center;" rowspan="3">建議 (若有) <br> Kiến nghị (nếu có):</td>
+                <td style="text-align: center;width: 20%;" ng-if="data.Request_Safe">安全 An toàn</td>
+                <td colspan="3" ng-if="data.Request_Safe">
+                    {{data.Request_Safe}}
+                </td>
+                
+                <td ng-if="!data.Request_Safe && !data.Request_Environment && !data.Request_FireProtection" colspan="4" rowspan="3"></td>
+            </tr>
+
+            <tr>
+                <td style="text-align: center; width: 20%;" ng-if="data.Request_Environment">環境 Môi trường</td>
+                <td colspan="3" ng-if="data.Request_Environment">
+                    {{data.Request_Environment}}
+                </td>
+            </tr>
+
+            <tr>
+                <td style="text-align: center; width: 20%;" ng-if="data.Request_FireProtection">消防 PCCC</td>
+                <td colspan="3" ng-if="data.Request_FireProtection">
+                    {{data.Request_FireProtection}}
+                </td>
+            </tr>
+
+            <tr>
+                <td style="text-align: center; white-space:pre;">檢付改善檔案（若有）<br> Hồ sơ cải thiện đính kèm (nếu có) </td>
+                <td colspan="4">
+                    <div ng-if="fileImprove">
+                        <img src="/css/image/attached_icon.png" style="width:18px;">
+                        <a href="/{{fileImprove}}" target="_blank">{{fileImprove}}</a>
+                    </div>
+                </td>
+            </tr>
+            <tfoot>
+            <tr></tr>
+                <!--this tr tag will hidden the border-->
+                <tr>
+                    <td colspan="5" style="border:hidden">
+                        <!--place holder for the fixed-position footer-->
+                        <div class="page-footer-space"></div>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+
+        <table style="page-break-inside: avoid;">
+            <tr class="colorGray">
+                <th colspan="3" style="width:50%">安環處 Bộ phận An toàn môi trường </th>
+                <th colspan="3" style="width:50%">變更單位 Đơn vị thay đổi</th>
+            </tr>
+
+            <tr class="colorGray">
+                <th style="width:5%">廠處主管 <br>Chủ quản xưởng</th>
+                <th style="width:5%">單位主管 <br>Chủ quản đơn vị </th>
+                <th style="width:5%">審查人員 <br>Nhân viên kiểm tra </th>
+                <th style="width:5%">廠處主管 <br>Chủ quản xưởng </th>
+                <th style="width:5%">單位主管 <br>Chủ quản đơn vị</th>
+                <th style="width:5%">製表人員 <br>Nhân viên điền đơn</td>
+            </tr>
+
+            <tr style="text-align:center;height:80pt; vertical-align: top ">
+                <td> {{receiver[7].UserId}}
+                    <br> {{receiver[7].UserName}}
+                </td>
+
+                <td> {{receiver[6].UserId}}
+                    <br> {{receiver[6].UserName}}
+                </td>
+
+                <td>
+                    - 安全 An toàn: {{receiver[3].UserId}}
+                    <br> {{receiver[3].UserName}}
+                    <br>
+
+                    - 環境 Môi trường: {{receiver[5].UserId}}
+                    <br> {{receiver[4].UserName}}
+                    <br>
+                    - 消防 PCCC: {{receiver[5].UserId}}
+                    <br> {{receiver[5].UserName}}
+                </td>
+
+                <td> {{receiver[2].UserId}}
+                    <br> {{receiver[2].UserName}}
+                </td>
+
+                <td> {{receiver[1].UserId}}
+                    <br> {{receiver[1].UserName}}
+                </td>
+
+                <td> {{receiver[0].UserId}}
+                    <br> {{receiver[0].UserName}}
+                </td>
+
+            </tr>
+        </table>
+
+        <p>
+            <b>
+                <u>
+                    <i>備註：須完成所有建議內容（若有）才可啟用 Ghi chú:</i>
+                </u>
+            </b> Chỉ được phép vận hành khi đã hoàn tất các kiến nghị ( nếu có).
+        </p>
+
+        <div class="page-footer">
+            <p>{{data.ISO_AppCode}}</p>
+        </div>
+
+        <div style="float: right; margin-top: 10px; margin-bottom: 20px; margin-right: 30px;">
+            <button class="btn btn-success buttonApp" ng-click="printApp()">
+                <i class="glyphicon glyphicon-print" style="color: white;vertical-align: text-bottom;"></i>
+                &nbsp;{{'Print_voucher'|translate}}
+            </button>
+        </div>
+    </div>
+
+    <div ng-if="checker">
+        <table id="info">
+            <tr>
+                <th style="width:13.7%;">變更案號 <br> Mã số dự án thay đổi</th>
+                <td style="width:50%;">{{data.MD_ProjectID}}</td>
+                <th style="width: 13%;">評估日期 <br> Ngày đánh giá</th>
+                <td>{{data.CreateDate}}</td>
+            </tr>
+
+            <tr>
+                <th>變更名稱 <br> Tên sự thay đổi </th>
+                <td>{{data.MD_Name}} </td>
+                <th>預計啟用時間 <br>Thời gian dự kiến vận hành</th>
+                <td>{{data.ExpectOperateDate}} </td>
+            </tr>
+
+            <tr>
+                <th>申請單位 <br> Bộ phận đề xuất </th>
+                <td>{{data.Department}}</td>
+                <td colspan="2">
+                    <a href="javascript:void(0)" ng-click="viewRiskAssessmentApp()">
+                        <img src="/css/image/RiskApp.png" style="width:35px; margin-top:-15px">
+                        <span class="title"> Biểu đơn đánh giá rủi ro thay đổi </span></a>
+                </td>
+
+            </tr>
+
+            <tr ng-if="checker && data.Remark">
+                <th>{{'Remark'|translate}}</th>
+                <td colspan="3"><code style="white-space: break-spaces;">{{data.Remark}}<code></td>
+            </tr>
+        </table>
+
+        <table id="tbHSECheck" style="margin-top: 2px;">
+            <tr style="background-color: lightgray;">
+                <th colspan="2" rowspan="2" style="width:30%">評估項目 Hạng mục đánh giá</th>
+
+                <th rowspan="2">申請單位自評 <br> Đơn vị đề xuất tự <br> đánh giá</th>
+
+                <th colspan="4">稽核單位 Đơn vị kiểm tra đánh giá</th>
+
+            </tr>
+
+            <tr style="background-color: lightgray;">
+                <th>工安科 An toàn</th>
+
+                <th>環境 Môi trường</th>
+
+                <th>消防 PCCC</th>
+
+                <th>結果 Kết quả</th>
+            </tr>
+
+
+            <tbody ng-repeat="p in ParentList">
+                <td style="text-align: center; white-space: break-spaces; width: 14%;" rowspan="15">{{p.Content}}</td>
+                <tr ng-repeat="c in ChildList | filter: {Parent:p.Code}:true">
+                    <td>{{c.Content}}</td>
+
+                    <td style="vertical-align: top; width:16%;font-size: 10.3pt;" ng-if="(p.Index == 1 && c.Index == 1)">
+                        <b>- 是 Có: </b> <mark>{{data.OptionYes}}</mark>
+                        <br>
+
+                        <b>- 否 Không: </b> <mark>{{data.OptionNo}}</mark>
+                        <br>
+
+                        <b>- 不適用 Không áp dụng: </b> <mark>{{data.OptionNotApply}}</mark>
+
+                    </td>
+
+                    <td style="vertical-align: top" ng-if="(p.Index == 1 && c.Index != 1) || (p.Index != 1)">
+                        <label class="radio">
+                            <input type="radio" ng-model="c.Option" value="Yes" disabled>
+                            <span class="checkmark"></span>
+                            是 Có
+                        </label>
+
+                        <label class="radio">
+                            <input type="radio" ng-model="c.Option" value="No" disabled>
+                            <span class="checkmark"></span>
+                            否 Không
+                        </label>
+                    </td>
+
+
+                    <td style="vertical-align: top;">
+                        <label class="radio">
+                            <input type="radio" ng-model="c.IsPass_Safe" value="Yes" disabled>
+                            <span class="checkmark"></span>
+                            合格 Đạt 
+                        </label>
+                        <br>
+                        <label class="radio">
+                            <input type="radio" ng-model="c.IsPass_Safe" value="No" disabled>
+                            <span class="checkmark"></span>
+                            不合格 Không đạt 
+                        </label>
+                    </td>
+
+                    <td style="vertical-align: top;">
+                        <label class="radio">
+                            <input type="radio" ng-model="c.IsPass_Environment" value="Yes" disabled>
+                            <span class="checkmark"></span>
+                            合格 Đạt 
+                        </label>
+                        <br>
+                        <label class="radio">
+                            <input type="radio" ng-model="c.IsPass_Environment" value="No" disabled>
+                            <span class="checkmark"></span>
+                            不合格 Không đạt 
+                        </label>
+                    </td>
+
+                    <td style="vertical-align: top;">
+                        <label class="radio">
+                            <input type="radio" ng-model="c.IsPass_FireProtection" value="Yes" disabled>
+                            <span class="checkmark"></span>
+                            合格 Đạt 
+                        </label>
+                        <br>
+                        <label class="radio">
+                            <input type="radio" ng-model="c.IsPass_FireProtection" value="No" disabled>
+                            <span class="checkmark"></span>
+                            不合格 Không đạt 
+                        </label>
+                    </td>
+
+                    <td style="vertical-align: top;">
+                        <label class="radio">
+                            <input type="radio" ng-model="c.IsPass" value="Yes" required disabled>
+                            <span class="checkmark"></span>
+                            合格 Đạt 
+                        </label>
+                        <br>
+                        <label class="radio">
+                            <input type="radio" ng-model="c.IsPass" value="No" disabled>
+                            <span class="checkmark"></span>
+                            不合格 Không đạt 
+                        </label>
+                    </td>
+                </tr>
+            </tbody>
+
+            <!--Result_Evaluate-->
+            <tr style="text-align: center;">
+                <th rowspan="4" ng-if="checker=='hseDivisionManager'">評估結果 <br> Kết quả đánh giá</th>
+                <th rowspan="5" ng-if="checker=='hseManager'">評估結果 <br> Kết quả đánh giá</th>
+                <td>工安科 An toàn</td>
+                <td colspan="5">
+                    <label class="radio" style="padding-right:10%">
+                        <input type="radio" ng-model="data.Result_Safe" value="Yes" disabled>
+                        <span class="checkmark"></span>
+                        可啟用 Được phép vận hành
+                    </label>
+
+                    <label class="radio">
+                        <input type="radio" ng-model="data.Result_Safe" value="No" disabled>
+                        <span class="checkmark"></span>
+                        不可啟用 Chưa được phép vận hành
+                    </label>
+                </td>
+            </tr>
+
+            <tr style="text-align: center;">
+                <td>環境 Môi trường</td>
+                <td colspan="5">
+                    <label class="radio" style="padding-right:10%">
+                        <input type="radio" ng-model="data.Result_Environment" value="Yes" disabled>
+                        <span class="checkmark"></span>
+                        可啟用 Được phép vận hành
+                    </label>
+
+                    <label class="radio">
+                        <input type="radio" ng-model="data.Result_Environment" value="No" disabled>
+                        <span class="checkmark"></span>
+                        不可啟用 Chưa được phép vận hành
+                    </label>
+                </td>
+            </tr>
+
+            <tr style="text-align: center;">
+                <td>消防科 PCCC</td>
+                <td colspan="5">
+                    <label class="radio" style="padding-right:10%">
+                        <input type="radio" ng-model="data.Result_FireProtection" value="Yes" disabled>
+                        <span class="checkmark"></span>
+                        可啟用 Được phép vận hành
+                    </label>
+
+                    <label class="radio">
+                        <input type="radio" ng-model="data.Result_FireProtection" value="No" disabled>
+                        <span class="checkmark"></span>
+                        不可啟用 Chưa được phép vận hành
+                    </label>
+                </td>
+            </tr>
+
+            <tr style="text-align: center;">
+                <td>單位主管 CQ đơn vị</td>
+                <td colspan="5">
+                    <label class="radio" style="padding-right:10%">
+                        <input type="radio" ng-model="data.Result_DivisionManager" value="Yes" required ng-disabled="checker=='hseManager'">
+                        <span class="checkmark" ng-style="{'border':(checker=='hseDivisionManager')?'1px solid red':'1px solid black', 'cursor' : (checker=='hseManager') ? 'not-allowed' : 'pointer'}"></span>
+                        可啟用 Được phép vận hành
+                    </label>
+
+                    <label class="radio">
+                        <input type="radio" ng-model="data.Result_DivisionManager" value="No" ng-disabled="checker=='hseManager'">
+                        <span class="checkmark" ng-style="{'border':(checker=='hseDivisionManager')?'1px solid red':'1px solid black', 'cursor' : (checker=='hseManager') ? 'not-allowed' : 'pointer'}"></span>
+                        不可啟用 Chưa được phép vận hành
+                    </label>
+                </td>
+            </tr>
+
+            <tr style="text-align: center;" ng-if="checker=='hseManager'">
+                <td colspan="6">
+                    <label class="radio" style="padding-right:10%">
+                        <input type="radio" ng-model="data.Result" value="Yes" required>
+                        <span class="checkmark requiredCheck"></span>
+                        可啟用 Được phép vận hành
+                    </label>
+
+                    <label class="radio">
+                        <input type="radio" ng-model="data.Result" value="No">
+                        <span class="checkmark requiredCheck"></span>
+                        不可啟用 Chưa được phép vận hành
+                    </label>
+                </td>
+            </tr>
+
+            <!--Request-->
+            <tr>
+                <th rowspan="4">建議 (若有) <br> Kiến nghị (nếu có):</th>
+                <td style="text-align: center;">安全 An toàn</td>
+                <td colspan="5" style="white-space: pre-line;">{{data.Request_Safe}}</td>
+            </tr>
+
+            <tr>
+                <td style="text-align: center;">環境 Môi trường</td>
+                <td colspan="5" style="white-space: pre-line;">{{data.Request_Environment}} </td>
+            </tr>
+
+            <tr>
+                <td style="text-align: center;">消防 PCCC</td>
+                <td colspan="5" style="white-space: pre-line;">{{data.Request_FireProtection}}</td>
+            </tr>
+
+            <tr ng-if="checker=='hseDivisionManager'">
+                <td style="text-align: center;">單位主管 CQ đơn vị</td>
+                <td colspan="5">
+                    <textarea class="form-control" rows="3" type="text" ng-model="data.Request_DivisionManager"></textarea>
+                </td>
+            </tr>
+
+            <tr ng-if="checker=='hseManager'">
+                <td style="text-align: center;">單位主管 CQ đơn vị</td>
+                <td colspan="5">
+                    <p style="white-space: pre-line;">{{data.Request_DivisionManager}}</p>
+                </td>            
+            </tr>
+
+            <!--File-->
+            <tr>
+                <th style="font-size: 10.6pt;">檢付改善檔案（若有）<br>
+                    Hồ sơ cải thiện đính kèm (nếu có)
+                </th>
+                <td colspan="6">
+                    <div class="form-group">
+                        <div class="col-sm-10" ng-if="fileImprove">
+                            <img src="/css/image/attached_icon.png" style="width:18px;">
+                            <a href="/{{fileImprove}}" target="_blank">{{fileImprove}}</a>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </table>
+
+        <!--Process Log of EHS-->
+        <div ng-include="'forms/EHS/Modification/Manage_Modification/ModificationProcessLog.html'"></div>
+
+        <form class="form-horizontal" name="checkform">
+            <div class="form-group" style="margin-top: 30px;">
+                <label class="col-sm-3 control-label">*{{'IsPass'|translate}}</label>
+                <div class="col-sm-3">
+                    <select class="form-control" ng-model="data.IsAgree" required>
+                        <option value="YES" ng-if="checkResult()=='Yes'">{{'leaderCheck'|translate}}</option>
+                        <option value="NO" ng-if="checkResult()=='No'">{{'notAgree'|translate}}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group" ng-if="data.IsAgree == 'YES' && checker=='hseDivisionManager'" style="margin-top: 15px;">
+                <label class="col-sm-3 control-label">*{{'Select_next_approver'|translate}}</label>
+                <div class="col-sm-3">
+                    <select class="form-control" ng-model="data.hseManager" required>
+                        <option ng-repeat="manager in hseManagerList" value="{{manager.Person}}">
+                            {{manager.Person}} - {{manager.EmployeeName}}
+                        </option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group" ng-if="data.IsAgree == 'YES' && EnterApprovalReason" style="margin-top: 15px;">
+                <label class="col-sm-3 control-label">*{{'ApprovalReason'|translate}}</label>
+                <div class="col-sm-6">
+                    <textarea class="form-control" type="string" ng-model="data.ApprovalReason" field-validate rows="3"
+                        required></textarea>
+                </div>
+            </div>
+
+            <div class="form-group" ng-if="data.IsAgree == 'NO' && checker=='hseDivisionManager'"
+                style="margin-top: 15px;">
+                <label class="col-sm-3 control-label">*{{'Select_ReturnUnit'|translate}}</label>
+                <div class="col-sm-6">
+                    <label class="radio" style="padding-right: 30px;">
+                        <input type="checkbox" ng-model="data.IshseSafety">
+                        <span class="checkmark requiredCheck top"></span>
+                        {{'Safety'|translate}}
+                    </label>
+
+                    <label class="radio" style="padding-right: 30px;">
+                        <input type="checkbox" ng-model="data.IshseEnvironment">
+                        <span class="checkmark requiredCheck top"></span>
+                        {{'Environment'|translate}}
+                    </label>
+
+                    <label class="radio">
+                        <input type="checkbox" ng-model="data.IshseFire">
+                        <span class="checkmark requiredCheck top"></span>
+                        {{'FireProtection'|translate}}
+                    </label>
+                </div>
+            </div>
+
+
+            <div class="form-group" ng-if="data.IsAgree == 'NO'" style="margin-top: 15px;">
+                <label class="col-sm-3 control-label">*{{'DenyReason'|translate}}</label>
+                <div class="col-sm-6">
+                    <textarea class="form-control" type="string" ng-model="data.DenyReason" field-validate rows="3"
+                        required>
+                </textarea>
+                </div>
+            </div>
+
+            <div class="form-group" style="margin-top: 15px;">
+                <div class="col-sm-offset-3 col-sm-2">
+                    <button class="btn btn-warning buttonApp" ng-click="saveSubmit()"
+                        ng-disabled="checkform.$invalid || IstickSectionReturn()">
+                        <img src="/css/image/send.png" style="width:25px;">
+                        {{'submit'|translate}}
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+</page>

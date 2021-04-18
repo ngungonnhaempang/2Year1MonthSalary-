@@ -1,0 +1,84 @@
+<style>
+    .modal-lg {
+        width: 900px;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    .title {
+        width: 100%;
+        background-color: #ececec;
+        padding: 5px 0px 5px 10px;
+        border: 1px solid #ececec;
+        border-radius: 6px;
+        margin-bottom: 30px;
+        margin-top: 20px;
+        font-size: x-large;
+        text-transform: uppercase;
+    }
+
+    .glyphicon-plus-sign:before {
+        color: white;
+    }
+
+    .grid {
+        text-align: center;
+    }
+
+    .grid .ui-grid-row .text-left {
+        text-align: left;
+    }
+
+</style>
+
+<div class="col-md-12">
+    <form class="form-horizontal" novalidate name="form">
+
+        <h2 class="title"><img src="/css/image/imageedit.png" style="width:50px;border-radius: 50%;">
+            {{'MD_Process'|translate}}</h2>
+
+        <div class="form-group">
+            <label class="col-sm-2"
+                style="padding-top: 7px; width:fit-content; margin-left: 70px;">{{'MD_ProjectID'|translate}}</label>
+            <div class="col-sm-2">
+                <input class="form-control" type="text" ng-model="query.MD_ProjectID" />
+            </div>
+
+            <label class="col-sm-1 control-label">{{'From'|translate}}</label>
+            <div class="col-sm-2">
+                <div class='input-group date'>
+                    <input type='text' class="form-control" ng-model="query.FromDate" date-picker />
+                    <span class="input-group-addon">
+                        <label class="glyphicon glyphicon-calendar" style="color: grey"></label>
+                    </span>
+                </div>
+            </div>
+
+            
+            <label class="col-sm-1 control-label">{{'To'|translate}}</label>
+            <div class="col-sm-2">
+                <div class='input-group date'>
+                    <input type='text' class="form-control" ng-model="query.ToDate" date-picker />
+                    <span class="input-group-addon">
+                        <label class="glyphicon glyphicon-calendar" style="color: grey"></label>
+                    </span>
+                </div>
+            </div>
+
+            <div class="col-sm-1" style="margin-left: 10px;">
+                <button class="btn btn-primary" data-ng-click="searchProcess()">
+                    <i class="glyphicon glyphicon-search"></i>
+                    {{'Search'|translate}}
+                </button>
+            </div>
+        </div>
+        <br>
+        <div style="width: 100%;">
+            <div id="Grid" ui-grid="gridOptions" class="grid" ui-grid-selection ui-grid-pagination
+                ui-grid-resize-columns ui-grid-core ui-grid-exporter external-scopes="gridHandlers">
+            </div>
+        </div>
+    </form>
+</div>

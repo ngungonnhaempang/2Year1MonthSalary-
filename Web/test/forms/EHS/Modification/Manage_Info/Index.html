@@ -1,0 +1,88 @@
+<style>
+    .Menu {
+        font-family: open sans, sans-serif, 'DFKai-SB';
+        font-size: 14pt;
+        margin-top: 10px;
+        padding-left: 100px;
+        height: 500px;
+    }
+
+    .avatar {
+        width: 200px;
+        border-radius: 100px;
+        background-color: white;
+        border: 1px solid black;
+        margin-left: 20px;
+    }
+
+    .avatar:hover {
+        box-shadow: 0 6px 5px RGBA(0, 0, 0, .23);
+    }
+
+    .link {
+        display: inline-block;
+        width: 60%;
+        text-align: center;
+        margin-left: 20px;
+    }
+
+    a:link {
+        color: black;
+        font-weight: bold;
+        text-decoration: none;
+    }
+
+    a:hover {
+        color: gray;
+        text-decoration: none;
+    }
+
+    .title {
+        margin-top: 50px;
+        margin-bottom: 80px;
+        background-color: #ececec;
+        padding: 5px 0px 5px 260px;
+        border: 1px solid #ececec;     
+    }
+
+
+</style>
+<div class="container">
+    <div class="Menu">
+        <h2 class="title"> {{'InfoManage'| translate}}</h2>
+
+        <div class="col-sm-12">            
+            <div class="col-sm-4">
+                <a href="#/Manage_Info/ISO">
+                        <img src="/css/image/contractor/iso-icon.jpg" class="avatar">
+                    <br>
+                    <span class="link">
+                        {{'ISO_Manage'| translate}}
+                    </span>
+                </a>
+            </div>
+
+            <div class="col-sm-4">
+                <a href="#/Manage_Info/Category">
+                    <img src="/css/image/categoryIcon.png"  class="avatar">
+                    <br>
+                    <span class="link">
+                        {{'Catogory_Manage'| translate}}
+                    </span>
+                </a>
+
+            </div>
+
+            <div class="col-sm-4">
+                <a href="#/Manage_Info/AffectingRange">
+                    <img src="/css/image/map.png" class="avatar">
+                    <br>
+                    <span class="link">
+                        {{'AffRange_Manage'| translate}}
+                    </span>
+                </a>
+
+            </div>
+        </div>
+    </div>
+</div>

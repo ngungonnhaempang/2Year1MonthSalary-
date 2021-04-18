@@ -1,0 +1,152 @@
+<script>
+    function HSE_receiveController(
+        $scope, EngineApi, $http, Notifications, $compile, $filter, Auth, $resource,
+        Auth, GateGuest, $translate, CReportService, $filter, $q, $timeout) {
+        var lang = window.localStorage.lang;
+        const con_flowkey = 'Receive_HSE_Users';
+        $translate.refresh();
+        $scope.passOrNot = [{
+            "name": $translate.instant('agree'),
+            "value": "YES"
+        },
+        {
+            "name": $translate.instant('notAgree'),
+            "value": "NO"
+        }
+            // { "name": 'DeleteVoucher', "value": "Cancel" } //maybe for later function
+        ];
+        $scope.disableSubmit = Auth.username.indexOf('FEPVNN') > -1 ? false : false;
+        $scope.loading = false;
+        $scope.HSE_ReceiveCheck = true; //singal for 
+
+        $scope.Save = function (isSubmit) {
+            debugger;
+            $scope.loading = true;
+            if ($scope.ISReceive == 'NO') {
+                CReportService.SubmitStatus({
+                    Rp_ID: $scope.variable.Rp_ID,
+                    Rp_Status: 'PW' // processing wait status, Initiator must update this report later
+                }, function (res) {
+                    if (res.Success) {
+                        SaveBpmn();
+                    }
+                },
+                    function (err) {
+                        Notifications.addError({
+                            'status': 'error',
+                            'message': 'Update status error: ' + err
+                        });
+                    }
+                ); //end changestatusservice
+            } //end if
+            else SaveBpmn();
+
+        } //save
+
+
+
+        function SaveBpmn() {
+            // if ($scope.checkList && checkList.length >= 0) {
+            $scope.formVariables.push({
+                name: 'Receive_HSE_Users',
+                value: $scope.checkList
+            });
+            $scope.formVariables.push({
+                name: 'Rp_ID',
+                value: $scope.variable.Rp_ID //chosen
+            });
+            debugger;
+
+            $q.all([$scope.submit()]).then(function () {
+                var reminder_parrams = {
+                    Rp_ID: $scope.variable.Rp_ID,
+                    fromuser: Auth.username,
+                    kinds: $scope.ReportDetail.Rp_SubmitTypeCode||'',
+                    formkey: 'receive'
+                }
+                debugger;
+                CReportService.GetInfoBasic.sendSubmitMessage(reminder_parrams, function (res) {
+                    if (res.Success) return
+                }, function (error) {
+                    Notifications.addError({
+                        'status': 'error',
+                        'message': $translate.instant('saveError') + error
+                    });
+                })
+            });
+            // }
+
+            // else {
+            //     Notifications.addError({
+            //         'status': 'error',
+            //         'message': 'Don\'t get leader'
+            //     });
+            //     return;
+            // }
+
+        }
+
+
+    }
+</script>
+<div ng-controller="HSE_receiveController">
+    <!-- REPORT DIRECTIVE -->
+    <!-- <approval-master vid='{{variable.OverID}}' style="width: 85%"></approval-master> -->
+    <receive-report Rp_ID='{{variable.Rp_ID}}' style="width: 85%"></receive-report>
+
+    <!-- CHOOSE FORM -->
+    <form class="form-horizontal" role="form" novalidate name="form">
+        <!-- RECEVEIVE AND PROCESS FORM -->
+        <div class="form-group">
+            <label class="col-sm-2 control-label">{{'EstimateDateComplete'|translate}}:</label>
+            <label class="col-sm-1 control-label" style="font-size: 15px;color: red;">{{ReportDetail.Estimate_DateComplete}}</label>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">{{'IsPass'|translate}}:</label>
+            <div class="col-sm-4">
+                <select class="form-control" history-field="ISReceive" form-field name="ISReceive" ng-model="ISReceive"
+                    ng-options="c.value as c.name for c in passOrNot" required> </select>
+            </div>
+            <div class="col-sm-6 "><strong class="pull-right"> {{variable.Rp_ID}} </strong></div>
+        </div>
+        <!-- DENY TEXTAREA -->
+        <div class="form-group" ng-if="ISReceive=='NO'">
+            <label class="col-sm-2  control-label">*{{'DenyReason'|translate}}:</label>
+            <div class="col-sm-6">
+                <textarea class="form-control" name="leadercheck_remark" type="text" form-field
+                    history-field="DenyReason" ng-model="leadercheck_remark" rows="3" required />
+                </div>
+        </div>
+
+        <!-- leader remark show if returned -->
+        <!-- <div>
+            <h3 style="color:red;">
+                {{variable.leadername}} Remark: {{variable.leadercheck_remark}}
+            </h3>
+        </div> -->
+        <!-- NEXT CANDIDATE -->
+        <div class="form-group" style="padding-left: 3%">
+            <div>
+                <h4>{{'NextStep'|translate}}</h4>
+            </div>
+                <ehs-leader-check 
+                        submitdepartid="{{ReportDetail.Rp_DepartmentID}}" 
+                        flow-key="CReportHSE" 
+                        kinds="{{ReportDetail.Rp_SubmitTypeCode}}"
+                        formkey="receive"
+                        ></ehs-leader-check>
+            
+        </div>
+
+        <!-- BUTTON OF SUBMITTING -->
+        <div class="form-group" ng-hide="recod.Status=='K'">
+            <div class="col-sm-offset-6 col-sm-2">
+                <button class="btn btn-primary" ng-click="Save(true)"
+                    ng-disabled="form.$invalid||disableSubmit||loading">
+                    {{'Save Submit'|translate}}
+                </button>
+            </div>
+        </div>
+
+    </form>
+</div>

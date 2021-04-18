@@ -1,0 +1,318 @@
+<style>
+    .form-horizontal {
+        font-size: 15pt;
+        font-family: 'Times New Roman', 'DFKai-SB';
+    }
+
+    .buttonApp {
+        font-weight: bold;
+        font-family: tahoma, 'DFKai-SB';
+        box-shadow: 4px 2px 2px 2px #999
+    }
+
+    table,
+    th,
+    td {
+        border: 1px solid black;
+        padding: 10px;
+    }
+
+
+    .form-control {
+        height: 40px;
+        font-size: 16pt;
+    }
+
+    .my-custom-scrollbar {
+        position: relative;
+        height: 200px;
+        overflow: auto;
+    }
+
+    .wrapper-scroll-y {
+        display: block;
+    }
+
+    .list-group-item:hover {
+        background-color: cornsilk;
+    }
+
+    ::placeholder {
+        font-size: 12pt;
+    }
+</style>
+
+<link href="css/checkboxCustomize.css" rel="stylesheet" />
+
+<form class="form-horizontal model-form" autocomplete="off" name="Denounceform" style="margin-top:15px;"
+    enctype="multipart/form-data" novalidate>
+    <legend>
+        <H2 class="title"><img src="/css/image/contractor/mailbox.png" style="width:40px;"
+                ng-if="detail || isUpdateSubmit">
+            {{'DenounceContractorViolation'|translate}}</H2>
+    </legend>
+
+    <div ng-if="!detail">
+        <div style="margin-top: 15px;" ng-include="'forms/ContractorDiscipline/ReasonReject.html'">
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-3 control-label">* {{'ContractorName'|translate}}</label>
+            <div class="col-sm-7">
+                <input class="form-control" type="text" ng-model="data.ContractorName"
+                    placeholder="{{'DenounceNote'|translate}}" ng-keyup="suggestionContractor(data.ContractorName)"
+                    required />
+                <ul class="list-group wrapper-scroll-y my-custom-scrollbar" ng-model="hidethis" ng-hide="hidethis">
+                    <li class="list-group-item" ng-repeat="contractor in filterContractorName"
+                        ng-click="fillTextboxContractor(contractor.ContractorName)">{{contractor.ContractorName}}</li>
+                </ul>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">* {{'TimeViolation'|translate}}</label>
+            <div class='col-sm-7'>
+                <div class='input-group date'>
+                    <input type='text' id="time-prc-ac" class="form-control" date-picker max="0"
+                        ng-model="data.TimeViolation" required readonly />
+                    <span class="input-group-addon">
+                        <label class="glyphicon glyphicon-calendar" style="color: grey" for='time-prc-ac'></label>
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-3 control-label">* {{'LocationViolation'|translate}}</label>
+            <div class="col-sm-7">
+                <input class="form-control" type="text" ng-model="data.LocationViolation" required>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-3 control-label">* {{'DescriptionViolation'|translate}}</label>
+            <div class="col-sm-7">
+                <textarea class="form-control" type="text" ng-model="data.DescriptionViolation" rows="5" required>
+
+            </textarea>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-3 control-label">* {{'Evidence'|translate}}</label>
+            <div class="col-sm-7">
+                <input type="file" ng-file-select="UploadFileHSE($files,'CD_Denounce')" id="file_Denounce"
+                    style="display:none !important" multiple accept=".mp4, .png, .jpeg, .jpg">
+                <button id="btn_file_Denounce" class="btn btn-info" style="display:inline-block;" type="button"
+                    ng-disabled="btnFile_AC" ng-click="btnfile('file_Denounce','file_name_Denounce')">
+                    <i class="glyphicon glyphicon-plus-sign fas-ct"></i> File
+                </button>
+                <span><input type="checkbox" ng-model="data.listfile_Denounce" style="vertical-align: text-top;">
+                    {{'ShowFile'|translate}} <code> ({{'OnlyImgAndMp4'|translate}})</code>
+                </span>
+        
+                <table ng-show="data.listfile_Denounce" class="table table-bordered table-striped mb-0"
+                    style="margin-top:10px;">
+                    <tr ng-repeat="step in listfile" ng-show="step.col == 'CD_Denounce'">
+                        <td><a href="/{{step.name}}" target="_blank">{{step.name}}</a></td>
+                        <td style="text-align: center">
+                            <a ng-click="removeFile($index)">
+                                <span class="glyphicon glyphicon-remove" style="color: red;"></span>
+                            </a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+
+
+
+        <div class="form-group">
+            <label class="col-sm-3 control-label">* {{'ViolationField'|translate}}</label>
+
+            <div class="col-sm-2" style="margin-top: 7px;">
+                <input type="checkbox" ng-model="data.Safety" ng-change="checkViolationField('Safety')">
+                {{'Safety'|translate}}
+            </div>
+
+            <div class="col-sm-2 control-label" style="margin-left: -80px;">
+                <input type="checkbox" ng-model="data.Environment" ng-change="checkViolationField('Environment')">
+                {{'Environment'|translate}}
+            </div>
+
+            <div class="col-sm-2 control-label">
+                <input type="checkbox" ng-model="data.FireProtection" ng-change="checkViolationField('FireProtection')">
+                {{'FireProtection'|translate}}
+            </div>
+
+            <div class="col-sm-2 control-label" style="margin-left: -10px;">
+                <input type="checkbox" ng-model="data.Unknow" ng-change="checkViolationField('Unknow')">
+                {{'Unknow'|translate}}
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">{{'ContactInfo'|translate}}</label>
+            <div class="col-sm-7">
+                <input class="form-control" type="text" ng-model="data.ContactUser">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label"> {{'Remark'|translate}}</label>
+            <div class="col-sm-7">
+                <textarea class="form-control" type="text" ng-model="data.Remark"></textarea>
+            </div>
+        </div>
+
+        <div class="modal-footer">
+            <div class="form-group" ng-if="!isUpdateSubmit">
+                <button class="btn btn-primary buttonApp" ng-disabled="Denounceform.$invalid || checkValidate()"
+                    ng-click="saveVoucher('N')">
+                    <img src="/css/image/savefile.png" style="width:25px;">
+                    {{'saveDraft'|translate}}
+                </button>
+
+                <button class="btn btn-warning buttonApp" ng-disabled="Denounceform.$invalid || checkValidate()"
+                    ng-click="saveVoucher('Submit')">
+                    <img src="/css/image/send.png" style="width:25px;">
+                    {{'submit'|translate}}
+                </button>
+
+                <button class="btn btn-default buttonApp" data-dismiss="modal" ng-click="resetModal()">
+                    <img src="/css/image/close.png" style="width:25px;">
+                    {{'Close'|translate}}
+                </button>
+            </div>
+
+            <div class="form-group" style="margin-left:-60px" ng-if="isUpdateSubmit">
+                <div class="col-sm-offset-7 col-sm-2 control-label">
+                    <button class="btn btn-warning buttonApp" ng-disabled="Denounceform.$invalid || checkValidate()"
+                        ng-click="saveVoucher('ReSubmit')">
+                        <img src="/css/image/send.png" style="width:25px;">
+                        {{'submit'|translate}}
+                    </button>
+                </div>
+
+                <div class="col-sm-1 control-label">
+                    <button class="btn btn-danger buttonApp" style="height: 40px;" ng-click="deleteRejectApp()">
+                        <i class="glyphicon glyphicon-trash"></i>
+                        {{'MD_Cancel'|translate}}
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div ng-if="detail">
+
+        <table style="width: 100%;">
+            <tr>
+                <th style="width:20%;">{{'ContractorName'|translate}}</th>
+                <td style="width:80%;color:crimson;"><b>{{data.ContractorName}}</b></td>
+            </tr>
+
+            <tr>
+                <th>{{'TimeViolation'|translate}}</th>
+                <td>{{data.TimeViolation}}</td>
+            </tr>
+
+            <tr>
+                <th>{{'LocationViolation'|translate}}</th>
+                <td>{{data.LocationViolation}}</td>
+            </tr>
+
+            <tr>
+                <th> {{'DescriptionViolation'|translate}}</th>
+                <td style="white-space: break-spaces;">{{data.DescriptionViolation}} </td>
+            </tr>
+
+            <tr>
+                <th>{{'Evidence'|translate}}</th>
+                <td><a href="/{{item.name}}" target="_blank" class="fileattached"
+                        ng-repeat="item in listfile | filter:{col: 'CD_Denounce'}">
+                        {{item.name}}<br></a>
+                </td>
+            </tr>
+
+            <tr>
+                <th> {{'ViolationField'|translate}}</th>
+                <td>
+                    <label class="checkboxPseudo">
+                        <input type="checkbox" ng-model="data.Safety" disabled>
+                        <span class="checked"></span>
+                        {{'Safety'|translate}}
+                    </label>
+
+                    <label class="checkboxPseudo">
+                        <input type="checkbox" ng-model="data.Environment" disabled>
+                        <span class="checked"></span>
+                        {{'Environment'|translate}}
+                    </label>
+
+                    <label class="checkboxPseudo">
+                        <input type="checkbox" ng-model="data.FireProtection" disabled>
+                        <span class="checked"></span>
+                        {{'FireProtection'|translate}}
+
+                    </label>
+
+                    <label class="checkboxPseudo">
+                        <input type="checkbox" ng-model="data.Unknow" disabled>
+                        <span class="checked"></span>
+                        {{'Unknow'|translate}}
+                    </label>
+                </td>
+            </tr>
+
+            <tr ng-if="_isHSE==''">
+                <th> {{'ReportDept'|translate}}</th>
+                <td>{{data.Dept}}</td>
+            </tr>
+
+            <tr>
+                <th> {{'ContactInfo'|translate}}</th>
+                <td>{{data.ContactUser}}</td>
+            </tr>
+
+            <tr>
+                <th> {{'Remark'|translate}}</th>
+                <td style="white-space: break-spaces;">{{data.Remark}}</td>
+            </tr>
+        </table>
+        <div class="modal-footer" ng-if="viewdetail">
+            <button class="btn btn-default buttonApp" data-dismiss="modal" ng-click="resetModal()">
+                <img src="/css/image/close.png" style="width:25px;">
+                {{'Close'|translate}}
+            </button>
+        </div>
+        <div ng-if="!viewdetail" style="margin-top:30px">
+            <div class="form-group">
+                <label class="col-sm-4 control-label">{{'IsPass'|translate}}</label>
+                <div class="col-sm-3">
+                    <select class="form-control" ng-model="data.IsAgree" required>
+                        <option value="YES">{{'agree'|translate}}</option>
+                        <option value="NO">{{'notAgree'|translate}}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group" ng-if="data.IsAgree == 'NO'" style="margin-top: 15px;">
+                <label class="col-sm-4 control-label">*{{'DenyReason'|translate}}</label>
+                <div class="col-sm-6">
+                    <textarea class="form-control" type="text" ng-model="data.DenyReason" field-validate rows="3"
+                        required>
+                </textarea>
+                </div>
+            </div>
+
+            <div class="form-group" style="margin-top: 15px;">
+                <div class="col-sm-offset-4 col-sm-2">
+                    <button class="btn btn-warning buttonApp" ng-click="saveSubmit()"
+                        ng-disabled="Denounceform.$invalid">
+                        <img src="/css/image/send.png" style="width:25px;">
+                        {{'submit'|translate}}
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

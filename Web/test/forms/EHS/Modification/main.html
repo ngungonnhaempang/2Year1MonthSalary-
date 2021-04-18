@@ -1,0 +1,80 @@
+﻿<style>
+    .Menu {
+        font-family: open sans, sans-serif, 'DFKai-SB';
+        font-size: 14pt;
+        margin-top: 150px;
+        padding-left: 100px;
+        height: 380px;
+    }
+
+    .avatar {
+        width: 200px;
+        border-radius: 100px;
+        background-color: white;
+        border: 1px solid black;
+        /* margin-left: 20px; */
+    }
+
+    .avatar:hover {
+        box-shadow: 0 6px 5px RGBA(0, 0, 0, .23);
+    }
+
+    .link {
+        display: inline-block;
+        width: 60%;
+        text-align: center;
+    }
+
+    a:link {
+        color: black;
+        font-weight: 550;
+        text-decoration: none;
+    }
+
+    a:hover {
+        color: gray;
+        text-decoration: none;
+    }
+</style>
+<div class="container">
+    <div class="Menu">
+        <div class="col-sm-12">            
+            <div class="col-sm-4">
+                <a href="javascript:void(0)" ng-click="btCheckAuth('ModificationProcessQuery','/Manage_Modification') ">
+                    <img src="/css/image/documentChange.png" class="avatar" style="width: 190px;">
+                    <br>
+                    <span class="link">
+                        {{'MD_Manage'| translate}}
+                    </span>
+                </a>
+            </div>
+
+            <div class="col-sm-4">
+                <a href="javascript:void(0)" ng-click="btCheckAuth('ModificationProcess','/Manage_Project') ">
+                    <img src="/css/image/imageedit.png" class="avatar">
+                    <br>
+                    <span class="link">
+                        {{'MD_Process'| translate}}
+                    </span>
+                </a>
+
+            </div>
+
+            <div class="col-sm-4">
+                <a href="javascript:void(0)" ng-click="btCheckAuth('ModificationProcess_EHS','/Manage_Info')">
+                    <img src="/css/image/documentSetting.png" class="avatar">
+                    <br>
+                    <span class="link">
+                        {{'Info_Manage'| translate}}
+                    </span>
+                </a>
+
+            </div>
+
+
+           
+        </div>
+
+        
+    </div>
+</div>

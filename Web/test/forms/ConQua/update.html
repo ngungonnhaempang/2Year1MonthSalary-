@@ -1,0 +1,197 @@
+<script type="text/javascript">
+    function ContractorInfoProcess_start($scope, EngineApi, $http, $timeout, Notifications, $upload, $compile, $filter, Auth, ConQuaService, GateGuest, $translate) {
+        $scope.projects = {};
+        $scope.fileAttached = ""
+        $scope.note = {};
+        var lang = window.localStorage.lang;
+        $scope.readEmployer = true;
+
+        ConQuaService.ContractorQualification().getDetailHeader({
+            contractorID: $scope.variable.EmployerId,
+            language: lang
+        }).$promise.then(function (res) {
+            console.log(res);
+            $scope.projects = res[0];
+            $scope.projects.ContractorID = res[0].ContractorID;
+            if ($scope.projects.ContractorFile != null) {
+                $scope.fileAttached = $scope.projects.ContractorFile;
+            }
+
+
+            if ($scope.variable.start_remark == "Renew") {
+                $scope._signRenew = true;
+                $scope.readUpdateQ = true;
+                $scope.projects.RenewalDate = $scope.variable.Renew_Date;
+                console.log('ngay' + $scope.projects.RenewalDate);
+
+            } else {
+                $scope._isRenew = false;
+            }
+
+            /*check contract term*/
+            if (res[0].isvalid == 0) {
+                $scope.variable.start_remark = "expire";
+                $scope._isExpire = true;
+            } else {
+                $scope._isExpire = false;
+            }
+        });
+
+        $scope.Delete = function () {
+            $scope.historyVariable.push({ name: "Delete_IS_MSG", value: "YES" });
+            $scope.formVariables.push({ name: "IsClose", value: "YES" });
+            var query = {}
+            query.employerId = $scope.variable.EmployerId
+            if ($scope.variable.start_remark == "Renew") {
+                query.status = 'Q'
+            } else if ($scope.variable.start_remark == "expire") {
+                query.status = 'E'
+            }
+            else query.status = 'X'
+
+            if (query.status != 'X') {
+                ConQuaService.ConQuaSaveStatus().save(query, {}).$promise.then(function (res) {
+                    $scope.submit();
+                }, function (errResponse) {
+                    Notifications.addError({ 'status': 'error', 'message': errResponse });
+                });
+            } else {
+                var query = {}
+                query.contractorID = $scope.variable.EmployerId
+                ConQuaService.Delete().save(query, {}).$promise.then(function (res) {
+                    $scope.submit();
+                }, function (errResponse) {
+                    Notifications.addError({ 'status': 'error', 'message': errResponse });
+                });
+            }
+
+        }
+
+        $scope.UpdateSubmit = function () {
+            if ($scope.variable.start_remark == "Renew") {
+                $scope.formVariables.push({ name: "IsClose", value: "NO" });
+                $scope.formVariables.Renew_Date = $scope.projects.RenewalDate;
+                $scope.historyVariable.RenewalDate = $scope.projects.RenewalDate;
+                $scope.submit();
+                sendMailReSubmit("c_renew");
+
+            }
+            else {
+                $scope.saveInfo('F',function (contractorID, obj) {
+                    if (obj && !contractorID) {
+                        Notifications.addError({ 'status': 'error', 'message': obj });
+                    } else {
+                        $scope.formVariables.push({ name: "IsClose", value: "NO" });
+                        $scope.submit();
+                        sendMailReSubmit("c_init");
+                    }
+                })
+            }
+
+        }
+
+        function sendMailReSubmit(mail) {
+            ConQuaService.SendMailSubmit().get({
+                flowname: "GateContractorInfoProcess",
+                IdVoucher: $scope.variable.EmployerId,
+                FromUser: Auth.username,
+                MailKind: mail
+            }, {}).$promise.then(function (res) {
+                console.log(res);
+            }, function (err) {
+                Notifications.addError({
+                    'status': 'error',
+                    'message': 'error send mail: ' + err
+                });
+            });
+        }
+
+        // function saveInfo(callback) {
+        //     $scope.projects.UserID = Auth.username;
+        //     $scope.projects.DepartmentID = $scope.projects.DepartmentID;
+        //     $scope.projects.Status = "F";
+        //     $scope.projects.isvalid = 1;
+        //     if ($scope.fileAttached != "") {
+        //         $scope.projects.ContractorFile = $scope.fileAttached;
+        //     } else $scope.projects.ContractorFile = null;
+        //     $scope.projects.AccDate = $filter('date')(new Date(), "yyyy-MM-dd HH:mm:ss");
+        //     if ($scope.projects.StartDate > $scope.projects.EndDate) {
+        //         callback("", $translate.instant('Date_Msg'));
+        //     }
+        //     else {
+        //         ConQuaService.CreateContractorQualification().save($scope.projects).$promise.then(function (res) {
+        //             $scope.projects.StartDate = res.StartDate;
+        //             $scope.projects.EndDate = res.EndDate;
+        //             $scope.projects.ContractorID = JSON.parse(res.contractorID).contractorID;
+        //             callback($scope.projects.ContractorID, "")
+        //         }, function (errResponse) {
+        //             console.log("err: " + errResponse);
+        //             callback("", errResponse);
+        //         });
+        //     }
+
+        // }
+
+        $scope.fileAttached = "";
+        $scope.file = [];
+        $scope.onFileSelect = function ($files, size) {
+            console.log($files);
+            if (true) {
+                if ($scope.fileAttached != "") {
+                    Notifications.addError({
+                        'status': 'error',
+                        'message': $translate.instant('File_Number_MSG')
+                    });
+
+                    return false;
+                }
+                $scope.file = $files[0];
+                $scope.fileAttached = $scope.file.name;
+            }
+        }
+
+        $scope.removeList = [];
+        $scope.getRemoveFileName = function () {
+            $scope.removeList.push($scope.fileAttached);
+            $scope.fileAttached = "";
+            $scope.file = [];
+        }
+
+        $scope.removeFile = function (_name) {
+                if (_name != "") {
+                    ConQuaService.DeleteFile().save({
+                        filename: _name
+                    }).$promise.then(function (res) {
+                        console.log(res)
+                },
+                    function (error) {
+                        console.log(error);
+                    })
+            }
+        }
+
+
+        $scope.formatFileName = function (_fileName) {
+            if (_fileName.length > 20) {
+                return _fileName.substring(0, 10) + "..." + _fileName.substring(_fileName.length - 9);
+            } else {
+                return _fileName;
+            }
+        }
+    }
+</script>
+<div ng-controller="ContractorInfoProcess_start">
+    <div class="form-group">
+        <my_Contractor></my_Contractor>
+    </div>
+
+    <div class="form-group" style="padding-top: 20px;">
+        <div class="col-sm-offset-8 col-sm-10">
+            <button class="btn btn-primary" ng-click="UpdateSubmit()" ng-hide="_isExpire"
+                ng-disabled="ConQuaform.$invalid">{{'submit'|translate}}
+            </button>
+            <button class="btn btn-danger" ng-click="Delete()">{{'Delete'|translate}}
+            </button>
+        </div>
+    </div>
+</div>

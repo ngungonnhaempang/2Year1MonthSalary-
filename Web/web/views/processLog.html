@@ -1,0 +1,201 @@
+<style>
+    .nav a {
+        color: #000000 !important;
+    }
+
+    .logFrame {
+        background-color: #F2E6D9;
+        max-width: 1224px;
+        height: 100%;
+        margin: 0 auto;
+        padding: 2em;
+        position: relative;
+        font-family: 'Times New Roman', 'DFKai-SB';
+    }
+
+    .main-title {
+        color: crimson;
+        font-weight: 550;
+        margin-bottom: .3em;
+        text-align: center;
+
+    }
+
+    .timeline {
+        position: relative;
+        width: auto;
+        margin: 0 auto;
+        /* margin-top: 5em;
+        padding-bottom: 2em; */
+        padding-left: 0;
+    }
+
+    .timeline:before {
+        position: absolute;
+        left: 20%;
+        top: 0;
+        content: ' ';
+        display: block;
+        width: 4px;
+        height: 100%;
+        margin-left: -3px;
+        background: darkblue;
+        z-index: 5;
+    }
+
+
+    .dir-l,
+    .dir-r {
+        position: relative;
+        width: 75%;
+        padding: 1.5em 1em;
+        background: #fff;
+        box-shadow: 0 0 0.5cm rgba(0, 0, 0, 0.5);
+        margin-top: 0;
+        margin-bottom: 1.5em;
+        font-size: large;
+    }
+
+    .timeline h1 {
+        font-size: 18pt;
+        color: #4B878D;
+        width: 90%;
+        margin-top: 0;
+        font-family: 'Times New Roman', 'DFKai-SB';
+    }
+
+    .timeline img {
+        border-radius: 50%;
+    }
+
+    .timeline-icon {
+        position: absolute;
+        top: 1em;
+        width: 60px;
+        height: 60px;
+        left: 20%;
+        margin-left: -30px;
+        box-shadow: 0 0 0 4px white, inset 0 2px 0 rgba(0, 0, 0, 0), 0 0 0 5px rgba(0, 0, 0, 0.15);
+        right: 0;
+        border-radius: 50%;
+        z-index: 10;
+    }
+
+    .dir-l {
+        float: left;
+    }
+
+    .dir-l:before {
+        content: "";
+        display: inline-block;
+        vertical-align: middle;
+        width: 0;
+        height: 0;
+        position: absolute;
+        top: 1em;
+        border-top: 17px solid transparent;
+        border-bottom: 17px solid transparent;
+        border-left: 15px solid #fff;
+
+    }
+
+    .dir-r {
+        float: right;
+    }
+
+    .dir-r:before {
+        content: "";
+        display: inline-block;
+        vertical-align: middle;
+        width: 0;
+        height: 0;
+        position: absolute;
+        left: -.9em;
+        top: 1em;
+        border-top: 17px solid transparent;
+        border-bottom: 17px solid transparent;
+        border-right: 15px solid #fff;
+    }
+
+    .timeline-blocks {
+        display: block;
+        height: auto;
+        padding: 1em 0;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .timeline img {
+        border-radius: 50%;
+        width: 100%;
+    }
+
+    .timeline-blocks .date-l {
+        position: absolute;
+        top: 2em;
+        color: blue;
+        font-weight: bold;
+        font-size: large;
+    }
+</style>
+<h1 class="main-title">{{processLogs[0].KeyName|translate}}</h1>
+<div class="logFrame">
+    <ul class="timeline">
+        <li class="timeline-blocks" ng-show="currentTask.length>0">
+            <figure class="timeline-icon">
+                <img src="/css/image/contractor/mailbox.png" alt="timeline" />
+            </figure>
+            <div class="dir-r radius-3">
+                <table class="table">
+                    <tr ng-repeat="ct in currentTask">
+                        <td style="width: 40%;">
+                            <div ng-if="ct.assignee!=null">{{ct.assignee}}--<span show-user="{{ct.assignee}}"></span>
+                            </div>
+                            <div ng-if="ct.assignee==null"> <span show-candidate="{{ct}}"></span></div>
+                        </td>
+                        <td>{{ct.name|translate}} </td>
+
+                        <td>{{ct.description}}</td>
+                    </tr>
+                </table>
+            </div>
+        </li>
+
+        <li class="time-label" ng-repeat-start="log in processLogs" style="list-style:none;"> </li>
+
+        <li class="timeline-blocks" ng-repeat="l in log.Logs">
+            <figure class="timeline-icon">
+                <img src="/css/image/userAccount.png" alt="timeline" />
+            </figure>
+
+            <div class="date-l">{{l.FormatStamp}}</div>
+
+            <div class="dir-r radius-3">
+                <h1>{{l.TaskName|translate}}: {{l.UserId}} - {{l.UserName}}</h1>
+                <table class="table table-user-information">
+                    <tbody>
+                        <tr ng-repeat="h in l.HistoryField">
+                            <td style="width: 40%;">
+                                <strong> {{h.Name|translate}}:</strong>
+                            </td>
+
+                            <td ng-if="h.IsJson === false">
+                                {{h.Value == "" ? "无" : h.Value}}
+                            </td>
+
+                            <td ng-if="h.IsJson === true">
+                                <div ng-repeat="v in h.JsonValue">
+                                    <a href='/api/cmis/downfile?filename={{v.DocId}}&Name={{v.Name}}' class="a-file">
+                                        {{v.OldName}}</a>
+                                    <br>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </li>
+
+        <li ng-repeat-end style="list-style: none;"></li>
+    </ul>
+</div>

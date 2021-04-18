@@ -1,0 +1,16 @@
+<script type="text/javascript">
+    function EastGateProcess_SecurityStaffCheck($scope,$routeParams,EngineApi, $http, $timeout, Notifications, $upload, $compile, $filter, Auth, GateGuest, ConQuaService, $translatePartialLoader, $translate) {
+
+        console.log($scope.variable);
+        $scope.detail = true;
+        $routeParams.code = 'Checker';
+        $routeParams.VoucherID = $scope.variable.VoucherID;
+        $scope.checker = "SecurityStaff";
+    }
+</script>
+
+
+
+<div ng-controller="EastGateProcess_SecurityStaffCheck">
+    <view-east-gate-voucher></view-east-gate-voucher>
+</div>

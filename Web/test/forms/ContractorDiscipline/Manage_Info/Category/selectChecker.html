@@ -1,0 +1,58 @@
+<style>
+        .btn-success{
+        background-color: #DCEDC8;
+        border-color: #DCEDC8;
+        color: black;
+    }
+</style>
+<div class="modal fade" id="modalChecker" role="dialog">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header" style="text-align: center;background-color: #DCEDC8;border-radius: 4%">
+                <img src="/css/image/contractor/mailbox.png" style="width:70px;">
+            </div>
+            <form class="form-horizontal model-form " autocomplete="off" name="checkerform" style="margin-top:15px;"
+                enctype="multipart/form-data" novalidate>
+
+                <div class="modal-body">
+
+                    <label style="color: crimson;margin-left: 10%;">*{{'Select_next_approver'|translate}}</label>
+
+
+                    <div class="radio">
+                        <label><input type="radio" name="optradio" required><b>{{'Safety'|translate}}:</b> {{'FEPV000559
+                            -
+                            Trần
+                            Xì Long'}}</label>
+                    </div>
+                    <div class="radio">
+                        <label><input type="radio" name="optradio" required><b>{{'Environment'|translate}}:</b>
+                            {{'FEPVNN0383
+                            -
+                            Chen Hung Chang'}}</label>
+                    </div>
+                    <div class="radio">
+                        <label><input type="radio" name="optradio" required><b>{{'FireProtection'|translate}}:</b>
+                            {{'FEPVNN0122
+                            - Lai Nan Yang'}}</label>
+                    </div>
+
+
+
+                </div>
+                <div class="modal-footer" style="text-align: center;">
+                    <button class="btn btn-success buttonApp" ng-disabled="checkerform.$invalid"
+                        ng-click="submitCategory()">
+                        <img src="/css/image/send.png" style="width:25px;">
+                        {{'submit'|translate}}
+                    </button>
+
+                    <button class="btn btn-default buttonApp" ng-click="closeCheckerModal()" style="margin-left: 10%;">
+                        <img src="/css/image/close.png" style="width:25px;">
+                        {{'Close'|translate}}
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

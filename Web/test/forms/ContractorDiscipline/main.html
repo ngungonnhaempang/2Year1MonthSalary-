@@ -1,0 +1,124 @@
+<style>
+    .contractorMenu {
+        font-family: open sans, sans-serif;
+        font-size: 14pt;
+        margin-top: 200px;
+        height: 345px;
+    }
+
+    .avatar {
+        width: 200px;
+        border-radius: 100px;
+        background-color: #99CC99;
+        margin-left: -10px;
+        border: 3px solid greenyellow;
+    }
+
+    .avatar:hover {
+        box-shadow: 0 6px 5px greenyellow;
+    }
+
+    .link {
+        display: inline-block;
+        width: 55%;
+        text-align: center;
+        margin-top: 15px;
+    }
+
+    a:link {
+        color: black;
+        font-weight: 550;
+        text-decoration: none;
+    }
+
+    a:hover {
+        color: #488211;
+        text-decoration: none;
+    }
+
+    .row {
+        margin-left: -50px;
+        width: 120%;
+    }
+
+    .blink {
+        width: 90%;
+        height: 50px;
+        padding: 15px;
+        text-align: center;
+        margin-top: -125px;
+        margin-bottom: 100px;
+    }
+
+    .blackpink {
+        font-size: 50px;
+        font-family: cursive;
+        font-weight: bolder;
+        color: #488211;
+        animation: blink 10s linear infinite;
+    }
+
+    @keyframes blink {
+        0% {
+            opacity: 0;
+        }
+
+        50% {
+            opacity: .5;
+        }
+
+        100% {
+            opacity: 1;
+        }
+    }
+</style>
+
+<div class="contractorMenu">
+    <div class="blink"><span class="blackpink">{{'DisciplineSystem'| translate}}</span></div>
+    <div class="col-sm-12">
+        <div class="col-sm-3" style="margin-bottom: 50px;">
+            <a href="javascript:void(0)"
+                ng-click="btCheckAuth('GateContractorEHS','/ContractorDiscipline/ViolationConfirmation') ">
+                <img src="/css/image/contractor/replace.png" class="avatar">
+                <br>
+                <span class="link">
+                    {{'ManageViolationConfirmApp'| translate}}
+                </span>
+            </a>
+        </div>
+
+        <div class="col-sm-3" style="margin-bottom: 50px;">
+            <a href="javascript:void(0)"
+                ng-click="btCheckAuth('GateContractorInfoProcessQuery','/ContractorDiscipline/Discipline/Search') ">
+                <img src="/css/image/contractor/penalty.png" class="avatar">
+                <br>
+                <span class="link">
+                    {{'ManageDisciplineApp'| translate}}
+                </span>
+            </a>
+
+        </div>
+
+        <div class="col-sm-3">
+            <a href="javascript:void(0)"
+                ng-click="btCheckAuth('GateContractorEHS','/ContractorDiscipline/Manage_Info/Category') ">
+                <img src="/css/image/contractor/Law_Book.png" class="avatar">
+                <br>
+                <span class="link">
+                    {{'ManageDisciplineCategories'| translate}}
+                </span>
+            </a>
+        </div>
+
+        <div class="col-sm-3">
+            <a href="javascript:void(0)"
+                ng-click="btCheckAuth('GateContractorEHS','/ContractorDiscipline/Manage_Info/ISO') ">
+                <img src="/css/image/contractor/iso.png" class="avatar">
+                <br>
+                <span class="link">
+                    {{'ISO_Manage'| translate}}
+                </span>
+            </a>
+        </div>
+    </div>
+</div>

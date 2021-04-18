@@ -1,0 +1,209 @@
+<style ng-if="!Print">
+    .form-group {
+        margin-bottom: 10px;
+    }
+
+    table,
+    th,
+    td {
+        border: 1px solid black;
+        padding: 10px;
+    }
+
+    #footer {
+        display: none;
+    }
+
+
+    .buttonApp {
+        font-weight: bold;
+        font-family: tahoma, 'DFKai-SB';
+        box-shadow: 4px 2px 2px 2px #999
+    }
+
+    .form-horizontal {
+        font-size: 13pt;
+        font-family: 'Times New Roman', 'DFKai-SB';
+    }
+</style>
+
+<form class="form-horizontal" novalidate name="formRA" ng-if="!Print">
+    <legend>
+        <h2 class="appname">{{'RiskApp'|translate}} - {{data.ISO_AppCode}}</h2>
+    </legend>
+
+    <div style="margin-top: 15px;" ng-include="'forms/EHS/Modification/Manage_Modification/ReasonReject.html'"></div>
+    <hr>
+
+    <table id="tbInfo">
+        <tr>
+            <th style="width:20%;"> {{'MD_ProjectID'|translate}} &nbsp;
+                <input type="image" ng-click="SearchProjectID()" ng-hide="IsUpdate" src="/css/image/search-icon.png"
+                    width="20" height="20" />
+            </th>
+            <td style="width:35%;"> {{data.MD_ProjectID}} </td>
+
+            <th style="width:15%;"> {{'Dept_Proposed'|translate}}</th>
+            <td> {{data.Department}} </td>
+        </tr>
+        <tr>
+            <th> {{'MD_Name'|translate}}</th>
+            <td> {{data.MD_Name}} </td>
+
+            <th> {{'Create_date'|translate}}</th>
+            <td> {{data.CreateDate}} </td>
+        </tr>
+    </table>
+
+    <table id="tbEvaluate">
+        <thead>
+            <tr style="background-color: lightgray;border-top: hidden;">
+                <th style="text-align: center; width:65%;" colspan="3">
+                    {{'Category_BeforeEvaluate'|translate}}
+                    <br>
+                    <span style="font-weight: normal;">
+                        {{'CheckImprove_note'|translate}}
+                    </span>
+                </th>
+                <th style="text-align: center; width:20%;"> {{'Improvement'|translate}}</th>
+                <th style="text-align: center; width:15%;" ng-if='IsEvaluate'>
+                    {{'Dept_create_Evaluate'|translate}}</th>
+            </tr>
+        </thead>
+        <tbody ng-repeat="p in ParentList">
+            <th style="width:10%;" rowspan="15">{{p.Content}}</th>
+            <tr ng-repeat="c in ChildList | filter: {Parent:p.Code}:true">
+                <td style="width:40%;">{{c.Content}}
+                    <textarea ng-if="c.Other && c.Option=='Yes'" class="form-control" type="text" rows="5"
+                        ng-model="c.OtherContent" required ng-disabled="IsEvaluate">
+                    </textarea>
+                </td>
+
+                <td style="width:15%;">
+                    <select class="form-control" ng-model="c.Option" ng-change="selectOption(c)"
+                        ng-disabled="IsEvaluate" required>
+                        <option value="Yes"> {{'MD_Yes'|translate}}</option>
+                        <option value="No"> {{'MD_No'|translate}} </option>
+                        <option value="NotApply"> {{'NotApply'|translate}}</option>
+                    </select>
+                </td>
+
+                <td style="width:15%;">
+                    <textarea ng-disabled="IsEvaluate" ng-if="c.Option=='Yes'" class="form-control" type="text"
+                        ng-model="c.ImproveSolution" rows="5" required>
+                    </textarea>
+                </td>
+
+                <td ng-if='IsEvaluate'>
+                    <select class="form-control" ng-style="{ 'border' : (c.Option == 'Yes') ? '1px solid red' : '1px solid #cccccc' }" ng-model="c.IsPass"ng-disabled="c.Option!='Yes'" required>
+                        <option value="Yes"> {{'MD_Pass'|translate}}</option>
+                        <option value="No"> {{'Fail'|translate}} </option>
+                    </select>
+                </td>
+            </tr>
+
+            <tr ng-if="p.Other">
+                <td> <textarea type="text" class="form-control" ng-if="p.Option=='Yes'" ng-model="p.OtherContent" rows="5"
+                        required ng-disabled="IsEvaluate">
+                    </textarea>
+                </td>
+
+                <td style="width:15%;">
+                    <select class="form-control" ng-model="p.Option" ng-change="selectOption(p)"
+                        ng-disabled="IsEvaluate" required>
+                        <option value="Yes"> {{'MD_Yes'|translate}}</option>
+                        <option value="No"> {{'MD_No'|translate}} </option>
+                        <option value="NotApply"> {{'NotApply'|translate}}</option>
+                    </select>
+                </td>
+
+                <td style="width:15%;">
+                    <textarea ng-disabled="IsEvaluate"  ng-if="p.Option=='Yes'" class="form-control" type="text" rows="5"
+                        ng-model="p.ImproveSolution" rows="5" required>
+                    </textarea>
+                </td>
+
+                <td ng-if='IsEvaluate'>
+                    <select class="form-control" ng-model="p.IsPass" ng-if="p.Option=='Yes'" ng-style="{ 'border' : (p.Option == 'Yes') ? '1px solid red' : '1px solid #cccccc' }" required>
+                        <option value="Yes"> {{'MD_Pass'|translate}}</option>
+                        <option value="No"> {{'Fail'|translate}} </option>
+                    </select>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="modal-footer">
+        <div ng-if="!IsEvaluate && !isUpdateSubmit">
+            <button class="btn btn-primary buttonApp" ng-click="saveRiskAssessmentApp('N')"
+                ng-disabled="formRA.$invalid || checkValidate()">
+                <img src="/css/image/savefile.png" style="width:25px;">
+                {{'saveDraft'|translate}}
+            </button>
+
+            <button class="btn btn-warning buttonApp" ng-click="saveRiskAssessmentApp('F')"
+                ng-disabled="formRA.$invalid || checkValidate()">
+                <img src="/css/image/send.png" style="width:25px;">
+                {{'submit'|translate}}
+            </button>
+
+            <button class="btn btn-default buttonApp" ng-click="goBack()">
+                <img src="/css/image/comeback.png" style="width:25px;">
+                {{'goBack'|translate}}
+            </button>
+        </div>
+
+        <div ng-if="IsEvaluate  && !isUpdateSubmit">
+            <button type="button" class="btn btn-success buttonApp" ng-disabled="formRA.$invalid || checkValidate()"
+                ng-click="saveRiskAssessmentApp('E')">
+                <img src="/css/image/tickYellow.png" style="width:25px;">
+                {{'Save_Evaluate'|translate}}
+            </button>
+
+            <button class="btn btn-default buttonApp" ng-click="closePage()">
+                <i class="glyphicon glyphicon-remove" style="color: grey;vertical-align: text-bottom;"></i>
+                {{'Close'|translate}}
+            </button>
+        </div>
+
+        <div ng-if="isUpdateSubmit">
+            <button class="btn btn-warning buttonApp" 
+                ng-disabled="formRA.$invalid || checkValidate()"
+                ng-click="saveRiskAssessmentApp('ReSubmit')">
+                <img src="/css/image/send.png" style="width:25px;">
+                {{'submit'|translate}}
+            </button>
+
+            <button class="btn btn-danger buttonApp" style="height: 40px;"
+                ng-click="deleteRejectApp()">
+                <i class="glyphicon glyphicon-trash"></i>
+                {{'MD_Cancel'|translate}}
+            </button>
+
+            <button class="btn btn-default buttonApp" 
+                ng-click="goBack()">
+                <img src="/css/image/comeback.png" style="width:25px;">
+                {{'goBack'|translate}}
+            </button>
+        </div>
+    </div>
+
+
+</form>
+
+<!-- Modal Search Modification project ID -->
+<div class="modal fade" id="modalProjectID" role="dialog" aria-labelledby="myLargeModalLabel" data-backdrop="static"
+    data-keyboard="false">
+    <div class="modal-dialog modal-lg" style="width: 70%;">
+        <div class="modal-content" style="padding: 10px;">
+            <div class="modal-body" style="padding-bottom:3px">
+                <get_Project></get_Project>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div ng-if="Print">
+    <div ng-include="'forms/EHS/Modification/Manage_Modification/RiskAssessment/PrintRiskAssessment.html'"></div>
+</div>

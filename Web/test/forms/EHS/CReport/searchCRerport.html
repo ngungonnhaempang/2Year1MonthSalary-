@@ -1,0 +1,238 @@
+<style>
+    input[type=checkbox] {
+        transform: scale(1.5);
+    }
+
+    body {
+        font-family: 'Tahoma', 'DFKai-SB';
+    }
+
+    .receive_report .container {
+        width: 970px;
+    }
+
+    .ibx-manage-logo {
+        height: 42px;
+        border: 1px solid #D6D6D6;
+        border-right: none;
+        background-color: #959595;
+        cursor: pointer;
+        padding: 10px;
+    }
+
+    .modal-lg {
+        /* width: 900px; */
+        width: 80%
+    }
+
+    .form-table {
+        width: 100%;
+        display: inline-block;
+        padding: 15px 0px;
+        margin-bottom: 15px;
+    }
+
+    .form-group {
+        margin: 5px 0 0 0 !important;
+    }
+
+    li {
+        list-style-type: none;
+    }
+
+    li ul {
+        display: none;
+        border: 1px solid #000000;
+        margin-left: -3px;
+    }
+
+    .form-control {
+        height: 34px;
+    }
+
+    .grid_cell_ct {
+        width: 100%;
+        overflow: hidden;
+        display: inline-block;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        padding: 5px;
+    }
+</style>
+<form class="form-horizontal" role="form" novalidate name="form" style="padding-top:30px ">
+    <legend>
+        <h3>{{'Circumstance Report'|translate}}</h3>
+    </legend>
+    <div class=" form-group">
+        <div class="col-sm-8 form-group search-table">
+            <div class="form-group">
+                <label class="col-lg-2 col-sm-2 control-label">{{'CategoryReport' | translate}}</label>
+                <div class="col-lg-4 col-sm-4">
+                    <select class="form-control" ng-model="rp_Submittype" ng-change="ChangeSubmitType()">
+                        <option selected value="">{{'Show All' | translate}}
+                        </option>
+                        <option ng-repeat="item in SubmitTypelist" value="{{item.id}}">
+                            {{item.name | translate}}
+                        </option>
+                    </select>
+                </div>
+                <label class="col-sm-2 control-label">{{'From'|translate}}</label>
+                <div class="col-sm-4">
+                    <div class='input-group date'>
+                        <input type='text' class="form-control" id="time-search-from" name="dateFrom"
+                            ng-model="dateFrom" date-picker />
+                        <span class="input-group-addon">
+                            <label class="glyphicon glyphicon-calendar" style="color: grey"
+                                for="time-search-from"></label>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">{{'ReportType'|translate}}</label>
+                <div class="col-sm-4">
+                    <select class="form-control" ng-model="rp_type" ng-change="Search()">
+                        <option style="padding-left: 5px;" ng-repeat="item in rp_typeList" value="{{item.id}}">
+                            {{item.name}}</option>
+                    </select>
+                </div>
+                <label class="col-sm-2 control-label">{{'To'|translate}}</label>
+                <div class="col-sm-4">
+                    <div class='input-group date'>
+                        <input type='text' class="form-control" id="time-search-to" name="dateTo" style="height: 34px;"
+                            ng-model="dateTo" date-picker />
+                        <span class="input-group-addon">
+                            <label class="glyphicon glyphicon-calendar" style="color: grey"
+                                for='time-search-to'></label>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">{{'ReportID'|translate}}</label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" ng-model="rp_id"
+                        ng-keydown="$event.keyCode === 13 && Search()">
+                </div>
+                <label class="col-sm-2 control-label">{{'Department'|translate}}</label>
+                <div class="col-sm-4">
+
+                    <select  style="width:100%; height: 120%" ui-select2 ng-model="engine_department"
+                        name="engine_department" ng-change="Search()">
+                        <option ng-if="show.isHSEUser" ng-selected="true" value="">{{'Show All'|translate}}</option>
+                        <option ng-repeat="item in EngineDepartmentList" value="{{item.DepartmentID}}">
+                            {{item.DepartmentID }} - {{item.SubmitDepartName | translate}}
+                        </option>
+                    </select>
+
+                </div>
+
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">{{'Status'|translate}}</label>
+                <div class="col-sm-4">
+                    <select class="form-control" name="status" ng-model="s_status">
+                        <option ng-selected="true" value="">{{'Show All'|translate}}</option>
+                        <option ng-repeat="item in statuslist" value="{{item.id}}">{{item.name | translate}}</option>
+                    </select>
+                </div>
+                <div class="col-sm-2 col-sm-push-2">
+                    <label>
+                        <input name="onlyOwnerReport" type="checkbox" ng-init="onlyOwner=true" ng-model="onlyOwner">
+                        {{'onlyOwnerReport'|translate}}
+                    </label>
+                </div>
+
+
+                <div class="col-sm-1 col-sm-push-2">
+                    <button type="button" class="btn btn-primary" ng-click="Search()">{{'Search'|translate}}
+                    </button>
+                </div>
+            </div>
+        </div> <!-- end of search table -->
+        <div class="col-sm-2 form-group">
+            <ul class="list-group">
+                <li class="list-group-item" style="background:powderblue;">
+                    <p class="nav-list bg-secondary" style="margin-bottom: 0px;"> {{ 'Pending' | translate }}
+                        <span class="badge" style="background-color:#428bca"> {{rpCounter.sumPending }}</span>
+                    </p>
+                </li>
+                <li class="list-group-item">
+                    <p class="nav-list" style="margin-bottom: 0px;"> {{ 'Safety' | translate }}
+                        <span class="badge" style="background-color:#428bca">{{rpCounter.pending_sf}}</span>
+                    </p>
+                </li>
+                <li class="list-group-item">
+                    <p class="nav-list" style="margin-bottom: 0px;">
+                        {{ 'Environment' | translate }}
+                        <span class="badge" style="background-color:#428bca">{{rpCounter.pending_evr}}</span>
+                    </p>
+                </li>
+                <li class="list-group-item">
+                    <p class="nav-list" style="margin-bottom: 0px;">
+                        {{ 'FireProtection' | translate }}
+                        <span class="badge" style="background-color:#428bca">{{rpCounter.pending_fp}}</span>
+                    </p>
+                </li>
+            </ul>
+        </div>
+        <div class="col-sm-2 form-group">
+            <ul class="list-group">
+                <li class="list-group-item" style="background:lightgreen;">
+                    <p class="nav-list bg-secondary" style="margin-bottom: 0px;"> {{ 'Signed' | translate }}
+                        <span class="badge" style="background-color:#428bca">{{rpCounter.sumSubmited }}</span>
+                    </p>
+                </li>
+                <li class="list-group-item">
+                    <p class="nav-list" style="margin-bottom: 0px;"> {{ 'Safety' | translate }}
+                        <span class="badge" style="background-color:#428bca">{{rpCounter.count_sf}}</span>
+                    </p>
+                </li>
+                <li class="list-group-item">
+                    <p class="nav-list" style="margin-bottom: 0px;">
+                        {{ 'Environment' | translate }}
+                        <span class="badge" style="background-color:#428bca">{{rpCounter.count_evr}}</span>
+                    </p>
+                </li>
+                <li class="list-group-item">
+                    <p class="nav-list" style="margin-bottom: 0px;">
+                        {{ 'FireProtection' | translate }}
+                        <span class="badge" style="background-color:#428bca">{{rpCounter.count_fp}}</span>
+                    </p>
+                </li>
+            </ul>
+        </div>
+    </div> <!-- end of col-sm-12 -->
+    <div style="width: 100%;">
+        <div id="Grid" ui-grid="gridOptions" class="grid" ui-grid-selection ui-grid-pagination ui-grid-resize-columns
+            ui-grid-core ui-grid-exporter></div>
+    </div>
+</form>
+<hr>
+<h3>{{'Flowchart'|translate}}</h3>
+<hr>
+<div style="padding-top: 20px; text-align: center">
+    <div process-diagram-preview flow-key="CReportHSE" width="100%"></div>
+</div>
+<div class="modal fade" id="my-modal" role="dialog" aria-labelledby="myLargeModalLabel" data-backdrop="static"
+    data-keyboard="false">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content" style="padding: 5px;">
+            <div class="modal-body" style="padding-bottom:3px">
+                <create_ic_report></create_ic_report>
+            </div> <!-- end of modal-body -->
+        </div> <!-- end of modal-content -->
+    </div> <!-- end of modal-dialog -->
+</div> <!-- end of modal -->
+<div class="modal fade" id="myModal" role="dialog" aria-labelledby="myLargeModalLabel" data-backdrop="static"
+    data-keyboard="false">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content" style="padding: 5px;">
+            <div class="modal-body" style="padding-bottom:3px">
+                <create_ac_report></create_ac_report>
+            </div> <!-- end of modal-body -->
+        </div> <!-- end of modal-content -->
+    </div> <!-- end of modal-dialog -->
+</div> <!-- end of modal-->
+
+<improvement-creport></improvement-creport>

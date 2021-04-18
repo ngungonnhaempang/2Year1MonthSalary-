@@ -1,0 +1,26 @@
+<script type="text/javascript">
+    function Discipline_Update($scope, EngineApi, $http, $timeout, Notifications, $upload, $compile, $filter, Auth, $routeParams, GateGuest, $translate) {
+        console.log("VoucherAccount:" + $scope.variable.VoucherID);
+        console.log($scope.variable);
+        var lang = window.localStorage.lang;
+        $scope.isUpdateSubmit = true;
+
+        $routeParams.DisciplineID = $scope.variable.VoucherID;
+        $routeParams.code = "Checker";
+
+        
+
+        EngineApi.getProcessLogs.getList({ "id": $routeParams.pid, "cId": '' }, function (data) {
+            if (data.length === 0) {
+                $scope.processLogs = "";
+            } else {
+                debugger
+                $scope.processLogs = data[0].Logs[0];
+            }
+        });
+    }
+</script>
+
+<div ng-controller="Discipline_Update">
+    <view-discipline></view-discipline>
+</div>

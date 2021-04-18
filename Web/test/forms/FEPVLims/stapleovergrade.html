@@ -1,0 +1,249 @@
+<style>
+    .Outer {
+        height: 100%;
+        min-height: 400px;
+        /* Set to height you need */
+    }
+    .Inner>p {
+        vertical-align: middle;
+        text-align: center;
+        margin: 0 auto;
+    }
+    table p {
+        margin: 0 0 0 0;
+    }
+    table td {
+        vertical-align: middle !important;
+    }
+
+    /* Print styling */
+    .center {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;
+    }
+    .modal-lg {
+        width: 90%;
+
+    }
+
+    .modal-customs {
+        position: relative;
+        background-color: #ffffff;
+        border: 1px solid #999999;
+        border: 1px solid rgba(0, 0, 0, 0.2);
+        border-radius: 6px;
+        outline: none;
+        -webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+        box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+        background-clip: padding-box;
+        height: 630px;
+    }
+    .h4title {
+        background-color: #ececec;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    @media print {
+        @page {
+            size: landscape;
+        }
+
+        footer {
+            display: none;
+        }
+
+
+        .container {
+            padding-top: 0px !important;
+        }
+
+        #myfooter {
+            position: fixed;
+            width: 90%;
+            bottom: 20mm;
+        }
+
+        table {
+            page-break-before: auto;
+            page-break-inside: avoid;
+        }
+
+        tr {
+            page-break-inside: avoid;
+
+        }
+
+        thead {
+            /* color:gainsboro; */
+            background: gainsboro !important;
+            /* background-color: gainsboro !important; */
+        }
+
+        .col-sm-6,
+        .col-xs-6 {
+            width: 50% !important;
+            float: left;
+        }
+
+
+        html,
+        body {
+
+            margin: 0;
+            padding: 0;
+            /* writing-mode: tb-rl; */
+        }
+
+        /* body {
+            margin: 0;
+            padding: 0 !important;
+            min-width: 768px;
+        } */
+
+        /* .container {
+            width: auto;
+            min-width: 750px;
+        } */
+
+        #bottom-footer,
+        .formSearch,
+        .navbar {
+            display: none;
+        }
+
+        /* #mychart{
+            width: 50%;
+        } */
+    }
+</style>
+<div class="formSearch">
+    <form></form>
+    <form class="form-horizontal" role="form" novalidate name="formChart">
+        <legend>
+            <h3>{{'Staple Grade '|translate}}</h3>
+        </legend>
+        <div class="col-sm-12 form-group">
+            <div class="form-group">
+                <label class="col-sm-2 control-label">{{'dateFrom'|translate}}</label>
+                <div class="col-sm-3">
+                    <input required type="text" class="form-control" name="dateFrom" ng-model="dateFrom"
+                           date-picker>
+                </div>
+                <label class="col-sm-2 control-label">{{'dateTo'|translate}}</label>
+                <div class="col-sm-3">
+                    <input required class="form-control" name="dateTo" ng-model="dateTo"
+                            date-picker>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">{{'SampleName'|translate}}</label>
+                <div class="col-sm-3">
+                    <select required class="form-control" name="SampleName" ng-model="SampleName"
+                            ng-options="c.SampleName as c.Description_{{lang}} for c in sampleList">
+                        <!-- <option value="">-- ALL --</option> -->
+                    </select>
+                </div>
+
+                <label class="col-sm-2 control-label">{{'Line'|translate}}</label>
+                <div class="col-sm-3">
+                    <select class="form-control" style="float: none;" name="line" ng-model="Line"
+                            ng-options="c.Line as c.Linespc for c in LinesList">
+                        <option value="">-- ALL --</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">{{'MaterialNO'|translate}}</label>
+                <div class="col-sm-3">
+                    <input  type="text" class="form-control" name="MaterialNO" ng-model="MaterialNO">
+                </div>
+                <label class="col-sm-2 control-label">{{'Status'|translate}}</label>
+                <div class="col-sm-3">
+                    <select class="form-control" style="float: none;" name="Status" ng-model="Status"
+                            ng-options="c.ID as c.Name for c in ListStatus">
+
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">{{'GroupBarcode'|translate}}</label>
+                <div class="col-sm-3">
+                    <input  type="text" class="form-control" name="GroupBarcode" ng-model="GroupBarcode">
+                </div>
+
+            </div>
+            <div class="form-group">
+                <div class="col-sm-5"></div>
+                <label class="col-sm-2 control-label"></label>
+                <div class="col-sm-3">
+                    <!-- <input name="onlyOwner" type="checkbox" ng-model="onlyOwner"> {{'onlyOwner'|translate}} -->
+                    <button style="margin-left: 15px" type="button" class="btn btn-primary" ng-click="Search()"
+                            ng-disabled="formChart.$invalid">
+                        🔍{{'Search'|translate}}
+                    </button>
+                    <button style="margin-left: 15px" type="button" class="btn btn-primary" ng-click="ViewReport()"
+                            ng-disabled="formChart.$invalid">
+                        📊 {{'Report'|translate}}
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <div style="width: 100%;" ng-if="ModifyGrid.data.length==0 &&!reloadGrid">
+        <div id="Grid" ui-grid="gridOptions" ui-grid-resize-columns class="grid" ui-grid-selection
+             ui-grid-pagination
+             ui-grid-resize-columns
+             ui-grid-core ui-grid-exporter></div>
+    </div>
+</div>
+<div class="modal fade" id="ModifyGradeModal" role="dialog" aria-labelledby="myLargeModalLabel" data-backdrop="static"
+     data-keyboard="false" style="width: 100%">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-customs">
+            <div>
+
+                    <H4 class="h4title">{{'Modify Grade'|translate}}</H4>
+
+                <form class="form-horizontal model-form " name="form" style="padding-left: 15px;padding-right: 15px">
+
+                    <H4 class="h4title">{{'BarCode information'|translate}}</H4>
+
+                    <div style="width: 100%;" ng-if="ModifyGrid.data.length>0">
+                        <div id="ModifyGrid" ui-grid="ModifyGrid" class="grid" style="height: 255px;"
+                             ui-grid-selection ui-grid-pagination ui-grid-resize-columns ui-grid-core ui-grid-exporter></div>
+                    </div>
+                </form>
+                <H4 class="h4title">{{'Basic Information'|translate}}</H4>
+                <form class="form-horizontal" name="formContainer" style="padding-right: 50px;">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">{{'Grade'|translate}}</label>
+
+                            <div class="col-sm-4">
+                                <select class="form-control" style="float: none;" name="Grade" ng-model="Grade"
+                                        ng-options="c.ID as c.Name for c in GradeList" required>
+
+                                </select>
+                            </div>
+                        </div>
+                        <!-- B/L No -->
+
+                    </div>
+
+                </form>
+
+            </div>
+            <div class="modal-footer" style="margin-top: 150px;">
+
+                <button class="btn btn-default" ng-click="CloseModal()">{{'Close'|translate}}</button>
+                <button class="btn btn-primary" ng-disabled="formContainer.$invalid" ng-click="modalModifySubmit()">{{'saveSubmit'|translate}}
+                </button>
+
+            </div>
+
+        </div>
+    </div>
+    <!-- /.modal-dialog -->
+</div>

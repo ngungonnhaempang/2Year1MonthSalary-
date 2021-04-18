@@ -1,0 +1,134 @@
+<legend>
+    <h3>{{'ConQua_Qualification'|translate}}</h3>
+</legend>
+
+<table class="table table-bordered">
+    <tr>
+        <th style="width:20%;">{{'ContractorName'|translate}}:</th>
+        <td style="width:35%;"> {{project.ContractorName}}</td>
+
+        <th style="width:20%;">{{'ConQua_Rcode'|translate}}:</th>
+        <td style="width:35%;"> {{project.Rcode }}</td>
+    </tr>
+    <tr>
+         <th>{{'ConQua_CType'|translate}}: </th>
+        <td> {{project.ContracorKind }}</td>
+        <th> {{'Type'|translate}}:</th>
+        <td> {{project.ContracorType}}</td>
+
+    </tr>
+    <tr>
+        <th>{{'Contractor_Stardate'|translate}}:</th>
+        <td> {{project.StartDate}}</td>
+        <th>{{'Contractor_Enddate'|translate}}:</th>
+        <td> {{project.EndDate}}</td>
+    </tr>
+    <tr>
+        <th>{{'ConQua_Email'|translate}}:</th>
+        <td> {{project.EmailContractor}}</td>
+		<th>{{'EmailSafetyContractor'|translate}}:</th>
+        <td> {{project.EmailSafetyContractor}}</td>
+    </tr>
+</table>
+
+
+<h3 class="title"> {{'ContractorByEmloyee'|translate}}</h3>
+
+<table class="table">
+    <tr>
+        <th style="width:9%;">{{'Department'|translate}}:</th>
+        <td style="width:35%;">{{project.Specification}} </td>
+    </tr>
+    <tr>
+        <th> {{'ContractorByEmloyee'|translate}}:</th>
+        <td>{{project.ContractorByEmloyee}} - {{project.ResponsiblePerson}}</td>
+    </tr>
+    <tr>
+        <th> {{'InternalPhone'|translate}}:</th>
+        <td>{{project.InternalNumber}} </td>
+    </tr>
+    <tr>
+        <th> {{'Email'|translate}}:</th>
+        <td>{{project.Email}} </td>
+    </tr>
+    <tr>
+       <th>{{'Remark'|translate}}:</th>
+        <td>{{project.Remark}}</td>
+    </tr>
+	<tr>
+		<th ng-if="conquafile!=''">{{'File'|translate}}</th>
+        <td ng-if="conquafile!=''"><a href="\{{conquafile}}" target="_blank">{{conquafile}}</a></td>
+	</tr>
+</table>
+
+<div ng-if="_showEmployees==true">
+    <table style="margin-left:80%">
+        <tr>
+            <td style="width:5%;"> {{ 'Total_contractor' | translate }}:</td>
+            <td style="width:1%;"><span class="badge" style="background-color:#0786f5">{{rpCounter.count_total}}</span>
+            </td>
+        </tr>
+        <tr>
+            <td style="width:5%;">{{'Card_issued'|translate}}:</td>
+            <td style="width:1%;"><span class="badge" style="background:#428bca">{{rpCounter.count_issueCard}}</span> </td>
+        </tr>
+        <tr>
+            <td style="width:5%;"> {{ 'Expired_profile' | translate }}:</td>
+            <td style="width:1%;"> <span class="badge" style="background-color:#1afa52; color: black;">{{rpCounter.count_expireProfile}}</span></td>
+        </tr>
+        <tr>
+
+            <td style="width:5%;"> {{'Suspended_violate_HSE'|translate}}:</td>
+            <td style="width:1%;"> <span class="badge"
+                    style="background-color:rgb(245, 52, 52);">{{rpCounter.count_violate_HSE}}</span> </td>
+        </tr>
+		<tr>
+		 <td style="width:5%;"> {{'Suspended_violate_SECURITY'|translate}}:</td>
+            <td style="width:1%;"> <span class="badge"
+                    style="background-color:rgb(82, 170, 252);">{{rpCounter.count_violate_SECURITY}}</span> </td>
+        </tr>
+		<tr> 
+            <td style="width:5%;"> {{ 'LockCard' | translate }}:</td>
+            <td style="width:1%;">  <span class="badge"
+                                style="background-color:yellow; color: black;">{{rpCounter.count_lockCard}}</span> </td>
+        </tr>
+    </table>
+
+    <legend>
+        <h3 class="title">{{'Contractor_list'|translate}} </h3>
+    </legend>
+
+    <table class="table table-bordered table-striped" >
+        <tr>
+            <th>{{'No.'|translate}}</th>
+            <th>{{'VoucherID'|translate}}</th>
+            <th>{{'ConName'|translate}}</th>
+            <th> {{'IdCard'|translate}}</th>
+            <th> {{'Sex'|translate}}</th>
+            <th style="width:10%;"> {{'Birthday'|translate}}</th>
+            <th>{{'Job'|translate}}</th>
+			<th>{{'Insurance'|translate}}</th>
+            <th>{{'SafetyCer'|translate}}</th>
+			<th ng-if="isHSEUser"> {{'Mark'|translate}}</th>
+            <th>{{'Remark'|translate}}</th>
+            <th> {{'Status'|translate}}</th>
+
+        </tr>
+        <tbody ng-repeat="data in EmployeeList">
+            <tr>
+                <td>{{$index + 1}}</td>
+                <td>{{data.VoucherID}}</td>
+                <td>{{data.Name}}</td>
+                <td>{{data.IdCard}}</td>
+                <td>{{data.Sex}}</td>
+                <td>{{data.Birthday}}</td>
+                <td>{{data.Job}}</td>
+				<td>{{data.InsuranceDuration}}</td>
+                <td>{{data.SafetyCerDuration}}</td>
+				<td ng-if="isHSEUser">{{data.Mark}}</td>
+                <td>{{data.Remark}}</td>
+                <td>{{data.StatusRemark}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

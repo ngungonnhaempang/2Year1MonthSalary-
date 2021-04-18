@@ -1,0 +1,22 @@
+<div ng-if="isUpdateSubmit">
+	<table class="table table-bordered">
+		<tr style="background-color: #E8F5FE; ">
+			<th style="width:25%">{{'Person_return'|translate}}</th>
+			<th style="width:15%">{{'Time'|translate}}</th>
+			<th>{{'Reason_return'|translate}}</th>
+		</tr>
+
+		<tr>
+			<td>{{processLogs.TaskName|translate}}:
+				<br><b>{{processLogs.UserId}} - {{processLogs.UserName}}</b>
+			</td>
+			<td>{{processLogs.FormatStamp}} </td>
+			<td>
+				<p ng-repeat="h in processLogs.HistoryField" style="margin-top: -10px">
+					<span ng-if="h.Name.contains('DenyReason')"
+						style="color: crimson; font-weight: bold; white-space: pre-line;">{{h.Value}}</span>
+				</p>
+			</td>
+		</tr>
+	</table>
+</div>

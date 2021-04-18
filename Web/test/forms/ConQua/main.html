@@ -1,0 +1,140 @@
+﻿<style>
+    .contractorMenu {
+        font-family: open sans, sans-serif;
+        font-size: 15pt;
+        margin-top: 100px;
+        padding-left: 190px;
+        height: 440px;
+    }
+
+    .avatar {
+        width: 120px;
+        border-radius: 100px;
+        background-color: darkseagreen;
+        margin-left: 20px;
+    }
+
+    .avatar:hover {
+        box-shadow: 0 6px 5px RGBA(0, 0, 0, .23);
+    }
+
+    .link {
+        display: inline-block;
+        width: 60%;
+        text-align: center;
+    }
+
+    a:link {
+        color: black;
+        font-weight: 550;
+        text-decoration: none;
+    }
+
+    a:hover {
+        color: gray;
+        text-decoration: none;
+    }
+
+    .top{
+        margin-top: 50px;
+    }
+</style>
+<div class="container">
+    <div class="contractorMenu">
+        <div class="col-sm-12">
+            <div class="col-sm-4">
+                <a href="javascript:void(0)" ng-click="btCheckAuth('GateContractorInfoProcessQuery','/ConQua/Index')">
+                    <img src="/css/image/contractor/contract.png" class="avatar" style="margin-left: 20px;">
+                    <br>
+                    <span class="link">
+                        {{'Register_Contractor'| translate}}
+                    </span>
+                </a>
+
+            </div>
+
+            <div class="col-sm-4">
+                <a href="javascript:void(0)"
+                    ng-click="btCheckAuth('GateContractorQuaProcessQuery','/ContractorQua/Index') ">
+                    <img src="/css/image/contractor/worker.png" class="avatar">
+                    <br>
+                    <span class="link">
+                        {{'Register_C_Worker'| translate}}
+                    </span>
+                </a>
+            </div>
+
+            <div class="col-sm-4">
+                <a href="javascript:void(0)" ng-click="btCheckAuth('GateContractorEHS','/Contractor/StatisticReport') ">
+                    <img src="/css/image/contractor/Statistic.png" class="avatar">
+                    <br>
+                    <span class="link">
+                        {{'Contractor_Statistic'| translate}}
+                    </span>
+                </a>
+
+            </div>
+        </div>
+      
+
+
+        <div class="col-sm-12">
+            <div class="col-sm-4 top" >
+                <a href="javascript:void(0)" ng-click="btCheckAuth('GateContractorInfoProcessQuery','/ConQua/Main')">
+                    <img src="/css/image/contractor/Calendar.png" class="avatar">
+                    <br>
+                    <span class="link">
+                        {{'Đăng ký thi công một ngày'| translate}}
+                    </span>
+                </a>
+
+            </div>
+
+            <div class="col-sm-4 top">
+                <a href="javascript:void(0)" ng-click="btCheckAuth('GateContractorInfoProcessQuery','/ConQua/Main')">
+                    <img src="/css/image/contractor/OT.png" class="avatar">
+                    <br>
+                    <span class="link">
+                        {{'Đăng ký tăng ca'| translate}}
+                    </span>
+                </a>
+
+            </div>
+
+            <div class="col-sm-4 top">
+                <a href="javascript:void(0)"
+                    ng-click="btCheckAuth('GateContractorInfoProcessQuery','/ConQua/searchContractor')">
+                    <img src="/css/image/contractor/group-people.png" class="avatar">
+                    <br>
+                    <span class="link">
+                        {{'Quản lý danh mục nhà thầu'| translate}}
+                    </span>
+                </a>
+            </div>
+        </div>
+
+        <div class="col-sm-12">
+            <div class="col-sm-4 top" style="margin-left: -33.3%;">
+                <a href="javascript:void(0)"
+                    ng-click="btCheckAuth('GateContractorDenounce','/ContractorDiscipline/Denounce')">
+                    <img src="/css/image/contractor/report.png" class="avatar" style="background-color: #EB5151;">
+                    <br>
+                    <span class="link">
+                        {{'DenounceContractorViolation'| translate}}
+                    </span>
+                </a>
+            </div>
+
+            <div class="col-sm-4 top" >
+                <a href="javascript:void(0)"
+                    ng-click="btCheckAuth('GateContractorDenounce','/ContractorDiscipline/Denounce')">
+                    <img src="/css/image/contractor/invalidWorker.png" class="avatar">
+                    <br>
+                    <span class="link">
+                        {{'Đăng ký công nhân không đủ điều kiện'| translate}}
+                    </span>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

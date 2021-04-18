@@ -1,0 +1,167 @@
+<script type="text/javascript">
+    function Modification_check($scope, EngineApi, $http, $timeout, Notifications, $upload, $compile, $filter, Auth, ModificationService, $routeParams, GateGuest, $translate) {
+        console.log("VoucherAccount:" + $scope.variable.VoucherID);
+        console.log($scope.variable);
+        var lang = window.localStorage.lang;
+        $scope.checker = '';
+        $routeParams.code = "Print";
+
+        if ($scope.variable.VoucherType == "MD") {
+            $routeParams.MD_AppID = $scope.variable.VoucherID
+        }
+        else if ($scope.variable.VoucherType == "RA") {
+            $routeParams.Risk_AppID = $scope.variable.VoucherID
+        }
+        else if ($scope.variable.VoucherType == "BE") {
+            $routeParams.Evaluation_AppID = $scope.variable.VoucherID
+
+        }
+        else if ($scope.variable.VoucherType == "CE") {
+            $routeParams.Closing_AppID = $scope.variable.VoucherID
+        }
+
+        // EngineApi.getTasks().getList({ processInstanceId: $routeParams.pid }, function (res) {
+        //     $scope.currentTask = res[0];
+
+        //     if ($scope.currentTask.name == 'Manager Check') {
+        //         if ($scope.variable.VoucherType == "CE" || $scope.variable.VoucherType == "BE") {
+        //             $routeParams.code = "Checker";
+        //         }
+        //         $scope.checker = 'Leader'
+        //         console.log("checker: " + $scope.checker)
+        //         $scope.MailKind = 'LeaderSubmit'
+        //         return
+        //     }
+        //     else if ($scope.currentTask.name == 'HSE Safety & Health Section') {
+        //         if ($scope.variable.VoucherType == "CE" || $scope.variable.VoucherType == "BE") {
+        //             $routeParams.code = "Checker";
+        //         }
+
+        //         $scope.checker = 'hseSafety'
+        //         console.log("checker: " + $scope.checker)
+        //         $scope.MailKind = 'hse_divisionManager'
+                
+        //         return
+
+        //     } else if ($scope.currentTask.name == 'HSE Environmental Section') {
+        //         if ($scope.variable.VoucherType == "CE" || $scope.variable.VoucherType == "BE") {
+        //             $routeParams.code = "Checker";
+        //         }
+        //         $scope.checker = 'hseEnvironment'
+        //         console.log("checker: " + $scope.checker)
+        //         $scope.MailKind = 'hse_divisionManager'
+                
+        //         return
+
+        //     } else if ($scope.currentTask.name == 'HSE Fire Fighting Section') {
+        //         if ($scope.variable.VoucherType == "CE" || $scope.variable.VoucherType == "BE") {
+        //             $routeParams.code = "Checker";
+        //         }
+
+        //         $scope.checker = 'hseFire'
+        //         console.log("checker: " + $scope.checker)
+        //         $scope.MailKind = 'hse_divisionManager'
+        //         return
+
+        //     } else if ($scope.currentTask.name == 'HSE Division Manager Check') {
+        //         $scope.checker = 'hseDivisionManager'
+        //         console.log("checker: " + $scope.checker)
+        //         $scope.MailKind = 'hse_FactoryManager'
+        //         return
+
+        //     } else if ($scope.currentTask.name == 'HSE Factory Manager Check') {
+        //         $scope.checker = 'hseManager'
+        //         console.log("checker: " + $scope.checker)
+        //         $scope.MailKind = 'vicePresident'
+        //         return
+        //     } else {
+        //         $scope.checker = 'Vice'
+        //         console.log("checker: " + $scope.checker)
+        //     }
+        // })
+
+
+        if ($scope.variable) {
+            debugger;
+            for (let index = 0; index < $scope.variable.LeaderArray.length; index++) {
+                const element = $scope.variable.LeaderArray[index];
+                if (element.contains(Auth.username)) {
+                    $scope.checker = 'Leader'
+                    break
+                }
+            }
+
+            if ($scope.checker == 'Leader') {
+                if ($scope.variable.VoucherType == "CE" || $scope.variable.VoucherType == "BE") {
+                    $routeParams.code = "Checker";
+                }
+                console.log("checker: " + $scope.checker)
+                $scope.MailKind = 'LeaderSubmit'
+                return
+            }
+            else if ($scope.variable.hseSafety.contains(Auth.username)) {
+                if ($scope.variable.VoucherType == "CE" || $scope.variable.VoucherType == "BE") {
+                    $routeParams.code = "Checker";
+                }
+                $scope.checker = 'hseSafety'
+                console.log("checker: " + $scope.checker)
+                $scope.MailKind = 'hse_divisionManager'
+
+                return
+
+            } else if ($scope.variable.hseEnvironment.contains(Auth.username)) {
+                if ($scope.variable.VoucherType == "CE" || $scope.variable.VoucherType == "BE") {
+                    $routeParams.code = "Checker";
+                }
+                $scope.checker = 'hseEnvironment'
+                console.log("checker: " + $scope.checker)
+                $scope.MailKind = 'hse_divisionManager'
+                return
+
+            } else if ($scope.variable.hseFire.contains(Auth.username)) {
+                if ($scope.variable.VoucherType == "CE" || $scope.variable.VoucherType == "BE") {
+                    $routeParams.code = "Checker";
+                }
+                $scope.checker = 'hseFire'
+                console.log("checker: " + $scope.checker)
+                $scope.MailKind = 'hse_divisionManager'
+                return
+
+            } else if ($scope.variable.hseDivisionManager.contains(Auth.username)) {
+                $scope.checker = 'hseDivisionManager'
+                $routeParams.code = "Print";
+                console.log("checker: " + $scope.checker)
+                $scope.MailKind = 'hse_FactoryManager'
+                return
+
+            } else if ($scope.variable.hseFactoryManager.contains(Auth.username)) {
+                $scope.checker = 'hseManager'
+                $routeParams.code = "Print";
+                console.log("checker: " + $scope.checker)
+                $scope.MailKind = 'vicePresident'
+                return
+            } else {
+                $scope.checker = 'Vice'
+                console.log("checker: " + $scope.checker)
+            }
+        }
+    }
+</script>
+
+<div ng-controller="Modification_check">
+    <div ng-if="variable.VoucherType=='MD'">
+        <view-modification></view-modification>
+    </div>
+
+    <div ng-if="variable.VoucherType=='RA'">
+        <view-risk></view-risk>
+    </div>
+
+    <div ng-if="variable.VoucherType=='BE'">
+        <view-evaluation></view-evaluation>
+    </div>
+
+    <div ng-if="variable.VoucherType=='CE'">
+        <view-closing></view-closing>
+    </div>
+</div>

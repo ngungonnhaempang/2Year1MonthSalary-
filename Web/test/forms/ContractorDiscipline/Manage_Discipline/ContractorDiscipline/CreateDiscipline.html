@@ -1,0 +1,507 @@
+<style>
+    .form-group {
+        margin-bottom: 14px;
+    }
+
+    .form-horizontal {
+        font-size: 14pt;
+        font-family: 'Times New Roman', 'DFKai-SB';
+    }
+
+    .buttonApp {
+        font-weight: bold;
+        font-family: tahoma, 'DFKai-SB';
+        box-shadow: 4px 2px 2px 2px #999
+    }
+
+    .font {
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif, 'DFKai-SB';
+    }
+
+    .title {
+        width: 101%;
+        background-color: #E8F5FE;
+        padding: 5px 0px 5px 10px;
+        border: 1px solid black;
+        border-radius: 6px;
+    }
+
+    table,
+    th,
+    td {
+        border: 1px solid rgb(139, 139, 139);
+        padding: 10px;
+        text-align: center;
+    }
+
+    textarea[type="text"],
+    input[type="text"] {
+        font-size: 17px;
+    }
+
+    .select2-container-multi .select2-choices .select2-search-choice {
+        line-height: 20px;
+    }
+
+    [class^='select2'] {
+        border-radius: 5px !important;
+    }
+
+    .my-custom-scrollbar {
+        position: relative;
+        height: 200px;
+        overflow: auto;
+    }
+
+    .wrapper-scroll-y {
+        display: block;
+    }
+
+    .list-group-item:hover {
+        color: black;
+        background-color: cornsilk;
+    }
+
+    .accordion .glyphicon {
+        margin-right: 0.5rem;
+        vertical-align: text-top;
+        color: crimson;
+    }
+
+    .card-header {
+        margin-left: 180px;
+    }
+
+    .btn-default {
+        border-color: white;
+        font-weight: bolder;
+        font-family: 'Times New Roman', 'DFKai-SB';
+        font-size: 12pt;
+    }
+</style>
+
+
+
+<div ng-if="!Print && !Payment">
+    <form class="form-horizontal" novalidate autocomplete="off" name="Disciplineform" style="margin-top:15px;"
+        enctype="multipart/form-data">
+        <legend>
+            <H2 class="appname"> {{'DisciplineApp'|translate}} - {{ISO_AppCode}}</H2>
+        </legend>
+
+        <div style="margin-top: 15px;" ng-include="'forms/ContractorDiscipline/ReasonReject.html'">
+        </div>
+
+        <div class="form-group">
+            <H4 class="title font">
+                <img src="/css/image/info.png" style="width:20px;">
+                {{'InfoViolatingContractor'|translate}}
+            </H4>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-4">
+                <input type="checkbox" ng-model="data.IsConOther" ng-change="clearData()" />
+                <span style="color:red;font-size: 15pt">{{'NotOnSystem'|translate}}</span>
+            </div>
+        </div>
+
+        <div class="form-group" ng-if="data.IsConOther">
+            <label class="col-sm-2 control-label">* {{'ContractorName'|translate}}</label>
+            <div class="col-sm-10">
+                <input class="form-control" type="text" ng-model="data.ContractorName"
+                    ng-keyup="suggestionContractor(data.ContractorName)" required />
+                <ul class="list-group wrapper-scroll-y my-custom-scrollbar" ng-model="hidethis" ng-hide="hidethis">
+                    <li class="list-group-item" ng-repeat="contractor in filterContractorName"
+                        ng-click="fillTextboxContractor(contractor.ContractorName)">{{contractor.ContractorName}}</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="form-group" ng-if="!data.IsConOther">
+            <label class="col-sm-2 control-label">* {{'ContractorName'|translate}}</label>
+            <div class="col-sm-10">
+                <select ng-model="data.ContractorID" ui-select2 style="width:100%" class="dropList1"
+                    ng-change="setContractor(data.ContractorID)">
+                    <option ng-repeat="c in AllContractorList | filter: {Isvalid: 1}" value="{{c.ContractorID}}">
+                        {{c.ContractorName}}
+                    </option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label">* {{'ConstructionItems'|translate}}</label>
+            <div class="col-sm-10">
+                <textarea class="form-control" type="text" ng-model="data.ConstructionItems" required></textarea>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label">* {{'ConQua_Email'|translate}}</label>
+            <div class="col-sm-4">
+                <input class="form-control" type="text" ng-model="data.EmailContractor" required />
+            </div>
+
+            <label class="col-sm-2 control-label">{{'ConQua_Rcode'|translate}}</label>
+            <div class="col-sm-4">
+                <input class="form-control" type="text" ng-model="data.ContractorCode" />
+            </div>
+        </div>
+
+
+        <!-- InfoPersonInCharge -->
+        <div class="form-group">
+            <H4 class="title font">
+                <img src="/css/image/list_employee.png" style="width:20px;">
+                {{'InfoPersonInCharge'|translate}}
+            </H4>
+        </div>
+
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label">* {{'ConQua_paraDepartment'|translate}}</label>
+            <div class="col-sm-10">
+                <select ng-model="data.Department" ui-select2 style="width:100%"
+                    ng-change="showEmployeeList(data.Department)" ng-disabled="!data.IsConOther" required>
+                    <option ng-repeat="c in DepartmentList" value="{{c.DepartmentID}}">
+                        {{c.DepartmentID}} - {{c.Specification_VN}} {{c.Specification_TW}}
+                    </option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class=" col-sm-2 control-label">* {{'EmployeeID'|translate}}</label>
+            <div class="col-sm-4">
+                <input ng-if="!data.IsConOther" class="form-control" type="text" ng-model="data.EmployeeName" required
+                    disabled />
+                <select ng-if="data.IsConOther" style="width:100%" ui-select2 ng-model="data.ContractorByEmployee"
+                    ng-change="getInfoPersonInCharge()" required>
+                    <option ng-repeat="value in listEmployee" value="{{value.EmployeeID}}">
+                        {{value.EmployeeID}} - {{value.Name}}
+                    </option>
+                </select>
+            </div>
+
+            <label class="col-sm-2 control-label">* {{'Email'|translate}}</label>
+            <div class="col-sm-4">
+                <input class="form-control" type="text" ng-model="data.Email" required />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <H4 class="title font">
+                <img src="/css/image/info.png" style="width:20px;">
+                {{'DetailViolation'|translate}}
+            </H4>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label">* {{'TimeViolation'|translate}}</label>
+            <div class="col-sm-4">
+                <div class='input-group date'>
+                    <input type='text' id="time-prc-ac" class="form-control" date-picker time="Y-m-d H:i" max="0"
+                        ng-model="data.TimeViolation" required />
+                    <span class="input-group-addon">
+                        <label class="glyphicon glyphicon-calendar" style="color: grey" for='time-prc-ac'></label>
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label">* {{'LocationViolation'|translate}}</label>
+            <div class="col-sm-10">
+                <input class="form-control" type="text" ng-model="data.LocationViolation" required />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label">* {{'Evidence'|translate}}</label>
+            <div class="col-sm-7">
+                <input type="file" ng-file-select="UploadFileHSE($files,'DisciplineEvidence')" id="file_Discipline"
+                    style="display:none !important" multiple accept="image/*">
+
+                <button id="btn_file_Discipline" class="btn btn-info" style="display:inline-block;" type="button"
+                    ng-click="btnfile('file_Discipline','file_name_Discipline')">
+                    <i class="glyphicon glyphicon-plus-sign fas-ct"></i> File
+                </button>
+
+                <span><input type="checkbox" ng-model="data.listfile_Evidence" style="vertical-align: text-top;">
+                    {{'ShowFile'|translate}} <code> ({{'OnlyImg'|translate}})</code>
+                </span>
+
+                <div class="progress progress-striped active" ng-if="showProcessEvidence"
+                    style="margin-top: 2px;margin-bottom: 2px;height: 15px;" id="MyFileUploadProcessBarDiv">
+                    <div id="MyFileUploadProcessBar" class="progress-bar progress-bar-success" role="progressbar"
+                        aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;">
+                        <span class="sr-only" id="MyFileUploadProcessBarText"></span>
+                    </div>
+                </div>
+
+
+                <table ng-show="data.listfile_Evidence" class="table table-bordered table-striped mb-0"
+                    style="margin-top:10px;">
+                    <tr ng-repeat="step in listfileEvidence">
+                        <td style="text-align: left;"><a href="/{{step.name}}" target="_blank">{{step.name}}</a>
+                        </td>
+                        <td style="text-align: center;">
+                            <a ng-click="removeFile($index,'DisciplineEvidence')">
+                                <span class="glyphicon glyphicon-remove" style="color: red;"></span>
+                            </a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label">* {{'RelatedRecords'|translate}}</label>
+            <div class="col-sm-7">
+                <input type="file" ng-file-select="UploadFileHSE($files,'DisciplineRecords')"
+                    id="file_DisciplineDocument" style="display:none !important" multiple accept=".pdf, .mp4">
+
+                <button id="btn_file_DisciplineDocument" class="btn btn-info" style="display:inline-block;"
+                    type="button" ng-click="btnfile('file_DisciplineDocument','file_name_DisciplineDocument')">
+                    <i class="glyphicon glyphicon-plus-sign fas-ct"></i> File
+                </button>
+
+                <span><input type="checkbox" ng-model="data.listfile_Records" style="vertical-align: text-top;">
+                    {{'ShowFile'|translate}} <code> ({{'OnlyPdfAndMp4'|translate}})</code>
+                </span>
+
+                <div class="progress progress-striped active" ng-if="showProcessRecord"
+                    style="margin-top: 2px;margin-bottom: 2px;height: 15px;" id="MyFileUploadProcessBarDiv">
+                    <div id="MyFileUploadProcessBar" class="progress-bar progress-bar-success" role="progressbar"
+                        aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;">
+                        <span class="sr-only" id="MyFileUploadProcessBarText"></span>
+                    </div>
+                </div>
+
+                <table ng-show="data.listfile_Records" class="table table-bordered table-striped mb-0"
+                    style="margin-top:10px;">
+                    <tr ng-repeat="step in listfileRecords">
+                        <td style="text-align: left;"><a href="/{{step.name}}" target="_blank">{{step.name}}</a>
+                        </td>
+                        <td style="text-align: center;">
+                            <a ng-click="removeFile($index,'DisciplineRecords')">
+                                <span class="glyphicon glyphicon-remove" style="color: red;"></span>
+                            </a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label"> {{'linkFile'|translate}}</label>
+            <div class="col-sm-10">
+                <input class="form-control" type="text" ng-model="data.LinkFile" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label">* {{'CategoryViolation'|translate}}</label>
+        </div>
+
+        <div class="accordion" id="accordionExample">
+            <div class="card">
+                <div class="card-header" id="headingOne">
+                    <h2 class="mb-0">
+                        <button class="btn btn-default collapsed" type="button" data-toggle="collapse"
+                            data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne"
+                            ng-click="btnShowCategory('headingOne')">
+                            <i class="glyphicon glyphicon-plus-sign"></i> ATVS, PCCC 安全、消防 處罰標準
+                        </button>
+                    </h2>
+                </div>
+
+                <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                    <div class="card-body">
+                        <div class="form-group" ng-repeat="p in ParentList| filter : {'CategoryType' : '1'}">
+                            <div class="col-sm-offset-2 col-sm-5">
+                                <input type="checkbox" ng-model="p.isSelect" ng-change="checkParent(p)" /> {{p.Content}}
+                            </div>
+
+                            <div class="col-sm-4" ng-if="p.isSelect">
+                                <select ng-model="data.ChildIDlist" ui-select2 style="width:100%" multiple
+                                    placeholder="----{{'SelectMultiple'|translate}}----">
+                                    <option ng-repeat="c in ChildList | filter: {Parent:p.Code}:true" value="{{c.ID}}">
+                                        {{c.Content}}
+                                    </option>
+                                </select>
+                            </div>
+
+                            <div class="col-sm-1" ng-if="p.isSelect">
+                                <button class="btn btn-success" ng-click="addDiscipline(data.ChildIDlist)">
+                                    <i class="glyphicon glyphicon-plus-sign" style="color: white;"></i>
+                                    {{'Add'|translate}}</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header" id="headingTwo">
+                    <h2 class="mb-0">
+                        <button class="btn btn-default collapsed" type="button" data-toggle="collapse"
+                            data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"
+                            ng-click="btnShowCategory('headingTwo')">
+                            <i class="glyphicon glyphicon-plus-sign"></i> Môi trường 環境處罰標準
+                        </button>
+                    </h2>
+                </div>
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                    <div class="card-body">
+                        <div class="form-group" ng-repeat="p in ParentList| filter : {'CategoryType' : '2'}">
+                            <div class="col-sm-offset-2 col-sm-5">
+                                <input type="checkbox" ng-model="p.isSelect" ng-change="checkParent(p)" /> {{p.Content}}
+                            </div>
+
+                            <div class="col-sm-4" ng-if="p.isSelect">
+                                <select ng-model="data.ChildIDlist" ui-select2 style="width:100%" multiple
+                                    placeholder="----{{'SelectMultiple'|translate}}----">
+                                    <option ng-repeat="c in ChildList | filter: {Parent:p.Code}:true" value="{{c.ID}}">
+                                        {{c.Content}}
+                                    </option>
+                                </select>
+                            </div>
+
+                            <div class="col-sm-1" ng-if="p.isSelect">
+                                <button class="btn btn-success" ng-click="addDiscipline(data.ChildIDlist)">
+                                    <i class="glyphicon glyphicon-plus-sign" style="color: white;"></i>
+                                    {{'Add'|translate}}</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header" id="headingThree">
+                    <h2 class="mb-0">
+                        <button class="btn btn-default collapsed" type="button" data-toggle="collapse"
+                            data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree"
+                            ng-click="btnShowCategory('headingThree')">
+                            <i class="glyphicon glyphicon-plus-sign"></i> Vi phạm khác 其他違規
+                        </button>
+                    </h2>
+                </div>
+
+                <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                    <div class="card-body">
+                        <div class="form-group" ng-repeat="p in ParentList| filter : {'CategoryType' : '3'}">
+                            <div class="col-sm-offset-2 col-sm-5">
+                                <input type="checkbox" ng-model="p.isSelect" ng-change="checkParent(p)" /> {{p.Content}}
+                            </div>
+
+                            <div class="col-sm-4" ng-if="p.isSelect">
+                                <select ng-model="data.ChildIDlist" ui-select2 style="width:100%" multiple
+                                    placeholder="----{{'SelectMultiple'|translate}}----">
+                                    <option ng-repeat="c in ChildList | filter: {Parent:p.Code}:true" value="{{c.ID}}">
+                                        {{c.Content}}
+                                    </option>
+                                </select>
+                            </div>
+
+                            <div class="col-sm-1" ng-if="p.isSelect">
+                                <button class="btn btn-success" ng-click="addDiscipline(data.ChildIDlist)">
+                                    <i class="glyphicon glyphicon-plus-sign" style="color: white;"></i>
+                                    {{'Add'|translate}}</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="form-group" style="padding-right: 10px;">
+            <table ng-if="DisciplineList.length>0">
+                <tr style="width:100%;background-color: lightgrey;">
+                    <th style="width:75%">{{'ContentViolation'|translate}}</th>
+                    <th style="width:10%">{{'FineAmount'|translate}}</th>
+                    <th style="width:10%">{{'NumberOfViolations'|translate}}</th>
+                    <th style="width:5%">{{'Remove'|translate}}</th>
+                </tr>
+
+                <tr ng-repeat="dis in DisciplineList">
+                    <td style="text-align: left;">{{dis.Content}}</td>
+
+                    <td ng-if="!dis.noFine">{{Convert(dis.Fine)}}</td>
+
+                    <td ng-if="dis.noFine">
+                        <input type="number" field-validate class="form-control" ng-model="dis.Fine" min='1'
+                            ng-change="setTotal()" required>
+                    </td>
+
+                    <td>
+                        <input type="number" field-validate class="form-control" ng-model="dis.Quantity" min='1'
+                            ng-change="setTotal()" required>
+                    </td>
+
+                    <td>
+                        <button class="btn btn-danger" ng-click="deleteDiscipline(dis)">
+                            <i class="glyphicon glyphicon-trash" style="color: white;"></i>
+                        </button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label">* {{'DescriptionViolation'|translate}}</label>
+            <div class="col-sm-10">
+                <textarea class="form-control" type="text" rows="7" ng-model="data.DescriptionViolation"
+                    required></textarea>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-12 control-label" style="margin-top: 20px; margin-bottom: 10px;">*
+                {{'TotalFine'|translate}}:<span style="background-color: yellow;">
+                    {{Convert(data.TotalFine)}} (VNĐ)</span></label>
+        </div>
+
+        <div class="modal-footer">
+            <div class="form-group" ng-if="!isUpdateSubmit">
+                <button class="btn btn-primary buttonApp" ng-disabled="Disciplineform.$invalid || checkValidate()"
+                    ng-click="saveVoucher('N')">
+                    <img src="/css/image/savefile.png" style="width:25px;">
+                    {{'saveDraft'|translate}}
+                </button>
+
+                <button class="btn btn-warning buttonApp" ng-disabled="Disciplineform.$invalid || checkValidate()"
+                    ng-click="saveVoucher('Submit')">
+                    <img src="/css/image/send.png" style="width:25px;">
+                    {{'submit'|translate}}
+                </button>
+
+                <button class="btn btn-default buttonApp" data-dismiss="modal" ng-click="goBack()">
+                    <img src="/css/image/comeback.png" style="width:25px;">
+                    {{'goBack'|translate}}
+                </button>
+            </div>
+
+            <div class="form-group" ng-if="isUpdateSubmit">
+                <button class="btn btn-warning buttonApp" ng-disabled="Disciplineform.$invalid || checkValidate()"
+                    ng-click="saveVoucher('ReSubmit')">
+                    <img src="/css/image/send.png" style="width:25px;">
+                    {{'submit'|translate}}
+                </button>
+
+                <button class="btn btn-danger buttonApp" style="height: 40px;" ng-click="deleteRejectApp()">
+                    <i class="glyphicon glyphicon-trash"></i>
+                    {{'MD_Cancel'|translate}}
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div ng-if="Print || Payment">
+    <div ng-include="'forms/ContractorDiscipline/Manage_Discipline/ContractorDiscipline/PrintDiscipline.html'">
+    </div>
+</div>

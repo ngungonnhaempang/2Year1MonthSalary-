@@ -1,0 +1,256 @@
+<style>
+    #table-wrapper {
+        position: relative;
+    }
+
+    #table-scroll {
+        height: 150px;
+        overflow: auto;
+        margin-top: 20px;
+    }
+
+    #table-wrapper table {
+        width: 100%;
+    }
+
+    #table-wrapper table * {
+        color: black;
+    }
+
+    #table-wrapper table thead th .text {
+        position: absolute;
+        top: -20px;
+        z-index: 2;
+        height: 20px;
+        width: 35%;
+    }
+
+    .title {
+        width: 101%;
+        background-color: #ececec;
+        padding: 5px 0px 5px 10px;
+        border: 1px solid #ececec;
+        border-radius: 6px;
+    }
+
+    .calender {
+        color: grey;
+        font-size: 29px;
+    }
+
+    .calender:hover {
+        cursor: pointer;
+    }
+
+    .btn-ct-ac {
+        font-weight: bold;
+        font-family: tahoma;
+    }
+
+    .my-custom-scrollbar {
+        position: relative;
+        height: 117px;
+        overflow: auto;
+    }
+
+    .table-wrapper-scroll-y {
+        display: block;
+    }
+
+    a:hover {
+        cursor: pointer;
+    }
+</style>
+
+<H3 class="text-center" ng-hide="readEmployer">{{'Register_Contractor'|translate}}</H3>
+<H3 class="text-center" ng-show="_signRenew">{{'Renew'|translate}}</H3>
+<form class="form-horizontal model-form " autocomplete="off" name="ConQuaform" style="margin-top:15px;"
+    enctype="multipart/form-data" novalidate>
+
+
+    <H4 class="title"> {{'ConQua_Info'|translate}}</H4>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">* {{'ContractorName'|translate}}</label>
+        <div class="col-sm-10">
+            <!-- <input class="form-control" type="text" ng-model="projects.ContractorName" required
+                ng-blur="checkContractorName()" ng-disabled="readUpdateQ" />
+            <span ng-show="checkremove" class="glyphicon glyphicon-remove" style="color: red; position: absolute;
+                right: 5px;"></span> -->
+
+            <select style="width:100%; height: 120%" ui-select2 ng-model="projects.ContractorID">
+                <option ng-repeat="c in AllContractorList | filter: {Isvalid: 0}" value="{{c.ContractorID}}">
+                    {{c.ContractorName}}</option>
+            </select>
+        </div>
+
+
+
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">* {{'Mô tả gói thầu'|translate}}</label>
+        <div class="col-sm-10">
+            <textarea class="form-control" type="text" rows="3" ng-model="projects.Description" required/>
+        </div>
+
+        <!-- <label class="col-sm-2 control-label">*{{'ConQua_CType'|translate}}</label>
+        <div class="col-sm-4">
+            <select class="form-control" type="text" name="Type" ng-model="projects.Type" max="0" required
+                ng-disabled="readUpdateQ" ng-options="t.ID as t.Type for t in CTypeList">
+            </select>
+        </div> -->
+       
+       
+
+    </div>
+
+
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label ">* {{'BeginDate' | translate}} </label>
+        <div class='input-group date col-ls-4 col-sm-4'>
+            <input type='text' class="form-control" date-picker min="1" ng-disabled="readUpdateQ"
+                ng-model="projects.StartDate" required />
+            <span class="input-group-addon">
+                <label class="glyphicon glyphicon-calendar" style="color: grey" for='DATE'></label>
+            </span>
+        </div>
+
+
+        <!-- <label class="col-sm-2 control-label">*{{'ConQua_CKind'|translate}}</label>
+        <div class="col-sm-4">
+            <select class="form-control" type="text" name="Ctype" ng-model="projects.CType" max="0" required
+                ng-disabled="readUpdateQ" ng-options="t.ID as t.CType for t in KindList">
+            </select>
+        </div> -->
+        <label class="col-sm-2 control-label ">* {{'EndDate' | translate}} </label>
+        <div class='input-group date col-ls-4 col-sm-4'>
+            <input type='text' class="form-control" date-picker min="1" ng-model="projects.EndDate"
+                ng-disabled="readUpdateQ" required />
+            <span class="input-group-addon">
+                <label class="glyphicon glyphicon-calendar" style="color: grey" for='DATE'></label>
+            </span>
+        </div>
+
+    </div>
+
+    <!-- <div class="form-group">
+
+        
+        <label class="col-sm-2 control-label ">* {{'ConQua_Email'|translate}} </label>
+        <div class="col-sm-4">
+            <input class="form-control" type="text" ng-model="projects.EmailContractor" name="EmailContractor"
+                ng-disabled="_IsRenew || _signRenew" required />
+        </div>
+    </div> -->
+
+    <!-- <div class="form-group">
+        
+        <label class="col-sm-2 control-label ">* {{'EmailSafetyContractor'|translate}} </label>
+        <div class="col-sm-4">
+            <input class="form-control" type="text" ng-model="projects.EmailSafetyContractor"
+                ng-disabled="_IsRenew || _signRenew" required />
+        </div>
+    </div> -->
+    <div class="form-group" ng-show="!readUpdateQ">
+        <label class="col-sm-2 control-label">{{'ConQua_Rcode'|translate}}</label>
+        <div class="col-lg-4 col-sm-4">
+            <input type="text" class="form-control" ng-model="projects.Rcode" name="Rcode"
+                ng-disabled="_IsRenew || _signRenew" />
+        </div>
+        
+        <label class="col-sm-2 control-label">{{'File'|translate}}</label>
+        <div class="col-lg-1">
+            <div class="btn btn-info  my-btn-file">
+                <i class="glyphicon glyphicon-folder-open"></i> Browse…
+                <input type="file" ng-file-select="onFileSelect($files)">
+            </div>
+        </div>
+
+        <div class="col-sm-3 control-label" ng-if="fileAttached!=''">
+            <a href="\{{fileAttached}}" target="_blank">{{formatFileName(fileAttached)}}</a>
+            <a class="btn btn-danger btn-xs" role="button" ng-click="getRemoveFileName()">X</a>
+        </div>
+
+        <div ng-if="_IsRenew || _signRenew">
+            <label class="col-sm-2 control-label ">* {{'RenewalDate' | translate}} </label>
+            <div class='input-group date col-ls-4 col-sm-4'>
+                <input type='text' class="form-control" date-picker min="1" ng-model="projects.RenewalDate" required />
+                <span class="input-group-addon">
+                    <label class="glyphicon glyphicon-calendar" style="color: grey" for='DATE'></label>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div ng-if="_IsRenew || _signRenew">
+            <label class="col-sm-2 control-label ">* {{'RenewalDate' | translate}} </label>
+            <div class='input-group date col-ls-4 col-sm-4'>
+                <input type='text' class="form-control" date-picker min="1" ng-model="projects.RenewalDate" required />
+                <span class="input-group-addon">
+                    <label class="glyphicon glyphicon-calendar" style="color: grey" for='DATE'></label>
+                </span>
+            </div>
+        </div>
+    </div>
+
+
+    <H4 class="title"> {{'ContractorByEmloyee'|translate}}</H4>
+    <div class="form-group">
+        <label class="col-sm-2 control-label ">* {{'EmployeeID'|translate}} </label>
+        <div class="col-sm-4">
+            <select style="width:100%" ui-select2 ng-model="projects.ContractorByEmloyee" name="employeeID"
+                ng-disabled="readUpdateQ">
+                <option ng-repeat="value in listEmployee" value="{{value.EmployeeID}}" required>
+                    {{value.EmployeeID}} - {{value.Name}}
+                </option>
+            </select>
+        </div>
+        <label class="col-sm-2 control-label ">* {{'InternalPhone'|translate}} </label>
+        <div class="col-sm-4">
+            <input class="form-control" type="text" ng-model="projects.InternalNumber" required
+                ng-disabled="readUpdateQ" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label ">* {{'Email'|translate}} </label>
+        <div class="col-sm-4">
+            <input class="form-control" type="text" name="Email" ng-model="projects.Email" ng-disabled="readUpdateQ"
+                required />
+        </div>
+        <label class="col-sm-2 control-label">{{'Remark'|translate}}</label>
+        <div class="col-sm-4">
+            <textarea type="text" class="form-control" name="Remark" ng-model="projects.Remark" />
+        </div>
+    </div>
+
+    <div class="modal-footer">
+        <div class="form-group" ng-show="readEmployer">
+            <label class="col-sm-2">{{'DenyReason'|translate}}:</label>
+            <div class="col-sm-8" style="color:red; text-align: left;">
+                <b>{{variable.leadercheck_remark|translate}}</b>
+            </div>
+        </div>
+
+        <button class="btn btn-warning btn-ct-ac" ng-click="saveDraft()"
+            ng-disabled="ConQuaform.$invalid || checkremove"
+            ng-show="!readEmployer && !_IsRenew">{{'saveDraft'|translate}}
+        </button>
+
+        <button class="btn btn-primary btn-ct-ac" ng-click="saveSubmit('N')"
+            ng-disabled="ConQuaform.$invalid || checkremove" ng-show="_IsSubmit">{{'submit'|translate}}
+        </button>
+
+        <button class="btn btn-primary btn-ct-ac" ng-click="saveSubmit('Q')" ng-disabled="ConQuaform.$invalid"
+            ng-show="_IsRenew">{{'Renew'|translate}}
+        </button>
+
+        <button class="btn btn-default btn-ct-ac" ng-click="ResetContractor()" ng-show="!readEmployer"
+            data-dismiss="modal">
+            <i class="glyphicon glyphicon-remove" style="color: grey;vertical-align: text-bottom;"></i>
+            {{'Close'|translate}}
+        </button>
+    </div>
+</form>

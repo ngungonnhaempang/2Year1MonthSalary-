@@ -1,0 +1,163 @@
+<style>
+    #tbConfirms {
+        border-collapse: collapse;
+        table-layout: auto;
+        width: 1100px;
+        white-space: nowrap;
+        text-align-last: center;
+    }
+
+    div.tableFixHead {
+        overflow-y: auto;
+        height: 300px;
+    }
+
+    .tableFixHead thead th {
+        position: sticky;
+        top: 0;
+        background: #eee;
+    }
+
+    .tableFixHead td:first-child,
+    th:first-child {
+        position: sticky;
+        top: 0;
+        left: 0;
+        z-index: 1;
+
+    }
+
+    .tableFixHead th:first-child {
+        z-index: 2;
+    }
+
+    .red {
+        color: red;
+    }
+
+    .green {
+        color: green;
+    }
+
+    .btn-primary {
+        font: caption;
+    }
+
+    .ui-grid-header {
+        text-align: center;
+    }
+
+    input[type="text"].ui-grid-filter-input {
+        border-radius: 4px;
+    }
+
+    div.ui-grid-cell input.ng-valid {
+        border-radius: 4px;
+        background-color: antiquewhite;
+    }
+</style>
+<form class="form-horizontal" role="form" name="form" novalidate>
+    <legend>
+        <!-- <h3>{{'ContractorQua'|translate}} -- {{'EHSConfirrm'|translate}}</h3> -->
+        <h2 ng-if="!UpdateMark && Training">{{'UpdateTraining'|translate}} </h2>
+        <h2 ng-if="UpdateMark">{{'UpdateMark'|translate}} </h2>
+        <h2 ng-if="!UpdateMark && !Training">{{'RegisterCardDate'|translate}}</h2>
+    </legend>
+    <div class="modal-body">
+        <table class="table table-bordered">
+            <tr>
+
+                <th style="width:20%;">{{'ContractorName'|translate}}:</th>
+                <td style="width:30%;">{{note.ContractorName}}</td>
+                <th style="width:20%;">{{'ConQua_Rcode'|translate}}:</th>
+                <td style="width:30%;">{{note.Rcode}}</td>
+            </tr>
+            <tr>
+                <th>{{'ConQua_CType'|translate}}:</th>
+                <td>{{note.ContracorType}}</td>
+                <th>{{'ConQua_CKind'|translate}}:</th>
+                <td>{{note.ContracorKind }}</td>
+
+            </tr>
+            <tr>
+                <th>{{'Contractor_Stardate'|translate}}:</th>
+                <td>{{note.StartDate}}</td>
+                <th>{{'Contractor_Enddate'|translate}}:</th>
+                <td>{{note.EndDate}}</td>
+            </tr>
+        </table>
+
+        <h5 style="font-weight: bold;" ng-if="!UpdateMark && Training">{{'Contractor_list'|translate}}:
+            {{EmployeeList.length}} {{'Worker'|translate}}</h5>
+
+        <h5 style="font-weight: bold;" ng-if="UpdateMark">{{'Contractor_list'|translate}}: {{EmployeeMark.length}}
+            {{'Worker'|translate}}</h5>
+        <h5 style="font-weight: bold;" ng-if="!UpdateMark && !Training">{{'Contractor_list'|translate}}:
+            {{EmployeeList.length}} {{'Worker'|translate}}</h5>
+
+        <div style="width: 100%;" ng-if="UpdateMark">
+            <div id="Grid" ui-grid="gridOptionsMark" class="grid"></div>
+            <button class="btn btn-primary" ng-click="ChangeMark()" style="margin-top: 20px;">
+                <span class="glyphicon glyphicon-floppy-saved"></span> {{'Save'|translate}}</button>
+        </div>
+
+        <div ng-if="!UpdateMark">
+            <div class="tableFixHead">
+                <table class="table table-bordered" id="tbConfirms">
+                    <thead>
+                        <tr>
+                            <th><input type="checkbox" ng-init="SelectedAll=false" ng-model="SelectedAll"
+                                    ng-change="checkAll(SelectedAll)">{{'Choose'|translate}}</th>
+                            <th>{{'ConName'|translate}}</th>
+                            <th> {{'IdCard'|translate}}</th>
+                            <th> {{'Mark'|translate}}</th>
+                            <th ng-if="Training"> {{'TrainDate'|translate}}</th>
+                            <th> {{'Sex'|translate}}</th>
+                            <th> {{'Birthday'|translate}}</th>
+                            <th> {{'Job'|translate}}</th>
+                            <th> {{'ConQua_Region'|translate}}</th>
+                            <th>{{'Insurance'|translate}}</th>
+                            <th>{{'SafetyCer'|translate}}</th>
+                            <th>{{'Remark'|translate}}</th>
+                        </tr>
+                    </thead>
+                    <tbody ng-repeat="data in EmployeeList" ng-init="data.isSelected = false;">
+                        <tr>
+                            <td style=" background: #eee;"><input type="checkbox" ng-model="data.isSelected"></td>
+                            <td>{{data.Name}}</td>
+                            <td>{{data.IdCard}}</td>
+                            <td>{{data.Mark}}</td>
+                            <td ng-if="Training"> {{data.TrainDate}}</td>
+                            <td>{{data.Sex}}</td>
+                            <td>{{data.Birthday |date: "yyyy/MM/dd"}}</td>
+                            <td>{{data.Job}}</td>
+                            <td>{{data.Region}}</td>
+                            <td>{{data.InsuranceDuration}}</td>
+                            <td>{{data.SafetyCerDuration}}</td>
+                            <td>{{data.Remark}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="form-group" style="margin-top: 30px;">
+                <label class="col-sm-2 control-label" ng-if="!Training">{{'AppointmentDate'|translate}}</label>
+                <label class="col-sm-2 control-label" ng-if="Training">{{'TrainDate'|translate}}</label>
+                <div class="col-sm-2">
+                    <input class="form-control" type="text"  ng-if="!Training" date-picker readonly max={{maxDate}} min="0"
+                        ng-model="note.AppointmentDate" required />
+					<input class="form-control" type="text" ng-if="Training" date-picker readonly ng-model="note.AppointmentDate" required />
+                </div>             
+
+                <div class="col-sm-3">
+                    <button class="btn btn-primary" ng-click="confirm()" ng-disabled="(form.$invalid)"
+                        ng-if="!Training">{{'Confirm'|translate}}</button>
+
+                    <button class="btn btn-primary" ng-click="confirm()" ng-disabled="(form.$invalid)"
+                        ng-if="Training"><span class="glyphicon glyphicon-floppy-saved"></span>
+                        {{'Save'|translate}}</button>
+                    <!-- <button class="btn btn-danger" ng-click="Delete()">{{'Delete'|translate}}</button> -->
+                </div>
+            </div>
+        </div>
+</form>

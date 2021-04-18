@@ -1,0 +1,391 @@
+<style>
+    .grid {
+        width: 100%;
+    }
+
+    .grid .ui-grid-row .green {
+        background-color: rgb(83, 240, 96);
+    }
+
+    .grid .ui-grid-row .red {
+        background-color: rgb(245, 43, 77);
+    }
+
+    .grid .ui-grid-row .blue {
+        background-color: rgb(78, 179, 247);
+    }
+
+    .grid .ui-grid-row .yellow {
+        background-color: yellow
+    }
+
+    .title {
+        width: 100%;
+        background-color: #ececec;
+        padding: 5px 0px 5px 10px;
+        border: 1px solid #ececec;
+        border-radius: 6px;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+</style>
+<div id="Search">
+    <form class="form-horizontal" role="form" novalidate name="ConQuaform" ng-if="bpmnloaded==false">
+        <legend>
+            <h2 class="title"><img src="/css/image/contractor/worker.png" style="width:50px;">
+                {{'Register_C_Worker'| translate}}
+            </h2>
+        </legend>
+        <div class="col-sm-12 form-group">
+            <div class="col-sm-8 form-group">
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">{{'Classify'|translate}}</label>
+                    <div class="col-sm-4">
+                        <select class="form-control" name="status" ng-model="note.Classify">
+                            <option value="">----- {{'Show All'|translate}} ------</option>
+                            <option value="A">{{'Active'|translate}}</option>
+                            <option value="IA">{{'Inactive'|translate}}</option>
+                        </select>
+                    </div>
+
+                    <label class="col-sm-2 control-label">{{'ConName'|translate}}</label>
+                    <div class="col-sm-4">
+                        <input type='text' class="form-control" name="paraName" ng-model="note.Name" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">{{'Contractor' | translate}}</label>
+                    <div class="col-sm-4" ng-if="note.Classify==''||note.Classify==undefine">
+                        <select style="width:100%; height: 120%" ui-select2 ng-model="note.ContractorID">
+                            <option value="">----- {{'Show All'|translate}} ------</option>
+                            <option ng-repeat="c in AllContractorList" value="{{c.ContractorID}}">{{c.ContractorName}}
+                            </option>
+                        </select>
+                    </div>
+
+                    <div class="col-sm-4" ng-if="note.Classify=='A'">
+                        <select style="width:100%; height: 120%" ui-select2 ng-model="note.ContractorID">
+                            <option value="A">----- {{'Show All'|translate}} ------</option>
+                            <option ng-repeat="c in AllContractorList | filter: {Isvalid: 1}"
+                                value="{{c.ContractorID}}">{{c.ContractorName}}</option>
+                        </select>
+                    </div>
+
+                    <div class="col-sm-4" ng-if="note.Classify=='IA'">
+                        <select style="width:100%; height: 120%" ui-select2 ng-model="note.ContractorID">
+                            <option value="IA">----- {{'Show All'|translate}} ------</option>
+                            <option ng-repeat="c in AllContractorList | filter: {Isvalid: 0}"
+                                value="{{c.ContractorID}}">{{c.ContractorName}}</option>
+                        </select>
+                    </div>
+
+                    <label class="col-sm-2 control-label">{{'IdCard'|translate}}</label>
+                    <div class="col-sm-4">
+                        <input type='text' class="form-control" name="paraIdCard" ng-model="note.IdCard" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">{{'Status'|translate}}</label>
+                    <div class="col-sm-4" ng-if="note.Classify=='' || note.Classify==undefine">
+                        <select class="form-control" ng-model="note.Status">
+                            <option value="">----- {{'Show All'|translate}} ------</option>
+                            <option ng-repeat="c in StatusList" value="{{c.Status}}">{{c.Remark}}</option>
+                        </select>
+                    </div>
+
+                    <div class="col-sm-4" ng-if="note.Classify=='A'">
+                        <select class="form-control" ng-model="note.Status">
+                            <option value="A">----- {{'Show All'|translate}} ------</option>
+                            <option  ng-repeat="c in StatusList" data-ng-if="c.Active!=2"
+                            value="{{c.Status}}">{{c.Remark}}</option>
+                        </select>
+                    </div>
+
+                    <div class="col-sm-4" ng-if="note.Classify=='IA'">
+                        <select class="form-control" ng-model="note.Status">
+                            <option value="IA">----- {{'Show All'|translate}} ------</option>
+                            <option ng-repeat="c in StatusList" data-ng-if="c.Active!=1" value="{{c.Status}}">
+                                {{c.Remark}}</option>
+                        </select>
+                    </div>
+
+
+
+                    <label class="col-sm-2 control-label">{{'ConQua_Region'|translate}}</label>
+                    <div class="col-sm-4">
+                        <select class="form-control" name="paraRegion" ng-model="note.Region"
+                            ng-options="c.ContractorRegionID as c.ContractorRegion for c in RegionList">
+                            <option value="">-- {{'Show All'|translate}} --</option>
+                        </select>
+                    </div>
+
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">{{'From'|translate}}</label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" name="From" date-picker ng-model="note.FromDate" />
+                    </div>
+
+                    <label class="col-sm-2 control-label">{{'To'|translate}}</label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" name="To" date-picker ng-model="note.ToDate" />
+                    </div>
+
+                    
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-8 col-sm-4">
+                        <label>
+                            <input type="checkbox" ng-init="note.onlyOwner=true" ng-model="note.onlyOwner">
+                            {{'onlyOwner'|translate}}
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-8 col-sm-4 control-label">
+                        <button type="button" class="btn btn-primary" ng-click="SearchEmployee()">{{'Search'|translate}}
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4 form-group" style="margin-left: 45px;">
+                <ul class="list-group" style=" margin-top: 10px;">
+                    <li class="list-group-item" style="background:powderblue;">
+                        <p class="nav-list bg-secondary" style="margin-bottom: 0px;">
+                            {{ 'Total_contractor' | translate }}
+                            <span class="badge"
+                                style="background-color:white; color:black;">{{rpCounter.count_total }}</span>
+                        </p>
+                    </li>
+                    <li class="list-group-item">
+                        <p class="nav-list bg-warning" style="margin-bottom: 0px;">
+                            {{ 'Card_issued' | translate }}
+                            <span class="badge"
+                                style="background:powderblue; color: black;">{{rpCounter.count_issueCard}}</span>
+                        </p>
+                    </li>
+                    <li class="list-group-item">
+                        <p class="nav-list bg-success" style="margin-bottom: 0px;">
+                            {{ 'Expired_profile' | translate }}
+                            <span class="badge"
+                                style="background-color:#1afa52; color: black;">{{rpCounter.count_expireProfile}}</span>
+                        </p>
+                    </li>
+
+
+                    <li class="list-group-item">
+                        <p class="nav-list bg-danger" style="margin-bottom: 0px;">
+                            {{ 'Suspended_violate_HSE' | translate }}
+                            <span class="badge"
+                                style="background-color:rgb(248, 48, 48);">{{rpCounter.count_violate_HSE}}</span>
+                        </p>
+                    </li>
+                    <li class="list-group-item">
+                        <p class="nav-list bg-danger" style="margin-bottom: 0px;">
+                            {{ 'Suspended_violate_SECURITY' | translate }}
+                            <span class="badge"
+                                style="background-color:rgb(65, 160, 250);">{{rpCounter.count_violate_SECURITY}}</span>
+                        </p>
+                    </li>
+                    <li class="list-group-item">
+                        <p class="nav-list" style="margin-bottom: 0px;">
+                            {{ 'LockCard' | translate }}
+                            <span class="badge"
+                                style="background-color:yellow; color: black;">{{rpCounter.count_lockCard}}</span>
+                        </p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div style="width: 100%;">
+            <div id="Grid" ui-grid="gridOptions" class="grid" ui-grid-selection ui-grid-pagination
+                ui-grid-resize-columns ui-grid-core ui-grid-exporter></div>
+        </div>
+
+    </form>
+
+    <!-- Flowchart -->
+
+    <hr>
+    <h3>{{'Flowchart'|translate}}</h3>
+    <hr>
+
+    <div style="text-align: center;"><img src="/css/image/contractor/registerworkerofcontractor.png" style="width:80%;"></div>
+
+
+
+    <!-- View detail Process -->
+    <div class="modal fade" id="Details" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <span>{{'ContractorAD'|translate}}</span>
+                    <table class="table table-hover table-condensed">
+                        <thead>
+                            <tr style="background-color:#FAFAFA;">
+                                <th>{{'UpdateTime'|translate}}</th>
+                                <th>{{'UserID'|translate}}</th>
+                                <th>{{'RenewalDate'|translate}}</th>
+                                <th>{{'FlowDetail'|translate}}</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <tr>
+                                <td>{{processList._sync_time_create | date : 'yyyy-MM-dd'}}</td>
+                                <td>{{processList.initiator}}</td>
+                                <td>{{processList.eventStart_ValidTo}}</td>
+                                <td><a target="_blank" ng-if="processList!=null"
+                                        href="#/processlog/{{processList.ProcessInstanceId}}">{{'FlowDetail'|translate}}</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <span>{{'FEPVConInfoQuaCancel'|translate}}</span>
+                    <table class="table table-hover table-condensed">
+                        <thead>
+                            <tr style="background-color:#FAFAFA;">
+                                <th>{{'UpdateTime'|translate}}</th>
+                                <th>{{'UserID'|translate}}</th>
+
+                                <th>{{'FlowDetail'|translate}}</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>{{cancelprocessList._sync_time_create | date : 'yyyy-MM-dd HH:mm:ss'}}</td>
+                                <td>{{cancelprocessList.initiator}}</td>
+
+                                <td><a target="_blank" ng-if="cancelprocessList!=null"
+                                        href="#/processlog/{{cancelprocessList.ProcessInstanceId}}">{{'FlowDetail'|translate}}</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- suspended employee -->
+    <div class="modal fade" id="delContractor" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog modal-lg" style="width: 80%;">
+            <div class="modal-content" style="padding: 5px;">
+                <div class="modal-body" style="padding-bottom:3px">
+                    <form class="form-horizontal model-form " name="CanCelEmployeeForm" style="margin-top:15px;"
+                        enctype="multipart/form-data" novalidate>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">{{'ConName'|translate}}</label>
+                            <div class="col-sm-8">
+                                <input class="form-control" type="text" ng-model="ContractorSuspended" disabled />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label"
+                                ng-if="!isCancelSuspend">{{'DeleteReason'|translate}}</label>
+                            <label class="col-sm-3 control-label"
+                                ng-if="isCancelSuspend">{{'ReasonCancelSuspend'|translate}}</label>
+                            <div class="col-sm-8">
+                                <textarea class="form-control" type="text" ng-model="invalidReason" rows="1"
+                                    required></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group" ng-if="!isCancelSuspend">
+                            <input type="checkbox" ng-model="otherInfomation" ng-change="selectTerm(otherInfomation)"
+                                style="margin-left: 38px; margin-top: 15px;">
+                            {{'SuspensionTerm' | translate}}
+                        </div>
+
+
+                        <div ng-if="otherInfomation">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label ">* {{'StartdateCancel' | translate}} </label>
+                                <div class='input-group date col-ls-4 col-sm-4'>
+                                    <input type='text' class="form-control" date-picker min="0"
+                                        ng-model="projects.StartdateCancel" required />
+                                    <span class="input-group-addon">
+                                        <label class="glyphicon glyphicon-calendar" style="color: grey"
+                                            for='DATE'></label>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="form-group" style="margin-top: 15px;">
+                                <label class="col-sm-3 control-label ">* {{'EnddateCancel' | translate}} </label>
+                                <div class='input-group date col-ls-4 col-sm-4'>
+                                    <input type='text' class="form-control" date-picker min="0"
+                                        ng-model="projects.EnddateCancel" required>
+                                    <span class="input-group-addon">
+                                        <label class="glyphicon glyphicon-calendar" style="color: grey"
+                                            for='DATE'></label>
+                                    </span>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="form-group" style="margin-top: 15px;" ng-if="isHseSuspened">
+                            <label class="col-sm-3 control-label">
+                                {{'File'|translate}}
+                            </label>
+                            <div class="col-lg-1">
+                                <div class="btn btn-info my-btn-file">
+                                    <i class="glyphicon glyphicon-folder-open"></i> Browse…
+                                    <input type="file" ng-file-select="onFileSelect($files)">
+                                </div>
+                            </div>
+
+                            <div class="col-sm-offset-1 col-sm-7" style="margin-top: 8px;" ng-if="fileAttached!=''">
+                                <a href="\{{fileAttached}}" target="_blank">{{formatFileName(fileAttached)}}</a>
+                                <a class="btn btn-danger btn-xs" role="button" ng-click="getRemoveFileName()">X</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" ng-disabled="CanCelEmployeeForm.$invalid"
+                        ng-click="invalidEmployee()" data-dismiss="modal"
+                        ng-if="!isCancelSuspend">{{'Suspended'|translate}}
+                    </button>
+                    <button type="button" class="btn btn-danger" ng-disabled="CanCelEmployeeForm.$invalid"
+                        ng-click="invalidEmployee()" data-dismiss="modal"
+                        ng-if="isCancelSuspend">{{'CancelSuspended'|translate}}
+                    </button>
+
+                    <button type="button" class="btn btn-default" ng-click="ResetSuspendedModal()"
+                        data-dismiss="modal"><i class="glyphicon glyphicon-remove"
+                            style="color: grey;vertical-align: text-bottom;"></i>
+                        {{'Close'|translate}}
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalContractorEmployee" role="dialog" aria-labelledby="myLargeModalLabel"
+        data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog modal-lg" style="width: 100%;">
+            <div class="modal-content" style="padding: 5px;">
+                <div class="modal-header" style="text-align: right;">
+                    <a target="_blank" href="css/ContractorVietnamese.xlsx" ng-if="IsVietnamese">
+                        <img src="/css/image/Excel.png"> {{'ExcelVN'|translate}}
+                    </a>
+                    <a target="_blank" href="css/ContractorForeigner.xlsx" ng-if="!IsVietnamese">
+                        <img src="/css/image/Excel.png">
+                        {{'ExcelForeigner'|translate}} </a>
+                </div>
+                <div class="modal-body" style="padding-bottom:3px">
+                    <mycontractorqua></mycontractorqua>
+                </div> <!-- end of modal-body -->
+            </div> <!-- end of modal-content -->
+        </div> <!-- end of modal-dialog -->
+    </div> <!-- end of modal -->

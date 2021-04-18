@@ -1,0 +1,361 @@
+<style>
+    div.tableFixHead {
+        overflow-y: auto;
+        height: 300px;
+    }
+
+    .upload-btn-wrapper {
+        position: relative;
+        overflow: hidden;
+        display: inline-block;
+    }
+
+    .btn {
+        border-radius: 8px;
+    }
+
+    .upload-btn-wrapper input[type=file] {
+        font-size: 100px;
+        position: absolute;
+        left: 0;
+        top: 0;
+        opacity: 0;
+        cursor: pointer;
+    }
+</style>
+
+<script type="text/javascript">
+    function ContractorQuaProcess_modify($scope, EngineApi, $http, $timeout, Notifications, $upload, $compile, $filter, Auth, ConQuaService, $translatePartialLoader, $translate, $location, $anchorScroll) {
+        $scope.fileAttached = "";
+        $scope.eventStart_Employer = $scope.variable.eventStart_Employer;
+        $scope.note = {};
+        $scope.cq = {};
+        $scope._IsNotSubmit = false;
+        $scope.checkremove = false;
+        $scope.IsVietnamese = true;
+        console.log($scope.variable);
+
+        ConQuaService.GetContractorRegion().get({ language: window.localStorage.lang }).$promise.then(function (res) {
+            $scope.RegionList = res;
+        }, function (errResponse) {
+            Notifications.addError({ 'status': 'error', 'message': errResponse });
+        });
+
+        ConQuaService.GetContractorCheck().get({
+            VoucherID: $scope.variable.eventStart_Employer,
+            Language: window.localStorage.lang
+        }).$promise.then(function (res) {
+            $scope.modify = false;
+            $scope.cq.VoucherID = $scope.variable.eventStart_Employer;
+            $scope.cq.ContractorID = res[0].ContractorID;
+            $scope.record.ContractorName = $scope.cq.ContractorID;
+            $scope.cq.ContractorName = res[0].ContractorName;
+            $scope.cq.ContracorKind = res[0].ContracorKind;
+            $scope.cq.ContracorType = res[0].ContracorType;
+            $scope.EmployeeList = [];
+            $scope.EmployeeIdCard = [];
+            $scope.cq.StartDate = res[0].StartDate;
+            $scope.cq.EndDate = res[0].EndDate;
+            $scope.cq.Foreign = res[0].IsForeign;
+            if ($scope.cq.Foreign == '1') {
+                $scope.IsVietnamese = false;
+            }
+
+            if (res[0].FileName != null && res[0].FileName != "") {
+                $scope.fileAttached = res[0].FileName;
+            }
+
+            res.forEach(element => {
+                var x = {};
+                x.Name = element.Name;
+                x.IdCard = element.IdCard;
+                x.Sex = element.Sex;
+                x.Birthday = element.Birthday;
+                x.Job = element.Job;
+                x.Region = element.RegionId;
+                x.InsuranceDuration = element.InsuranceDuration;
+                x.SafetyCerDuration = element.SafetyCerDuration;
+                x.Remark = element.Remark;
+                x.ReasonReturn = element.ReasonReturn;
+                x.EmployeeID = element.EmployeeID;
+                x.Phone = element.Phone;
+                if (element.ReasonReturn != "") {
+                    $scope.isReturn = true;
+                }
+
+                if (!$scope.IsVietnamese) {
+                    x.PassPort_Expiry = element.PassPort_Expiry;
+                    x.PassPort_Nationality = element.PassPort_Nationality;
+                    x.WorkPermit_No = element.WorkPermit_No;
+                    x.WorkPermit_Start = element.WorkPermit_Start;
+                    x.WorkPermit_End = element.WorkPermit_End;
+                    x.CategoryCard = element.CategoryCard;
+                    x.Card_Type = element.Card_Type;
+                    x.Card_No = element.Card_No;
+                    x.Card_Start = element.Card_Start;
+                    x.Card_End = element.Card_End;
+                }
+
+                $scope.EmployeeList.push(x);
+                $scope.EmployeeIdCard.push(x.IdCard);
+            });
+
+            $scope.checkIdCardYellow()
+
+            if (res[0].Status != 'F') {
+                $scope._IsNotSubmit = true;
+            }
+        }, function (errResponse) {
+            Notifications.addError({ 'status': 'error', 'message': errResponse });
+        });
+
+        $scope.save = function () {
+            $scope.employees = [];
+            if ($scope.removeList.length > 0) {
+                $scope.removeFile($scope.removeList[0]);
+            }
+            debugger;
+            $scope.uploadFileContractor(function (result) {
+                console.log(result);
+                if (result != '') {
+                    $timeout(function () {
+                        Notifications.addError({
+                            'status': 'error',
+                            'message': $translate.instant('Msg_Save')
+                        });
+                    }, 400);
+                }
+                else {
+                    $scope.EmployeeList.forEach(element => {
+                        var query = {};
+                        query.ContractorID = $scope.cq.ContractorID;
+                        query.IsUpdate = $scope.IsUpdate;
+                        query.Status = 'F';
+                        query.TrainDate = $scope.TrainDate || null;
+                        query.UserId = Auth.username;
+                        query.Name = element.Name.toUpperCase();
+                        query.IdCard = element.IdCard;
+                        query.Birthday = element.Birthday;
+                        query.Sex = element.Sex;
+                        query.Job = element.Job;
+                        query.Region = element.Region;
+                        query.State = element.State;
+                        query.InsuranceDuration = element.InsuranceDuration;
+                        query.SafetyCerDuration = element.SafetyCerDuration;
+                        query.Remark = element.Remark || null;
+                        query.ReasonReturn = null;
+                        query.VoucherID = $scope.cq.VoucherID;
+                        query.EmployeeID = element.EmployeeID;
+                        query.IsForeign = $scope.cq.Foreign;
+                        if (!$scope.IsVietnamese) {
+                            query.PassPort_Expiry = element.PassPort_Expiry;
+                            query.PassPort_Nationality = element.PassPort_Nationality;
+                            query.WorkPermit_No = element.WorkPermit_No;
+                            query.WorkPermit_Start = element.WorkPermit_Start;
+                            query.WorkPermit_End = element.WorkPermit_End;
+                            query.CategoryCard = element.CategoryCard;
+                            query.Card_Type = element.Card_Type;
+                            query.Card_No = element.Card_No;
+                            query.Card_Start = element.Card_Start;
+                            query.Card_End = element.Card_End;
+                        }
+                        if ($scope.fileAttached != "") {
+                            query.FileName = $scope.fileAttached;
+                        } else query.FileName = null;
+						
+						query.Phone = element.Phone;
+
+                        $scope.employees.push(query);
+
+                    })
+
+                    saveEmployees($scope.employees, 0, function (MessageResponse) {
+                        if (MessageResponse != '') {
+                            Notifications.addError({ 'status': 'error', 'message': MessageResponse });
+                        } else {
+                            
+                            $scope.formVariables.push({ name: "IsDelete", value: "NO" });
+                            $scope.formVariables.push({ name: "eventCheck_advice", value: "" });
+                            $scope.formVariables.push({ name: "eventSafe_advice", value: "" });
+                   
+
+                            $scope.submit();
+
+                            ConQuaService.SendMailSubmit().get({
+                                flowname: "GateContractorQuaProcess",
+                                IdVoucher: $scope.variable.eventStart_Employer,
+                                FromUser: Auth.username,
+                                MailKind: "c_init"
+                            }, {}).$promise.then(function (res) {
+                                console.log(res);
+                            }, function (err) {
+                                Notifications.addError({
+                                    'status': 'error',
+                                    'message': 'error send mail: ' + err
+                                });
+                            });
+
+                            if ($scope.IdList.length > 0) {
+                                RemoveEmployees($scope.IdList, 0)
+                            }
+                        }
+                    });
+                }
+            })
+        }
+
+
+        function saveEmployees(employees, i, callback) {
+            ConQuaService.SaveContractor().save({}, employees[i]).$promise.then(function (res) {
+                console.log("success");
+                console.log(res);
+                $scope.EmployeeList.splice(0, 1);
+                i++;
+                if (i < employees.length) {
+                    saveEmployees(employees, i, callback);
+                } else callback('');
+
+            }, function (errResponse) {
+                callback(errResponse)
+            });
+        }
+
+        $scope.close = function () {
+            $scope.historyVariable.push({ name: "IsCancel", value: "Cancel" });
+            $scope.formVariables.push({ name: "IsDelete", value: "YES" });
+            $scope.submit();
+            RemoveEmployees($scope.EmployeeIdCard, 0);
+        }
+
+        function RemoveEmployees(listRemove, i) {
+            var query = {};
+            query.voucherID = $scope.cq.VoucherID
+            query.IdCard = listRemove[i]
+            query.status = 'X'
+            ConQuaService.ContractorQuaSaveStatus().save(query, {}).$promise.then(function (res) {
+                i++;
+                if (i < listRemove.length) {
+                    RemoveEmployees(listRemove, i);
+                }
+            }, function (errResponse) {
+                return errResponse;
+            });
+        }
+
+        /*==== Upload file =====*/
+        $scope.fileAttached = "";
+        $scope.file = [];
+        $scope.onFileSelect = function ($files, size) {
+            console.log($files);
+            if (true) {
+                if ($scope.fileAttached != "") {
+                    Notifications.addError({
+                        'status': 'error',
+                        'message': $translate.instant('File_Number_MSG')
+                    });
+
+                    return false;
+                }
+                $scope.file = $files[0];
+                if ($scope.IsVietnamese != undefined && !$scope.IsVietnamese) {
+                    if (!$scope.file.name.toLowerCase().includes(".zip") && !$scope.file.name.toLowerCase().includes(".rar")) {
+                        Notifications.addError({
+                            'status': 'error',
+                            'message': $translate.instant('FileCompressedValidation_MSG')
+                        });
+                        return false;
+                    }
+                }
+                $scope.fileAttached = $scope.file.name;
+            }
+        }
+
+        $scope.removeList = [];
+        $scope.getRemoveFileName = function () {
+            $scope.removeList.push($scope.fileAttached);
+            $scope.fileAttached = "";
+            $scope.file = [];
+        }
+
+        $scope.removeFile = function (_name) {
+            if (_name != "") {
+                ConQuaService.DeleteFile().save({
+                    filename: _name
+                }).$promise.then(function (res) {
+                    console.log(res)
+                },
+                    function (error) {
+                        console.log(error);
+                    })
+            }
+        }
+    }
+</script>
+
+
+<div ng-controller="ContractorQuaProcess_modify">
+    <form class="form-horizontal" role="form" novalidate name="form">
+        <legend>
+            <h3>{{'ContractorQua'|translate}}--> {{'Update'|translate}}</h3>
+            <a id="topPage"></a>
+        </legend>
+
+        <table class="table table-bordered table-striped">
+            <tr>
+                <th style="width:20%;">{{'VoucherID'|translate}}:</th>
+                <td style="width:35%;"> {{cq.VoucherID}}</td>
+                <th style="width:20%;">{{'ConQua_CType'|translate}}:</th>
+                <td style="width:35%;"> {{cq.ContracorType}}</td>
+            </tr>
+            <tr>
+                <th>{{'ContractorName'|translate}}:</th>
+                <td>{{cq.ContractorName}}</td>
+                <th>{{'ConQua_CKind'|translate}}:</th>
+                <td> {{cq.ContracorKind }}</td>
+            </tr>
+            <tr>
+                <th>{{'Contractor_Stardate'|translate}}:</th>
+                <td> {{cq.StartDate}}</td>
+                <th>{{'Contractor_Enddate'|translate}}:</th>
+                <td> {{cq.EndDate}}</td>
+            </tr>
+            <tr ng-if="!IsVietnamese">
+                <th>
+                    <div class="upload-btn-wrapper">
+                        <button class="btn btn-info"><i class="glyphicon glyphicon-folder-open"></i>
+                            {{'File'|translate}}</button>
+                        <input type="file" name="myfile" ng-file-select="onFileSelect($files)" />
+                    </div>
+                </th>
+                <td ng-if="fileAttached!=''">
+                    <a href="\{{fileAttached}}" target="_blank">{{fileAttached}}</a>
+                    <a class="btn btn-danger btn-xs" role="button" ng-click="getRemoveFileName()">X</a>
+
+                </td>
+            </tr>
+
+        </table>
+
+        <mycontractorqua></mycontractorqua>
+        <hr />
+
+        <div class="form-group">
+            <label class="col-sm-2" style="text-align: right;">{{'DenyReason'|translate}}:</label>
+            <div class="col-sm-10" style="color: red;">
+                <b ng-if="variable.eventCheck_advice !=undefined">{{variable.eventCheck_advice|translate}}</b>
+
+                <b ng-if="variable.eventSafe_advice !=undefined">
+                    {{variable.eventSafe_advice|translate}}</b>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-offset-8 col-sm-10">
+                <button class="btn btn-danger" ng-click="close()"> {{'Delete'|translate}}</button>
+                <button class="btn btn-primary" ng-hide="_IsNotSubmit" ng-disabled="checkEmployeeList()"
+                    ng-click="save()">{{'submit'|translate}}
+                </button>
+            </div>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,24 @@
+<head>
+	<link href="css/confirmDelete.css" rel="stylesheet" />
+</head>
+<form class="form-horizontal model-form " name="confirmDelete">
+	<div id="ConfirmDeleteModal" class="modal fade">
+		<div class="modal-dialog modal-confirm">
+			<div class="modal-content">
+				<div class="modal-header flex-column">
+					<div class="icon-box">
+						<img src="/css/image/trash.png" style="width:70px;">
+					</div>
+					<h4 class="modal-title w-100"> {{'DeleteQuestion'|translate}} <b>{{itemDelete.ID}}</b> ?</h4>
+					 <h5>{{'PressDelete'|translate}} <span style="color: red;">{{'All'|translate}}</span> {{'EmployeeBeDeleted'|translate}}</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				</div>
+
+				<div class="modal-footer justify-content-center">
+					<button type="button" class="btn btn-danger" ng-click="deleteVoucher(itemDelete.ID)">{{'MD_Cancel'|translate}}</button>
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">{{'Close'|translate}}</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</form>c

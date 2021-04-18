@@ -1,0 +1,121 @@
+<H4 class="title">{{'Category_Info'|translate}}</H4>
+<form class="form-horizontal model-form " autocomplete="off" name="Categoryform" style="margin-top:15px;"
+    enctype="multipart/form-data" novalidate>
+    <div class="form-group">
+        <label class="col-sm-4 control-label">*{{'Category_type'|translate}}</label>
+        <div class="col-sm-6">
+            <select class="form-control" ng-model="data.CategoryType"
+                ng-options="a.CategoryType as a.Remark for a in CategoryTypeList" 
+                ng-change="getLevel()" 
+                ng-disabled="_isUpgrade || _isUpdate"
+                required>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-4 control-label">*{{'Rank'|translate}}</label>
+        <div class="col-sm-6">
+            <select class="form-control" type="text" ng-model="data.Level"  
+            ng-options="data for data in LevelList"
+            ng-change="getParentCategory()"
+            ng-disabled="_isUpgrade "
+            required>
+        </select>
+        </div>
+    </div>
+
+    <div class="form-group" ng-if="showParent">
+        <label class="col-sm-4 control-label">*{{'Category_Parent'|translate}}</label>
+        <div class="col-sm-6">
+            <select class="form-control" ng-model="data.Parent"
+                ng-options="a.Code as a.Content for a in ParentCategoryList" 
+                ng-disabled="_isUpgrade"
+                required>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group" ng-if="_isUpgrade">
+        <label class="col-sm-4 control-label">* {{'MD_Version'|translate}}</label>
+        <div class="col-sm-6">
+            <input class="form-control" type="text" ng-model="data.Version" disabled />
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <label class="col-sm-4 control-label">* {{'Position'|translate}}</label>
+        <div class="col-sm-6">
+            <input class="form-control" type="number" min="1" ng-model="data.Index" required/>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-4 control-label">*{{'Category_name'|translate}}</label>
+        <div class="col-sm-6">
+            <textarea class="form-control" type="text" ng-model="data.Content" required></textarea>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-4 control-label">*{{'MD_StartDate'|translate}}</label>
+        <div class='input-group date col-sm-6'>
+            <input type='text' class="form-control" date-picker min="0"
+                ng-model="data.StartDate" ng-disabled="_DateDisabled" required />
+            <span class="input-group-addon">
+                <label class="glyphicon glyphicon-calendar" style="color: grey" for='DATE'></label>
+            </span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-4 control-label">*{{'MD_EndDate'|translate}}</label>
+        <div class='input-group date col-sm-6'>
+            <input type='text' class="form-control" date-picker min="0"
+                ng-model="data.EndDate" required />
+            <span class="input-group-addon">
+                <label class="glyphicon glyphicon-calendar" style="color: grey" for='DATE'></label>
+            </span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-4 control-label">{{'Remark'|translate}}</label>
+        <div class="col-sm-6">
+            <textarea class="form-control" type="text" ng-model="data.Description"></textarea>
+        </div>
+    </div>
+
+    <div class="form-group" ng-if="_isUpdate">
+        <label class="col-sm-4 control-label">* {{'Reason_edit'|translate}}</label>
+        <div class="col-sm-6">
+            <input class="form-control" type="text" ng-model="data.ModifyReason" required />
+        </div>
+    </div>
+
+    <div class="form-group" ng-if="_isUpgrade">
+        <label class="col-sm-4 control-label">* {{'Reason_upgrade'|translate}}</label>
+        <div class="col-sm-6">
+            <input class="form-control" type="text" ng-model="data.UpgradeReason" required />
+        </div>
+    </div>
+   
+    <div class="modal-footer">
+        <button type="button" class="btn btn-primary" 
+                ng-click="saveCategory(false)" 
+                ng-disabled="Categoryform.$invalid"
+                ng-show="!_isUpdate && !_isUpgrade">
+            {{'Save'|translate}}
+        </button>
+
+        <button type="button" class="btn btn-warning" ng-click="saveCategory(true)" ng-disabled="Categoryform.$invalid" >
+            {{'Save_Close'|translate}}
+        </button>
+
+        <button class="btn btn-default" data-dismiss="modal" ng-click="resetCategoryModal()">
+            <i class="glyphicon glyphicon-remove" style="color: grey;vertical-align: text-bottom;"></i>
+            {{'Close'|translate}}
+        </button>
+    </div>
+</form>
+       

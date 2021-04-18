@@ -1,0 +1,166 @@
+<style>
+    .modal-lg {
+        width: 900px;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    .ui-grid-icon-plus-squared:before {
+        color: green;
+    }
+
+
+    .title {
+        width: 100%;
+        background-color: #DCEDC8;
+        padding: 5px 0px 5px 10px;
+        border: 1px solid #ececec;
+        border-radius: 6px;
+        text-transform: uppercase;
+        font-family: Arial, Helvetica, sans-serif, 'DFKai-SB';
+    }
+
+    .titleIcon{
+        width:50px; background-color: #ED667E;border-radius: 100px;
+    }
+</style>
+
+<div class="col-md-12">
+    <form class="form-horizontal" novalidate name="form">
+        <legend>
+            <h2 class="title"><img src="/css/image/contractor/replace.png" style="width:50px;">
+                {{'ViolationConfirmApp'|translate}}</h2>
+        </legend>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">{{'VoucherID'|translate}}</label>
+            <div class="col-sm-3">
+                <input class="form-control" type="text" ng-model="query.ViolationID" />
+            </div>
+            <label class="col-sm-2 control-label">{{'ContractorName'|translate}}</label>
+            <div class="col-sm-3">
+                <input class="form-control" type="text" ng-model="query.CotractorName" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">{{'From'|translate}}</label>
+            <div class="col-sm-3">
+                <div class='input-group date'>
+                    <input type='text' class="form-control" ng-model="query.FromDate" date-picker />
+                    <span class="input-group-addon">
+                        <label class="glyphicon glyphicon-calendar" style="color: grey"></label>
+                    </span>
+                </div>
+            </div>
+            <label class="col-sm-2 control-label">{{'To'|translate}}</label>
+            <div class="col-sm-3">
+                <div class='input-group date'>
+                    <input type='text' class="form-control" ng-model="query.ToDate" date-picker />
+                    <span class="input-group-addon">
+                        <label class="glyphicon glyphicon-calendar" style="color: grey"></label>
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label">{{'ConQua_paraDepartment'|translate}}</label>
+            <div class="col-sm-3">
+                <select ng-model="query.DepartmentID" ui-select2 style="width:100%">
+                    <option value="">---- {{'Show All'|translate}} ----</option>
+                    <option ng-repeat="c in DepartmentList" value="{{c.DepartmentID}}">
+                        {{c.DepartmentID}} - {{c.Specification}}
+                    </option>
+                </select>
+            </div>
+            <div class="col-sm-offset-2 col-sm-3 control-label">
+                <button class="btn btn-default btn-icon buttonApp" data-ng-click="searchViolation()">
+                    <img src="/css/image/search-icon.png" style="width: 25px;">
+                    {{'Search'|translate}}
+                </button>
+            </div>
+        </div>
+
+        <br>
+        <div style="width: 100%;">
+            <div id="Grid" ui-grid="gridOptions" class="grid" ui-grid-selection ui-grid-resize-columns ui-grid-core
+                ui-grid-exporter external-scopes="gridHandlers">
+            </div>
+        </div>
+    </form>
+
+    <!--modal create "Violation confirmation form" -->
+    <div class="modal fade" id="modalViolationConfirmation" role="dialog" aria-labelledby="myLargeModalLabel"
+        data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog modal-lg" style="width: 90%;">
+            <div class="modal-content" style="padding: 5px;">
+                <div class="modal-body" style="padding-bottom:3px">
+                    <div
+                        ng-include="'forms/ContractorDiscipline/Manage_Discipline/ViolationConfirmation/CreateViolation.html'">
+                    </div>
+                </div> <!-- end of modal-body -->
+            </div> <!-- end of modal-content -->
+        </div> <!-- end of modal-dialog -->
+    </div> <!-- end of modal -->
+
+    <!--modal upload "Violation confirmation form has been signed" -->
+    <div class="modal fade" id="modalUploadFile" role="dialog" aria-labelledby="myLargeModalLabel"
+        data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog modal-lg" style="width:50%;">
+            <div class="modal-content" style="padding: 5px;">
+                <div class="modal-body" style="padding-bottom:3px">
+                   <form class="form-horizontal model-form"style="margin-top:15px;"
+                   enctype="multipart/form-data" novalidate>
+                    <legend>
+                        <H3 class="title">{{'UpdateSignedApp'|translate}} : {{data.ViolationCode}}</H3>
+                    </legend>
+                    <div class="form-group">
+                        <div class="col-sm-12">      <input type="file" ng-file-select="UploadFileHSE($files,'SignedViolationFile')" id="file_UploadViolation"
+                                style="display:none !important" multiple accept="image/*">
+                            <button id="btn_file_UploadViolation" class="btn btn-info" style="display:inline-block;" type="button"
+                                ng-disabled="btnFile_AC" ng-click="btnfile('file_UploadViolation','file_name_UploadViolation')">
+                                <i class="glyphicon glyphicon-plus-sign fas-ct"></i> File
+                            </button>
+                      
+                            <code> ({{'OnlyImgAndDocument'|translate}})</code>
+                       
+                            <table 
+                                class="table table-bordered table-striped mb-0"
+                                style="margin-top:10px;">
+                                <tr ng-repeat="step in listfileSigned">
+                                    <td><a href="/{{step.name}}" target="_blank">{{step.name}}</a></td>
+                                    <td style="text-align:center;">
+                                        <a ng-click="removeFile($index)">
+                                            <span class="glyphicon glyphicon-remove" style="color: red;"></span>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="form-group" ng-if="showProcess">
+                        <div class="col-sm-12 progress progress-striped active"
+                            id="MyFileUploadProcessBarDiv">
+                            <div id="MyFileUploadProcessBar" class="progress-bar progress-bar-success" role="progressbar"
+                                aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;">
+                                <span class="sr-only" id="MyFileUploadProcessBarText"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-primary buttonApp" ng-disabled="checkFileValidate()" ng-click="save('Q')">
+                            <img src="/css/image/savefile.png" style="width:25px;">
+                            {{'Save'|translate}}
+                        </button>                
+                        <button class="btn btn-default buttonApp" data-dismiss="modal" ng-click="resetModal()">
+                            <img src="/css/image/close.png" style="width:25px;">
+                            {{'Close'|translate}}
+                        </button>
+                    </div>
+                   </form>
+                </div> <!-- end of modal-body -->
+            </div> <!-- end of modal-content -->
+        </div> <!-- end of modal-dialog -->
+    </div> <!-- end of modal -->
+</div>

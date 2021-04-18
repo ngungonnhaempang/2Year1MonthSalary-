@@ -1,0 +1,412 @@
+<style>
+    .buttonApp {
+        font-weight: bold;
+        font-family: tahoma, 'DFKai-SB';
+        box-shadow: 4px 2px 2px 2px #999
+    }
+
+    #page-contain {
+        font-size: 12pt;
+        font-family: 'Times New Roman', 'DFKai-SB';
+    }
+
+    page {
+        background: white;
+        display: block;
+        margin: 10px auto;
+        margin-bottom: 0.5cm;
+        box-shadow: 0 0 0.5cm rgba(0, 0, 0, 0.5);
+    }
+
+    page[size="A4"] {
+        padding: 5% 5% 5% 5%;
+    }
+
+    #footer {
+        display: none;
+    }
+
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    table,
+    th,
+    td {
+        border: 1px solid black;
+        padding: 5px;
+    }
+
+    ul,
+    li {
+        list-style-type: none;
+    }
+
+    body {
+        padding: 0;
+        -webkit-print-color-adjust: exact !important;
+    }
+
+    .page-footer {
+        width: 100%;
+        text-align: right;
+    }
+
+    .colorGray {
+        background-color: lightgray;
+        text-align: center;
+        font-weight: bold;
+        white-space: pre;
+    }
+
+
+    @page {
+        size: A4;
+        margin: 5mm 5mm 10mm 5mm;
+    }
+
+
+
+    @media print {
+        .container {
+            padding: 0px 4px 0px 4px !important;
+
+        }
+
+        #page-contain {
+            font-size: 12pt !important;
+            font-family: 'Times New Roman', 'DFKai-SB';
+        }
+
+        .navbar {
+            display: none;
+        }
+
+        a[href]:after {
+            content: none;
+        }
+
+        .page-footer {
+
+            position: fixed;
+            bottom: 0;
+            height: 17px;
+        }
+
+        .page-footer span {
+            padding-top: 10px;
+            background-color: white !important;
+            -webkit-print-color-adjust: exact !important;
+        }
+
+        table {
+            page-break-inside: auto;
+        }
+
+
+        tr {
+            page-break-inside: auto;
+            page-break-after: auto
+        }
+
+        td {
+            page-break-inside: auto;
+            page-break-after: auto;
+
+        }
+
+        #tbSign {
+            page-break-inside: avoid;
+        }
+
+        .colorGray {
+            background-color: lightgray !important;
+            -webkit-print-color-adjust: exact !important;
+        }
+
+        .buttonApp {
+            visibility: hidden;
+        }
+
+    }
+</style>
+
+<link href="css/checkboxCustomize.css" rel="stylesheet" />
+
+
+<page size="A4" id="page-contain" class="container">
+    <div class="col-lg-12" style="text-align: center;">
+        <Strong style="font-size:18px"> 遠東紡纖(越南)有限公司-化纖廠
+            <br> CÔNG TY TNHH POLYTEX FAR EASTERN (VIỆT NAM)-XƯỞNG HÓA SỢI
+            <br> 變更申請表 Biểu xin thay đổi
+        </Strong>
+    </div>
+
+    <table>
+
+        <tr>
+            <td width="15%">1.申請單位 <br>Bộ phận đề xuất </td>
+            <td colspan="3" width="45%">{{data.Department}} </td>
+            <td colspan="3">申請日期: <br> Ngày đề xuất: {{data.CreateDate}}</td>
+        </tr>
+
+        <tr>
+            <td>2. 變更名稱 <br> Tên sự thay đổi </td>
+            <td colspan="3" style="white-space: break-spaces;">{{data.MD_Name}}</td>
+            <td colspan="3" rowspan="2"> 變更類別 Loại thay đổi: <br>
+                <label class="checkboxPseudo">
+                    <input type="checkbox" ng-model="longTerm" disabled>
+                    <span class="checked"></span>
+                    永久性 Dài hạn
+                </label>
+
+                <label class="checkboxPseudo" style="margin-bottom: auto;">
+                    <input type="checkbox" ng-model="shortTerm" disabled>
+                    <span class="checked"></span>
+                    暫時性 Tạm thời <span style="font-size: 11pt;"> ( thời gian dự kiến thay đổi: từ
+                        {{data.ExpectDateBegin | date: 'dd'}} tháng
+                        {{data.ExpectDateBegin | date: 'MM'}} năm {{data.ExpectDateBegin | date: 'yyyy'}}
+                        đến
+                        {{data.ExpectDateEnd | date: 'dd'}} tháng {{data.ExpectDateEnd | date: 'MM'}} năm
+                        {{data.ExpectDateEnd | date: 'yyyy'}} )</span>
+                </label>
+                <span style="font-size: 11pt;">預計時間：{{data.ExpectDateBegin | date: 'yyyy'}} 年
+                    {{data.ExpectDateBegin | date: 'MM'}} 月
+                    {{data.ExpectDateBegin | date: 'dd'}} 日 至 {{data.ExpectDateEnd | date: 'yyyy'}} 年
+                    {{data.ExpectDateEnd | date: 'MM'}} 月 {{data.ExpectDateEnd | date: 'dd'}} 日
+                </span>
+            </td>
+        </tr>
+
+        <tr>
+            <td>3. 變更案號 <br> Mã số dự án thay đổi </td>
+            <td colspan="3">{{data.MD_ProjectID}}</td>
+        </tr>
+
+        <tr>
+            <td>4. 風險等級 <br> Cấp độ rủi ro</td>
+            <td colspan="6">
+                <label class="checkboxPseudo">
+                    <input type="checkbox" ng-model="RiskLevel_1" disabled>
+                    <span class="checked"></span>
+                    第一等級 Cấp độ 1 (變更僅涉及、影響單一單位 Chỉ ảnh hưởng, liên quan đến 01 đơn vị)
+                </label>
+
+                <label class="checkboxPseudo">
+                    <input type="checkbox" ng-model="RiskLevel_2" disabled>
+                    <span class="checked"></span>
+                    第二等級 Cấp độ 2 - 受影響單位 Đơn vị ảnh hưởng : {{AffectDivisionList}}
+                </label>
+            </td>
+        </tr>
+
+        <tr>
+            <td>5. 變更原因 <br> Lý do chính thay đổi: </td>
+            <td colspan="6" style="white-space: break-spaces;">{{data.Reason}} </td>
+        </tr>
+
+        <tr>
+            <td>6. 變更區域（附照片）<br> Khu vực thay đổi <br> (đính kèm hình ảnh)</td>
+            <td colspan="6">
+                <p style="white-space: break-spaces;">{{data.Area}} </p>
+                <img src="/css/image/attached_icon.png" style="width:18px;">
+                <a href="/{{fileArea}}" target="_blank">{{fileArea}}</a>
+            </td>
+        </tr>
+
+        <tr>
+            <td>7. 變更描述 <br> Mô tả sự thay đổi</td>
+            <td colspan="6" style="white-space: break-spaces;">{{data.Description}} </td>
+        </tr>
+
+        <tr>
+            <td>8. 變更項目<br> Hạng mục thay đổi </td>
+            <td colspan="6">
+                <div id="showPrint" style="margin-left: -39px; width: 86%;"></div>
+            </td>
+        </tr>
+
+        <tr>
+            <td>9. 變更影響範圍 <br> Phạm vi ảnh hưởng của sự thay đổi</td>
+            <td colspan="6">
+                <div style=" margin-left: -39px;">
+                    <ul>
+                        <li ng-repeat="r in AffectRangeList">
+                            <label class="checkboxPseudo fitCheckPosition">
+                                <input type="checkbox" ng-model="r.checked" disabled>
+                                <span class="checked"></span> {{r.AffectRangeContent}}
+                                <u style="white-space: break-spaces;" ng-if="r.OtherContent">{{r.OtherContent}} </u>
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+            </td>
+        </tr>
+
+        <tr>
+            <td> 10. 相關工程列表 <br> Biểu liệt kê các công trình liên quan</td>
+            <td colspan="6">
+                - 工程名稱 Tên công trình <u>{{data.ConstructionName}}</u>
+                <br>
+
+                - 資本支出案號 Mã số vốn mà dự án cần chi <u>{{data.CapitalCode}}</u>
+                <br>
+
+                - 專案代碼 Mã dự án <u>{{data.ProjectID}}</u>
+            </td>
+        </tr>
+
+        <tr>
+            <td colspan="7">
+                <strong><ins><i>檢附檔案 HỒ SƠ ĐÍNH KÈM: </i></ins></strong>
+
+                <br>- 證明文件及圖面（含圖號）Tài liệu và sơ đồ chứng minh (bao gồm mã số bản vẽ)
+                <br> &nbsp;&nbsp;&nbsp;<img src="/css/image/attached_icon.png" style="width:18px;">
+                <a href="/{{fileDocument}}" target="_blank">{{fileDocument}}</a>
+
+                <br>- 變更審查小組會議紀錄 Biên bản Ghi chép tổ thẩm tra thay đổi 5VEXXHR043 &nbsp;&nbsp;&nbsp;&nbsp;
+                <br> &nbsp;&nbsp;&nbsp;<img src="/css/image/attached_icon.png" style="width:18px;">
+                <a href="/{{fileRecord}}" target="_blank">{{fileRecord}}</a>
+            </td>
+        </tr>
+        <tr></tr>
+        <!--this tr tag will hidden the border-->
+    </table>
+
+    <table id="tbSign" ng-if="!checker">
+        <tr class="colorGray">
+            <td rowspan="2" width="15%">最高主管<br> Chủ quản cấp cao </td>
+            <td colspan="3" width="45%">安環處 Bộ phận An toàn môi trường </td>
+            <td colspan="3" width="40%">變更申請單位 Đơn vị xin thay đổi</td>
+        </tr>
+
+        <tr class="colorGray">
+            <td>廠處主管 <br>Chủ quản xưởng</td>
+            <td>單位主管 <br>Chủ quản đơn vị </td>
+            <td>審查人員 <br>Nhân viên kiểm tra </td>
+            <td>廠處主管 <br>Chủ quản xưởng </td>
+            <td>單位主管 <br>Chủ quản đơn vị</td>
+            <td>申請人員 <br>Nhân viên phụ trách </td>
+        </tr>
+
+        <tr style=" text-align:center; height:90pt; font-size:10pt; vertical-align: top; white-space: pre;">
+            <td> {{receiver[8].UserId}}
+                <br> {{receiver[8].UserName}}
+            </td>
+
+            <td> {{receiver[7].UserId}}
+                <br> {{receiver[7].UserName}}
+            </td>
+
+            <td> {{receiver[6].UserId}}
+                <br> {{receiver[6].UserName}}
+            </td>
+
+            <td>
+                <p style="margin-top: -30px;">- 安全 An toàn: {{receiver[3].UserId}}
+                    <br> {{receiver[3].UserName}}
+                </p>
+
+                <p style="margin-top: -60px;"> - 環境 Môi trường: {{receiver[5].UserId}}
+                    <br> {{receiver[4].UserName}}
+                </p>
+                <p style="margin-top: -45px;"> - 消防 PCCC: {{receiver[5].UserId}}
+                    <br> {{receiver[5].UserName}}</p>
+            </td>
+
+            <td> {{receiver[2].UserId}}
+                <br> {{receiver[2].UserName}}
+            </td>
+
+            <td> {{receiver[1].UserId}}
+                <br> {{receiver[1].UserName}}
+            </td>
+
+            <td> {{receiver[0].UserId}}
+                <br> {{receiver[0].UserName}}
+            </td>
+        </tr>
+
+    </table>
+
+
+    <div ng-if="!checker" class="page-footer">
+        <span>{{data.ISO_AppCode}}</span>
+    </div>
+
+    <div ng-if="!checker" style="float: right; margin-top: 30px;">
+        <button class="btn btn-success buttonApp" ng-click="printApp()">
+            <i class="glyphicon glyphicon-print" style="color: white;vertical-align: text-bottom;"></i>
+            &nbsp;{{'Print_voucher'|translate}}
+        </button>
+
+    </div>
+
+    <div ng-if="checker=='hseDivisionManager' || checker=='hseManager' || checker=='Vice'" style="margin-top: 25px;">
+        <div ng-include="'forms/EHS/Modification/Manage_Modification/ModificationProcessLog.html'"></div>
+    </div>
+
+    <form class="form-horizontal" name="checkform" ng-if="checker" style="font-size: 14pt;">
+        <div class="form-group" style="margin-top: 30px;">
+            <label class="col-sm-3 control-label">*{{'IsPass'|translate}}</label>
+            <div class="col-sm-3">
+                <select class="form-control" ng-model="data.IsAgree" required>
+                    <option value="YES">{{'leaderCheck'|translate}}</option>
+                    <option value="NO">{{'notAgree'|translate}}</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group" ng-if="data.IsAgree == 'YES' && checker == 'hseManager'" style="margin-top: 15px;">
+            <label class="col-sm-3 control-label">*{{'SendVicePresident'|translate}}</label>
+            <div class="col-sm-3">
+                <select class="form-control" ng-model="data.SendVicePresident" required>
+                    <option value="YES">{{'MD_Yes'|translate}}</option>
+                    <option value="NO">{{'MD_No'|translate}}</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group" ng-if="checker=='hseDivisionManager'" style="margin-top: 15px;">
+            <label class="col-sm-3 control-label">*{{'Select_next_approver'|translate}}</label>
+            <div class="col-sm-3">
+                <select class="form-control" ng-model="data.hseManager" required>
+                    <option ng-repeat="manager in hseManagerList" value="{{manager.Person}}">
+                        {{manager.Person}} - {{manager.EmployeeName}}
+                    </option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group" ng-if="data.IsAgree == 'YES' && EnterApprovalReason && checker!='Vice'"
+            style="margin-top: 15px;">
+            <label class="col-sm-3 control-label">*{{'ApprovalReason'|translate}}</label>
+            <div class="col-sm-6">
+                <textarea class="form-control" type="text" ng-model="data.ApprovalReason" field-validate rows="3"
+                    required></textarea>
+            </div>
+        </div>
+
+
+
+
+        <div class="form-group" ng-if="data.IsAgree == 'NO'" style="margin-top: 15px;">
+            <label class="col-sm-3 control-label">*{{'DenyReason'|translate}}</label>
+            <div class="col-sm-6">
+                <textarea class="form-control" type="text" ng-model="data.DenyReason" field-validate rows="3" required>
+            </textarea>
+            </div>
+        </div>
+
+        <div class="form-group" style="margin-top: 15px;">
+            <div class="col-sm-offset-3 col-sm-2">
+                <button class="btn btn-warning buttonApp" ng-click="saveSubmit()" ng-disabled="checkform.$invalid">
+                    <img src="/css/image/send.png" style="width:25px;">
+                    {{'submit'|translate}}
+                </button>
+            </div>
+        </div>
+    </form>
+
+</page>

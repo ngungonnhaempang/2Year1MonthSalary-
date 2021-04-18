@@ -1,0 +1,48 @@
+<style>
+    .modal-lg {
+        width: 900px;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+</style>
+
+<div class="col-md-12">
+    <form class="form-horizontal" novalidate name="form">
+        <legend>
+            <h2 class="title">{{'Search_ProjectID'|translate}}</h2>
+        </legend>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" style="width: auto;">{{'MD_ProjectID'|translate}}</label>
+            <div class="col-sm-3">
+                <input class="form-control" type="text" ng-model="query.MD_ProjectID" />
+            </div>
+            <label class="col-sm-2 control-label">{{'Create_date'|translate}}</label>
+            <div class="col-sm-3">
+                <div class='input-group date'>
+                    <input type='text' class="form-control" ng-model="query.CreateDate" date-picker />
+                    <span class="input-group-addon">
+                        <label class="glyphicon glyphicon-calendar" style="color: grey"></label>
+                    </span>
+                </div>
+            </div>
+            <div class="col-sm-1">
+                <button class="btn btn-primary" data-ng-click="searchProjectID()">
+                    <i class="glyphicon glyphicon-search"></i> {{'Search'|translate}}</button>
+            </div>
+        </div>
+        <div style="width: 100%;">
+            <div id="Grid" ui-grid="gridOptionsID" class="grid" ui-grid-selection ui-grid-pagination
+            ui-grid-resize-columns ui-grid-core ui-grid-exporter external-scopes="gridHandlers">
+        </div>
+        </div>
+
+        <div class="modal-footer">
+            <button class="btn btn-default" data-dismiss="modal" ng-click="resetModal()">
+                <i class="glyphicon glyphicon-remove" style="color: grey;vertical-align: text-bottom;"></i>
+                {{'Close'|translate}}
+            </button>
+        </div>
+    </form>
+</div>

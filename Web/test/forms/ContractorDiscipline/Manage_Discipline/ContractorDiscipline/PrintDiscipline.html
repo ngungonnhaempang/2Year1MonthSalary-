@@ -1,0 +1,500 @@
+<style>
+    .buttonApp {
+        font-weight: bold;
+        font-family: tahoma, 'DFKai-SB';
+        box-shadow: 4px 2px 2px 2px #999
+    }
+
+    #page-contain {
+        font-size: 12pt;
+        font-family: 'Times New Roman', 'DFKai-SB';
+    }
+
+    page {
+        background: white;
+        display: block;
+        margin: 10px auto;
+        margin-bottom: 0.5cm;
+        box-shadow: 0 0 0.5cm rgba(0, 0, 0, 0.5);
+    }
+
+    page[size="A4"] {
+        padding: 5% 5% 5% 5%;
+    }
+
+    #footer {
+        display: none;
+    }
+
+    table,
+    th,
+    td {
+        border: 1px solid black;
+        padding: 5px;
+    }
+
+    th {
+        text-align: center;
+    }
+
+    td {
+        text-align: left;
+    }
+
+
+    body {
+        padding: 0;
+    }
+
+    .colorGray {
+        background-color: lightgray;
+        text-align: center;
+    }
+
+    .dateSigned {
+        color: gray;
+        font-size: 11pt;
+    }
+
+    .page-footer {
+        width: 100%;
+        text-align: right;
+    }
+
+    .printHide {
+        display: contents;
+    }
+
+    .printShow {
+        display: none;
+    }
+
+    .page-footer-space {
+        height: 9px;
+
+    }
+
+    @media print {
+        .container {
+            padding: 0px 4px 0px 4px !important;
+
+        }
+
+        @page {
+            size: A4;
+            margin: 5mm 5mm 10mm 5mm;
+        }
+
+
+        #page-contain {
+            font-size: 12pt !important;
+            font-family: 'Times New Roman', 'DFKai-SB';
+        }
+
+        a[href]:after {
+            content: none;
+        }
+
+        .page-footer {
+            position: fixed;
+            bottom: 0;
+            height: 20px;
+        }
+
+        .page-footer p {
+            padding-top: 0px;
+            /* background-color: white !important;
+            -webkit-print-color-adjust: exact !important; */
+        }
+
+        .page-footer-space {
+            height: 9px;
+
+        }
+
+        .colorGray {
+            background-color: lightgray !important;
+            -webkit-print-color-adjust: exact !important;
+        }
+
+        .dateSigned {
+            color: gray !important;
+            -webkit-print-color-adjust: exact !important;
+            font-size: 11pt;
+        }
+
+        .buttonApp,
+        .paymentInfo {
+            display: none !important;
+        }
+
+        .printHide {
+            display: none;
+        }
+
+        .printShow {
+            display: contents;
+        }
+
+        #finePayment {
+            page-break-inside: avoid;
+        }
+    }
+</style>
+
+<page size="A4" id="page-contain" class="container">
+    <div style="text-align: center;margin-bottom: 10px;">
+        <Strong> CÔNG TY TNHH POLYTEX FAR EASTERN (VIỆT NAM)
+            <br> 遠東紡纖(越南)有限公司
+            <br>ĐƠN XỬ PHẠT NHÀ THẦU VI PHẠM AN TOÀN VỆ SINH
+            <br>承攬商安全衛生違規處分單
+        </Strong>
+    </div>
+
+    <span><b>Mã số đơn 流水號:</b> {{data.DisciplineCode}}</span>
+    <span style="float: right;"><b>Ngày lập đơn 立案時間：</b>
+        Năm {{data.CreateDate|date: 'yyyy'}} 年 tháng {{data.CreateDate|date: 'MM'}} 月 ngày
+        {{data.CreateDate|date: 'dd'}} 日
+    </span>
+
+    <table>
+        <tfoot>
+            <tr></tr>
+            <!--this tr tag will hidden the border-->
+            <tr>
+                <td colspan="4" style="border:hidden">
+                    <!--place holder for the fixed-position footer-->
+                    <div class="page-footer-space"></div>
+                </td>
+            </tr>
+        </tfoot>
+
+        <tr>
+            <th style="width:20%;" class="colorGray" rowspan="2"> Nhà thầu vi phạm <br> 違規承攬商 </th>
+            <td style="width:40%;" rowspan="2">{{data.ContractorName}}</td>
+            <th style="width:20%;" class="colorGray">Thời gian vi phạm <br> 違規時間</th>
+            <td style="width:20%;">
+                {{data.TimeViolation|date: "yyyy-MM-dd hh:mm:ss"}}
+            </td>
+
+        </tr>
+        <tr>
+            <th class="colorGray">Địa điểm vi phạm <br> 違規地點</th>
+            <td>{{data.LocationViolation}}</td>
+        </tr>
+        <tr>
+            <th class="colorGray">Bộ phận phát thầu <br> 發包單位 </th>
+            <td>{{data.Department}} - {{data.Specification_VN}} {{data.Specification_TW}}</td>
+            <th class="colorGray">Hạng mục thi công<br> 施工項目</th>
+            <td>{{data.ConstructionItems}}</td>
+        </tr>
+        <tr>
+            <th class="colorGray"> Hạng mục vi phạm <br> 違規事項 </th>
+            <td colspan="3" style="padding: 0px;">
+                <table style="border: hidden;">
+                    <tr ng-repeat="p in ParentPrintList">
+                        <td colspan="3" style="text-align: left;">
+                            {{p.Content}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th style="width:70%;">Nội dung vi phạm <br>違規內容</th>
+                        <th style="width:20%;">Số tiền phạt (VNĐ)<br>罰款金額</th>
+                        <th style="width:10%;">Số vi phạm <br> 總違規數</th>
+                    </tr>
+                    <tr ng-repeat="dis in DisciplineList">
+                        <td>{{dis.Content}}</td>
+                        <td style="text-align: right;">{{Convert(dis.Fine)}}</td>
+                        <td style="text-align: center;">{{dis.Quantity}}</td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+
+        <tr>
+            <th class="colorGray"> Mô tả vi phạm <br> 違規簡要</th>
+            <td colspan="3">
+                <span style="white-space: break-spaces;">{{data.DescriptionViolation}}</span>
+                <br>- <b><i>Bằng chứng vi phạm 違規證據:</i></b>
+                <br>
+                <ul ng-repeat="step in listfileEvidence">
+                    <li style="text-align: left;"><a href="/{{step.name}}" target="_blank">{{step.name}}</a></li>
+                </ul>
+
+                - <b><i>Hồ sơ liên quan 相關記錄:</i></b>
+                <br>
+                <ul ng-repeat="step in listfileRecords">
+                    <li style="text-align: left;"><a href="/{{step.name}}" target="_blank">{{step.name}}</a></li>
+                </ul>
+
+                <div ng-if="data.LinkFile">
+                    - <b><i>Link hồ sơ:</i></b>
+                    <br>
+                    <ul>
+                        <li style="text-align: left;"><a href="{{data.LinkFile}}" target="_blank">{{data.LinkFile}}</a>
+                        </li>
+                    </ul>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <th class="colorGray">Tổng số tiền phạt <br> 罰款總金額</th>
+            <td style="text-align: center;">{{Convert(data.TotalFine)}} (VNĐ)</td>
+            <th class="colorGray"> Bằng chữ <br> 大寫 </th>
+            <td colspan="2" style="text-transform: capitalize;text-align: center;">
+                {{DocTienBangChu(data.TotalFine)}} <br>
+                {{numberToChinese(data.TotalFine)}}
+            </td>
+        </tr>
+        <tr>
+            <th class="colorGray">Đơn vị thu tiền phạt <br> 收款單位 </th>
+            <td colspan="3"> Đơn vị Thu chi-Tổng vụ 出納單位-總務科 </td>
+        </tr>
+        <tr ng-if="!checker">
+            <th class="colorGray"> Chú ý <br> 注意</th>
+            <td colspan="3" class="colorGray" style="text-align:left">
+                <ol>
+                    <li>
+                        Nếu bằng chứng vi phạm rõ ràng, nhưng đơn vị vi phạm (nhà thầu) có thắc mắc về Biên bản xử phạt
+                        thì trong vòng 2 ngày, tính từ ngày ký xác nhận vào Đơn xác nhận vi phạm phải liên hệ bộ phận
+                        an toàn môi trường để giải quyết.凡舉證屬實，違規單位對處分單有疑義時，從於違規確認單
+                        簽字日起2日內以書面向安環處提出申訴，逾期不受理。
+                    </li>
+                    <li>
+                        Sau khi nhận được thông báo trong vòng 07 ngày Nhà thầu vui lòng liên hệ với bộ phận
+                        Tổng vụ để đóng toàn bộ số tiền phạt theo quy định.於承攬商收到通知07個工作日內依照規定
+                        繳付罰款總金額至出納單位。
+                    </li>
+                    <li>
+                        Phương thức đóng tiền phạt: bằng tiền mặt (VNĐ) 繳款方式：以現金(越盾)
+                    </li>
+                    <li>
+                        Nếu quá hạn nhà thầu vẫn không đóng phạt hệ thống sẽ tự động đình chỉ vào cổng và ngưng
+                        xét duyệt đơn thi công một ngày cho đến khi nhà thầu nộp phạt theo quy trình.
+                        逾期未繳禁止入廠，並暫停核准“一日施工承攬商審核單” 到承攬商繳款為止。
+                    </li>
+                </ol>
+            </td>
+        </tr>
+        <tr colspan='4'>
+            <table ng-if="!checker" style="page-break-inside: avoid;">
+                <tr>
+                    <th class="colorGray">
+                        Đơn vị phát thầu <br> 發包單位
+                    </th>
+                    <th class="colorGray" colspan="3">
+                        Đơn vị lập đơn xử phạt 立案單位
+                    </th>
+                </tr>
+
+                <tr class="colorGray">
+                    <th style="width:211px">Chủ quản<br> 單位主管</th>
+                    <th style="width:280px">Chủ quản xưởng <br>廠處主管</th>
+                    <th style="width:280px">Chủ quản đơn vị <br> 單位主管</th>
+                    <th style="width:282px">Nhân viên lập đơn <br>立案人</th>
+                </tr>
+
+                <tr style="height:50pt; vertical-align: top; text-align-last: center;">
+                    <td>{{receiver[3].UserId}} <br> {{receiver[3].UserName}} <br> <span class="dateSigned"
+                            ng-if="receiver[3]">({{receiver[3].FormatStamp}})</span></td>
+                    <td>{{receiver[2].UserId}} <br> {{receiver[2].UserName}} <br> <span class="dateSigned"
+                            ng-if="receiver[2]">({{receiver[2].FormatStamp}})</span></td>
+                    <td>{{receiver[1].UserId}} <br> {{receiver[1].UserName}} <br> <span class="dateSigned"
+                            ng-if="receiver[1]">({{receiver[1].FormatStamp}})</span></td>
+                    <td>{{receiver[0].UserId}} <br> {{receiver[0].UserName}} <br> <span class="dateSigned"
+                            ng-if="receiver[0]">({{receiver[0].FormatStamp}})</span></td>
+                </tr>
+                <tr></tr>
+            </table>
+        </tr>
+
+
+    </table>
+
+
+
+    <table id="finePayment" ng-if="!checker" style="page-break-inside: avoid;">
+        <tr>
+            <th class="colorGray" colspan="4">
+                THÔNG TIN XÁC NHẬN ĐÓNG TIỀN PHẠT <br> 繳款確認資訊
+            </th>
+        </tr>
+        <tr class="printShow">
+            <th class="colorGray">
+                Ngày thu tiền <br> 繳款日期
+            </th>
+
+            <td colspan="3" ng-if="data.PaymentDate">
+                Năm {{data.PaymentDate|date: 'yyyy'}} 年 tháng {{data.PaymentDate|date: 'MM'}} 月 ngày
+                {{data.PaymentDate|date: 'dd'}} 日 {{data.PaymentDate|date: 'HH'}} Giờ點 {{data.PaymentDate|date: 'mm'}}
+                Phút分
+            </td>
+            <td colspan="3" ng-if="!data.PaymentDate">
+                Năm &emsp;年 tháng &emsp;月 Ngày &emsp;日 &emsp; Giờ點 &emsp; Phút分
+            </td>
+        </tr>
+
+        <tr class="printHide">
+            <th class="colorGray" style="width:20%;">
+                Ngày thu tiền <br> 繳款日期
+            </th>
+
+            <td ng-if="data.PaymentDate">
+                Năm {{data.PaymentDate|date: 'yyyy'}} 年 tháng {{data.PaymentDate|date: 'MM'}} 月 ngày
+                {{data.PaymentDate|date: 'dd'}} 日 {{data.PaymentDate|date: 'HH'}} Giờ點 {{data.PaymentDate|date: 'mm'}}
+                Phút分
+            </td>
+
+            <td ng-if="!data.PaymentDate">
+                Năm &emsp;年 tháng &emsp;月 Ngày &emsp;日 &emsp; Giờ點 &emsp; Phút分
+            </td>
+
+            <th class="colorGray">Đơn đóng phạt đã ký<br>已簽核繳罰款單</th>
+            <td><a href="\{{filePayment[0].name}}" target="_blank">{{filePayment[0].name}}</a></td>
+        </tr>
+
+        <tr>
+            <th class="colorGray" style="width:220px;">
+                Tổng số tiền phạt <br> 罰款總金額
+            </th>
+
+            <td style="width:400px;text-align: center;">{{Convert(data.TotalFine)}} (VNĐ)</td>
+
+            <th class="colorGray" style="width:160px;">
+                Bằng chữ <br> 大寫
+            </th>
+
+            <td style="text-transform: capitalize; text-align: center;width: 280px;">
+                {{DocTienBangChu(data.TotalFine)}} <br>
+                {{numberToChinese(data.TotalFine)}}
+            </td>
+        </tr>
+
+        <tr class="colorGray">
+            <th colspan="2">Tổng vụ (ký ghi rõ họ tên, đóng dấu)<br> 總務科(簽名，蓋章)</th>
+            <th colspan="2">Đại diện nhà thầu (ký và ghi rõ họ tên)<br> 承攬商負責人(簽名，蓋章) </th>
+        </tr>
+
+        <tr style="height:60pt; vertical-align: bottom; text-align-last: center;">
+            <td colspan="2">
+                {{data.ConfirmUserName}}
+            </td>
+            <td colspan="2">
+                {{data.ContractorRepresentative}}
+            </td>
+        </tr>
+    </table>
+
+    <div ng-if="!checker" class="page-footer">
+        <p>{{data.ISO_AppCode}}</p>
+    </div>
+
+    <div ng-if="!checker" style="float: right; margin-top: 10px; margin-bottom: 20px; margin-right: 4px;">
+        <button class="btn btn-success buttonApp" ng-click="printApp()">
+            <i class="glyphicon glyphicon-print" style="color: white;vertical-align: text-bottom;"></i>
+            &nbsp;{{'Print_voucher'|translate}}
+        </button>
+    </div>
+
+
+    <form class="form-horizontal" autocomplete="off" name="checkform" ng-if="checker" style="font-size: 14pt;">
+        <div class="form-group" style="margin-top: 30px;">
+            <label class="col-sm-3 control-label">*{{'IsPass'|translate}}</label>
+            <div class="col-sm-3">
+                <select class="form-control" ng-model="data.IsAgree" required>
+                    <option value="YES">{{'leaderCheck'|translate}}</option>
+                    <option value="NO">{{'notAgree'|translate}}</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group" ng-if="data.IsAgree == 'NO'" style="margin-top: 15px;">
+            <label class="col-sm-3 control-label">*{{'DenyReason'|translate}}</label>
+            <div class="col-sm-6">
+                <textarea class="form-control" type="text" ng-model="data.DenyReason" field-validate rows="3" required>
+            </textarea>
+            </div>
+        </div>
+
+        <div class="form-group" style="margin-top: 15px;">
+            <div class="col-sm-offset-3 col-sm-2">
+                <button class="btn btn-warning buttonApp" ng-click="saveSubmit()" ng-disabled="checkform.$invalid">
+                    <img src="/css/image/send.png" style="width:25px;">
+                    {{'submit'|translate}}
+                </button>
+            </div>
+        </div>
+    </form>
+
+    <form class="form-horizontal paymentInfo" autocomplete="off" name="paymentform" ng-if="Payment"
+        style="font-size: 14pt;">
+        <br>
+        <H4 class="title font" style="margin-top: 50px;">
+            <img src="/css/image/info.png" style="width:20px;">
+            {{'InfoPayment'|translate}}
+        </H4>
+        <div class="form-group" style="margin-top: 30px;">
+            <label class="col-sm-3 control-label">*{{'PaymentDate'|translate}}</label>
+            <div class="col-sm-4">
+                <div class='input-group date'>
+                    <input type='text' id="time-payment" class="form-control" date-picker time="Y-m-d H:i" max="0"
+                        ng-model="data.FinePaymentDate" required readonly />
+                    <span class="input-group-addon">
+                        <label class="glyphicon glyphicon-calendar" style="color: grey" for='time-payment'></label>
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-3 control-label">* {{'SignedBill'|translate}}</label>
+            <div class="col-sm-1">
+                <input type="file" ng-file-select="UploadFileHSE($files,'payment')" id="file_Discipline"
+                    style="display:none !important" multiple>
+
+                <button id="btn_file_Discipline" class="btn btn-info" style="display:inline-block;" type="button"
+                    ng-click="btnfile('file_Discipline','file_name_Discipline')">
+                    <i class="glyphicon glyphicon-plus-sign fas-ct"></i> File
+                </button>
+            </div>
+            <div class="col-sm-8" ng-if="filePayment.length>0">
+                <a href="\{{filePayment[0].name}}" target="_blank">{{filePayment[0].name}}</a>
+                <a class="btn btn-danger btn-xs" role="button" ng-click="removeFile(filePayment[0],'payment')">X</a>
+            </div>
+        </div>
+
+        <div class="form-group" ng-if="showProcessRecord">
+            <div class="col-sm-offset-3 col-sm-4 progress progress-striped active" style="margin-left: 25.5%;"
+                id="MyFileUploadProcessBarDiv">
+                <div id="MyFileUploadProcessBar" class="progress-bar progress-bar-success" role="progressbar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;">
+                    <span class="sr-only" id="MyFileUploadProcessBarText"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-3 control-label">* {{'Representative'|translate}}</label>
+            <div class="col-sm-4">
+                <input class="form-control" type="text" ng-model="data.ContractorRepresentative" required />
+            </div>
+        </div>
+
+        <div class="form-group" ng-if="EditPayment">
+            <label class="col-sm-3 control-label">* {{'Reason_edit'|translate}}</label>
+            <div class="col-sm-4">
+                <textarea class="form-control" type="text" rows="3" ng-model="data.ModifyReason" required />
+            </div>
+        </div>
+
+        <div class="form-group" style="margin-top: 15px;">
+            <div class="col-sm-offset-3 col-sm-2">
+                <button class="btn btn-warning buttonApp" ng-click="confirmPayment()"
+                    ng-disabled="paymentform.$invalid || checkValidateFile()">
+                    <img src="/css/image/contractor/ok.png" style="width:25px;">&nbsp;
+                    {{'Confirm'|translate}}
+                </button>
+            </div>
+        </div>
+    </form>
+</page>

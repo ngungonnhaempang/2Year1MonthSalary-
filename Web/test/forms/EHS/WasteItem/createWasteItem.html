@@ -1,0 +1,135 @@
+<div class="modal fade" id="myModal" role="dialog" aria-labelledby="myLargeModalLabel" data-backdrop="static" data-keyboard="false">
+
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <form action=""></form>
+            <div class="modal-body" style="padding-bottom:3px">
+                <H4 style="background-color: #ececec; padding:5px">{{'WasteItemInformation'|translate}}</H4>
+                <form class="form-horizontal" role="form" name="formWaste" novalidate>
+
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">*{{'NameVN'|translate}}</label>
+
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control" name="NameVN" ng-model="recod.NameVN" required/>
+                        </div>
+                        <label class="col-sm-2 control-label">*{{'NameCN'|translate}}</label>
+
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control" name="NameCN" ng-model="recod.NameCN" required/>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+
+                        <label class="col-sm-2 control-label">*{{'Roots'|translate}}</label>
+
+                        <div class="col-sm-4">
+                            <select class="form-control" name="Roots" ng-model="recod.Roots"
+                                    ng-options="c.RootID as c.RootName for c in RootsData" required></select>
+
+                        </div>
+
+                        <label class="col-sm-2 control-label" >{{'WasteID'|translate}}</label>
+
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control" name="ItemCode"
+                                   ng-model="recod.ItemCode" ng-disabled="recod.WasteType!='WT001'"
+                                   ng-required="recod.WasteType == 'WT001'"
+                            />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+
+                        <label class="col-sm-2 control-label">*{{'WasteType'|translate}}</label>
+
+                        <div class="col-sm-4">
+                            <select class="form-control" name="WasteType" ng-model="recod.WasteType"
+                                    ng-options="c.ID as c.Name for c in WasteTypeData" required></select>
+
+                        </div>
+                        <label class="col-sm-2 control-label" >*{{'IsValuation'|translate}}</label>
+
+                        <div class="col-sm-4">
+                            <select class="form-control" name="IsValuation" ng-model="recod.IsValuation"
+                                    ng-options="c.ID as c.Name for c in ValuationData" required/>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">*{{'State'|translate}}</label>
+                        <div class="col-sm-4">
+                            <select class="form-control" type="text" name="State" ng-model="recod.state"  ng-options="c.ID as c.Name for c in WasteStateData" required>
+
+                            </select>
+                        </div>
+                        <label class="col-sm-2 control-label">*{{'ProcessComp'|translate}}</label>
+                        <div class="col-sm-4">
+                            <select style="width:100%" id="ProcessComp" class="form-control" ng-model="recod.comp_originid" name="compid"
+                                    ng-options="d.CompID as d.CompName for d in companylist | filter:{Type:'P'}" required>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+
+                        <label class="col-sm-2 control-label">*{{'ChooseMethodProcess'|translate}}</label>
+                        <div class="col-sm-4">
+                            <select style="width:100%" ui-select2 ng-model="recod.method_id" name="method_id" required>
+                                ng-options="m.MethodID as m.MethodDescription for m in method_list" 
+                                <option ng-repeat="m in method_list" value="{{m.MethodID}}">
+                                    {{m.MethodDescription}}
+                                </option>
+
+                            </select>
+                        </div>
+
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">*{{'Price'|translate}}</label>
+                        <div class="col-sm-4">
+                            <input class="form-control" type="number" min="0" name="Price" ng-model="priceHistory.Price" required/>
+                        </div>
+                        <label class="col-sm-2 control-label">*{{'UnitPrice'|translate}}</label>
+                        <div class="col-sm-4">
+                            <select class="form-control" name="UnitPrice" ng-model="priceHistory.UnitPrice"
+                                    ng-options="c.ID as c.Name for c in UnitPrince" required/>
+                        </div>
+
+                    </div>
+                    <div class="form-group">
+
+                        <label class="col-sm-2 control-label">*{{'PriceStartDate'|translate}}</label>
+
+                        <div class="col-sm-4">
+                            <input class="form-control" type="text" name="StartDate"
+                                   ng-model="priceHistory.StartDate" required date-picker/>
+                        </div>
+                        <label class="col-sm-2 control-label">*{{'PriceEndDate'|translate}}</label>
+
+                        <div class="col-sm-4">
+                            <input class="form-control" type="text" name="EndDate"
+                                   ng-model="priceHistory.EndDate" required date-picker />
+                        </div>
+
+                    </div>
+
+
+
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="btnSubmit" class="btn btn-primary" ng-click="savesubmit()" ng-disabled="formWaste.$invalid">
+                    {{'saveSubmit'|translate}}
+                </button>
+                <button type="button" class="btn btn-default" ng-click="reset()">{{'Close'|translate}}</button>
+            </div>
+
+        </div>
+
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>

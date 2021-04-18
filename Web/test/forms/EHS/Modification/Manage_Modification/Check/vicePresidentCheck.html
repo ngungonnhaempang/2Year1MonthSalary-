@@ -1,0 +1,43 @@
+<script type="text/javascript">
+    function Modification_check($scope, EngineApi, $http, $timeout, Notifications, $upload, $compile, $filter, Auth, ModificationService, $routeParams, GateGuest, $translate) {
+        console.log("VoucherAccount:" + $scope.variable.VoucherID);
+        console.log($scope.variable);
+        var lang = window.localStorage.lang;
+        $scope.checker = 'Vice'
+        console.log("checker: " + $scope.checker)
+        $routeParams.code = "Print";
+
+        if ($scope.variable.VoucherType == "MD") {
+            $routeParams.MD_AppID = $scope.variable.VoucherID
+        }
+        else if ($scope.variable.VoucherType == "RA") {
+            $routeParams.Risk_AppID = $scope.variable.VoucherID
+        }
+        else if ($scope.variable.VoucherType == "BE") {
+            $routeParams.Evaluation_AppID = $scope.variable.VoucherID
+
+        }
+        else if ($scope.variable.VoucherType == "CE") {
+            $routeParams.Closing_AppID = $scope.variable.VoucherID
+        }       
+       
+    }
+</script>
+
+<div ng-controller="Modification_check">
+    <div ng-if="variable.VoucherType=='MD'">
+        <view-modification></view-modification>
+    </div>
+
+    <div ng-if="variable.VoucherType=='RA'">
+        <view-risk></view-risk>
+    </div>
+
+    <div ng-if="variable.VoucherType=='BE'">
+        <view-evaluation></view-evaluation>
+    </div>
+
+    <div ng-if="variable.VoucherType=='CE'">
+        <view-closing></view-closing>
+    </div>
+</div>

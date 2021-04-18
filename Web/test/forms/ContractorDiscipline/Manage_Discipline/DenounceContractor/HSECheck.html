@@ -1,0 +1,26 @@
+<script type="text/javascript">
+    function DenounceContractor_HSECheck($scope, $routeParams, EngineApi, $http, $timeout, Notifications, $upload, $compile, $filter, Auth, GateGuest, ConQuaService, $translatePartialLoader, $translate) {
+        console.log($scope.variable);
+        $scope.detail = true;
+        $scope.viewdetail = false;
+        $routeParams.code = 'Checker';
+        $routeParams.VoucherID = $scope.variable.VoucherID;
+        $scope.checker = "HSE";
+        $scope._isHSE='';
+        
+
+        $(".pinned").toggle(function () {
+            $(this).addClass("highlight");
+            $(this).next().fadeOut(1000);
+        }, function () {
+            $(this).removeClass("highlight");
+            $(this).next("div .content").fadeIn(1000);
+        });
+    }
+</script>
+
+
+
+<div ng-controller="DenounceContractor_HSECheck">
+    <view-denounce></view-denounce>
+</div>

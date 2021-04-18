@@ -1,0 +1,120 @@
+<style>
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    .ui-grid-icon-plus-squared:before {
+        color: green;
+    }
+
+    .title {
+        width: 100%;
+        background-color: #DCEDC8;
+        padding: 5px 0px 5px 10px;
+        border: 1px solid #ececec;
+        border-radius: 6px;
+        text-transform: uppercase;
+        font-family: Arial, Helvetica, sans-serif, 'DFKai-SB';
+    }
+
+    .titleIcon{
+        width:50px; background-color: #ED667E;border-radius: 100px;
+    }
+</style>
+
+
+<form class="form-horizontal" novalidate name="form">
+    <legend>
+        <h2 class="title"><img src="/css/image/contractor/penalty.png" style="width:50px;">
+            {{'ManageDisciplineApp'|translate}}</h2>
+    </legend>
+
+    <div ng-if=!isGA>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">{{'VoucherID'|translate}}</label>
+            <div class="col-sm-3">
+                <input class="form-control" type="text" ng-model="query.DisciplineCode" />
+            </div>
+            <label class="col-sm-2 control-label">{{'ContractorName'|translate}}</label>
+            <div class="col-sm-3">
+                <input class="form-control" type="text" ng-model="query.CotractorName" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">{{'From'|translate}}</label>
+            <div class="col-sm-3">
+                <div class='input-group date'>
+                    <input type='text' class="form-control" ng-model="query.FromDate" date-picker />
+                    <span class="input-group-addon">
+                        <label class="glyphicon glyphicon-calendar" style="color: grey"></label>
+                    </span>
+                </div>
+            </div>
+            <label class="col-sm-2 control-label">{{'To'|translate}}</label>
+            <div class="col-sm-3">
+                <div class='input-group date'>
+                    <input type='text' class="form-control" ng-model="query.ToDate" date-picker />
+                    <span class="input-group-addon">
+                        <label class="glyphicon glyphicon-calendar" style="color: grey"></label>
+                    </span>
+                </div>
+            </div>
+        </div>
+    
+        <div class="form-group">
+            <label class="col-sm-2 control-label">{{'ConQua_paraDepartment'|translate}}</label>
+            <div class="col-sm-3">
+                <select ng-model="query.DepartmentID" ui-select2 style="width:100%">
+                    <option value="">---- {{'Show All'|translate}} ----</option>
+                    <option ng-repeat="c in DepartmentList" value="{{c.DepartmentID}}">
+                        {{c.DepartmentID}} - {{c.Specification}}
+                    </option>
+                </select>
+            </div>
+            <label class="col-sm-2 control-label">{{'Status'|translate}}</label>
+            <div class="col-sm-3">
+                <select ng-model="query.Status" ui-select2 style="width:100%"
+                    ng-options="a.Status as a.Remark for a in StatusList">
+                    <option value="">--------- {{'Show All'|translate}} ---------</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-7 col-sm-3 control-label">
+                <button class="btn btn-default btn-icon buttonApp" data-ng-click="searchDiscipline()">
+                    <img src="/css/image/search-icon.png" style="width: 25px;">
+                    {{'Search'|translate}}
+                </button>
+            </div>
+        </div>
+    </div>
+   
+    <div ng-if=isGA>
+        <div class="form-group">
+            <label class="col-sm-1 control-label" style="margin-top: 5px;">{{'VoucherID'|translate}}</label>
+            <div class="col-sm-3">
+                <input class="form-control" type="text" style="height: 40px;" ng-model="query.DisciplineCode" ng-keyup="$event.keyCode == 13 && searchDiscipline()" />
+            </div>
+
+            <div class="col-sm-3">
+                <button class="btn btn-default btn-icon buttonApp" data-ng-click="searchDiscipline()">
+                    <img src="/css/image/search-icon.png" style="width: 25px;">
+                    {{'Search'|translate}}
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <br>
+    <div style="width: 100%;">
+        <div id="Grid" ui-grid="gridOptions" class="grid" ui-grid-selection ui-grid-resize-columns ui-grid-core
+            ui-grid-exporter external-scopes="gridHandlers">
+        </div>
+    </div>
+
+     <!-- Flowchart -->
+     <hr>
+     <h3>{{'Flowchart'|translate}}</h3>
+     <hr>
+     <div style="text-align: center;"><img src="/css/image/contractor/contractor-discipline.png" style="width:80%;"></div>
+</form>

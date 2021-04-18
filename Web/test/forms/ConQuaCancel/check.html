@@ -1,0 +1,316 @@
+<script type="text/javascript">
+    function ContractorCancelProcess_check($scope, EngineApi, $http, $timeout, Notifications, $upload, $compile, $filter, Auth, ConQuaService, $routeParams, GateGuest) {
+        console.log($scope.variable);
+        var lang = window.localStorage.lang;
+        $scope.passOrNot = GateGuest.GetCheckList();
+        $scope._isConQua = false;
+        $scope._IsPermanentCancel = false;
+        $scope.isCancel = false;
+        $scope.today = $filter('date')(new Date(), 'yyyy-MM-dd');
+        if ($scope.variable.StartdateCancel == null) {
+            $scope._IsPermanentCancel = true;
+        }
+
+
+        if ($scope.variable.start_remark.includes("Contractor")) {
+            $scope._isConQua = true;
+            ConQuaService.ContractorQualification().getDetailHeader({
+                "contractorID": $scope.variable.EmployerId,
+                language: lang
+            }).$promise.then(function (res) {
+                console.log(res);
+                $scope.project = res[0];
+
+            });
+
+            $scope.save = function () {
+                if ($scope.event_passOrNot === "YES") {
+                    if ($scope.variable.StartdateCancel != null && $scope.variable.EnddateCancel != null) {
+                        if ($scope.variable.StartdateCancel == $scope.today) {
+                            suspendedConQua("C");
+                        } else {
+                            suspendedConQua("SC");
+                        }
+                    } else {
+                        suspendedConQua("PC");
+                    }
+                } else {
+                    $scope.submit();
+                }
+            }
+        }
+        else {
+            ConQuaService.GetContractorByIdCard().get({
+                "IdCard": $scope.variable.EmployerId,
+                "ContractorID": $scope.variable.ContractorID,
+                language: lang
+            }).$promise.then(function (res) {
+                console.log(res);
+                $scope.project = res[0];
+                if ($scope.project.SuspendDept == 'SECURITY') {
+                    $scope.isCancel = true;
+                }
+            })
+
+            $scope.save = function () {
+                debugger;
+                if ($scope.event_passOrNot === "YES") {
+                    if ($scope.project.SuspendDept != 'SECURITY') {
+
+                        if ($scope.variable.StartdateCancel != null && $scope.variable.EnddateCancel != null) {
+                            if ($scope.variable.StartdateCancel == $scope.today) {
+                                suspendedEmployee("C");
+                            }
+                            else {
+                                suspendedEmployee("SC");
+                            }
+                        } else {
+                            suspendedEmployee("PC");
+                        }
+                    } else {
+                        debugger;
+                        var param = {}
+                        param.voucherID = $scope.project.VoucherID
+                        param.idCard = $scope.variable.EmployerId
+                        param.enddate = $scope.project.EndDate
+                        param.employeeID = $scope.project.EmployeeID
+                        param.status = $scope.project.Status
+                        param.cancelUser = $scope.variable.SendUser
+                        ConQuaService.CancelSuspendEmployee().save(param, {
+                        }).$promise.then(function (res) {
+                            ConQuaService.SuspendedMail().get({
+                                EmployeeID: param.employeeID,
+                                mailKind: "c_Cancelsuspended"
+                            }, {}).$promise.then(function (res) {
+                                $scope.submit();
+
+                                if (param.enddate >= $scope.today) {
+                                    ConQuaService.uploadUser().get({})
+                                }
+                            }, function (err) {
+                                Notifications.addError({
+                                    'status': 'error',
+                                    'message': 'send mail error: ' + err
+                                });
+                            });
+                        }, function (errResponse) {
+                            Notifications.addError({ 'status': 'error', 'message': errResponse });
+                        });
+                    }
+                } else {
+                    $scope.submit();
+                }
+            }
+        }
+
+        $scope.btSelect = function (p) {
+            if (p === "YES") {
+                $scope.formVariables.push({ name: "agree", value: "YES" });
+            } else {
+                $scope.formVariables.push({ name: "agree", value: "NO" });
+            }
+        };
+
+        function suspendedEmployee(suspendStatus) {
+            var query = {}
+            query.voucherID = $scope.project.VoucherID
+            query.status = suspendStatus
+            query.stardateCancel = $scope.variable.StartdateCancel || ''
+            query.enddateCancel = $scope.variable.EnddateCancel || ''
+            query.employeeID = $scope.project.EmployeeID
+            query.suspendReason = $scope.variable.invalidReason
+            query.suspendUser = $scope.variable.SendUser
+            query.suspendDept = 'HSE'
+            ConQuaService.ContractorSaveStatusSuspend().save(query, {}).$promise.then(function (res) {
+                console.log(res)
+                $scope.submit()
+
+
+                if (suspendStatus == 'PC') {
+                    sendMailSuspendedEmployee("c_suspended")
+                } else {
+                    sendMailSuspendedEmployee("c_suspendedTemporary")
+                }
+
+
+                if (suspendStatus == 'PC' || suspendStatus == 'C') {
+                    ConQuaService.deleteUser().get({})
+                }
+
+            }, function (errResponse) {
+                Notifications.addError({ 'status': 'error', 'message': errResponse });
+            });
+        }
+
+        function suspendedConQua(suspendStatus) {
+            var query = {}
+            query.status = suspendStatus
+            query.contractorID = $scope.variable.EmployerId
+            query.stardateCancel = $scope.variable.StartdateCancel || ''
+            query.enddateCancel = $scope.variable.EnddateCancel || ''
+            query.suspendReason = $scope.variable.invalidReason
+            query.suspendUser = $scope.variable.SendUser
+            ConQuaService.ConQuaSaveStatusSuspend().save(query, {}).$promise.then(function (res) {
+                console.log(res)
+                $scope.submit()
+                if (suspendStatus == 'PC') {
+                    sendMailSuspendedContractor("c_suspended")
+                } else {
+                    sendMailSuspendedContractor("c_suspendedTemporary")
+                }
+
+            }, function (errResponse) {
+                Notifications.addError({ 'status': 'error', 'message': errResponse });
+            });
+        }
+
+        function sendMailSuspendedContractor(_mailKind) {
+            ConQuaService.ConSuspendedMail().get({
+                ContractorID: $scope.variable.EmployerId,
+                mailKind: _mailKind
+            }, {}).$promise.then(function (res) {
+                console.log(res);
+            }, function (err) {
+                Notifications.addError({
+                    'status': 'error',
+                    'message': 'send mail error: ' + err
+                });
+            });
+        }
+
+        function sendMailSuspendedEmployee(_mailKind) {
+            ConQuaService.SuspendedMail().get({
+                EmployeeID: $scope.project.EmployeeID,
+                mailKind: _mailKind
+            }, {}).$promise.then(function (res) {
+                console.log(res);
+            }, function (err) {
+                Notifications.addError({
+                    'status': 'error',
+                    'message': 'send mail error: ' + err
+                });
+            });
+        }
+    }
+</script>
+
+<div ng-controller="ContractorCancelProcess_check">
+    <form class="form-horizontal" role="form" name="form" novalidate>
+        <legend>
+            <h3 ng-if="_isConQua">{{'FEPVConInfoCancel'|translate}}</h3>
+            <h3 ng-if="!_isConQua && !isCancel">{{'FEPVConInfoQuaCancel'|translate}}</h3>
+            <h3 ng-if="isCancel">{{'CancelSuspended'|translate}}</h3>
+            <h3 ng-if="_IsPermanentCancel">{{'Permanent'|translate}}</h3>
+            <h3 ng-if="!_IsPermanentCancel">{{'Temporary'|translate}}</h3>
+        </legend>
+
+        <div class="form-group">
+            <table class="table table-bordered">
+                <tr>
+                    <th style="width:18%;">{{'ContractorName'|translate}}:</th>
+                    <td style="width:30%;color:crimson;font-weight: bold;"> {{project.ContractorName}}</td>
+                    <th style="width:19%;">{{'ConQua_Rcode'|translate}}:</th>
+                    <td>{{project.Rcode}}</td>
+                </tr>
+
+                <tr>
+                    <th>{{'ConQua_CType'|translate}}:</td>
+                    <td> {{project.ContracorType}}</td>
+                    <th>{{'ConQua_CKind'|translate}}:</th>
+                    <td>{{project.ContracorKind }}</td>
+                </tr>
+
+                <tr>
+                    <th>{{'Contractor_Stardate'|translate}}:</th>
+                    <td> {{project.StartDate }}</td>
+                    <th>{{'Contractor_Enddate'|translate}}:</th>
+                    <td>{{project.EndDate }}</td>
+                </tr>
+
+                <tr>
+                    <th>{{'ContractorByEmloyee'|translate}}:</th>
+                    <td> {{project.ContractorByEmloyee}} - {{project.ResponsiblePerson}}</td>
+                    <th>{{'Department'|translate}}:</th>
+                    <td> {{project.Specification }}</td>
+                </tr>
+
+            </table>
+        </div>
+
+        <div class="form-group" ng-if="!_isConQua">
+            <table class="table table-bordered">
+                <tr>
+                    <th style="width:18%;">{{'ConName'|translate}}:</th>
+                    <td style="width:30%;color: crimson;font-weight: bold;"> {{project.Name}}</td>
+                    <th style="width:19%;">{{'ID_PP'|translate}}:</th>
+                    <td> {{project.IdCard}}</td>
+                </tr>
+
+                <tr>
+                    <th>{{'Sex'|translate}}:</th>
+                    <td>{{project.Sex }}</td>
+                    <th>{{'Birthday'|translate}}:</th>
+                    <td> {{project.Birthday}}</td>
+                </tr>
+
+                <tr>
+                    <th>{{'Job'|translate}}:</th>
+                    <td> {{project.Job }}</td>
+                    <th>{{'ConQua_Region'|translate}}:</th>
+                    <td> {{project.Region }}</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="form-group">
+            <table class="table table-bordered">
+                <tr>
+                    <th style="width:18%;" ng-if="!isCancel">{{'DeleteReason'|translate}}:</th>
+                    <th style="width:18%;" ng-if="isCancel">{{'ReasonCancelSuspend'|translate}}:</th>
+                    <td  colspan="3"> {{variable.invalidReason}}</td>
+                </tr>
+
+                <tr ng-if="variable.FileSuspend">
+                    <th style="width:19%;">{{'File'|translate}}:</th>
+                    <td colspan="3"><a href="\{{variable.FileSuspend}}" target="_blank">{{variable.FileSuspend}}</a> </td>
+                </tr>
+
+                <tr ng-hide="_IsPermanentCancel">
+                    <th>{{'StartdateCancel'|translate}}:</th>
+                    <td><span style="background-color: yellow;font-weight: bold;">{{variable.StartdateCancel }}</span></td>
+                    <th>{{'EnddateCancel'|translate}}:</th>
+                    <td><span style="background-color: yellow;font-weight: bold;">{{variable.EnddateCancel}}</span></td>
+                </tr>
+            </table>
+        </div>
+
+        <h4 style="background-color: #ececec; padding: 5px">{{'leaderCheck'|translate}}</h4>
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label">{{'IsPass'|translate}}</label>
+            <div class="col-sm-3">
+                <select ng-change="btSelect(event_passOrNot)" class="form-control" history-field="IsPass" form-field
+                    name="event_passOrNot" ng-model="event_passOrNot" ng-options="c.value as c.name for c in passOrNot"
+                    required>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group" ng-if="event_passOrNot == 'NO'">
+            <label class="col-sm-2 control-label" ng-if="!isCancel">{{'DenyReason'|translate}}</label>
+            <label class="col-sm-2 control-label" ng-if="isCancel">{{'ReasonCancelSuspend'|translate}}</label>
+            <div class="col-sm-6 ">
+                <textarea class="form-control" name="leadercheck_remark" history-field="DenyReason" form-field
+                    type="string" ng-model="leadercheck_remark" field-validate rows="3">
+                </textarea>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button class="btn btn-primary" ng-click="save()" ng-disabled="form.$invalid">{{'submit'|translate}}
+                </button>
+            </div>
+        </div>
+    </form>
+</div>

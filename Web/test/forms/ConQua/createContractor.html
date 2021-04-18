@@ -1,0 +1,194 @@
+<style>
+    #table-wrapper {
+        position: relative;
+    }
+
+    #table-scroll {
+        height: 150px;
+        overflow: auto;
+        margin-top: 20px;
+    }
+
+    #table-wrapper table {
+        width: 100%;
+    }
+
+    #table-wrapper table * {
+        color: black;
+    }
+
+    #table-wrapper table thead th .text {
+        position: absolute;
+        top: -20px;
+        z-index: 2;
+        height: 20px;
+        width: 35%;
+    }
+
+    .title {
+        width: 101%;
+        background-color: #ececec;
+        padding: 5px 0px 5px 10px;
+        border: 1px solid #ececec;
+        border-radius: 6px;
+    }
+
+    .calender {
+        color: grey;
+        font-size: 29px;
+    }
+
+    .calender:hover {
+        cursor: pointer;
+    }
+
+    .btn-ct-ac {
+        font-weight: bold;
+        font-family: tahoma;
+    }
+
+    .my-custom-scrollbar {
+        position: relative;
+        height: 117px;
+        overflow: auto;
+    }
+
+    .table-wrapper-scroll-y {
+        display: block;
+    }
+
+    a:hover {
+        cursor: pointer;
+    }
+</style>
+
+<H3 class="text-center" ng-hide="readEmployer">{{'ConQua_Qualification'|translate}}</H3>
+<H3 class="text-center" ng-show="_signRenew">{{'Renew'|translate}}</H3>
+<form class="form-horizontal model-form " autocomplete="off" name="ConQuaform" style="margin-top:15px;"
+    enctype="multipart/form-data" novalidate>
+    <legend></legend>
+    <div class="form-group">
+        <label class="col-sm-1 control-label">*<u>{{'ContractorName'|translate}}:</u></label>
+        <label class="col-sm-1 control-label">* {{'VN'|translate}}</label>
+        <div class="col-lg-4 col-sm-4">
+            <input class="form-control" type="text" ng-model="projects.ContractorName" required
+                ng-blur="checkContractorName()" ng-disabled="readUpdateQ" />
+            <span ng-show="checkremove" class="glyphicon glyphicon-remove" style="color: red; position: absolute;
+                right: 5px;"></span>
+        </div>
+
+        <label class="col-sm-2 control-label">* {{'CN'|translate}}</label>
+        <div class="col-lg-4 col-sm-4">
+            <input class="form-control" type="text" ng-model="projects.ContractorName" required
+                ng-blur="checkContractorName()" ng-disabled="readUpdateQ" />
+            <span ng-show="checkremove" class="glyphicon glyphicon-remove" style="color: red; position: absolute;
+                right: 5px;"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">* {{'ConQua_CType'|translate}}</label>
+        <div class="col-sm-4">
+            <select class="form-control" type="text" name="Type" ng-model="projects.Type" max="0" required
+                ng-disabled="readUpdateQ" ng-options="t.ID as t.Type for t in CTypeList">
+            </select>
+        </div>
+
+        <label class="col-sm-2 control-label">* {{'ConQua_CKind'|translate}}</label>
+        <div class="col-sm-4">
+            <select class="form-control" type="text" name="Ctype" ng-model="projects.CType" max="0" required
+                ng-disabled="readUpdateQ" ng-options="t.ID as t.CType for t in KindList">
+            </select>
+        </div>        
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label ">* {{'ConQua_Email'|translate}} </label>
+        <div class="col-sm-4">
+            <input class="form-control" type="text" ng-model="projects.EmailContractor" name="EmailContractor"
+            ng-disabled="_IsRenew || _signRenew" required />
+        </div>
+        <label class="col-sm-2 control-label ">* {{'EmailSafetyContractor'|translate}} </label>
+        <div class="col-sm-4">
+            <input class="form-control" type="text" ng-model="projects.EmailSafetyContractor" 
+            ng-disabled="_IsRenew || _signRenew" required />
+        </div>
+    </div>
+   
+    <div class="form-group" ng-show="!readUpdateQ">
+        <label class="col-sm-2 control-label">{{'File'|translate}}</label>
+        <div class="col-lg-1">
+            <div class="btn btn-info  my-btn-file">
+                <i class="glyphicon glyphicon-folder-open"></i> Browse…
+                <input type="file" ng-file-select="onFileSelect($files)">
+            </div>
+        </div>
+
+        <div class="col-sm-3 control-label" ng-if="fileAttached!=''">
+            <a href="\{{fileAttached}}" target="_blank">{{formatFileName(fileAttached)}}</a>
+            <a class="btn btn-danger btn-xs" role="button" ng-click="getRemoveFileName()">X</a>
+        </div>
+
+        <div ng-if="_IsRenew || _signRenew">
+            <label class="col-sm-2 control-label ">* {{'RenewalDate' | translate}} </label>
+            <div class='input-group date col-ls-4 col-sm-4'>
+                <input type='text' class="form-control" date-picker min="1" ng-model="projects.RenewalDate"
+                    required />
+                <span class="input-group-addon">
+                    <label class="glyphicon glyphicon-calendar" style="color: grey" for='DATE'></label>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div ng-if="_IsRenew || _signRenew">
+            <label class="col-sm-2 control-label ">* {{'RenewalDate' | translate}} </label>
+            <div class='input-group date col-ls-4 col-sm-4'>
+                <input type='text' class="form-control" date-picker min="1" ng-model="projects.RenewalDate"
+                    required />
+                <span class="input-group-addon">
+                    <label class="glyphicon glyphicon-calendar" style="color: grey" for='DATE'></label>
+                </span>
+            </div>
+        </div>
+    </div>
+
+
+  
+   
+    <div class="modal-footer">   
+        <div class="form-group" ng-show="readEmployer">
+            <label class="col-sm-2">{{'DenyReason'|translate}}:</label>
+            <div class="col-sm-8" style="color:red; text-align: left;">
+               <b>{{variable.leadercheck_remark|translate}}</b>
+            </div>
+        </div>
+        
+        <button class="btn btn-warning btn-ct-ac" 
+            ng-click="saveDraft()" 
+            ng-disabled="ConQuaform.$invalid || checkremove" 
+            ng-show="!readEmployer && !_IsRenew">{{'saveDraft'|translate}}
+        </button>
+        
+        <button class="btn btn-primary btn-ct-ac" 
+                ng-click="saveSubmit('N')" 
+                ng-disabled="ConQuaform.$invalid || checkremove" 
+                ng-show="_IsSubmit">{{'submit'|translate}}
+        </button>
+
+        <button class="btn btn-primary btn-ct-ac" 
+        ng-click="saveSubmit('Q')" 
+        ng-disabled="ConQuaform.$invalid" 
+        ng-show="_IsRenew">{{'Renew'|translate}}
+        </button>
+        
+        <button class="btn btn-default btn-ct-ac" 
+                ng-click="ResetContractor()"
+                ng-show="!readEmployer"
+                data-dismiss="modal">
+                <i class="glyphicon glyphicon-remove" style="color: grey;vertical-align: text-bottom;"></i> 
+                {{'Close'|translate}}
+        </button>
+</div>
+</form>

@@ -1,0 +1,165 @@
+<script type="text/javascript">
+    function ContractorInfoCancelProcess_update($scope, EngineApi, $http, $timeout, Notifications, $upload, $compile, $filter, Auth, ConQuaService, GateGuest, $translate) {
+        $scope.project = {};
+        $scope.note = {};
+        var lang = window.localStorage.lang;
+        console.log("---update---");
+        console.log($scope.variables);
+        $scope._isConQua = true;
+        $scope.isCancel = false;
+
+        if ($scope.variable.StartdateCancel == null) {
+            $scope._IsPermanentCancel = true;
+        }
+
+        if ($scope.variable.start_remark.includes("Contractor")) {
+            $scope._isConQua = true;
+            ConQuaService.ContractorQualification().getDetailHeader({ "contractorID": $scope.variable.EmployerId, language: lang }).$promise.then(function (res) {
+                console.log(res);
+                $scope.project = res[0];
+                $scope.project.StartDate = res[0].StartDate;
+                $scope.project.EndDate = res[0].EndDate;
+                $scope.formVariables.push({ name: "ContractorID", value: res[0].ContractorID });
+            })
+
+            $scope.close = function () {
+                $scope.historyVariable.push({ name: "Delete_IS_MSG", value: "YES" });
+                $scope.formVariables.push({ name: "IsClose", value: "YES" });
+                var query = {}
+                query.employerId = $scope.variable.EmployerId
+                query.status = 'Q'
+                ConQuaService.ConQuaSaveStatus().save(query, {}).$promise.then(function (res) {
+                    $scope.submit();
+                }, function (errResponse) {
+                    Notifications.addError({ 'status': 'error', 'message': errResponse });
+                });
+            }
+        } else {
+            $scope._isConQua = false;
+            ConQuaService.GetContractorByIdCard().get({
+                "IdCard": $scope.variable.EmployerId,
+                "ContractorID": $scope.variable.ContractorID,
+                language: lang
+            }).$promise.then(function (res) {
+                console.log(res);
+                $scope.project = res[0];
+                if ($scope.project.SuspendDept == 'SECURITY') {
+                    $scope.isCancel = true;
+                }
+            })
+
+            $scope.close = function () {
+                $scope.historyVariable.push({ name: "Delete_IS_MSG", value: "YES" });
+                $scope.formVariables.push({ name: "IsClose", value: "YES" });
+                var query = {}
+                query.voucherID = $scope.project.VoucherID
+                query.idCard = $scope.variable.EmployerId
+                query.status = $scope.variable.statusBeforeSub
+                query.employeeID = $scope.project.EmployeeID
+                ConQuaService.ContractorQuaSaveStatus().save(query, {}).$promise.then(function (res) {
+                    $scope.submit()
+                }, function (errResponse) {
+                    Notifications.addError({ 'status': 'error', 'message': errResponse });
+                });
+            }
+        }
+    }
+</script>
+
+<div ng-controller="ContractorInfoCancelProcess_update">
+    <form class="form-horizontal" role="form" name="form" novalidate>
+        <legend>
+
+            <h3 ng-if="_isConQua ">{{'FEPVConInfoCancel'|translate}}--{{'SignDeny'|translate}}</h3>
+            <h3 ng-if="!_isConQua && !isCancel">{{'FEPVConInfoQuaCancel'|translate}}--{{'SignDeny'|translate}}</h3>
+            <h3 ng-if="isCancel">{{'CancelSuspended'|translate}}--{{'SignDeny'|translate}}</h3>
+            <h3 ng-if="_IsPermanentCancel">{{'Permanent'|translate}}</h3>
+            <h3 ng-if="!_IsPermanentCancel">{{'Temporary'|translate}}</h3>
+        </legend>
+
+        <div class="form-group">
+            <table class="table table-bordered">
+                <tr>
+                    <th style="width:18%;">{{'ContractorName'|translate}}:</th>
+                    <td style="width:30%;"> {{project.ContractorName}}</td>
+                    <th style="width:19%;">{{'ConQua_CType'|translate}}:</th>
+                    <td>{{project.ContracorType}}</td>
+                </tr>
+                <tr>
+                    <th>{{'ConQua_CKind'|translate}}:</th>
+                    <td>{{project.ContracorKind }} </td>
+                    <th>{{'ConQua_Rcode'|translate}}:</th>
+                    <td> {{project.Rcode }}</td>
+                </tr>
+                <tr>
+                    <th> {{'ContractorByEmloyee'|translate}}:</th>
+                    <td> {{project.ContractorByEmloyee}} - {{project.ResponsiblePerson}}</td>
+                    <th>{{'Department'|translate}}:</th>
+                    <td>{{project.Specification }} </td>
+
+                </tr>
+                <tr>
+                    <th>{{'Contractor_Stardate'|translate}}:</th>
+                    <td> {{project.StartDate }}</td>
+                    <th>{{'Contractor_Enddate'|translate}}:</th>
+                    <td>{{project.EndDate }}</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="form-group" ng-if="!_isConQua">
+            <H4 class="title">{{'Employee_Information_Cancel'|translate}} </H4>
+            <table id="tblCustomers" class="table table-bordered">
+                <tr>
+                    <th style="width:18%;">{{'ConName'|translate}}</th>
+                    <th> {{'IdCard'|translate}}</th>
+                    <th> {{'Sex'|translate}}</th>
+                    <th> {{'Birthday'|translate}}</th>
+                    <th> {{'Job'|translate}}</th>
+                    <th> {{'ConQua_Region'|translate}}</th>
+                    <th>{{'Remark'|translate}}</th>
+                </tr>
+                <tbody>
+                    <tr>
+                        <td>{{project.Name}}</td>
+                        <td>{{project.IdCard}}</td>
+                        <td>{{project.Sex}}</td>
+                        <td>{{project.Birthday}}</td>
+                        <td>{{project.Job}}</td>
+                        <td> {{project.Region}}</td>
+                        <td>{{project.Remark}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="form-group">
+            <table class="table table-bordered">
+                <tr>
+                    <th style="width:18%;" ng-if="!isCancel">{{'DeleteReason'|translate}}:</th>
+                    <th style="width:18%;" ng-if="isCancel">{{'ReasonCancelSuspend'|translate}}:</th>
+                    <td style="width:30%;"> {{variable.invalidReason}}</td>
+                    <th style="width:19%;">{{'DenyReason'|translate}}:</th>
+                    <td style="width:35%;"> {{variable.leadercheck_remark}}</td>
+                </tr>
+                <tr ng-hide="_IsPermanentCancel">
+                    <th>{{'StartdateCancel'|translate}}:</th>
+                    <td> {{variable.StartdateCancel }}</td>
+                    <th>{{'EnddateCancel'|translate}}:</th>
+                    <td>{{variable.EnddateCancel }}</td>
+                </tr>
+
+                <tr ng-if="variable.FileSuspend!=undefine">
+                    <th style="width:19%;">{{'File'|translate}}:</th>
+                    <td><a href="\{{variable.FileSuspend}}" target="_blank">{{variable.FileSuspend}}</a></td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="col-sm-offset-8 col-sm-2">
+            <button type="button" class="btn btn-danger" style="margin-right: 30px"
+                ng-click="close()">{{'Close'|translate}}
+            </button>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,214 @@
+<style>
+    .Outer {
+        height: 100%;
+        min-height: 400px;
+        /* Set to height you need */
+    }
+    .Inner>p {
+        vertical-align: middle;
+        text-align: center;
+        margin: 0 auto;
+    }
+    table p {
+        margin: 0 0 0 0;
+    }
+    table td {
+        vertical-align: middle !important;
+    }
+
+    /* Print styling */
+    .center {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;
+    }
+    .modal-lg {
+        width: 90%;
+
+    }
+    .grid {
+        width: 98%;
+        height: 450px;
+    }
+    .modal-customs {
+        position: relative;
+        background-color: #ffffff;
+        border: 1px solid #999999;
+        border: 1px solid rgba(0, 0, 0, 0.2);
+        border-radius: 6px;
+        outline: none;
+        -webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+        box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+        background-clip: padding-box;
+        height: 630px;
+    }
+    .h4title {
+        background-color: #ececec;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    @media print {
+        @page {
+            size: landscape;
+        }
+
+        footer {
+            display: none;
+        }
+
+
+        .container {
+            padding-top: 0px !important;
+        }
+
+        #myfooter {
+            position: fixed;
+            width: 90%;
+            bottom: 20mm;
+        }
+
+        table {
+            page-break-before: auto;
+            page-break-inside: avoid;
+        }
+
+        tr {
+            page-break-inside: avoid;
+
+        }
+
+        thead {
+            /* color:gainsboro; */
+            background: gainsboro !important;
+            /* background-color: gainsboro !important; */
+        }
+
+        .col-sm-6,
+        .col-xs-6 {
+            width: 50% !important;
+            float: left;
+        }
+
+
+        html,
+        body {
+
+            margin: 0;
+            padding: 0;
+            /* writing-mode: tb-rl; */
+        }
+
+        /* body {
+            margin: 0;
+            padding: 0 !important;
+            min-width: 768px;
+        } */
+
+        /* .container {
+            width: auto;
+            min-width: 750px;
+        } */
+
+        #bottom-footer,
+        .formSearch,
+        .navbar {
+            display: none;
+        }
+
+        /* #mychart{
+            width: 50%;
+        } */
+    }
+</style>
+<div class="formSearch">
+    <form></form>
+    <form class="form-horizontal" role="form" novalidate name="formChart">
+        <legend>
+            <h3>{{'StapleReport '|translate}}</h3>
+        </legend>
+        <div class="col-sm-12 form-group">
+            <div class="form-group">
+                <label class="col-sm-2 control-label">{{'From'|translate}}</label>
+                <div class="col-sm-3">
+                    <input required type="text" class="form-control" name="dateFrom" ng-model="dateFrom"
+                           date-picker time="Y-m">
+                </div>
+                <label class="col-sm-2 control-label">{{'To'|translate}}</label>
+                <div class="col-sm-3">
+                    <input required class="form-control" name="dateTo" ng-model="dateTo"
+                           date-picker time="Y-m">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">{{'SampleName'|translate}}</label>
+                <div class="col-sm-3">
+                    <select required class="form-control" name="SampleName" ng-model="SampleName"
+                            ng-options="c.SampleName as c.Description_{{lang}} for c in sampleList">
+                        <!-- <option value="">-- ALL --</option> -->
+                    </select>
+                </div>
+
+                <label class="col-sm-2 control-label">{{'Line'|translate}}</label>
+                <div class="col-sm-3">
+                    <select class="form-control" style="float: none;" name="line" ng-model="ReportType"
+                            ng-options="c.ID as c.Name for c in ReportTypeList">
+<!--                        <option value="">&#45;&#45; ALL &#45;&#45;</option>-->
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+
+                <div class="col-sm-5">
+
+                </div>
+
+            </div>
+            <div class="form-group">
+                <div class="col-sm-5"></div>
+                <label class="col-sm-2 control-label"></label>
+                <div class="col-sm-3">
+                    <!-- <input name="onlyOwner" type="checkbox" ng-model="onlyOwner"> {{'onlyOwner'|translate}} -->
+                    <button style="margin-left: 15px" type="button" class="btn btn-primary" ng-click="Search()"
+                            ng-disabled="formChart.$invalid">
+                        🔍{{'Search'|translate}}
+                    </button>
+
+                </div>
+            </div>
+        </div>
+    </form>
+    <div style="width: 100%;" ng-if="!reloadGrid" >
+        <div id="Grid" ui-grid="gridOptions" ui-grid-resize-columns class="grid" ui-grid-selection
+             ui-grid-pagination
+             ui-grid-resize-columns
+             ui-grid-core ui-grid-exporter></div>
+    </div>
+</div>
+<div>
+
+    <table  class="table table-bordered span11" id="tableReportHidden" style="margin-top: 20px;font-size: 12px;display: none;"  >
+<!--<tr ng-if="headers.length>0">-->
+<!--    <td colspan="{{headers[0].length-5}}">-->
+
+<!--    </td>-->
+<!--    <td colspan="{{headers[0].length}}" style="text-align: right">-->
+<!--        <label  class="col-sm-8">棉品技科： 513201500 </label>-->
+<!--    </td>-->
+<!--</tr>-->
+        <tr class="header" >
+            <th ng-repeat="headers in headersHidden" style="background-color: #b0c4de;width: auto" ng-if="headers!='OrderNumber'&&headers!='main_Batch'">
+                <div >{{headers}}</div>
+            </th>
+        </tr>
+        <tr ng-repeat="values in DataHidden" style="text-align: left" >
+            <td ng-repeat="header in headers"  ng-if="header!='OrderNumber'&&header!='main_Batch'" style="width: auto" >
+
+                <div >{{values[header]}}</div>
+            </td>
+        </tr>
+
+    </table>
+</div>
+

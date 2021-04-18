@@ -1,0 +1,157 @@
+<style>
+    .form-horizontal {
+        font-size: 15pt;
+        font-family: 'Times New Roman', 'DFKai-SB';
+    }
+
+    .buttonApp {
+        font-weight: bold;
+        font-family: tahoma, 'DFKai-SB';
+        box-shadow: 4px 2px 2px 2px #999
+    }
+
+    textarea[type="text"], input[type="text"]{
+        font-size: 17px;
+    }
+
+    .my-custom-scrollbar {
+        position: relative;
+        height: 200px;
+        overflow: auto;
+    }
+
+    .wrapper-scroll-y {
+        display: block;
+    }
+
+    .list-group-item:hover {
+        color: black;
+        background-color: cornsilk;
+    }
+
+    .select2-choices {
+        border-radius: 4px;
+    }
+
+</style>
+<form class="form-horizontal model-form" autocomplete="off" name="Violationform" style="margin-top:15px;"
+    enctype="multipart/form-data" novalidate>
+    <legend>
+        <H3 class="title" style="text-align:center">{{'ViolationConfirmApp'|translate}}</H3>
+    </legend>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">{{'DenounceApp'|translate}}</label>
+        <div class="col-sm-9">
+            <select ng-model="data.DenounceVoucherID" ui-select2 style="width:100%" ng-change="getDenounceVoucherInfo(data.DenounceVoucherID)">
+                <option ng-repeat="voucher in DenounceVoucherList" value="{{voucher.DenounceID}}">
+                    {{voucher.DenounceCode}} - {{voucher.ContractorName}}: {{voucher.DescriptionViolation}}
+                </option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">* {{'ConQua_paraDepartment'|translate}}</label>
+        <div class="col-sm-9">
+            <select ng-model="data.Department" ui-select2 style="width:100%" required>
+                <option ng-repeat="c in DepartmentList" value="{{c.DepartmentID}}">
+                    {{c.DepartmentID}} - {{c.Specification_VN}}  {{c.Specification_TW}}
+                </option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">* {{'ContractorName'|translate}}</label>
+        <div class="col-sm-9">
+            <input class="form-control" type="text" ng-model="data.ContractorName" ng-keyup="suggestionContractor(data.ContractorName)" required />
+            <ul class="list-group wrapper-scroll-y my-custom-scrollbar" ng-model="hidethis" ng-hide="hidethis">
+                <li class="list-group-item" ng-repeat="contractor in filterContractorName"
+                    ng-click="fillTextboxContractor(contractor.ContractorName)">{{contractor.ContractorName}}</li>
+            </ul>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">* {{'ConstructionItems'|translate}}</label>
+        <div class="col-sm-9">
+            <input class="form-control" type="text" ng-model="data.ConstructionItems" required />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">* {{'CategoryViolation'|translate}}</label>
+        <div class="col-sm-9">
+            <!-- <textarea class="form-control" type="text"  rows="4" ng-model="data.CategoryViolation" required></textarea> -->
+            <select style="width: 100%" ui-select2 ng-model="data.CategoryViolation" multiple placeholder="---- {{'SelectMultiple'|translate}} ----" required>
+                <option ng-repeat="p in ParentList" value="{{p.Content}}">
+                    {{p.Content}}
+                </option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">* {{'TimeViolation'|translate}}</label>
+        <div class='col-sm-3'>
+            <div class='input-group date'>
+                <input type='text' id="time-prc-ac" class="form-control" date-picker time="Y-m-d H:i" max="0"
+                     ng-model="data.TimeViolation" required />
+                <span class="input-group-addon">
+                    <label class="glyphicon glyphicon-calendar" style="color: grey" for='time-prc-ac'></label>
+                </span>
+            </div>
+        </div>
+        <label class="col-sm-2 control-label">* {{'LocationViolation'|translate}}</label>
+        <div class="col-sm-4">
+            <input class="form-control" type="text" ng-model="data.LocationViolation" required>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">* {{'NumberOfViolations'|translate}}</label>
+        <div class='col-sm-3'>
+            <input class="form-control" type="number" min='1' ng-model="data.Quantity" required>
+        </div>
+
+        <label class="col-sm-2 control-label">* {{'Measures'|translate}}</label>
+        <div class="col-sm-2" style="margin-top: 7px;">
+            <input type="checkbox" ng-model="data.SuspendContractor"/>
+            {{'SuspensionGate'|translate}}
+        </div>
+        
+        <div class="col-sm-2" style="margin-top: 7px;">
+            <input type="checkbox" ng-model="data.DisciplineContractor"/>
+            {{'Punish'|translate}}
+        </div>
+
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">* {{'DescriptionViolation'|translate}}</label>
+        <div class="col-sm-9">
+            <textarea class="form-control" type="text"  rows="4" ng-model="data.DescriptionViolation" required></textarea>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label"> {{'Remark'|translate}}</label>
+        <div class="col-sm-9">
+            <textarea class="form-control" type="text" ng-model="data.Remark"></textarea>
+        </div>
+    </div>
+
+    <div class="modal-footer" ng-if="!isUpdateSubmit">
+        <button class="btn btn-primary buttonApp" ng-disabled="Violationform.$invalid || checkValidate()" ng-click="save('N')">
+            <img src="/css/image/savefile.png" style="width:25px;">
+            {{'Save'|translate}}
+        </button>
+
+        <button class="btn btn-success buttonApp" ng-click="printSaveApp()" ng-disabled="Violationform.$invalid || checkValidate()">
+            <img src="/css/image/contractor/printer.png" style="width:25px;">
+            {{'Print_voucher'|translate}}
+        </button>
+
+        <button class="btn btn-default buttonApp" data-dismiss="modal" ng-click="resetModal()">
+            <img src="/css/image/close.png" style="width:25px;">
+            {{'Close'|translate}}
+        </button>
+    </div>
+
+</form>

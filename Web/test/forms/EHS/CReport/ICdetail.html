@@ -1,0 +1,80 @@
+<style>
+   
+    footer {
+        display: none;
+    }
+
+    #bottom-footer {
+        display: none;
+    }
+    body {
+        background: rgb(204, 204, 204);
+        padding: 0;
+    }
+    .container,
+    .row {
+        padding: 0;
+    }
+
+    @page {
+        size: A4;
+        /* margin: 0; */
+        /* size: auto; */
+        margin-top: 14mm;
+        margin-left: 9mm;
+        margin-right: 9mm;
+        margin-bottom: 25.4mm;
+        
+    }
+
+    @media print {
+
+        .container {
+            padding-top: 0px !important;
+        }
+
+        #page-contain {
+            font-size: 12pt !important;
+            font-family: 'Times New Roman', 'DFKai-SB';
+        }
+
+        .navbar, .fileattached {
+            display: none !important;
+        }
+        h4 {
+            font-size: 12px;
+        }
+
+        table {
+            page-break-inside: avoid;
+        }
+
+        tr {
+
+            page-break-after: auto
+        }
+
+        td {
+            page-break-inside: avoid;
+        }
+
+        html,
+        body,
+        page {
+            margin: 0;
+            box-shadow: 0;
+        }
+
+
+        .divFooter {
+            display: block;
+            position: fixed;
+            bottom: 0px;
+            width: 100%;
+            margin-top: 5px;
+            border-bottom: none;
+            padding-right: 10%;
+        }
+    }
+</style>
+<receive-report Rp_ID='{{Rp_ID}}'></receive-report>

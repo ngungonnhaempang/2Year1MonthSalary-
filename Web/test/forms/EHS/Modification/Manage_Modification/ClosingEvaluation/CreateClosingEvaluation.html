@@ -1,0 +1,379 @@
+<head ng-if="!Print">
+    <style>
+        .form-group {
+            margin-bottom: 10px;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid black;
+            padding: 10px;
+        }
+
+        .form-horizontal {
+            font-size: 13pt;
+            font-family: 'Times New Roman', 'DFKai-SB';
+        }
+
+
+        .buttonApp {
+            font-weight: bold;
+            font-family: tahoma, 'DFKai-SB';
+            box-shadow: 4px 2px 2px 2px #999
+        }
+
+        #tbEvaluate th {
+            text-align: center;
+            white-space: break-spaces;
+        }
+    </style>
+</head>
+
+<form class="form-horizontal" novalidate name="formClosing" ng-if="!Print">
+    <div ng-if="checker != 'hseDivisionManager' && checker != 'hseManager'">
+        <legend>
+            <h2 class="appname">{{'CloseApp'|translate}} - {{data.ISO_AppCode}}</h2>
+        </legend>
+
+        <div style="margin-top: 15px;" ng-include="'forms/EHS/Modification/Manage_Modification/ReasonReject.html'">
+        </div>
+        <div ng-if="checker && variable.hseDivisionManagerReject">
+            <table class="table table-bordered" style="margin-top:30px">
+                <tr style="background-color: #E8F5FE; ">
+                    <th style="width:25%">{{'Person_return'|translate}}</th>
+                    <th style="width:15%">{{'Time'|translate}}</th>
+                    <th>{{'Reason_return'|translate}}</th>
+                </tr>
+
+                <tr>
+                    <td>{{receiver[3].TaskName|translate}}:
+                        <br>{{receiver[3].UserId}} - {{receiver[3].UserName}}
+                    </td>
+                    <td>{{receiver[3].FormatStamp}} </td>
+                    <td>
+                        <p ng-repeat="h in receiver[3].HistoryField" style="margin-top: -10px">
+                            <span ng-if="h.Name.contains('DenyReason')"
+                                style="color: crimson; font-weight: bold; white-space: pre-line;"> {{h.Value}} </span>
+                        </p>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <hr>
+
+        <table id="tbInfo">
+            <tr>
+                <th style="width:20%;"> {{'MD_ProjectID'|translate}} &nbsp;
+                    <input type="image" ng-if="!IsUpdate" ng-click="SearchProjectID()" src="/css/image/search-icon.png"
+                        width="20" height="20" />
+                </th>
+                <td style="width:40%;"> {{data.MD_ProjectID}} </td>
+                <th style="width:14%;"> {{'Dept_Proposed'|translate}}</th>
+                <td> {{data.Department}} </td>
+            </tr>
+
+            <tr>
+                <th>{{'MD_Name'|translate}}</th>
+                <td>{{data.MD_Name}} </td>
+
+                <th>{{'Evalua_date'|translate}}</th>
+                <td>{{data.CreateDate}}</td>
+            </tr>
+
+            <tr ng-if="checker && data.Remark">
+                <th>{{'Remark'|translate}}</th>
+                <td colspan="3"><code style="white-space: break-spaces;">{{data.Remark}}<code></td>
+            </tr>
+        </table>
+
+        <table id="tbEvaluate">
+            <thead>
+                <tr style="background-color: lightgray;border-top:hidden">
+                    <th style="text-align: center" colspan="2">{{'Category_Evaluate'|translate}}</th>
+                    <th style="text-align: center; width:20%;">{{'Dept_Create_Evaluate'|translate}}</th>
+
+                    <td style="text-align: center;width:15%;" ng-if="checker=='hseSafety'">
+                        <b>{{'Safety_Evaluate'|translate}}</b>
+                    </td>
+                    <td style="text-align: center;width:15%;" ng-if="checker=='hseEnvironment'">
+                        <b>{{'Environment_Evaluate'|translate}}</b>
+                    </td>
+                    <td style="text-align: center;width:15%;" ng-if="checker=='hseFire'">
+                        <b>{{'Fire_Evaluate'|translate}}</b>
+                    </td>
+                </tr>
+            </thead>
+            <tbody ng-repeat="p in ParentList">
+                <th style="width:16%;" rowspan="15">{{p.Content}}</th>
+                <tr ng-repeat="c in ChildList | filter: {Parent:p.Code}:true">
+                    <td style="width:40%;">{{c.Content}}</td>
+                    <td style="width:15%;vertical-align: top;" >
+                        <label class="radio" ng-style="{ 'cursor' : (checker) ? 'not-allowed' : 'pointer'}" style="margin-left: 50px;">
+                            <input type="radio" ng-model="c.Option" value="Yes" ng-disabled="checker" required>
+                            <span class="checkmark"></span>
+                            {{'MD_Yes'|translate}}
+                        </label>
+
+                        <label class="radio" ng-style="{ 'cursor' : (checker) ? 'not-allowed' : 'pointer'}" style="margin-left: 50px;">
+                            <input type="radio" ng-model="c.Option" value="No" ng-disabled="checker">
+                            <span class="checkmark"></span>
+                            {{'MD_No'|translate}}
+                        </label>
+                        <!-- <label class="radio" ng-style="{ 'cursor' : (checker) ? 'not-allowed' : 'pointer'}">
+                            <input type="radio" ng-model="c.Option" value="NotApply" ng-disabled="checker">
+                            <span class="checkmark"></span>
+                            {{'NotApply'|translate}}
+                        </label> -->
+                    </td>
+
+                    <td ng-if="checker=='hseSafety'" style="vertical-align: top;">
+                        <label class="radio">
+                            <input type="radio" ng-model="c.IsPass_Safe" value="Yes" ng-change="getResultOperation('Safe')" required>
+                            <span class="checkmark requiredCheck"></span>
+                            {{'MD_Pass'|translate}}
+                        </label>
+                        <br>
+                        <label class="radio">
+                            <input type="radio" ng-model="c.IsPass_Safe" value="No" ng-change="getResultOperation('Safe')">
+                            <span class="checkmark requiredCheck"></span>
+                            {{'Fail'|translate}}
+                        </label>
+                    </td>
+
+                    <td ng-if="checker=='hseEnvironment'" style="vertical-align: top;">
+                        <label class="radio">
+                            <input type="radio" ng-model="c.IsPass_Environment" value="Yes" ng-change="getResultOperation('Environment')" required>
+                            <span class="checkmark requiredCheck"></span>
+                            {{'MD_Pass'|translate}}
+                        </label>
+                        <br>
+                        <label class="radio">
+                            <input type="radio" ng-model="c.IsPass_Environment" value="No" ng-change="getResultOperation('Environment')">
+                            <span class="checkmark requiredCheck"></span>
+                            {{'Fail'|translate}}
+                        </label>
+                    </td>
+
+                    <td ng-if="checker=='hseFire'" style="vertical-align: top;">
+                        <label class="radio">
+                            <input type="radio" ng-model="c.IsPass_FireProtection" value="Yes" ng-change="getResultOperation('FireProtection')" required>
+                            <span class="checkmark requiredCheck"></span>
+                            {{'MD_Pass'|translate}}
+                        </label>
+                        <br>
+                        <label class="radio">
+                            <input type="radio" ng-model="c.IsPass_FireProtection" value="No" ng-change="getResultOperation('FireProtection')">
+                            <span class="checkmark requiredCheck"></span>
+                            {{'Fail'|translate}}
+                        </label>
+                    </td>
+                </tr>
+            </tbody>
+
+            <!--Result_Evaluate-->
+            <tr ng-if="checker=='hseSafety'" style="text-align:center">
+                <th> {{'Result_Safe_Evaluate'|translate}}</th>
+                <td style="border-right: hidden;">
+                    <label class="radio not-allowed">
+                        <input type="radio" ng-model="data.Result_Safe" value="Yes" required disabled>
+                        <span class="checkmark"></span>
+                        {{'Close_project'|translate}}
+                    </label>
+                </td>
+
+                <td colspan="2">
+                    <label class="radio not-allowed">
+                        <input type="radio" ng-model="data.Result_Safe" value="No" disabled>
+                        <span class="checkmark"></span>
+                        {{'CannotClose_project'|translate}}
+                    </label>
+                </td>
+            </tr>
+
+            <tr ng-if="checker=='hseEnvironment'" style="text-align:center">
+                <th> {{'Result_Environment_Evaluate'|translate}}</th>
+                <td style="border-right: hidden;">
+                    <label class="radio not-allowed">
+                        <input type="radio" ng-model="data.Result_Environment" value="Yes" required disabled>
+                        <span class="checkmark"></span>
+                        {{'Close_project'|translate}}
+                    </label>
+                </td>
+                
+                <td colspan="2">
+                    <label class="radio not-allowed">
+                        <input type="radio" ng-model="data.Result_Environment" value="No" disabled> 
+                        <span class="checkmark"></span>
+                        {{'CannotClose_project'|translate}}
+                    </label>
+                </td>
+            </tr>
+
+            <tr ng-if="checker=='hseFire'" style="text-align:center">
+                <th> {{'Result_Fire_Evaluate'|translate}}</th>
+                <td style="border-right: hidden;">
+                    <label class="radio not-allowed">
+                        <input type="radio" ng-model="data.Result_FireProtection" value="Yes" required disabled>
+                        <span class="checkmark"></span>
+                        {{'Close_project'|translate}}
+                    </label>
+                </td>
+                <td colspan="2">
+                    <label class="radio not-allowed">
+                        <input type="radio" ng-model="data.Result_FireProtection" value="No" disabled>
+                        <span class="checkmark"></span>
+                        {{'CannotClose_project'|translate}}
+                    </label>
+                </td>
+            </tr>
+
+            <!--Request-->
+            <tr ng-if="checker=='hseSafety'">
+                <th>{{'Request_Safe'|translate}}</th>
+                <td colspan="3">
+                    <textarea class="form-control" rows="3" type="text" ng-model="data.Request_Safe"></textarea>
+                </td>
+            </tr>
+
+            <tr ng-if="checker=='hseEnvironment'">
+                <th>{{'Request_Environment'|translate}}</th>
+                <td colspan="3">
+                    <textarea class="form-control" type="text" ng-model="data.Request_Environment"></textarea>
+                </td>
+            </tr>
+
+            <tr ng-if="checker=='hseFire'">
+                <th>{{'Request_Fire'|translate}}</th>
+                <td colspan="3">
+                    <textarea class="form-control" type="text" ng-model="data.Request_FireProtection"></textarea>
+                </td>
+            </tr>
+
+            <!--File-->
+            <tr>
+                <th>* {{'Attachfile_project'|translate}}</th>
+                <td colspan="3">
+                    <div class="form-group" ng-if="!checker">
+                        <div class="col-sm-1">
+                            <div class="btn btn-default  my-btn-file">
+                                <img src="/css/image/zipUpload.png" style="width:18px;">
+                                <input type="file" accept=".zip,.rar" ng-file-select="onFileSelect($files,'MD_Project')">
+                            </div>
+                            <div style="margin-top: 10px;margin-bottom: -20px;">
+                                <code style="margin-top:10px"> 📌 {{'FileUploadNote'|translate}} </code>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-2 control-label" ng-if="fileProject!=''" style="width: fit-content; margin-left: -27px;">
+                            <a href="\{{fileProject}}" target="_blank">{{fileProject}}</a>
+                            <a class="btn btn-danger btn-xs" role="button" ng-click="getRemoveFileName(fileProject,'MD_Project')">X</a>
+                        </div>
+                    </div>
+
+                    <div class="form-group" ng-if="checker">
+                        <div class="col-sm-10">
+                            <img src="/css/image/attached_icon.png" style="width:18px;">
+                            <a href="/{{fileProject}}" target="_blank">{{fileProject}}</a>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+
+            <tr ng-if="!checker">
+                <th>{{'Remark_if_any'|translate}}</th>
+                <td colspan="6">
+                    <textarea class="form-control" placeholder="{{'Note_EvaluateFail'|translate}}" type="text" rows='3'
+                        ng-model="data.Remark"></textarea>
+                </td>
+            </tr>
+        </table>
+
+
+    <div ng-if="checker">
+        <div class="form-group" style="margin-top: 30px;">
+            <label class="col-sm-2 control-label">*{{'IsPass'|translate}}</label>
+            <div class="col-sm-3">
+                <select class="form-control" ng-model="data.IsAgree" required>
+                    <option value="YES" ng-if="checkResult()=='Yes' || checker=='Leader'">{{'leaderCheck'|translate}}
+                    </option>
+                    <option value="NO" ng-if="checkResult()=='No'  || checker=='Leader'">{{'notAgree'|translate}}
+                    </option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group" ng-if="data.IsAgree == 'NO'" style="margin-top: 15px;">
+            <label class="col-sm-2 control-label">*{{'DenyReason'|translate}}</label>
+            <div class="col-sm-6">
+                <textarea class="form-control" type="string" ng-model="data.DenyReason" field-validate rows="3"
+                    required>
+                </textarea>
+            </div>
+        </div>
+
+        <div class="form-group" style="margin-top: 15px;">
+            <div class="col-sm-offset-2 col-sm-2">
+                <button class="btn btn-warning buttonApp" ng-disabled="formClosing.$invalid  || checkValidate()"
+                    ng-click="saveSubmit()"> <img src="/css/image/send.png" style="width:25px;">
+                    {{'submit'|translate}}
+                </button>
+            </div>
+        </div>
+    </div>
+
+    </div>
+
+    <div class="modal-footer" ng-if="!isUpdateSubmit && !checker">
+        <button class="btn btn-primary buttonApp" ng-disabled="formClosing.$invalid || checkValidate()"
+            ng-click="saveClosingApp('N')">
+            <img src="/css/image/savefile.png" style="width:25px;">
+            {{'saveDraft'|translate}}
+        </button>
+
+        <button class="btn btn-warning buttonApp" ng-disabled="formClosing.$invalid || checkValidate()"
+            ng-click="saveClosingApp('F')">
+            <img src="/css/image/send.png" style="width:25px;">
+            {{'submit'|translate}}
+        </button>
+
+        <button class="btn btn-default buttonApp" ng-click="goBack()">
+            <img src="/css/image/comeback.png" style="width:25px;">
+            {{'goBack'|translate}}
+        </button>
+    </div>
+
+    <div class="modal-footer" ng-if="isUpdateSubmit">
+        <button class="btn btn-warning buttonApp" ng-disabled="formClosing.$invalid || checkValidate()"
+            ng-click="saveClosingApp('ReSubmit')">
+            <img src="/css/image/send.png" style="width:25px;">
+            {{'submit'|translate}}
+        </button>
+
+        <button class="btn btn-danger buttonApp" style="height: 40px;" ng-click="deleteRejectApp()">
+            <i class="glyphicon glyphicon-trash"></i>
+            {{'MD_Cancel'|translate}}
+        </button>
+
+        <button class="btn btn-default buttonApp" ng-click="goBack()">
+            <img src="/css/image/comeback.png" style="width:25px;">
+            {{'goBack'|translate}}
+        </button>
+    </div>
+</form>
+
+<div class="modal fade" id="modalProjectID" role="dialog" aria-labelledby="myLargeModalLabel" data-backdrop="static"
+    data-keyboard="false">
+    <div class="modal-dialog modal-lg" style="width: 70%;">
+        <div class="modal-content" style="padding: 5px;">
+            <div class="modal-body" style="padding-bottom:3px">
+                <get_Project></get_Project>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div ng-if="Print">
+    <div ng-include="'forms/EHS/Modification/Manage_Modification/ClosingEvaluation/PrintClosing.html'"></div>
+</div>

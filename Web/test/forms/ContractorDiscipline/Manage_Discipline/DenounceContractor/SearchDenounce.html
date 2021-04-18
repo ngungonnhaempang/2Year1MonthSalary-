@@ -1,0 +1,113 @@
+<style>
+    .modal-lg {
+        width: 900px;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    .ui-grid-icon-plus-squared:before {
+        color: green;
+    }
+
+    .title {
+        width: 100%;
+        background-color: #ececec;
+        padding: 5px 0px 5px 10px;
+        border: 1px solid #ececec;
+        border-radius: 6px;
+        text-transform: uppercase;
+        font-family: Arial, Helvetica, sans-serif, 'DFKai-SB';
+    }
+</style>
+
+<div class="col-md-12">
+    <form class="form-horizontal" novalidate name="form">
+        <legend>
+            <h2 class="title"><img src="/css/image/contractor/report.png" style="width:50px;">
+                {{'DenounceContractorViolation'|translate}}</h2>
+        </legend>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">{{'From'|translate}}</label>
+            <div class="col-sm-3">
+                <div class='input-group date'>
+                    <input type='text' class="form-control" ng-model="query.FromDate" date-picker />
+                    <span class="input-group-addon">
+                        <label class="glyphicon glyphicon-calendar" style="color: grey"></label>
+                    </span>
+                </div>
+            </div>
+            <label class="col-sm-2 control-label">{{'To'|translate}}</label>
+            <div class="col-sm-3">
+                <div class='input-group date'>
+                    <input type='text' class="form-control" ng-model="query.ToDate" date-picker />
+                    <span class="input-group-addon">
+                        <label class="glyphicon glyphicon-calendar" style="color: grey"></label>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">{{'ContractorName'|translate}}</label>
+            <div class="col-sm-3">
+                <input class="form-control" type="text" ng-model="query.CotractorName" />
+            </div>
+            <label class="col-sm-2 control-label">{{'Status'|translate}}</label>
+            <div class="col-sm-3">
+                <select class="form-control" ng-model="query.Status"
+                    ng-options="md.Status as md.Remark for md in StatusList">
+                    <option value="">-- {{'Show All'|translate}} --</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label"> {{'ViolationField'|translate}}</label>
+            <div class="col-sm-3">
+                <select class="form-control" ng-model="query.FieldViolation">
+                    <option value="">-- {{'Show All'|translate}} --</option>
+                    <option value="Safety"> {{'Safety'|translate}}</option>
+                    <option value="Environment"> {{'Environment'|translate}} </option>
+                    <option value="FireProtection"> {{'FireProtection'|translate}} </option>
+                </select>
+            </div>
+            <div class="col-sm-offset-2 col-sm-3 control-label">
+                <button class="btn btn-default btn-icon buttonApp" data-ng-click="searchDenounce()">
+                    <img src="/css/image/search-icon.png" style="width: 25px;">
+                    {{'Search'|translate}}
+                </button>
+            </div>
+        </div>
+
+        <br>
+        <div style="width: 100%;">
+            <div id="Grid" ui-grid="gridOptions" class="grid" ui-grid-selection ui-grid-resize-columns ui-grid-core
+                ui-grid-exporter external-scopes="gridHandlers">
+            </div>
+        </div>
+        <!-- <h3>{{'Flowchart'|translate}}</h3>
+        <div style="padding-top: 20px; text-align: center">
+            <div process-diagram-preview flow-key="DenounceContractorProcess" width="100%"></div>
+        </div> -->
+        <!-- Flowchart -->
+        <hr>
+        <h3>{{'Flowchart'|translate}}</h3>
+        <hr>
+        <div style="text-align: center;"><img src="/css/image/contractor/denounce-contractor.png" style="width:80%;">
+        </div>     
+    </form>
+
+
+    <!--create iso modal-->
+    <div class="modal fade" id="modalDenounceContractor" role="dialog" aria-labelledby="myLargeModalLabel"
+        data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog modal-lg" style="width: 70%;">
+            <div class="modal-content" style="padding: 5px;">
+                <div class="modal-body" style="padding-bottom:3px">
+                    <view-denounce></view-denounce>
+                </div> <!-- end of modal-body -->
+            </div> <!-- end of modal-content -->
+        </div> <!-- end of modal-dialog -->
+    </div> <!-- end of modal -->
+
+</div>

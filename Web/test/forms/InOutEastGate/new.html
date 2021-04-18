@@ -1,0 +1,163 @@
+<style>
+        .form-horizontal {
+                font-family: "Helvetica Neue", Helvetica, Arial, sans-serif, 'DFKai-SB';
+        }
+
+        .font{
+                font-family: "Helvetica Neue", Helvetica, Arial, sans-serif, 'DFKai-SB';
+        }
+
+        .title {
+                width: 101%;
+                background-color: #E8F5FE;
+                padding: 5px 0px 5px 10px;
+                border: 1px solid black;
+                border-radius: 6px;
+        }
+
+        .buttonApp {
+                font-family: Tahoma, 'DFKai-SB';
+                font-weight: bold;
+                box-shadow: 4px 2px 2px 2px #999
+        }
+
+        .popover {
+                background: black;
+                color: white
+        }
+
+        .popover.top .arrow:after {
+                border-top-color: black;
+        }
+</style>
+<legend>
+        <h2 class="font"><b>{{'EastGateVoucher'|translate}}</b> </h2>
+</legend>
+
+<div ng-if="!detail">
+        <form class="form-horizontal model-form " name="Registerform" style="margin-top:15px;"
+                enctype="multipart/form-data" novalidate>
+
+                <div style="margin-top: 15px;"
+                        ng-include="'forms/InOutEastGate/ReasonReject.html'" ng-if="!expiry">
+                </div>
+                <div style="margin-top: 15px;" ng-if="expiry">
+                        <h3 class="font"><b>{{'Reason_return'|translate}}: </b><mark>{{'RegistrationExpired'|translate}}</mark></h3>
+                </div>
+
+                <H4 class="title font"><img src="/css/image/info.png" style="width:22px;"> {{'RegistrationInfo'|translate}}
+                </H4>
+                <div style="padding-right: 10%;">
+                        <div class="form-group">
+                                <label class="col-sm-3 control-label">*{{'MD_StartDate'|translate}}</label>
+                                <div class="col-sm-3">
+                                        <div class='input-group date'>
+                                                <input type='text' class="form-control" ng-model="data.StartDate"
+                                                        min="0" date-picker field-validate data-toggle="popover"
+                                                        data-content="{{'StartDateLess_MSG'|translate}}"
+                                                        data-placement="top" ng-blur="checkDate(data.StartDate)"
+                                                        required />
+                                                <span class="input-group-addon">
+                                                        <label class="glyphicon glyphicon-calendar"
+                                                                style="color: grey"></label>
+                                                </span>
+                                        </div>
+                                </div>
+
+
+                                <label class="col-sm-3 control-label">*{{'MD_EndDate'|translate}}</label>
+                                <div class="col-sm-3">
+                                        <div class='input-group date' ng-if="loadEndDate">
+                                                <input type='text' class="form-control" ng-model="data.EndDate" min="{{minEndDate}}" 
+                                                 date-picker field-validate required  />
+                                                <span class="input-group-addon"> <label class="glyphicon glyphicon-calendar" style="color: grey"></label> </span>
+                                        </div>
+                                </div>
+                        </div>
+
+                        <div class="form-group">
+                                <label class="col-sm-3 control-label">* {{'RegisterReason'|translate}}</label>
+                                <div class="col-sm-3">
+                                        <textarea type="text" class="form-control" rows="3"
+                                                ng-model="data.RegisterReason" field-validate required></textarea>
+                                </div>
+
+                                <label class="col-sm-3 control-label">* {{'ContactInfo'|translate}}</label>
+                                <div class="col-sm-3">
+                                        <input type="text" class="form-control" ng-model="data.InternalNumber"
+                                                field-validate required>
+                                </div>
+                        </div>
+                </div>
+
+                <H4 class="title font"><img src="/css/image/list_employee.png" style="width:25px;">
+                        {{'EmployeeList'|translate}}</H4>
+                <H5 style="color:red" class="font">{{'EG_Note'|translate}}</H5>
+                <div style="width: 101%;">
+                        <div id="Grid" ui-grid="gridEmployeeList" class="grid" ui-grid-selection ui-grid-resize-columns
+                                ui-grid-core ui-grid-exporter></div>
+                </div>
+
+                <button class="btn btn-success" style="margin-top: 10px" ng-click="addEmployee()">
+                        <i class="glyphicon glyphicon-plus-sign" style="color: white;"></i>
+                        {{'Add'|translate}}
+                </button>
+
+                <H4 class="title font"><img src="/css/image/register_card.png" style="width:25px;">
+                        {{'RegistrationList'|translate}}</H4>
+                <div style="width: 101%;">
+                        <div id="Grid" ui-grid="gridRegistration" class="grid" ui-grid-selection ui-grid-resize-columns
+                                ui-grid-core ui-grid-exporter></div>
+                </div>
+
+                <button class="btn btn-danger" style="margin-top: 10px;" ng-click="deleteAllEmployee()">
+                        <i class="glyphicon glyphicon-trash" style="color: white;"></i>
+                        {{'DeleteAll'|translate}}
+                </button>
+
+
+        </form>
+
+
+
+        <div class="modal-footer">
+                <div class="form-group" ng-if="!isUpdateSubmit">
+                        <button class="btn btn-primary buttonApp" ng-disabled="Registerform.$invalid || checkValidate()"
+                                ng-click="saveVoucher('N')">
+                                <img src="/css/image/savefile.png" style="width:20px;">
+                                {{'saveDraft'|translate}}
+                        </button>
+
+                        <button class="btn btn-warning buttonApp" ng-disabled="Registerform.$invalid || checkValidate()"
+                                ng-click="saveVoucher('Submit')">
+                                <img src="/css/image/send.png" style="width:20px;">
+                                {{'submit'|translate}}
+                        </button>
+
+                        <button type="button" class="btn btn-default buttonApp" ng-click="resetEastGateModal()"
+                                data-dismiss="modal">
+                                <i class="glyphicon glyphicon-remove"
+                                        style="color: grey;vertical-align: text-bottom;"></i>
+                                {{'Close'|translate}}
+                        </button>
+                </div>
+
+                <div class="form-group" ng-if="isUpdateSubmit">
+                        <button class="btn btn-warning buttonApp"
+                                ng-disabled="ModificationAppform.$invalid || checkValidate()"
+                                ng-click="saveVoucher('ReSubmit')">
+                                <img src="/css/image/send.png" style="width:25px;">
+                                {{'submit'|translate}}
+                        </button>
+
+                        <button class="btn btn-danger buttonApp" style="height: 40px;" ng-click="deleteRejectApp()">
+                                <i class="glyphicon glyphicon-trash"></i>
+                                {{'MD_Cancel'|translate}}
+                        </button>
+                </div>
+        </div>
+</div>
+
+<div ng-if="detail">
+        <div ng-include="'forms/InOutEastGate/detail.html'"></div>
+</div>

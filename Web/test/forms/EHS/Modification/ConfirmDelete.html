@@ -1,0 +1,62 @@
+<head>
+	<link href="css/confirmDelete.css" rel="stylesheet" />
+</head>
+<form class="form-horizontal model-form " name="confirmDelete">
+	<div id="ConfirmDeleteModal" class="modal fade">
+		<div class="modal-dialog modal-confirm">
+			<div class="modal-content">
+				<div class="modal-header flex-column">
+					<div class="icon-box">
+						<img src="/css/image/trash.png" style="width:70px;">
+					</div>
+					<h4 class="modal-title w-100" ng-if="itemDelete.ID">{{'Wantto_delete'|translate}}
+						<br><b>{{itemDelete.Name}}</b> ?
+					</h4>
+
+
+
+					<h5 class="modal-title w-100" ng-if="!itemDelete.ID && !itemDelete.Close">
+						{{'Project'|translate}} <b>{{itemDelete.Name}}</b> {{'Has_Create'|translate}}
+						<b ng-if="itemDelete.Risk_AppID" style="color: crimson;"> <br>-
+							{{'RiskAssessment'|translate}}</b>
+						<b ng-if="itemDelete.Evaluation_AppID" style="color: crimson;"><br>-
+							{{'OperateEvaluation'|translate}}</b>
+						<b ng-if="itemDelete.Closing_AppID" style="color: crimson;"> <br>-
+							{{'ClosingChange'|translate}}</b>
+						<br>
+						{{'WannaDelete'|translate}}
+						<b ng-if="itemDelete.Risk_AppID">{{'MDApp'|translate}}</b>
+						<b
+							ng-if="itemDelete.Evaluation_AppID && !itemDelete.Risk_AppID">{{'RiskAssessment'|translate}}</b>
+						<b
+							ng-if="!itemDelete.Evaluation_AppID && !itemDelete.Risk_AppID">{{'OperateEvaluation'|translate}}</b>
+						{{'Delete_Related'|translate}}
+					</h5>
+
+					<h5 class="modal-title w-100" ng-if="itemDelete.Close">
+						{{'Project'|translate}} <b>{{itemDelete.Name}}</b>
+						<b style="color: crimson;">{{'closedProject_MSG'|translate}}</b>,&nbsp;{{'CantDeleteApp_MSG'|translate}}
+					</h5>
+
+
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				</div>
+
+				<div class="modal-body" ng-if="itemDelete.ID && itemDelete.Status=='SPD'">
+					<label class="mdlabel">* {{'DeleteAppReason'|translate}}</label>
+					<textarea class="form-control mdtextarea" type="text" rows="4"
+						ng-model="itemDelete.SpecialDeleteReason" required></textarea>
+				</div>
+
+				<div class="modal-footer justify-content-center">
+					<button type="button" class="btn btn-danger"
+						ng-click="deleteItem(itemDelete.ID, itemDelete.Status, itemDelete.SpecialDeleteReason)"
+						ng-if="itemDelete.ID"
+						ng-disabled="confirmDelete.$invalid"
+						>{{'MD_Cancel'|translate}}</button>
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">{{'Close'|translate}}</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</form>

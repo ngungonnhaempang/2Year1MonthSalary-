@@ -1,0 +1,35 @@
+<p  ng-if="!isUpdateSubmit" style="font-size: larger; font-weight: bold; margin-top: 25px;"><img src="/css/image/process_log.png"
+		style="width:35px;">
+	{{'Approval_log'|translate}}
+</p>
+
+<table class="table table-bordered">
+	<tr style="background-color: #E8F5FE;">
+		<th style="width:22%">{{'Unit_inCharge'|translate}}</th>
+		<th style="width:25%">{{'PersonInCharge'|translate}}</th>
+		<th style="width:15%">{{'Approval_time'|translate}}</th>
+		<th style="width:15%">{{'IsPass'|translate}}</th>
+		<th>{{'Remark'|translate}}</th>
+	</tr>
+	<tbody>
+		<tr ng-repeat="l in receiver">
+			<td>{{l.TaskName|translate}}</td>
+			<td>{{l.UserId}} - {{l.UserName}}</td>
+			<td>{{l.FormatStamp}} </td>
+			<td>
+				<p ng-repeat="h in l.HistoryField">
+					<span
+						ng-if="!h.Name.contains('Reason') && h.Name!='SendVicePresident' && l.TaskName!='起始表单'">{{h.Value}}
+					</span>
+				</p>
+			</td>
+			<td>
+				<p ng-repeat="h in l.HistoryField" style="margin-top: -10px;">
+					<span ng-if="h.Name.contains('Reason')"
+						style="color: crimson; font-weight: bold; white-space: pre-line;">{{h.Value}}
+					</span>
+				</p>
+			</td>
+		</tr>
+	</tbody>
+</table>

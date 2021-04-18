@@ -1,0 +1,208 @@
+<!-- CREATE BY JANG 20181129 -->
+<script>
+    function ProductionleaderCheck($q, $scope, EngineApi, $http, Notifications, $compile, $filter, Auth, $resource,
+                                    Auth, GateGuest, $translate, LIMSService, $filter) {
+
+        /** var init */
+        var lang = window.localStorage.lang;
+        var user = Auth.username;
+        var nickname = Auth.nickname;
+        var formVariables = [];
+        var historyVariable = [];
+
+        $scope.QCNode='production_leadercheck';
+        $scope.loading = false;
+
+        /* scope init */
+        $translate.refresh();
+        $scope.username = user;
+        console.log('Marco'+$scope.variable);
+        var index = $scope.variable.ProductionLeaderArray.length;
+        $scope.isInitiator =$scope.variable.ProductionLeaderArray[index-1].contains(user)? true : false;
+        $scope.QCNode=$scope.isInitiator?'publish':'production_leadercheck';
+        // $scope.isInitiator = $scope.variable.QCManagerList[index-1].indexOf(user) > -1 ? true : false;
+        // var _listQcManagerList ="";
+        // for (var i=0;i< $scope.variable.QCManagerList.length-1;i++)
+        // {
+        //
+        //     _listQcManagerList += $scope.variable.QCManagerList[i] ;
+        //     if(i<$scope.variable.QCManagerList.length-1){
+        //         _listQcManagerList += ' , ';
+        //     }
+        // }
+        // $scope.isLeader = _listQcManagerList.includes(user) ? true : false;
+        // ["FEPVNN0081", "FEPVNN0090"].indexOf(user) > -1 ? true : false; //柯建成 & 谢志君
+        // $scope.isLeader =
+        //     ["FEPVNN0184", "FEPVNN0082", "FEPVNN0186", "FEPVNN0033"].indexOf(user) > -1 ? true : false; // 黃大千 趙明華  李思源 林憲宏
+        $scope.passOrNot =
+            [{ "name": $translate.instant('agree'), "value": "YES" }
+                , {"name": $translate.instant('notAgree'), "value": "NO" }
+            ]
+
+
+        function saveInitData() {
+            /* basic data*/
+            var note = {};
+            note.userID = Auth.username;
+            note.voucherID = $scope.VoucherID || '';
+
+            /* receveive and process*/
+            note.reason = $scope.recod.Reason;
+            note.solution = $scope.recod.Solution;
+            note.prevention = $scope.recod.Prevention;
+            note.remark = $scope.recod.productionleadercheck_remark|| '';
+            note.status = $scope.recod.Status || '';
+            note.state = $scope.recod.State || '';
+            return note;
+        }
+
+        /* Save submit*/
+        $scope.Save = function () {
+                if (!confirm($translate.instant('Agree this Voucher?'))) return;
+                if($scope.isInitiator){
+                    $scope.formVariables.push({ name: 'QCManagerList', value: $scope.checkList });
+                    $scope.formVariables.push({ name: 'ISAccept', value: $scope.ISAccept });
+                    if($scope.ISAccept=='YES'){
+                        $scope.formVariables.push({ name: "leadercheck_remark", value: $scope.recod.productionleadercheck_remark });
+                    }
+                    $scope.formVariables.push({ name: "leadername", value: nickname + '(' + user + ')' });
+
+                }else{
+                    $scope.formVariables.push({ name: 'ISAccept', value: $scope.ISAccept });
+                    $scope.formVariables.push({ name: "leadername", value: nickname + '(' + user + ')' });
+                    if($scope.ISAccept=='YES'){
+                        $scope.formVariables.push({ name: "leadercheck_remark", value: $scope.recod.productionleadercheck_remark });
+                    }
+                }
+            var data = saveInitData();
+            LIMSService.UpdateRYVoucher(data, function (res, message) {
+                if (res.Success) {
+                    SubmitAndRemind();
+                }
+                else {
+                    Notifications.addError({
+                        'status': 'information',
+                        'message': res.Message
+                    });
+                }
+            }, function (error) {
+                Notifications.addError({
+                    'status': 'error',
+                    'message': $translate.instant('saveError') + error
+                });
+            })
+
+        }
+        function SubmitAndRemind() {
+            $q.all([$scope.submit()]).then(function () {
+                $scope.loading = true;
+
+                var reminder_parrams = {
+                    voucherID: $scope.VoucherID,
+                    userid: Auth.username,
+                    formkey: 'production_leadercheck'
+                }
+                debugger;
+                LIMSService.SendReminder(reminder_parrams, function (res) {
+                    if (res.Success) return;
+                }, function (error) {
+                    Notifications.addError({
+                        'status': 'error',
+                        'message': $translate.instant('saveError') + error
+                    });
+                })
+            });
+        }
+    }
+</script>
+
+<div ng-controller="ProductionleaderCheck">
+    <approval-master vid='{{variable.OverID}}' style="width: 85%"></approval-master>
+    <!-- RECEVEIVE AND PROCESS FORM -->
+    <div class="container ">
+        <table class="table table-bordered ">
+            <tbody>
+            <tr style="text-align: left">
+                <td>
+                    <h5>一. 矯正措施執行情形
+                        Tình hình thực hiện biện pháp khắc phục</h5>
+                    <p> a. 不合格狀況及原因分析 TT. không phù hợp và PT nguyên nhân:
+                        <br>{{recod.Reason}}</p>
+                </td>
+                <td>
+                    <p>二. 不合格品處理方式 Phương pháp xử lý sản phẩm không phù hợp:
+                        <br>{{recod.Solution}}</p>
+
+                </td>
+            </tr>
+            <tr style="text-align: left">
+                <td>
+                    <p>b. 改善對策及執行情形 Đối sách cải thiện và tình hình thực hiện:
+                        <br>{{recod.State}} </p>
+                </td>
+                <td>
+                    <p>三. 防止再發生措施 Biện pháp ngăn ngừa tái phát sinh:
+                        <br>{{recod.Prevention}}</p>
+                </td>
+            </tr>
+
+            </tbody>
+        </table>
+    </div>
+
+    <!-- remark text -->
+    <div ng-if="variable.leadercheck_remark && isInitiator">
+        <h3 style="color:red;">
+            {{variable.leadername}} Remark: {{variable.leadercheck_remark}}
+        </h3>
+    </div>
+
+    <!-- CHOOSE FORM -->
+    <form class="form-horizontal" role="form" novalidate name="form">
+        <!-- COMBOBOX -->
+        <div class="form-group">
+            <label class="col-sm-2 control-label" style="text-align: left;">{{'IsPass'|translate}}:</label>
+            <div class="col-sm-3">
+                <select class="form-control" history-field="IsPass" form-field name="ISAccept" ng-model="ISAccept"
+                        ng-options="c.value as c.name for c in passOrNot" required> </select>
+            </div>
+
+        </div>
+        <div class="form-group">
+        <div  ng-if="ISAccept=='NO'">
+            <label class="col-sm-2  control-label" style="text-align: left;">*{{'DenyReason'|translate}}:</label>
+            <div class="col-sm-6">
+                <textarea class="form-control" name="leadercheck_remark" type="text" form-field
+                          history-field="DenyReason" ng-model="leadercheck_remark" rows="3" required />
+            </div>
+        </div>
+        <div  ng-if="ISAccept=='YES'">
+            <label class="col-sm-2  control-label" style="text-align: left;">*{{'Remark'|translate}}:</label>
+            <div class="col-sm-6">
+                <textarea class="form-control"  type="text"
+                          ng-model="recod.productionleadercheck_remark" rows="3" required />
+            </div>
+        </div>
+        </div>
+
+        <!-- DENY TEXAREA -->
+
+
+        <!-- NEXT CANDIDATE -->
+        <div class="row" >
+            <div>
+                <h4>{{'NextStep'|translate}}</h4>
+            </div>
+            <div leader-check flow-key="QCOverGrade" user-name="{{username}}" kinds='{{sampleName}}' QCNode='{{QCNode}}'></div>
+        </div>
+        <!-- BUTTON OF SUBMITTING -->
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button class="btn btn-primary" ng-click="Save()"
+                        ng-disabled="form.$invalid">
+                    {{'SaveSubmit'|translate}}
+                </button>
+            </div>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,113 @@
+<style>
+    .isSelected {
+        color: red;
+        font-weight: bold;
+    }
+
+    .note {
+        margin-top: -25px;
+        padding-bottom: 20px;
+        margin-left: 20px;
+        font-family: "Comic Sans MS", cursive, sans-serif, 'DFKai-SB';
+    }
+
+    table,
+    th,
+    td {
+        border: 1px solid black;
+        padding: 10px;
+    }
+
+    #tbEvaluate th {
+        text-align: center;
+    }
+
+    .blue {
+        color: blue;
+    }
+
+    .yellow {
+        background-color: yellow;
+    }
+
+    .red {
+        color: red;
+    }
+    .grey {
+        background-color: rgb(214, 211, 211);
+    }
+
+    .khaki {
+        background-color: bisque;
+    }
+</style>
+<form class="form-horizontal model-form " autocomplete="off" name="Categoryform" style="margin-top:15px;"
+    enctype="multipart/form-data" novalidate>
+    <div ng-if='isViewAll'>
+        <div class="note">
+            📌<b style="color: red;">- {{'RedWord'|translate}}:</b> {{'replacedWith'|translate}}<b
+                style="background-color: yellow;">{{'bgYellow'|translate}}</b>)<br>
+            <b style="color: blue;">&nbsp;&nbsp;&nbsp;- {{'BlueWord'|translate}}:</b> {{'newContent'|translate}}<br>
+            <b style="color:khaki;">&nbsp;&nbsp;&nbsp;- {{'Orange'|translate}}:</b> {{'NotSignCategory'|translate}}
+        </div>
+        <div class="note form-group" style="margin-top:30px;">
+            <label class="col-sm-3 control-label">{{'SelectParent'|translate}}</label>
+            <div class="col-sm-7">
+                <select style="width:100%;" ng-model="data.Code" ui-select2 ng-change="viewDetailAll()">
+                    <option value="">{{'SeeAllCategories'|translate}} </option>
+                    <option ng-repeat="a in CategoryParentList" value="{{a.Code}}">
+                        {{a.Content}}
+                    </option>
+                </select>
+            </div>
+        </div>
+        <table id="tbEvaluate" style="width:100%">
+            <thead>
+                <tr style="background-color:#DCEDC8;">
+                    <th style="width:60%;">
+                        {{'CategoryContent'|translate}}
+                    </th>
+                    <th style="width:10%;">
+                        {{'CategoryFine'|translate}} <br>(VNĐ)
+                    </th>
+					
+					<th style="width:10%;">
+                       {{'MD_StartDate'|translate}}
+                    </th>
+					
+					<th style="width:10%;">
+                        {{'MD_EndDate'|translate}}
+                    </th>
+                </tr>
+            </thead>
+            <tbody ng-repeat="p in ParentList" style="width:100%;">
+                <th colspan="4" style="width:100%;text-align: left; "
+                    ng-class='{blue : p.IsNew, yellow: p.Unapplied, red: p.Available , grey: !p.Unapplied && !p.NotSigned, khaki: p.NotSigned}'>
+                    {{p.Content}}
+                </th>
+                <tr ng-repeat="c in ChildList | filter: {Parent:p.Code}:true" ng-if="!p.Unapplied">
+                    <td ng-class='{blue : c.IsNew, yellow: c.Unapplied, red: c.Available, khaki: c.NotSigned}'>
+                        {{c.Content}}
+                    </td>
+                    <td style="text-align: right;" ng-class='{blue : c.IsNew, yellow: c.Unapplied, red: c.Available, khaki: c.NotSigned}'>
+                        {{Convert(c.Fine)}}
+                    </td>
+					
+					<td ng-class='{blue : c.IsNew, yellow: c.Unapplied, red: c.Available, khaki: c.NotSigned}'>
+                        {{c.StartDate}}
+                    </td>
+                    <td ng-class='{blue : c.IsNew, yellow: c.Unapplied, red: c.Available, khaki: c.NotSigned}'>
+                        {{c.EndDate}}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="modal-footer">
+            <button class="btn btn-default buttonApp" data-dismiss="modal" ng-click="resetViewDetailModal()">
+                <i class="glyphicon glyphicon-remove" style="color: grey;vertical-align: text-bottom;"></i>
+                {{'Close'|translate}}
+            </button>
+        </div>
+    </div>
+
+</form>

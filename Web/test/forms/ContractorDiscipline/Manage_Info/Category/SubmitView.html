@@ -1,0 +1,376 @@
+<style>
+    .isSelected {
+        color: red;
+        font-weight: bold;
+    }
+
+    .note {
+        margin-top: -25px;
+        padding-bottom: 20px;
+        margin-left: 20px;
+        font-family: "Comic Sans MS", cursive, sans-serif, 'DFKai-SB';
+    }
+
+    table,
+    th,
+    td {
+        border: 1px solid black;
+        padding: 10px;
+    }
+
+    #tbEvaluate th {
+        text-align: center;
+    }
+
+    .blue {
+        color: blue;
+    }
+
+    .yellow {
+        background-color: yellow;
+    }
+
+    .red {
+        color: red;
+    }
+
+    .grey {
+        background-color: rgb(214, 211, 211);
+    }
+</style>
+<form class="form-horizontal model-form " autocomplete="off" name="submitform" style="margin-top:15px;"
+    enctype="multipart/form-data" novalidate>
+    <div class="form-group" ng-if="!checker">
+        <label class="col-sm-3 control-label">*{{'SelectCategotyType'|translate}}</label>
+        <div class='col-sm-3'>
+            <select class="form-control" ng-model="view.CategoryType" ng-change="getCategoryByType()" ng-options="t.ID as t.Name for t in TypeList"
+                required>
+            </select>
+        </div>
+    </div>
+    <div ng-if="CategoryList.length>0 && variable.Flag !='Update' && variable.Flag !='Upgrade'">
+        <div class="form-group" ng-if="view.CategoryType || checker">
+            <table id="tbEvaluate" style="width:100%">
+                <thead>
+                    <tr style="background-color:#DCEDC8;">
+                        <th style="width:66%;">
+                            {{'CategoryContent'|translate}}
+                        </th>
+                        <th style="width:10%;">
+                            {{'CategoryFine'|translate}} <br>(VNĐ)
+                        </th>
+
+                        <th style="width:10%;">
+                            {{'Remark'|translate}}
+                        </th>
+
+                        <th ng-if="view.IsAgree != 'NO' && checker">{{'agree'|translate}}</th>
+                        <th ng-if="view.IsAgree != 'NO' && checker">{{'DenyReason'|translate}}</th>
+                    </tr>
+                </thead>
+
+                <tbody ng-repeat="p in ParentList" >
+                    <th colspan="2" style="text-align: left;background-color: bisque;">
+                        {{p.Content}}
+                    </th>
+
+                    <th style="text-align: left;background-color: bisque;">
+                        {{p.Remark}}
+                    </th>
+
+                    <th ng-if="view.IsAgree != 'NO' && checker">
+                        <input type="checkbox" ng-model="p.Selected">
+
+                    </th>
+
+                    <td ng-if="view.IsAgree != 'NO' && checker">
+                        <textarea ng-if="p.Selected===false" type="text" rows="3" ng-model="c.RejectReason"
+                            field-validate required></textarea>
+                    </td>
+
+                    <tr ng-repeat="c in ChildList | filter: {Parent:p.Code}:true">
+                        <td>
+                            {{c.Content}}
+                        </td>
+
+                        <td style="text-align: right;">
+                            {{Convert(c.Fine)}}
+                        </td>
+
+                        <td>
+                            {{c.Remark}}
+                        </td>
+
+                        <td style="text-align: center;" ng-if="view.IsAgree != 'NO' && checker">
+                            <input type="checkbox" ng-model="c.Selected">
+
+                        </td>
+
+                        <td ng-if="view.IsAgree != 'NO' && checker">
+                            <textarea ng-if="c.Selected===false" type="text" rows="3" ng-model="c.RejectReason"
+                                field-validate required></textarea>
+                        </td>
+                    </tr>
+                </tbody>
+
+
+                <tr ng-repeat="c in ChildNoParent">
+                    <td>
+                        {{c.Content}}
+                    </td>
+
+                    <td style="text-align: right;">
+                        {{Convert(c.Fine)}}
+                    </td>
+
+
+                    <td>
+                        {{c.Remark}}
+                    </td>
+
+
+                    <td style="text-align: center;" ng-if="view.IsAgree != 'NO' && checker">
+                        <input type="checkbox" ng-model="c.Selected">
+
+                    </td>
+
+                    <td ng-if="view.IsAgree != 'NO' && checker">
+                        <textarea ng-if="c.Selected===false" type="text" rows="3" ng-model="c.RejectReason"
+                            field-validate required></textarea>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-3 control-label">*
+                {{'MD_StartDate'|translate}}</label>
+            <div class='input-group date col-sm-3' ng-if="!checker">
+                <input type='text' class="form-control" ng-model="view.StartDate" date-picker min="0" required />
+                <span class="input-group-addon">
+                    <label class="glyphicon glyphicon-calendar" style="color: grey" for='DATE'></label>
+                </span>
+            </div>
+
+            <div class="col-sm-8" ng-if="checker">
+                <label style="color: blue;margin-top: 7px;">{{variable.StartDate}}</label>
+            </div>
+
+            <label class="col-sm-3 control-label" ng-if="!checker">* {{'Duration'|translate}}:</label>
+
+            <label class="col-sm-1 control-label" ng-if="!checker">
+                <input type="radio" ng-model="view.Duration" value=6 required>
+                6 {{'CD_Month'|translate}}
+            </label>
+
+            <label class="col-sm-1 control-label" ng-if="!checker">
+                <input type="radio" ng-model="view.Duration" value=12 required>
+                12 {{'CD_Month'|translate}}
+            </label>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-3 control-label" style="white-space: nowrap;">* {{'MD_EndDate'|translate}}</label>
+            <div class='input-group date col-sm-3' ng-if="!checker">
+                <input type='text' class="form-control" ng-model="view.EndDate" date-picker required disabled />
+                <span class="input-group-addon">
+                    <label class="glyphicon glyphicon-calendar" style="color: grey" for='DATE'></label>
+                </span>
+            </div>
+
+            <div class="col-sm-8" ng-if="checker">
+                <label style="color: blue;margin-top: 7px;">{{variable.EndDate}}</label>
+            </div>
+        </div>
+
+        <div class="form-group" ng-if="!checker">
+            <label class="col-sm-3 control-label">{{'Remark'|translate}}</label>
+            <div class="col-sm-8">
+                <textarea class="form-control" type="text" rows="3" ng-model="view.Remark" ></textarea>
+            </div>
+        </div>
+		
+		<div class="form-group" ng-if="checker && variable.start_remark">
+            <label class="col-sm-3 control-label">{{'Remark'|translate}}</label>
+            <div class="col-sm-8">
+                <label ng-if="checker" style="color: crimson;margin-top: 7px;">{{variable.start_remark}}</label>
+            </div>
+        </div>
+
+
+        <div class="form-group" ng-if="!checker">
+            <label class="col-sm-3 control-label">*{{'Select_next_approver'|translate}}</label>
+            <div class='col-sm-3'>
+                <select class="form-control" ng-model="view.LeaderID" required>
+                    <option value="{{Safety[0].Person}}">{{'Safety'|translate}}: {{Safety[0].Person}} -
+                        {{Safety[0].Name}}</option>
+                    <option value="{{Environment[0].Person}}">{{'Environment'|translate}}: {{Environment[0].Person}} -
+                        {{Environment[0].Name}}</option>
+                    <option value="{{FireProtection[0].Person}}">{{'FireProtection'|translate}}:
+                        {{FireProtection[0].Person}} - {{FireProtection[0].Name}}</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div ng-if="CategoryList.length>0 && (variable.Flag=='Update' || variable.Flag =='Upgrade')">
+        <div class="form-group">
+            <table id="tbEvaluate" style="width:100%">
+                <thead>
+                    <tr style="background-color: rgb(175, 206, 175);">
+                        <th style="width:10%;">
+                            {{'TypeContent'|translate}}
+                        </th>
+                        <th style="width:10%;" ng-if="variable.S_CategoryType">
+                            {{'Category_type'|translate}}
+                        </th>
+                        <th style="width:40%;">
+                            {{'CategoryContent'|translate}}
+                        </th>
+                        <th style="width:10%;">
+                            {{'CategoryFine'|translate}} <br>(VNĐ)
+                        </th>
+                        <th style="width:12%;">
+                            {{'MD_StartDate'|translate}}
+                        </th>
+                        <th style="width:12%;">
+                            {{'MD_EndDate'|translate}}
+                        </th>
+                        <th>
+                            {{'Remark'|translate}}
+                        </th>
+                    </tr>
+                </thead>
+
+                <tr ng-repeat="c in CategoryList">
+                    <td style="text-align: center;">
+                        {{'OriginalContent'|translate}}
+                    </td>
+                    <td ng-if="variable.S_CategoryType" ng-repeat="t in CategoryTypeList | filter: {'ID': c.CategoryType}"> 
+                        {{t.Name}}
+                    </td>
+                    <td>
+                        {{c.Content}}
+                    </td>
+
+                    <td style="text-align: right;">
+                        {{Convert(c.Fine)}}
+                    </td>
+
+                    <td style="text-align: center;">
+                        {{c.StartDate}}
+                    </td>
+
+                    <td style="text-align: center;">
+                        {{c.EndDate}}
+                    </td>
+
+                    <td style="text-align: center;">
+                        {{c.Remark}}
+                    </td>
+                </tr>
+
+
+                <tr style="background-color: khaki; font-weight: bolder;">
+                    <td style="text-align: center;">
+                        {{'ModifyContent'|translate}}
+                    </td>
+                    <td ng-if="variable.S_CategoryType" ng-repeat="t in CategoryTypeList | filter: {'ID': variable.S_CategoryType}">
+                        {{t.Name}}
+                    </td>
+                    <td>
+                        {{variable.S_Numbering}}&nbsp;{{variable.S_ContentVN}}&nbsp;{{variable.S_ContentTW}}
+                    </td>
+
+                    <td style="text-align: right;">
+                        {{Convert(variable.S_Fine)}}
+                    </td>
+
+                    <td style="text-align: center;">
+                        {{variable.S_StartDate}}
+                    </td>
+
+                    <td style="text-align: center;">
+                        {{variable.S_EndDate}}
+                    </td>
+
+                    <td style="text-align: center;">
+                        {{variable.S_Remark}}
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label" ng-if="variable.Flag=='Update'">{{'Reason_edit'|translate}}:</label>
+            <label class="col-sm-2 control-label"
+                ng-if="variable.Flag=='Upgrade'">{{'Reason_upgrade'|translate}}:</label>
+            <div class="col-sm-10">
+                <label class="control-label" style="color: crimson;">{{variable.S_Reason}}</label>
+            </div>
+        </div>
+    </div>
+
+    <div ng-if="CategoryList.length==0 && !IsExpiry">
+        <h2 style="color: crimson;">{{'notSubmitCategory'|translate}}</h2>
+    </div>
+
+    <div ng-if="IsExpiry">
+        <h2 style="color: crimson;">{{'ExpiryCategory'|translate}}</h2>
+    </div>
+
+    <div class="modal-footer" ng-if="!checker">
+        <button class="btn btn-warning buttonApp" ng-disabled="submitform.$invalid ||checkValidate()"
+            ng-click="submitCategory()">
+            <img src="/css/image/send.png" style="width:25px;">
+            {{'submit'|translate}}
+        </button>
+
+        <button class="btn btn-default buttonApp" data-dismiss="modal" ng-click="resetSubmitModal()">
+            <img src="/css/image/close.png" style="width:25px;">
+            {{'Close'|translate}}
+        </button>
+    </div>
+
+    <div ng-if="checker && !IsExpiry">
+        <div class="form-group" style="margin-top: 30px;">
+            <label class="col-sm-3 control-label">*{{'IsPass'|translate}}</label>
+            <div class="col-sm-3">
+                <select class="form-control" ng-model="view.IsAgree" required>
+                    <option value="YES">{{'agree'|translate}}</option>
+                    <option value="NO" ng-if="variable.Flag=='SubmitNew'">{{'notAgreeAll'|translate}}</option>
+                    <option value="NO" ng-if="variable.Flag!='SubmitNew'">{{'notAgree'|translate}}</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group" ng-if="view.IsAgree == 'NO'" style="margin-top: 15px;">
+            <label class="col-sm-3 control-label">*{{'DenyReason'|translate}}</label>
+            <div class="col-sm-6">
+                <textarea class="form-control" type="text" ng-model="view.DenyReason" field-validate rows="3" required>
+            </textarea>
+            </div>
+        </div>
+
+        <div class="form-group" style="margin-top: 15px;">
+            <div class="col-sm-offset-3 col-sm-2">
+                <button class="btn btn-warning buttonApp" ng-click="leaderSubmit()" ng-disabled="submitform.$invalid">
+                    <img src="/css/image/send.png" style="width:25px;">
+                    {{'submit'|translate}}
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div ng-if="IsExpiry">
+        <div class="form-group" style="margin-top: 15px;">
+            <div class="col-sm-2">
+                <button class="btn btn-danger buttonApp" ng-click="leaderSubmit()">
+                    <i class="glyphicon glyphicon-trash"></i>
+                    {{'MD_Cancel'|translate}}
+                </button>
+            </div>
+        </div>
+    </div>
+</form>

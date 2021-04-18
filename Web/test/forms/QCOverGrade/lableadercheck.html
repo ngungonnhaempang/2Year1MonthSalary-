@@ -1,0 +1,164 @@
+<!-- CREATE BY JANG 20181129 -->
+
+<script>
+    function LabLeaderCheck($scope, EngineApi, $http, Notifications, $compile, $filter, Auth, $resource,
+                            Auth, GateGuest, $translate, LIMSService, $filter, $q) {
+        var lang = window.localStorage.lang;
+        $scope.QCNode='production';
+        $scope.recod = {};
+        $translate.refresh();
+        $scope.username = Auth.username;
+        console.log('Marco'+$scope.variable);
+        $scope.passOrNot = [
+            { "name": $translate.instant('agree'), "value": "YES" },
+            { "name": $translate.instant('notAgree'), "value": "NO" }
+        ];
+        // if($scope.variable.EnginerArray!= null && $scope.variable.EnginerArray!= undefined){
+        //     if($scope.variable.EnginerArray.length>0){
+        //         var LastNodeChecker = $scope.variable.EnginerArray[$scope.variable.EnginerArray.length-1];
+        //         if(LastNodeChecker.contains(Auth.username)){
+        //             $scope.QCNode='production';
+        //
+        //         }else{
+        //             $scope.QCNode='production';
+        //
+        //         }
+        //     }
+        // }
+
+        $scope.username = Auth.username;
+        $scope.ISReceive ='YES';
+        $scope.isLeaderLab = Auth.username=='FEPVNN0089'?true:false;
+        $scope.disableSubmit = Auth.username.indexOf('FEPVNN') > -1 ? false : false;
+        $scope.loading = false;
+        var formVariables = [];
+        var historyVariable = [];
+        function SaveBpmn() {
+            if ($scope.checkList.length <= 0) {
+                Notifications.addError({
+                    'status': 'error',
+                    'message': 'Don\'t get leader'
+                });
+                return;
+            }
+
+                if($scope.ISReceive =='YES'){
+                    $scope.formVariables.push({ name: 'EnginerArray', value: $scope.checkList });
+                    $scope.formVariables.push({ name: 'ISReceive', value: $scope.ISReceive });
+                    $scope.formVariables.push({ name: 'ISAgree', value: $scope.ISReceive });
+                }else if($scope.ISReceive =='NO'){
+                    $scope.formVariables.push({ name: 'ISReceive', value: $scope.ISReceive });
+                    $scope.formVariables.push({ name: 'ISAgree', value: $scope.ISReceive });
+                }
+            $q.all([$scope.submit()]).then(function () {
+                $scope.loading = true;
+                var reminder_parrams = {
+                    voucherID: $scope.VoucherID,
+                    userid: Auth.username,
+                    formkey: 'lab_leadercheck'
+                }
+                debugger;
+                LIMSService.SendReminder(reminder_parrams, function (res) {
+                    if (res.Success) return;
+                }, function (error) {
+                    Notifications.addError({
+                        'status': 'error',
+                        'message': $translate.instant('saveError') + error
+                    });
+                })
+            });
+
+
+        }
+        function saveInitData() {
+            var note = {};
+            note.userID = Auth.username;
+            note.voucherID = $scope.VoucherID || '';
+            note.reason = $scope.recod.Reason || '';
+            note.solution = $scope.recod.Solution || '';
+            note.prevention = $scope.recod.Prevention || '';
+            note.remark = $scope.recod.Remark || '';
+            note.status = $scope.recod.Status || '';
+            note.state = $scope.recod.State || '';
+            return note;
+        }
+        /**
+         * Update status by updateByID
+         */
+        $scope.Save = function (isSubmit) {
+
+            var data = saveInitData();
+            LIMSService.UpdateRYVoucher(data, function (res, message) {
+                if (res.Success) {
+                    if (isSubmit) {
+                        if (!confirm($translate.instant('Submit this Voucher?'))) return;
+
+                        SaveBpmn();
+                    }
+                }
+                else {
+                    Notifications.addError({
+                        'status': 'information',
+                        'message': res.Message
+                    });
+                }
+            }, function (error) {
+                Notifications.addError({
+                    'status': 'error',
+                    'message': $translate.instant('saveError') + error
+                });
+            })
+        }
+    }
+</script>
+<div ng-controller="LabLeaderCheck">
+    <!-- REPORT DIRECTIVE -->
+    <approval-master vid='{{variable.OverID}}' style="width: 85%"></approval-master>
+    <!-- CHOOSE FORM -->
+
+
+    <form class="form-horizontal" role="form" novalidate name="form">
+        <!-- COMBOBOX -->
+        <div class="form-group" >
+            <label class="col-sm-2 control-label">{{'IsPass'|translate}}:</label>
+            <div class="col-sm-3">
+                <select class="form-control" history-field="IsPass" form-field name="ISReceive" ng-model="ISReceive"
+                        ng-options="c.value as c.name for c in passOrNot" required> </select>
+            </div>
+        </div>
+        <!-- DENY TEXTAREA -->
+        <div class="form-group" ng-if="ISReceive=='NO'">
+            <label class="col-sm-2  control-label">*{{'DenyReason'|translate}}:</label>
+            <div class="col-sm-6">
+                <textarea class="form-control" name="leadercheck_remark" type="text" form-field
+                          history-field="DenyReason" ng-model="leadercheck_remark" rows="3" required />
+            </div>
+            <!-- leader remark show if returned -->
+            <div ng-show="variable.leadercheck_remark">
+                <h3 style="color:red;">
+                    {{variable.leadername}} Remark: {{variable.leadercheck_remark}}
+                </h3>
+            </div>
+
+        </div>
+        <!-- NEXT CANDIDATE -->
+        <div class="row">
+            <div>
+                <h4>{{'NextStep'|translate}}</h4>
+            </div>
+            <div leader-check flow-key="QCOverGrade" user-name="{{username}}" kinds="{{sampleName}}" QCNode="{{QCNode}}"></div>
+        </div>
+
+        <!-- BUTTON OF SUBMITTING -->
+        <div class="form-group" ng-hide="recod.Status=='K'">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button class="btn btn-primary" ng-click="Save(false)" ng-disabled="form.$invalid">
+                    {{'Save'|translate}}
+                </button>
+                <button class="btn btn-primary" ng-click="Save(true)" ng-disabled="form.$invalid">
+                    {{'SaveSubmit'|translate}}
+                </button>
+            </div>
+        </div>
+    </form>
+</div>

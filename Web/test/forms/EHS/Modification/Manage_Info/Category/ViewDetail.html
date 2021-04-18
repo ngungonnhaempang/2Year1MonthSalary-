@@ -1,0 +1,51 @@
+<style>
+    .isSelected {
+        color: red;
+        font-weight: bold;
+    }
+
+    .note {
+        margin-top: -25px;
+        padding-bottom: 20px;
+        margin-left: 20px;
+        font-family: "Comic Sans MS", cursive, sans-serif, 'DFKai-SB';
+    }
+</style>
+
+<form class="form-horizontal model-form " autocomplete="off" name="Categoryform" style="margin-top:15px;"
+    enctype="multipart/form-data" novalidate>
+    <div ng-if="!isViewAll">
+    <ul>
+        <li>
+            <p ng-if="Parent.IsSelected" class="isSelected">{{Parent.Content}}</p>
+            <p ng-if="!Parent.IsSelected">{{Parent.Content}}</p>
+            <div ng-bind-html="showDetail"></div>
+        </li>
+    </ul>
+    </div>
+
+    <div ng-if="isViewAll">
+        <div class="note">
+            📌<b style="color: red;">- {{'RedWord'|translate}}:</b> {{'replacedWith'|translate}}<b style="background-color: yellow;">{{'bgYellow'|translate}}</b>)<br>
+			  <b style="color: blue;">&nbsp;&nbsp;&nbsp;- {{'BlueWord'|translate}}:</b> {{'newContent'|translate}}
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-3 control-label">{{'SelectCategotyType'|translate}}</label>
+            <div class="col-sm-7">
+                <select class="form-control" style="border-color: black;" ng-model="data.CategoryType"
+                    ng-change="viewDetailAll()" ng-options="a.CategoryType as a.Remark for a in CategoryTypeList">
+                </select>
+            </div>
+
+        </div>
+        <div id="showDetailAll" style="margin-left:10px"></div>
+    </div>
+
+    <div class="modal-footer">
+        <button class="btn btn-default" data-dismiss="modal" ng-click="resetViewDetailModal()">
+            <i class="glyphicon glyphicon-remove" style="color: grey;vertical-align: text-bottom;"></i>
+            {{'Close'|translate}}
+        </button>
+    </div>
+</form>

@@ -1,0 +1,474 @@
+<script type="text/javascript">
+    function ContractorQuaProcess_safe($scope, EngineApi, $http, $timeout, Notifications, $upload, $compile, $filter, Auth, GateGuest, ConQuaService, $translatePartialLoader, $translate) {
+        $scope.passOrNot = [];
+        var blank = { name: "", value: "blank" };
+        $scope.passOrNot.push(blank);
+
+        $scope.arrPN = GateGuest.GetCheckList();
+        $scope.arrPN.forEach(element => {
+            $scope.passOrNot.push(element);
+        })
+        console.log($scope.passOrNot);
+        console.log($scope.variable);
+        $scope.eventSafe_passOrNot = "blank";
+        $scope.filedata = "";
+        $scope.note = {};
+        $scope._IsNotSubmit = false;
+        $scope._IsExpired = false;
+        $scope.IsForeign = false;
+
+        /**CHECK IF USER ROLE **/
+        $scope.isHSEUser = false;
+
+        ConQuaService.GetRole().get({
+            UserID: Auth.username
+        }, function (res) {
+            console.log(res);
+            if (res.length > 0) {
+                var dept = res[0].Dept.trim();
+                if (dept == 'HSE') {
+                    $scope.isHSEUser = true;
+                }
+            }
+        });
+
+        ConQuaService.GetContractorCheck().get({
+            VoucherID: $scope.variable.eventStart_Employer,
+            Language: window.localStorage.lang
+        }).$promise.then(function (res) {
+            debugger;
+            console.log(res);
+            $scope.note.VoucherID = $scope.variable.eventStart_Employer;
+            $scope.note.ContractorName = res[0].ContractorName;
+            $scope.note.ContracorKind = res[0].ContracorKind;
+            $scope.note.ContracorType = res[0].ContracorType;
+            $scope.ContractorID = res[0].ContractorID;
+            $scope.EmployeeList = [];
+            $scope.note.StartDate = res[0].StartDate;
+            $scope.note.EndDate = res[0].EndDate;
+            $scope.maxDate = $filter('date')(new Date(res[0].EndDate), 'yyyy/MM/dd');
+            $scope._status = res[0].Status;
+
+            if (res[0].FileName != null && res[0].FileName != "") {
+                $scope.filedata = res[0].FileName;
+            }
+
+            if ($scope._status != 'F') {
+                $scope._IsNotSubmit = true;
+            }
+
+            if ($scope._status == 'E') {
+                $scope._IsExpired = true;
+            }
+
+            $scope.note.Foreign = res[0].IsForeign;
+            if ($scope.note.Foreign == '1') {
+                $scope.IsForeign = true;
+            }
+
+            res.forEach(element => {
+                var x = {};
+                x.Name = element.Name;
+                x.IdCard = element.IdCard;
+                x.Sex = element.Sex;
+                x.Birthday = element.Birthday;
+                x.Job = element.Job;
+                x.Region = element.Region;
+                x.State = element.State;
+                x.Remark = element.Remark;
+                x.InsuranceDuration = element.InsuranceDuration;
+                x.SafetyCerDuration = element.SafetyCerDuration;
+                x.Phone = element.Phone;
+                if ($scope.IsForeign) {
+                    x.PassPort_Expiry = element.PassPort_Expiry;
+                    x.PassPort_Nationality = element.PassPort_Nationality;
+                    x.WorkPermit_No = element.WorkPermit_No;
+                    x.WorkPermit_Start = element.WorkPermit_Start;
+                    x.WorkPermit_End = element.WorkPermit_End;
+                    x.CategoryCard = element.CategoryCard;
+                    x.Card_Type = element.Card_Type;
+                    x.Card_No = element.Card_No;
+                    x.Card_Start = element.Card_Start;
+                    x.Card_End = element.Card_End;
+                }
+
+                $scope.EmployeeList.push(x);
+            });
+            checkIdCardInDb()
+        }, function (errResponse) {
+            Notifications.addError({ 'status': 'error', 'message': errResponse });
+        });
+
+        $scope.btSelect = function (p) {
+            if (p === "YES") {
+                $scope.formVariables.push({ name: "agree4Safe", value: "YES" });
+
+            }
+            else {
+                $scope.formVariables.push({ name: "agree4Safe", value: "NO" });
+                //$scope.note.eventSafe_trainDate = "";
+            }
+        };
+
+        function checkIdCardInDb() {
+            $scope.EmployeeList.forEach(y => {
+                ConQuaService.ContractorList().get({
+                    VoucherID: "",
+                    ContractorID: "",
+                    Language: window.localStorage.lang,
+                    Status: "",
+                    UserId: "",
+                    Name: "",
+                    IdCard: y.IdCard,
+                    Region: "",
+                    Fromdate: "",
+                    Todate: "",
+                    Classify: ""
+                }).$promise.then(function (res) {
+                    console.log(res)
+                    res.forEach(x => {
+                        if (x.ContractorID != $scope.ContractorID && x.Status != 'O' && x.Status != 'X'  && x.Status != 'E') {
+                            if (x.VoucherID == $scope.note.VoucherID) {
+                                y.IsMultiple = true;
+                            } else {
+                                y.IsMultiple = false;
+                            }
+                        }
+                    })
+                })
+
+            });
+        }
+        var IdList = [];
+        function CheckIdList() {
+            IdList = [];
+            $scope.EmployeeList.forEach(element => {
+                if (element.isSelected == true) {
+                    IdList.push(element.IdCard);
+                }
+            });
+        }
+
+        var IdReturn = [];
+        function removeIdSubmitted() {
+            CheckIdList();
+            for (var i = 0; i < $scope.EmployeeList.length; i++) {
+                IdList.forEach(x => {
+                    if ($scope.EmployeeList[i].IdCard == x) {
+                        $scope.EmployeeList.splice(i, 1);
+                    }
+                })
+            }
+
+            $scope.EmployeeList.forEach(element => {
+                IdReturn.push(element.IdCard + "|" + element.ReasonReturn);
+            });
+        }
+
+        $scope.save = function () {
+            var _state = "";
+
+            if ($scope.isHSEUser) {
+                _state = 'Q'
+            } else _state = "F"
+
+            removeIdSubmitted();
+
+            if ($scope.eventSafe_passOrNot === "YES") {
+                console.log(IdList);
+                if (IdList.length > 0) {
+                    
+                    ConQuaService.ContractorDone().save({
+                        VoucherID: $scope.variable.eventStart_Employer,
+                        updateDate: '', //$scope.note.eventSafe_trainDate || '',
+                        idCard: IdList,
+                        status: _state
+                    }).$promise.then(function (res) {
+                        console.log(res);
+                        if ($scope.isHSEUser) {
+
+                            sendMailSubmit("c_HseSubmit");
+                            $scope.submit();
+
+                            ReturnVoucher();
+                        }
+                        else {
+                            sendMailSubmit("c_HRSubmit");
+                            $scope.submit();
+                            ReturnVoucher();
+                        }
+                    }, function (errResponse) {
+                        Notifications.addError({ 'status': 'error', 'message': errResponse });
+                    });
+                }
+                else {
+                    Notifications.addError({ 'status': 'error', 'message': $translate.instant('Select_ONE_MSGp') });
+                }
+            } else {
+                ConQuaService.ContractorDone().save({
+                    VoucherID: $scope.variable.eventStart_Employer,
+                    updateDate: '',
+                    idCard: IdReturn,
+                    status: "M"
+                }).$promise.then(function (res) {
+                    console.log(res);
+                    sendMailSubmit("c_return");
+                    $scope.submit();
+                }, function (errResponse) {
+                    Notifications.addError({ 'status': 'error', 'message': errResponse });
+                });
+            }
+        }
+
+        function sendMailSubmit(_mailKind) {
+            ConQuaService.SendMailSubmit().get({
+                flowname: "GateContractorQuaProcess",
+                IdVoucher: $scope.variable.eventStart_Employer,
+                FromUser: Auth.username,
+                MailKind: _mailKind
+            }, {}).$promise.then(function (res) {
+                console.log(res);
+            }, function (err) {
+                Notifications.addError({
+                    'status': 'error',
+                    'message': 'Send Mail Err: ' + err
+                });
+            });
+        }
+
+        function ReturnVoucher() {
+            console.log(IdReturn);
+            if (IdReturn.length > 0) {
+                ConQuaService.ContractorDone().save({
+                    VoucherID: $scope.variable.eventStart_Employer,
+                    updateDate: "",
+                    idCard: IdReturn,
+                    status: "RT"
+                }).$promise.then(function (res) {
+                    console.log(res);
+                    ConQuaService.SendConfirmdMail().get({
+                        ContractorID: $scope.ContractorID,
+                        VoucherID: res.newVoucher,
+                        Mailkind: "c_returnlist",
+                        Datetime: '',
+                        ContractorName: $scope.note.ContractorName
+                    }, {}).$promise.then(function (res) {
+                        console.log(res);
+                    }, function (err) {
+                        Notifications.addError({
+                            'status': 'error',
+                            'message': 'Send Mail Err: ' + err
+                        });
+                    });
+                }, function (errResponse) {
+                    Notifications.addError({ 'status': 'error', 'message': errResponse });
+                });
+            }
+        }
+
+        $scope.ReturnFlow = function () {
+            $scope.formVariables.push({ name: "agree4Safe", value: "NO" });
+            $scope.formVariables.push({ name: "eventSafe_passOrNot", value: "NO" });
+            if ($scope._IsExpired) {
+                $scope.formVariables.push({ name: "eventSafe_advice", value: "Contractor_Expire_MSG" });
+                
+            } else {
+                $scope.formVariables.push({ name: "eventSafe_advice", value: "Contractor_Suspended_MSG" });
+            }
+            $scope.formVariables.push({ name: "IsDelete", value: "YES" });
+            sendMailSubmit("c_return");
+            $scope.submit();
+        }
+    }
+</script>
+
+<style>
+    .isMultiple {
+        background-color: yellow;
+        color: black;
+        font-weight: bold;
+    }
+
+    #tblCustomers {
+        border-collapse: collapse;
+        table-layout: auto;
+        width: 1100px;
+        white-space: nowrap;
+        text-align-last: center;
+    }
+
+    div.tableFixHead {
+        overflow-y: auto;
+        height: 300px;
+    }
+
+    .tableFixHead thead th {
+        position: sticky;
+        top: 0;
+        background: #eee;
+    }
+
+    .tableFixHead td:last-child,
+    th:last-child {
+        position: sticky;
+        top: 0;
+        right: 0;
+        z-index: 1;
+        background: #eee;
+    }
+
+    .tableFixHead th:last-child {
+        z-index: 2;
+    }
+
+    input.ng-invalid {
+        background-color: pink;
+    }
+</style>
+
+<div ng-controller="ContractorQuaProcess_safe">
+    <form class="form-horizontal" role="form" name="form" novalidate>
+        <legend>
+            <h3>{{'ContractorQua'|translate}}</h3>
+        </legend>
+        <div class="modal-body">
+
+            <table class="table table-bordered" style="white-space: nowrap;">
+                <tr>
+                    <th style="width:15%;">{{'VoucherID'|translate}}:</th>
+                    <td style="width:35%;"> {{note.VoucherID}}</td>
+                    <th style="width:15%;">{{'ConQua_CType'|translate}}:</th>
+                    <td style="width:35%;"> {{note.ContracorType}}</td>
+                </tr>
+                <tr>
+                    <th>{{'ContractorName'|translate}}:</th>
+                    <td> {{note.ContractorName}}</td>
+                    <th>{{'ConQua_CKind'|translate}}:</th>
+                    <td> {{note.ContracorKind }}</td>
+                </tr>
+
+                <tr>
+                    <th>{{'Contractor_Stardate'|translate}}:</th>
+                    <td> {{note.StartDate}}</td>
+                    <th>{{'Contractor_Enddate'|translate}}:</th>
+                    <td> {{note.EndDate}}</td>
+                </tr>
+                <tr ng-if="filedata!=''">
+                    <td><b>{{'File'|translate}}</b></td>
+                    <td>
+                        <a href="\{{filedata}}" target="_blank">{{filedata}}</a>
+                    </td>
+                </tr>
+            </table>
+
+            <H4 class="title">{{'Contractor_list'|translate}}</H4>
+            <div class="tableFixHead">
+                <table id="tblCustomers" class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>No.</th>
+                            <th>{{'ConName'|translate}}</th>
+                            <th ng-if="!IsForeign">{{'IdCard'|translate}}</th>
+                            <th ng-if="IsForeign">{{'PP_No'|translate}}</th>
+                            <th ng-if="IsForeign">{{'Nationality'|translate}}</th>
+                            <th ng-if="IsForeign">{{'PassPort_Expiry'|translate}}</th>
+                            <th ng-if="IsForeign">{{'CategoryCard'|translate}}</th>
+                            <th ng-if="IsForeign">{{'Card_Type'|translate}}</th>
+                            <th ng-if="IsForeign">{{'Card_No'|translate}}</th>
+                            <th ng-if="IsForeign">{{'Card_Start'|translate}}</th>
+                            <th ng-if="IsForeign">{{'Card_End'|translate}}</th>
+                            <th ng-if="IsForeign">{{'WorkPermit_No'|translate}}</th>
+                            <th ng-if="IsForeign">{{'WorkPermit_Start'|translate}}</th>
+                            <th ng-if="IsForeign">{{'WorkPermit_End'|translate}}</th>
+                            <th>{{'Job'|translate}}</th>
+                            <th>{{'Insurance'|translate}}</th>
+                            <th>{{'SafetyCer'|translate}}</th>
+                            <th>{{'ConQua_Region'|translate}}</th>
+                            <th>{{'Sex'|translate}}</th>
+                            <th>{{'Birthday'|translate}}</th>
+                            <th>{{'phone'|translate}}</th>
+                            <th>{{'Remark'|translate}}</th>
+                            <th>{{'Choose'|translate}}</th>
+
+                        </tr>
+                    </thead>
+                    <tbody ng-repeat="data in EmployeeList" ng-init="data.isSelected = true; data.ReasonReturn = null"
+                        ng-class="{'isMultiple': data.IsMultiple == false}">
+                        <tr>
+                            <td>{{$index + 1}}</td>
+                            <td>{{data.Name}}</td>
+                            <td>{{data.IdCard}}</td>
+
+                            <td ng-if="IsForeign">{{data.PassPort_Nationality}}</td>
+                            <td ng-if="IsForeign">{{data.PassPort_Expiry}}</td>
+                            <td ng-if="IsForeign">{{data.CategoryCard|translate}}</td>
+                            <td ng-if="IsForeign">{{data.Card_Type}}</td>
+                            <td ng-if="IsForeign">{{data.Card_No}}</td>
+                            <td ng-if="IsForeign">{{data.Card_Start}}</td>
+                            <td ng-if="IsForeign">{{data.Card_End}}</td>
+                            <td ng-if="IsForeign">{{data.WorkPermit_No}}</td>
+                            <td ng-if="IsForeign">{{data.WorkPermit_Start}}</td>
+                            <td ng-if="IsForeign">{{data.WorkPermit_End}}</td>
+                            <td>{{data.Job}}</td>
+                            <td>{{data.InsuranceDuration}}</td>
+                            <td>{{data.SafetyCerDuration}}</td>
+                            <td>{{data.Region}} </td>
+                            <td>{{data.Sex}}</td>
+                            <td>{{data.Birthday}}</td>
+                            <td>{{data.Phone}}</td>
+                            <td>{{data.Remark}}</td>
+                            <td>
+                                <input type="checkbox" ng-disabled="eventSafe_passOrNot!='blank'"
+                                    ng-model="data.isSelected">
+                                <input ng-if="data.isSelected==false" type="text" ng-model="data.ReasonReturn" required>
+                            </td>
+
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+
+
+        <H4 ng-if="!_IsNotSubmit" style="background-color: #ececec; padding: 5px">{{'leaderCheck'|translate}}</H4>
+        <H4 ng-if="_IsNotSubmit && !_IsExpired" style="color:red; padding: 5px">{{'Return_Suspended_MSG'|translate}}
+        </H4>
+        <H4 ng-if="_IsNotSubmit && _IsExpired" style="color:red; padding: 5px">{{'Return_Expire_MSG'|translate}}</H4>
+
+        <div ng-show="!_IsNotSubmit">
+            <div class="form-group">
+                <label class="col-sm-2 control-label">{{'IsPass'|translate}}</label>
+                <div class="col-sm-3">
+                    <select ng-change="btSelect(eventSafe_passOrNot)" class="form-control" history-field="IsPass"
+                        form-field name="eventSafe_passOrNot" ng-model="eventSafe_passOrNot"
+                        ng-options="c.value as c.name for c in passOrNot" required>
+                    </select>
+
+                </div>
+                <label ng-if="eventSafe_passOrNot == 'NO'" style="color:red; padding: 5px">
+                    {{'Return_All_MSG'|translate}}</label>
+            </div>
+
+            <div class="form-group" ng-if="eventSafe_passOrNot == 'NO'">
+                <label class="col-sm-2 control-label">{{'DenyReason'|translate}}</label>
+                <div class="col-sm-6 ">
+                    <textarea class="form-control" name="eventSafe_advice" history-field="DenyReason" form-field
+                        type="string" ng-model="eventSafe_advice" field-validate rows="3" required>
+                    </textarea>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="form-group">
+            <div ng-show="!_IsNotSubmit" class="col-sm-offset-2 col-sm-10">
+                <button class="btn btn-primary" ng-click="save()"
+                    ng-disabled="(form.$invalid) || eventSafe_passOrNot=='blank'">{{'submit'|translate}}</button>
+            </div>
+            <div ng-if="_IsNotSubmit" class="col-sm-offset-2 col-sm-10">
+                <button class="btn btn-primary" ng-click="ReturnFlow()">{{'ReturnVoucher'|translate}}</button>
+            </div>
+        </div>
+    </form>
+</div>

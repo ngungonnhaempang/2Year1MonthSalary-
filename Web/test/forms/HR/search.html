@@ -1,0 +1,63 @@
+<form class="form-horizontal" role="form" novalidate name="form">
+    <legend>
+        <h2><img src="/css/image/contractor/viewLog.png" style="width:40px;"> {{'HR management'|translate}}</h2>
+    </legend>
+
+    <div class="col-sm-12 form-group">
+        <div class="form-group search-table">
+            <div class="form-group">
+                <label class="col-sm-3 control-label">{{'dateFrom'|translate}}</label>
+                <div class="col-sm-2">
+                    <input type="text" class="form-control" name="dateFrom" ng-model="dateFrom" date-picker>
+                </div>
+
+                <label class="col-sm-2 control-label">{{'dateTo'|translate}}</label>
+                <div class="col-sm-2">
+                    <input class="form-control" name="dateTo" ng-model="dateTo" date-picker>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-3 control-label">{{'EmployeeID'|translate}}</label>
+                <div class="col-sm-2">
+                    <input type="text" class="form-control" name="EmployeeID" ng-model="EmployeeID">
+                </div>
+
+                <label class="col-sm-2 control-label">{{'CardNumber'|translate}}</label>
+                <div class="col-sm-2">
+                    <input type="text" class="form-control" name="CardNumber" ng-model="CardNumber">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-3 control-label">{{'Status'|translate}}</label>
+                <div class="col-sm-2">
+                    <select class="form-control" name="paraDepartment" ng-model="Status"
+                        ng-options="c.id as c.name for c in StatusList">
+                        <option value="">---{{'Show All'|translate}}---</option>
+                    </select>
+                </div>
+
+                <label class="col-sm-2 control-label">{{'Workplace'|translate}}</label>
+                <div class="col-sm-2">
+                    <select class="form-control" name="Workplace" ng-model="Workplace"
+                        ng-options="c.WorkplaceID as c.WorkplaceName for c in WorkplaceList">
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group" style="margin-top: 20px">
+                <div class="col-sm-offset-7 col-sm-2 control-label">
+                    <button type="button" class="btn btn-primary" ng-click="Search()">
+                        {{'Search'|translate}}
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div style="width: 100%; margin-top: 20px">
+            <div id="Grid" ui-grid="gridOptions" class="grid" ui-grid-selection ui-grid-pagination
+                ui-grid-auto-fit-columns ui-grid-resize-columns ui-grid-core></div>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,656 @@
+[2020-03-23 09:37:25.223] [ERROR] bpm - error getAuth!500
+[2020-03-23 09:37:25.225] [ERROR] memberSign - 500
+[2020-03-23 09:37:56.378] [ERROR] memberSign - 500
+[2020-03-23 09:37:56.524] [ERROR] bpm - error getAuth!500
+[2020-03-23 09:39:25.054] [ERROR] memberSign - 500
+[2020-03-23 09:39:25.165] [ERROR] bpm - error getAuth!500
+[2020-04-15 10:33:49.625] [ERROR] db - Error: failed to connect to [10.20.46.23:27017]
+    at .<anonymous> (D:\Beling\node_modules\mongodb\lib\mongodb\connection\server.js:553:25)
+    at emitThree (events.js:116:13)
+    at emit (events.js:194:7)
+    at .<anonymous> (D:\Beling\node_modules\mongodb\lib\mongodb\connection\connection_pool.js:140:15)
+    at emitTwo (events.js:106:13)
+    at emit (events.js:191:7)
+    at Socket.<anonymous> (D:\Beling\node_modules\mongodb\lib\mongodb\connection\connection.js:512:10)
+    at emitOne (events.js:96:13)
+    at Socket.emit (events.js:188:7)
+    at emitErrorNT (net.js:1278:8)
+    at _combinedTickCallback (internal/process/next_tick.js:74:11)
+    at process._tickDomainCallback (internal/process/next_tick.js:122:9)
+[2020-09-03 22:54:43.338] [ERROR] db - Error: failed to connect to [10.20.46.23:27017]
+    at .<anonymous> (D:\Beling\node_modules\mongodb\lib\mongodb\connection\server.js:553:25)
+    at emitThree (events.js:116:13)
+    at emit (events.js:194:7)
+    at .<anonymous> (D:\Beling\node_modules\mongodb\lib\mongodb\connection\connection_pool.js:140:15)
+    at emitTwo (events.js:106:13)
+    at emit (events.js:191:7)
+    at Socket.<anonymous> (D:\Beling\node_modules\mongodb\lib\mongodb\connection\connection.js:512:10)
+    at emitOne (events.js:96:13)
+    at Socket.emit (events.js:188:7)
+    at emitErrorNT (net.js:1278:8)
+    at _combinedTickCallback (internal/process/next_tick.js:74:11)
+    at process._tickDomainCallback (internal/process/next_tick.js:122:9)
+[2020-09-03 22:59:09.054] [ERROR] basicRoute - { Error: connect ETIMEDOUT 10.20.46.23:9999
+    at Object.exports._errnoException (util.js:1022:11)
+    at exports._exceptionWithHostPort (util.js:1045:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1087:14)
+  code: 'ETIMEDOUT',
+  errno: 'ETIMEDOUT',
+  syscall: 'connect',
+  address: '10.20.46.23',
+  port: 9999 }
+[2020-09-03 23:13:06.745] [ERROR] basicRoute - { Error: connect ETIMEDOUT 10.20.46.23:9999
+    at Object.exports._errnoException (util.js:1022:11)
+    at exports._exceptionWithHostPort (util.js:1045:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1087:14)
+  code: 'ETIMEDOUT',
+  errno: 'ETIMEDOUT',
+  syscall: 'connect',
+  address: '10.20.46.23',
+  port: 9999 }
+[2020-09-03 23:13:59.746] [ERROR] basicRoute - { Error: connect ETIMEDOUT 10.20.46.23:9999
+    at Object.exports._errnoException (util.js:1022:11)
+    at exports._exceptionWithHostPort (util.js:1045:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1087:14)
+  code: 'ETIMEDOUT',
+  errno: 'ETIMEDOUT',
+  syscall: 'connect',
+  address: '10.20.46.23',
+  port: 9999 }
+[2020-09-03 23:32:43.935] [ERROR] basicRoute - { Error: connect ETIMEDOUT 10.20.46.23:9999
+    at Object.exports._errnoException (util.js:1022:11)
+    at exports._exceptionWithHostPort (util.js:1045:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1087:14)
+  code: 'ETIMEDOUT',
+  errno: 'ETIMEDOUT',
+  syscall: 'connect',
+  address: '10.20.46.23',
+  port: 9999 }
+[2020-09-07 14:04:03.810] [ERROR] bpm - submit taskid: 500{"type":"RestException","message":"Cannot complete task cfae1038-f0d6-11ea-b753-0050568c22a6: Unknown property used in expression: ${SecurityLeader_checker}. Cause: Cannot resolve identifier 'SecurityLeader_checker'"}
+[2020-09-07 14:05:33.230] [ERROR] bpm - submit taskid: 500{"type":"RestException","message":"Cannot complete task cfae1038-f0d6-11ea-b753-0050568c22a6: Unknown property used in expression: ${SecurityLeader_checker}. Cause: Cannot resolve identifier 'SecurityLeader_checker'"}
+[2020-09-07 14:06:10.516] [ERROR] bpm - submit taskid: 500{"type":"RestException","message":"Cannot complete task cfae1038-f0d6-11ea-b753-0050568c22a6: Unknown property used in expression: ${SecurityLeader_checker}. Cause: Cannot resolve identifier 'SecurityLeader_checker'"}
+[2020-09-07 14:06:21.041] [ERROR] bpm - submit taskid: 500{"type":"RestException","message":"Cannot complete task cfae1038-f0d6-11ea-b753-0050568c22a6: Unknown property used in expression: ${SecurityLeader_checker}. Cause: Cannot resolve identifier 'SecurityLeader_checker'"}
+[2020-09-07 14:11:43.092] [ERROR] bpm - submit taskid: 500{"type":"RestException","message":"Cannot complete task cfae1038-f0d6-11ea-b753-0050568c22a6: Unknown property used in expression: ${SecurityLeader_checker}. Cause: Cannot resolve identifier 'SecurityLeader_checker'"}
+[2020-09-07 14:11:52.525] [ERROR] bpm - submit taskid: 500{"type":"RestException","message":"Cannot complete task cfae1038-f0d6-11ea-b753-0050568c22a6: Unknown property used in expression: ${SecurityLeader_checker}. Cause: Cannot resolve identifier 'SecurityLeader_checker'"}
+[2020-09-07 19:52:54.928] [ERROR] bpm - submit taskid: 500{"type":"RestException","message":"Cannot complete task a466207a-f108-11ea-b753-0050568c22a6: Unknown property used in expression: ${LeaderAgree=='YES'}. Cause: Cannot resolve identifier 'LeaderAgree'"}
+[2020-09-07 20:25:22.372] [ERROR] bpm - submit taskid: 500{"type":"RestException","message":"Cannot complete task 4c68afb6-f109-11ea-b753-0050568c22a6: ${SecurityLeaderArray} ' didn't resolve to a Collection"}
+[2020-09-07 20:25:31.549] [ERROR] bpm - submit taskid: 500{"type":"RestException","message":"Cannot complete task 4c68afb6-f109-11ea-b753-0050568c22a6: ${SecurityLeaderArray} ' didn't resolve to a Collection"}
+[2020-09-07 20:25:41.281] [ERROR] bpm - submit taskid: 500{"type":"RestException","message":"Cannot complete task 4c68afb6-f109-11ea-b753-0050568c22a6: ${SecurityLeaderArray} ' didn't resolve to a Collection"}
+[2020-09-07 20:28:05.899] [ERROR] bpm - submit taskid: 500{"type":"RestException","message":"Cannot complete task 4c68afb6-f109-11ea-b753-0050568c22a6: ${SecurityLeaderArray} ' didn't resolve to a Collection"}
+[2020-09-07 20:28:31.195] [ERROR] bpm - submit taskid: 500{"type":"RestException","message":"Cannot complete task 4c68afb6-f109-11ea-b753-0050568c22a6: ${SecurityLeaderArray} ' didn't resolve to a Collection"}
+[2020-09-07 20:30:36.310] [ERROR] bpm - submit taskid: 500{"type":"RestException","message":"Cannot complete task 4c68afb6-f109-11ea-b753-0050568c22a6: ${SecurityLeaderArray} ' didn't resolve to a Collection"}
+[2020-09-07 20:35:55.907] [ERROR] bpm - submit taskid: 500{"type":"RestException","message":"Cannot complete task 4c68afb6-f109-11ea-b753-0050568c22a6: ${SecurityLeaderArray} ' didn't resolve to a Collection"}
+[2020-09-07 20:36:05.346] [ERROR] bpm - submit taskid: 500{"type":"RestException","message":"Cannot complete task 4c68afb6-f109-11ea-b753-0050568c22a6: ${SecurityLeaderArray} ' didn't resolve to a Collection"}
+[2020-09-07 20:36:14.862] [ERROR] bpm - submit taskid: 500{"type":"RestException","message":"Cannot complete task 4c68afb6-f109-11ea-b753-0050568c22a6: ${SecurityLeaderArray} ' didn't resolve to a Collection"}
+[2020-09-11 01:12:26.776] [ERROR] db - Error: failed to connect to [10.20.46.23:27017]
+    at .<anonymous> (D:\Beling\node_modules\mongodb\lib\mongodb\connection\server.js:553:25)
+    at emitThree (events.js:116:13)
+    at emit (events.js:194:7)
+    at .<anonymous> (D:\Beling\node_modules\mongodb\lib\mongodb\connection\connection_pool.js:140:15)
+    at emitTwo (events.js:106:13)
+    at emit (events.js:191:7)
+    at Socket.<anonymous> (D:\Beling\node_modules\mongodb\lib\mongodb\connection\connection.js:512:10)
+    at emitOne (events.js:96:13)
+    at Socket.emit (events.js:188:7)
+    at emitErrorNT (net.js:1278:8)
+    at _combinedTickCallback (internal/process/next_tick.js:74:11)
+    at process._tickDomainCallback (internal/process/next_tick.js:122:9)
+[2020-09-11 01:15:36.737] [ERROR] db - Error: failed to connect to [10.20.46.23:27017]
+    at .<anonymous> (D:\Beling\node_modules\mongodb\lib\mongodb\connection\server.js:553:25)
+    at emitThree (events.js:116:13)
+    at emit (events.js:194:7)
+    at .<anonymous> (D:\Beling\node_modules\mongodb\lib\mongodb\connection\connection_pool.js:140:15)
+    at emitTwo (events.js:106:13)
+    at emit (events.js:191:7)
+    at Socket.<anonymous> (D:\Beling\node_modules\mongodb\lib\mongodb\connection\connection.js:512:10)
+    at emitOne (events.js:96:13)
+    at Socket.emit (events.js:188:7)
+    at emitErrorNT (net.js:1278:8)
+    at _combinedTickCallback (internal/process/next_tick.js:74:11)
+    at process._tickDomainCallback (internal/process/next_tick.js:122:9)
+[2020-09-14 14:09:57.575] [ERROR] bpm - SyntaxError: Unexpected end of JSON input
+    at Object.parse (native)
+    at D:\Beling\appservice\bpm.js:297:44
+    at Request._callback (D:\Beling\routes\basicRoute.js:456:21)
+    at Request.self.callback (D:\Beling\node_modules\request\request.js:129:22)
+    at emitTwo (events.js:106:13)
+    at Request.emit (events.js:191:7)
+    at Request.<anonymous> (D:\Beling\node_modules\request\request.js:873:14)
+    at emitOne (events.js:101:20)
+    at Request.emit (events.js:188:7)
+    at IncomingMessage.<anonymous> (D:\Beling\node_modules\request\request.js:824:12)
+    at emitNone (events.js:91:20)
+    at IncomingMessage.emit (events.js:185:7)
+    at endReadableNT (_stream_readable.js:974:12)
+    at _combinedTickCallback (internal/process/next_tick.js:74:11)
+    at process._tickDomainCallback (internal/process/next_tick.js:122:9)
+[2020-09-14 14:10:56.492] [ERROR] bpm - SyntaxError: Unexpected end of JSON input
+    at Object.parse (native)
+    at D:\Beling\appservice\bpm.js:297:44
+    at Request._callback (D:\Beling\routes\basicRoute.js:456:21)
+    at Request.self.callback (D:\Beling\node_modules\request\request.js:129:22)
+    at emitTwo (events.js:106:13)
+    at Request.emit (events.js:191:7)
+    at Request.<anonymous> (D:\Beling\node_modules\request\request.js:873:14)
+    at emitOne (events.js:101:20)
+    at Request.emit (events.js:188:7)
+    at IncomingMessage.<anonymous> (D:\Beling\node_modules\request\request.js:824:12)
+    at emitNone (events.js:91:20)
+    at IncomingMessage.emit (events.js:185:7)
+    at endReadableNT (_stream_readable.js:974:12)
+    at _combinedTickCallback (internal/process/next_tick.js:74:11)
+    at process._tickDomainCallback (internal/process/next_tick.js:122:9)
+[2020-09-14 14:17:31.749] [ERROR] bpm - SyntaxError: Unexpected end of JSON input
+    at Object.parse (native)
+    at D:\Beling\appservice\bpm.js:297:44
+    at Request._callback (D:\Beling\routes\basicRoute.js:456:21)
+    at Request.self.callback (D:\Beling\node_modules\request\request.js:129:22)
+    at emitTwo (events.js:106:13)
+    at Request.emit (events.js:191:7)
+    at Request.<anonymous> (D:\Beling\node_modules\request\request.js:873:14)
+    at emitOne (events.js:101:20)
+    at Request.emit (events.js:188:7)
+    at IncomingMessage.<anonymous> (D:\Beling\node_modules\request\request.js:824:12)
+    at emitNone (events.js:91:20)
+    at IncomingMessage.emit (events.js:185:7)
+    at endReadableNT (_stream_readable.js:974:12)
+    at _combinedTickCallback (internal/process/next_tick.js:74:11)
+    at process._tickDomainCallback (internal/process/next_tick.js:122:9)
+[2020-09-14 14:18:29.256] [ERROR] bpm - SyntaxError: Unexpected end of JSON input
+    at Object.parse (native)
+    at D:\Beling\appservice\bpm.js:297:44
+    at Request._callback (D:\Beling\routes\basicRoute.js:456:21)
+    at Request.self.callback (D:\Beling\node_modules\request\request.js:129:22)
+    at emitTwo (events.js:106:13)
+    at Request.emit (events.js:191:7)
+    at Request.<anonymous> (D:\Beling\node_modules\request\request.js:873:14)
+    at emitOne (events.js:101:20)
+    at Request.emit (events.js:188:7)
+    at IncomingMessage.<anonymous> (D:\Beling\node_modules\request\request.js:824:12)
+    at emitNone (events.js:91:20)
+    at IncomingMessage.emit (events.js:185:7)
+    at endReadableNT (_stream_readable.js:974:12)
+    at _combinedTickCallback (internal/process/next_tick.js:74:11)
+    at process._tickDomainCallback (internal/process/next_tick.js:122:9)
+[2020-09-14 14:21:31.850] [ERROR] bpm - SyntaxError: Unexpected end of JSON input
+    at Object.parse (native)
+    at D:\Beling\appservice\bpm.js:297:44
+    at Request._callback (D:\Beling\routes\basicRoute.js:456:21)
+    at Request.self.callback (D:\Beling\node_modules\request\request.js:129:22)
+    at emitTwo (events.js:106:13)
+    at Request.emit (events.js:191:7)
+    at Request.<anonymous> (D:\Beling\node_modules\request\request.js:873:14)
+    at emitOne (events.js:101:20)
+    at Request.emit (events.js:188:7)
+    at IncomingMessage.<anonymous> (D:\Beling\node_modules\request\request.js:824:12)
+    at emitNone (events.js:91:20)
+    at IncomingMessage.emit (events.js:185:7)
+    at endReadableNT (_stream_readable.js:974:12)
+    at _combinedTickCallback (internal/process/next_tick.js:74:11)
+    at process._tickDomainCallback (internal/process/next_tick.js:122:9)
+[2020-09-14 14:21:43.961] [ERROR] bpm - SyntaxError: Unexpected end of JSON input
+    at Object.parse (native)
+    at D:\Beling\appservice\bpm.js:297:44
+    at Request._callback (D:\Beling\routes\basicRoute.js:456:21)
+    at Request.self.callback (D:\Beling\node_modules\request\request.js:129:22)
+    at emitTwo (events.js:106:13)
+    at Request.emit (events.js:191:7)
+    at Request.<anonymous> (D:\Beling\node_modules\request\request.js:873:14)
+    at emitOne (events.js:101:20)
+    at Request.emit (events.js:188:7)
+    at IncomingMessage.<anonymous> (D:\Beling\node_modules\request\request.js:824:12)
+    at emitNone (events.js:91:20)
+    at IncomingMessage.emit (events.js:185:7)
+    at endReadableNT (_stream_readable.js:974:12)
+    at _combinedTickCallback (internal/process/next_tick.js:74:11)
+    at process._tickDomainCallback (internal/process/next_tick.js:122:9)
+[2020-09-14 14:21:59.461] [ERROR] bpm - SyntaxError: Unexpected end of JSON input
+    at Object.parse (native)
+    at D:\Beling\appservice\bpm.js:297:44
+    at Request._callback (D:\Beling\routes\basicRoute.js:456:21)
+    at Request.self.callback (D:\Beling\node_modules\request\request.js:129:22)
+    at emitTwo (events.js:106:13)
+    at Request.emit (events.js:191:7)
+    at Request.<anonymous> (D:\Beling\node_modules\request\request.js:873:14)
+    at emitOne (events.js:101:20)
+    at Request.emit (events.js:188:7)
+    at IncomingMessage.<anonymous> (D:\Beling\node_modules\request\request.js:824:12)
+    at emitNone (events.js:91:20)
+    at IncomingMessage.emit (events.js:185:7)
+    at endReadableNT (_stream_readable.js:974:12)
+    at _combinedTickCallback (internal/process/next_tick.js:74:11)
+    at process._tickDomainCallback (internal/process/next_tick.js:122:9)
+[2020-09-15 20:54:20.687] [ERROR] bpm - SyntaxError: Unexpected end of JSON input
+    at Object.parse (native)
+    at D:\Beling\appservice\bpm.js:297:44
+    at Request._callback (D:\Beling\routes\basicRoute.js:456:21)
+    at Request.self.callback (D:\Beling\node_modules\request\request.js:129:22)
+    at emitTwo (events.js:106:13)
+    at Request.emit (events.js:191:7)
+    at Request.<anonymous> (D:\Beling\node_modules\request\request.js:873:14)
+    at emitOne (events.js:101:20)
+    at Request.emit (events.js:188:7)
+    at IncomingMessage.<anonymous> (D:\Beling\node_modules\request\request.js:824:12)
+    at emitNone (events.js:91:20)
+    at IncomingMessage.emit (events.js:185:7)
+    at endReadableNT (_stream_readable.js:974:12)
+    at _combinedTickCallback (internal/process/next_tick.js:74:11)
+    at process._tickDomainCallback (internal/process/next_tick.js:122:9)
+[2020-09-16 10:01:15.898] [ERROR] bpm - SyntaxError: Unexpected end of JSON input
+    at Object.parse (native)
+    at D:\Beling\appservice\bpm.js:297:44
+    at Request._callback (D:\Beling\routes\basicRoute.js:456:21)
+    at Request.self.callback (D:\Beling\node_modules\request\request.js:129:22)
+    at emitTwo (events.js:106:13)
+    at Request.emit (events.js:191:7)
+    at Request.<anonymous> (D:\Beling\node_modules\request\request.js:873:14)
+    at emitOne (events.js:101:20)
+    at Request.emit (events.js:188:7)
+    at IncomingMessage.<anonymous> (D:\Beling\node_modules\request\request.js:824:12)
+    at emitNone (events.js:91:20)
+    at IncomingMessage.emit (events.js:185:7)
+    at endReadableNT (_stream_readable.js:974:12)
+    at _combinedTickCallback (internal/process/next_tick.js:74:11)
+    at process._tickDomainCallback (internal/process/next_tick.js:122:9)
+[2020-09-18 10:32:53.434] [ERROR] bpm - SyntaxError: Unexpected end of JSON input
+    at Object.parse (native)
+    at D:\Beling\appservice\bpm.js:297:44
+    at Request._callback (D:\Beling\routes\basicRoute.js:456:21)
+    at Request.self.callback (D:\Beling\node_modules\request\request.js:129:22)
+    at emitTwo (events.js:106:13)
+    at Request.emit (events.js:191:7)
+    at Request.<anonymous> (D:\Beling\node_modules\request\request.js:873:14)
+    at emitOne (events.js:101:20)
+    at Request.emit (events.js:188:7)
+    at IncomingMessage.<anonymous> (D:\Beling\node_modules\request\request.js:824:12)
+    at emitNone (events.js:91:20)
+    at IncomingMessage.emit (events.js:185:7)
+    at endReadableNT (_stream_readable.js:974:12)
+    at _combinedTickCallback (internal/process/next_tick.js:74:11)
+    at process._tickDomainCallback (internal/process/next_tick.js:122:9)
+[2020-09-18 10:38:17.281] [ERROR] bpm - SyntaxError: Unexpected end of JSON input
+    at Object.parse (native)
+    at D:\Beling\appservice\bpm.js:297:44
+    at Request._callback (D:\Beling\routes\basicRoute.js:456:21)
+    at Request.self.callback (D:\Beling\node_modules\request\request.js:129:22)
+    at emitTwo (events.js:106:13)
+    at Request.emit (events.js:191:7)
+    at Request.<anonymous> (D:\Beling\node_modules\request\request.js:873:14)
+    at emitOne (events.js:101:20)
+    at Request.emit (events.js:188:7)
+    at IncomingMessage.<anonymous> (D:\Beling\node_modules\request\request.js:824:12)
+    at emitNone (events.js:91:20)
+    at IncomingMessage.emit (events.js:185:7)
+    at endReadableNT (_stream_readable.js:974:12)
+    at _combinedTickCallback (internal/process/next_tick.js:74:11)
+    at process._tickDomainCallback (internal/process/next_tick.js:122:9)
+[2020-09-18 10:41:10.616] [ERROR] bpm - SyntaxError: Unexpected end of JSON input
+    at Object.parse (native)
+    at D:\Beling\appservice\bpm.js:297:44
+    at Request._callback (D:\Beling\routes\basicRoute.js:456:21)
+    at Request.self.callback (D:\Beling\node_modules\request\request.js:129:22)
+    at emitTwo (events.js:106:13)
+    at Request.emit (events.js:191:7)
+    at Request.<anonymous> (D:\Beling\node_modules\request\request.js:873:14)
+    at emitOne (events.js:101:20)
+    at Request.emit (events.js:188:7)
+    at IncomingMessage.<anonymous> (D:\Beling\node_modules\request\request.js:824:12)
+    at emitNone (events.js:91:20)
+    at IncomingMessage.emit (events.js:185:7)
+    at endReadableNT (_stream_readable.js:974:12)
+    at _combinedTickCallback (internal/process/next_tick.js:74:11)
+    at process._tickDomainCallback (internal/process/next_tick.js:122:9)
+[2020-09-18 10:44:00.515] [ERROR] bpm - SyntaxError: Unexpected end of JSON input
+    at Object.parse (native)
+    at D:\Beling\appservice\bpm.js:297:44
+    at Request._callback (D:\Beling\routes\basicRoute.js:456:21)
+    at Request.self.callback (D:\Beling\node_modules\request\request.js:129:22)
+    at emitTwo (events.js:106:13)
+    at Request.emit (events.js:191:7)
+    at Request.<anonymous> (D:\Beling\node_modules\request\request.js:873:14)
+    at emitOne (events.js:101:20)
+    at Request.emit (events.js:188:7)
+    at IncomingMessage.<anonymous> (D:\Beling\node_modules\request\request.js:824:12)
+    at emitNone (events.js:91:20)
+    at IncomingMessage.emit (events.js:185:7)
+    at endReadableNT (_stream_readable.js:974:12)
+    at _combinedTickCallback (internal/process/next_tick.js:74:11)
+    at process._tickDomainCallback (internal/process/next_tick.js:122:9)
+[2020-09-18 10:48:50.844] [ERROR] bpm - SyntaxError: Unexpected end of JSON input
+    at Object.parse (native)
+    at D:\Beling\appservice\bpm.js:297:44
+    at Request._callback (D:\Beling\routes\basicRoute.js:456:21)
+    at Request.self.callback (D:\Beling\node_modules\request\request.js:129:22)
+    at emitTwo (events.js:106:13)
+    at Request.emit (events.js:191:7)
+    at Request.<anonymous> (D:\Beling\node_modules\request\request.js:873:14)
+    at emitOne (events.js:101:20)
+    at Request.emit (events.js:188:7)
+    at IncomingMessage.<anonymous> (D:\Beling\node_modules\request\request.js:824:12)
+    at emitNone (events.js:91:20)
+    at IncomingMessage.emit (events.js:185:7)
+    at endReadableNT (_stream_readable.js:974:12)
+    at _combinedTickCallback (internal/process/next_tick.js:74:11)
+    at process._tickDomainCallback (internal/process/next_tick.js:122:9)
+[2020-09-18 10:49:10.277] [ERROR] bpm - SyntaxError: Unexpected end of JSON input
+    at Object.parse (native)
+    at D:\Beling\appservice\bpm.js:297:44
+    at Request._callback (D:\Beling\routes\basicRoute.js:456:21)
+    at Request.self.callback (D:\Beling\node_modules\request\request.js:129:22)
+    at emitTwo (events.js:106:13)
+    at Request.emit (events.js:191:7)
+    at Request.<anonymous> (D:\Beling\node_modules\request\request.js:873:14)
+    at emitOne (events.js:101:20)
+    at Request.emit (events.js:188:7)
+    at IncomingMessage.<anonymous> (D:\Beling\node_modules\request\request.js:824:12)
+    at emitNone (events.js:91:20)
+    at IncomingMessage.emit (events.js:185:7)
+    at endReadableNT (_stream_readable.js:974:12)
+    at _combinedTickCallback (internal/process/next_tick.js:74:11)
+    at process._tickDomainCallback (internal/process/next_tick.js:122:9)
+[2020-09-18 10:49:22.080] [ERROR] bpm - SyntaxError: Unexpected end of JSON input
+    at Object.parse (native)
+    at D:\Beling\appservice\bpm.js:297:44
+    at Request._callback (D:\Beling\routes\basicRoute.js:456:21)
+    at Request.self.callback (D:\Beling\node_modules\request\request.js:129:22)
+    at emitTwo (events.js:106:13)
+    at Request.emit (events.js:191:7)
+    at Request.<anonymous> (D:\Beling\node_modules\request\request.js:873:14)
+    at emitOne (events.js:101:20)
+    at Request.emit (events.js:188:7)
+    at IncomingMessage.<anonymous> (D:\Beling\node_modules\request\request.js:824:12)
+    at emitNone (events.js:91:20)
+    at IncomingMessage.emit (events.js:185:7)
+    at endReadableNT (_stream_readable.js:974:12)
+    at _combinedTickCallback (internal/process/next_tick.js:74:11)
+    at process._tickDomainCallback (internal/process/next_tick.js:122:9)
+[2020-09-18 10:54:32.010] [ERROR] bpm - SyntaxError: Unexpected end of JSON input
+    at Object.parse (native)
+    at D:\Beling\appservice\bpm.js:297:44
+    at Request._callback (D:\Beling\routes\basicRoute.js:456:21)
+    at Request.self.callback (D:\Beling\node_modules\request\request.js:129:22)
+    at emitTwo (events.js:106:13)
+    at Request.emit (events.js:191:7)
+    at Request.<anonymous> (D:\Beling\node_modules\request\request.js:873:14)
+    at emitOne (events.js:101:20)
+    at Request.emit (events.js:188:7)
+    at IncomingMessage.<anonymous> (D:\Beling\node_modules\request\request.js:824:12)
+    at emitNone (events.js:91:20)
+    at IncomingMessage.emit (events.js:185:7)
+    at endReadableNT (_stream_readable.js:974:12)
+    at _combinedTickCallback (internal/process/next_tick.js:74:11)
+    at process._tickDomainCallback (internal/process/next_tick.js:122:9)
+[2020-09-18 10:56:01.236] [ERROR] bpm - SyntaxError: Unexpected end of JSON input
+    at Object.parse (native)
+    at D:\Beling\appservice\bpm.js:297:44
+    at Request._callback (D:\Beling\routes\basicRoute.js:457:21)
+    at Request.self.callback (D:\Beling\node_modules\request\request.js:129:22)
+    at emitTwo (events.js:106:13)
+    at Request.emit (events.js:191:7)
+    at Request.<anonymous> (D:\Beling\node_modules\request\request.js:873:14)
+    at emitOne (events.js:101:20)
+    at Request.emit (events.js:188:7)
+    at IncomingMessage.<anonymous> (D:\Beling\node_modules\request\request.js:824:12)
+    at emitNone (events.js:91:20)
+    at IncomingMessage.emit (events.js:185:7)
+    at endReadableNT (_stream_readable.js:974:12)
+    at _combinedTickCallback (internal/process/next_tick.js:74:11)
+    at process._tickDomainCallback (internal/process/next_tick.js:122:9)
+[2020-09-18 10:58:26.473] [ERROR] bpm - SyntaxError: Unexpected end of JSON input
+    at Object.parse (native)
+    at D:\Beling\appservice\bpm.js:297:44
+    at Request._callback (D:\Beling\routes\basicRoute.js:457:21)
+    at Request.self.callback (D:\Beling\node_modules\request\request.js:129:22)
+    at emitTwo (events.js:106:13)
+    at Request.emit (events.js:191:7)
+    at Request.<anonymous> (D:\Beling\node_modules\request\request.js:873:14)
+    at emitOne (events.js:101:20)
+    at Request.emit (events.js:188:7)
+    at IncomingMessage.<anonymous> (D:\Beling\node_modules\request\request.js:824:12)
+    at emitNone (events.js:91:20)
+    at IncomingMessage.emit (events.js:185:7)
+    at endReadableNT (_stream_readable.js:974:12)
+    at _combinedTickCallback (internal/process/next_tick.js:74:11)
+    at process._tickDomainCallback (internal/process/next_tick.js:122:9)
+[2020-09-18 11:00:26.283] [ERROR] bpm - SyntaxError: Unexpected end of JSON input
+    at Object.parse (native)
+    at D:\Beling\appservice\bpm.js:297:44
+    at Request._callback (D:\Beling\routes\basicRoute.js:457:21)
+    at Request.self.callback (D:\Beling\node_modules\request\request.js:129:22)
+    at emitTwo (events.js:106:13)
+    at Request.emit (events.js:191:7)
+    at Request.<anonymous> (D:\Beling\node_modules\request\request.js:873:14)
+    at emitOne (events.js:101:20)
+    at Request.emit (events.js:188:7)
+    at IncomingMessage.<anonymous> (D:\Beling\node_modules\request\request.js:824:12)
+    at emitNone (events.js:91:20)
+    at IncomingMessage.emit (events.js:185:7)
+    at endReadableNT (_stream_readable.js:974:12)
+    at _combinedTickCallback (internal/process/next_tick.js:74:11)
+    at process._tickDomainCallback (internal/process/next_tick.js:122:9)
+[2020-09-18 11:01:53.973] [ERROR] bpm - SyntaxError: Unexpected end of JSON input
+    at Object.parse (native)
+    at D:\Beling\appservice\bpm.js:297:44
+    at Request._callback (D:\Beling\routes\basicRoute.js:457:21)
+    at Request.self.callback (D:\Beling\node_modules\request\request.js:129:22)
+    at emitTwo (events.js:106:13)
+    at Request.emit (events.js:191:7)
+    at Request.<anonymous> (D:\Beling\node_modules\request\request.js:873:14)
+    at emitOne (events.js:101:20)
+    at Request.emit (events.js:188:7)
+    at IncomingMessage.<anonymous> (D:\Beling\node_modules\request\request.js:824:12)
+    at emitNone (events.js:91:20)
+    at IncomingMessage.emit (events.js:185:7)
+    at endReadableNT (_stream_readable.js:974:12)
+    at _combinedTickCallback (internal/process/next_tick.js:74:11)
+    at process._tickDomainCallback (internal/process/next_tick.js:122:9)
+[2020-09-18 11:04:20.725] [ERROR] bpm - SyntaxError: Unexpected end of JSON input
+    at Object.parse (native)
+    at D:\Beling\appservice\bpm.js:297:44
+    at Request._callback (D:\Beling\routes\basicRoute.js:457:21)
+    at Request.self.callback (D:\Beling\node_modules\request\request.js:129:22)
+    at emitTwo (events.js:106:13)
+    at Request.emit (events.js:191:7)
+    at Request.<anonymous> (D:\Beling\node_modules\request\request.js:873:14)
+    at emitOne (events.js:101:20)
+    at Request.emit (events.js:188:7)
+    at IncomingMessage.<anonymous> (D:\Beling\node_modules\request\request.js:824:12)
+    at emitNone (events.js:91:20)
+    at IncomingMessage.emit (events.js:185:7)
+    at endReadableNT (_stream_readable.js:974:12)
+    at _combinedTickCallback (internal/process/next_tick.js:74:11)
+    at process._tickDomainCallback (internal/process/next_tick.js:122:9)
+[2020-09-18 11:04:41.261] [ERROR] bpm - SyntaxError: Unexpected end of JSON input
+    at Object.parse (native)
+    at D:\Beling\appservice\bpm.js:297:44
+    at Request._callback (D:\Beling\routes\basicRoute.js:457:21)
+    at Request.self.callback (D:\Beling\node_modules\request\request.js:129:22)
+    at emitTwo (events.js:106:13)
+    at Request.emit (events.js:191:7)
+    at Request.<anonymous> (D:\Beling\node_modules\request\request.js:873:14)
+    at emitOne (events.js:101:20)
+    at Request.emit (events.js:188:7)
+    at IncomingMessage.<anonymous> (D:\Beling\node_modules\request\request.js:824:12)
+    at emitNone (events.js:91:20)
+    at IncomingMessage.emit (events.js:185:7)
+    at endReadableNT (_stream_readable.js:974:12)
+    at _combinedTickCallback (internal/process/next_tick.js:74:11)
+    at process._tickDomainCallback (internal/process/next_tick.js:122:9)
+[2020-09-18 11:05:52.591] [ERROR] bpm - SyntaxError: Unexpected end of JSON input
+    at Object.parse (native)
+    at D:\Beling\appservice\bpm.js:297:44
+    at Request._callback (D:\Beling\routes\basicRoute.js:457:21)
+    at Request.self.callback (D:\Beling\node_modules\request\request.js:129:22)
+    at emitTwo (events.js:106:13)
+    at Request.emit (events.js:191:7)
+    at Request.<anonymous> (D:\Beling\node_modules\request\request.js:873:14)
+    at emitOne (events.js:101:20)
+    at Request.emit (events.js:188:7)
+    at IncomingMessage.<anonymous> (D:\Beling\node_modules\request\request.js:824:12)
+    at emitNone (events.js:91:20)
+    at IncomingMessage.emit (events.js:185:7)
+    at endReadableNT (_stream_readable.js:974:12)
+    at _combinedTickCallback (internal/process/next_tick.js:74:11)
+    at process._tickDomainCallback (internal/process/next_tick.js:122:9)
+[2020-09-18 11:09:20.509] [ERROR] bpm - SyntaxError: Unexpected end of JSON input
+    at Object.parse (native)
+    at D:\Beling\appservice\bpm.js:297:44
+    at Request._callback (D:\Beling\routes\basicRoute.js:457:21)
+    at Request.self.callback (D:\Beling\node_modules\request\request.js:129:22)
+    at emitTwo (events.js:106:13)
+    at Request.emit (events.js:191:7)
+    at Request.<anonymous> (D:\Beling\node_modules\request\request.js:873:14)
+    at emitOne (events.js:101:20)
+    at Request.emit (events.js:188:7)
+    at IncomingMessage.<anonymous> (D:\Beling\node_modules\request\request.js:824:12)
+    at emitNone (events.js:91:20)
+    at IncomingMessage.emit (events.js:185:7)
+    at endReadableNT (_stream_readable.js:974:12)
+    at _combinedTickCallback (internal/process/next_tick.js:74:11)
+    at process._tickDomainCallback (internal/process/next_tick.js:122:9)
+[2020-09-18 11:19:44.351] [ERROR] bpm - submit taskid: 500{"type":"RestException","message":"Cannot complete task 0ccd1a7e-f966-11ea-bd09-0050568c22a6: Unknown property used in expression: ${SecurityStaffArray}. Cause: Cannot resolve identifier 'SecurityStaffArray'"}
+[2020-09-29 20:58:50.751] [ERROR] db - Error: failed to connect to [10.20.46.23:27017]
+    at .<anonymous> (D:\Beling\node_modules\mongodb\lib\mongodb\connection\server.js:553:25)
+    at emitThree (events.js:116:13)
+    at emit (events.js:194:7)
+    at .<anonymous> (D:\Beling\node_modules\mongodb\lib\mongodb\connection\connection_pool.js:140:15)
+    at emitTwo (events.js:106:13)
+    at emit (events.js:191:7)
+    at Socket.<anonymous> (D:\Beling\node_modules\mongodb\lib\mongodb\connection\connection.js:512:10)
+    at emitOne (events.js:96:13)
+    at Socket.emit (events.js:188:7)
+    at emitErrorNT (net.js:1278:8)
+    at _combinedTickCallback (internal/process/next_tick.js:74:11)
+    at process._tickDomainCallback (internal/process/next_tick.js:122:9)
+[2020-09-29 21:04:28.885] [ERROR] db - Error: failed to connect to [10.20.46.23:27017]
+    at .<anonymous> (D:\Beling\node_modules\mongodb\lib\mongodb\connection\server.js:553:25)
+    at emitThree (events.js:116:13)
+    at emit (events.js:194:7)
+    at .<anonymous> (D:\Beling\node_modules\mongodb\lib\mongodb\connection\connection_pool.js:140:15)
+    at emitTwo (events.js:106:13)
+    at emit (events.js:191:7)
+    at Socket.<anonymous> (D:\Beling\node_modules\mongodb\lib\mongodb\connection\connection.js:512:10)
+    at emitOne (events.js:96:13)
+    at Socket.emit (events.js:188:7)
+    at emitErrorNT (net.js:1278:8)
+    at _combinedTickCallback (internal/process/next_tick.js:74:11)
+    at process._tickDomainCallback (internal/process/next_tick.js:122:9)
+[2020-09-30 19:52:56.606] [ERROR] db - Error: failed to connect to [10.20.46.23:27017]
+    at .<anonymous> (D:\Beling\node_modules\mongodb\lib\mongodb\connection\server.js:553:25)
+    at emitThree (events.js:116:13)
+    at emit (events.js:194:7)
+    at .<anonymous> (D:\Beling\node_modules\mongodb\lib\mongodb\connection\connection_pool.js:140:15)
+    at emitTwo (events.js:106:13)
+    at emit (events.js:191:7)
+    at Socket.<anonymous> (D:\Beling\node_modules\mongodb\lib\mongodb\connection\connection.js:512:10)
+    at emitOne (events.js:96:13)
+    at Socket.emit (events.js:188:7)
+    at emitErrorNT (net.js:1278:8)
+    at _combinedTickCallback (internal/process/next_tick.js:74:11)
+    at process._tickDomainCallback (internal/process/next_tick.js:122:9)
+[2020-10-02 20:49:41.109] [ERROR] db - Error: failed to connect to [10.20.46.23:27017]
+    at .<anonymous> (D:\Beling\node_modules\mongodb\lib\mongodb\connection\server.js:553:25)
+    at emitThree (events.js:116:13)
+    at emit (events.js:194:7)
+    at .<anonymous> (D:\Beling\node_modules\mongodb\lib\mongodb\connection\connection_pool.js:140:15)
+    at emitTwo (events.js:106:13)
+    at emit (events.js:191:7)
+    at Socket.<anonymous> (D:\Beling\node_modules\mongodb\lib\mongodb\connection\connection.js:512:10)
+    at emitOne (events.js:96:13)
+    at Socket.emit (events.js:188:7)
+    at emitErrorNT (net.js:1278:8)
+    at _combinedTickCallback (internal/process/next_tick.js:74:11)
+    at process._tickDomainCallback (internal/process/next_tick.js:122:9)
+[2020-10-19 09:12:38.117] [ERROR] app - { title: 'bpm pipehttp://10.20.46.23:9999/default/bpm-rest-api/task/count?assignee=FEPV000559',
+  message: 
+   { Error: connect ECONNREFUSED 10.20.46.23:9999
+       at Object.exports._errnoException (util.js:1022:11)
+       at exports._exceptionWithHostPort (util.js:1045:20)
+       at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1087:14)
+     code: 'ECONNREFUSED',
+     errno: 'ECONNREFUSED',
+     syscall: 'connect',
+     address: '10.20.46.23',
+     port: 9999 } }
+[2020-10-23 23:20:51.297] [ERROR] db - Error: failed to connect to [10.20.46.23:27017]
+    at .<anonymous> (D:\Beling\node_modules\mongodb\lib\mongodb\connection\server.js:553:25)
+    at emitThree (events.js:116:13)
+    at emit (events.js:194:7)
+    at .<anonymous> (D:\Beling\node_modules\mongodb\lib\mongodb\connection\connection_pool.js:140:15)
+    at emitTwo (events.js:106:13)
+    at emit (events.js:191:7)
+    at Socket.<anonymous> (D:\Beling\node_modules\mongodb\lib\mongodb\connection\connection.js:512:10)
+    at emitOne (events.js:96:13)
+    at Socket.emit (events.js:188:7)
+    at emitErrorNT (net.js:1278:8)
+    at _combinedTickCallback (internal/process/next_tick.js:74:11)
+    at process._tickDomainCallback (internal/process/next_tick.js:122:9)
+[2020-11-23 22:18:42.901] [ERROR] bpm - submit taskid: 500{"type":"RestException","message":"Cannot complete task 0f5807aa-2d6b-11eb-9c97-0050568c22a6: completionCondition '${HSEAgree!='YES'} ' does not evaluate to a boolean value"}
+[2020-11-23 22:18:52.377] [ERROR] bpm - submit taskid: 500{"type":"RestException","message":"Cannot complete task 0f5807aa-2d6b-11eb-9c97-0050568c22a6: completionCondition '${HSEAgree!='YES'} ' does not evaluate to a boolean value"}
+[2020-11-23 22:20:32.188] [ERROR] bpm - submit taskid: 500{"type":"RestException","message":"Cannot complete task 0f5807aa-2d6b-11eb-9c97-0050568c22a6: completionCondition '${HSEAgree!='YES'} ' does not evaluate to a boolean value"}
+[2020-11-23 22:27:40.591] [ERROR] bpm - submit taskid: 500{"type":"RestException","message":"Cannot complete task 0f5807aa-2d6b-11eb-9c97-0050568c22a6: completionCondition '${HSEAgree!='YES'} ' does not evaluate to a boolean value"}
+[2020-11-23 22:40:11.507] [ERROR] bpm - submit taskid: 500{"type":"RestException","message":"Cannot complete task ec8d26a4-2da1-11eb-9c97-0050568c22a6: completionCondition '${HSEAgree!='YES'} ' does not evaluate to a boolean value"}
+[2020-11-25 10:43:02.229] [ERROR] bpm - SyntaxError: Unexpected end of JSON input
+    at Object.parse (native)
+    at D:\Beling\appservice\bpm.js:297:44
+    at Request._callback (D:\Beling\routes\basicRoute.js:457:21)
+    at Request.self.callback (D:\Beling\node_modules\request\request.js:129:22)
+    at emitTwo (events.js:106:13)
+    at Request.emit (events.js:191:7)
+    at Request.<anonymous> (D:\Beling\node_modules\request\request.js:873:14)
+    at emitOne (events.js:101:20)
+    at Request.emit (events.js:188:7)
+    at IncomingMessage.<anonymous> (D:\Beling\node_modules\request\request.js:824:12)
+    at emitNone (events.js:91:20)
+    at IncomingMessage.emit (events.js:185:7)
+    at endReadableNT (_stream_readable.js:974:12)
+    at _combinedTickCallback (internal/process/next_tick.js:74:11)
+    at process._tickDomainCallback (internal/process/next_tick.js:122:9)
+[2020-11-25 10:43:11.224] [ERROR] bpm - SyntaxError: Unexpected end of JSON input
+    at Object.parse (native)
+    at D:\Beling\appservice\bpm.js:297:44
+    at Request._callback (D:\Beling\routes\basicRoute.js:457:21)
+    at Request.self.callback (D:\Beling\node_modules\request\request.js:129:22)
+    at emitTwo (events.js:106:13)
+    at Request.emit (events.js:191:7)
+    at Request.<anonymous> (D:\Beling\node_modules\request\request.js:873:14)
+    at emitOne (events.js:101:20)
+    at Request.emit (events.js:188:7)
+    at IncomingMessage.<anonymous> (D:\Beling\node_modules\request\request.js:824:12)
+    at emitNone (events.js:91:20)
+    at IncomingMessage.emit (events.js:185:7)
+    at endReadableNT (_stream_readable.js:974:12)
+    at _combinedTickCallback (internal/process/next_tick.js:74:11)
+    at process._tickDomainCallback (internal/process/next_tick.js:122:9)
+[2020-11-26 13:12:33.915] [ERROR] bpm - submit taskid: 500{"type":"RestException","message":"Cannot complete task 6200f74e-2fad-11eb-9c97-0050568c22a6: Failed to parse cron expression: R3/1606370612885/PT1M"}
+[2020-11-26 13:23:47.823] [ERROR] bpm - submit taskid: 500{"type":"RestException","message":"Cannot complete task 6200f74e-2fad-11eb-9c97-0050568c22a6: Failed to parse cron expression: R3/1606370625503/PT1M"}
+[2020-11-26 13:26:02.515] [ERROR] bpm - submit taskid: 500{"type":"RestException","message":"Cannot complete task 6200f74e-2fad-11eb-9c97-0050568c22a6: Failed to parse cron expression: R3/1606372079023/PT1M"}
+[2020-12-07 09:58:16.869] [ERROR] bpm - submit taskid: 500Failed to invoke JerseyResourcesComponent{camunda-rest-apiFlow2.component.181035697}. Component that caused exception is: JerseyResourcesComponent{camunda-rest-apiFlow2.component.181035697}. Message payload is of type: ChunkedInputStream
+[2020-12-07 10:00:59.211] [ERROR] bpm - submit taskid: 500Failed to invoke JerseyResourcesComponent{camunda-rest-apiFlow2.component.181035697}. Component that caused exception is: JerseyResourcesComponent{camunda-rest-apiFlow2.component.181035697}. Message payload is of type: ChunkedInputStream
+[2020-12-07 10:02:13.937] [ERROR] bpm - submit taskid: 500Failed to invoke JerseyResourcesComponent{camunda-rest-apiFlow2.component.181035697}. Component that caused exception is: JerseyResourcesComponent{camunda-rest-apiFlow2.component.181035697}. Message payload is of type: ChunkedInputStream
+[2020-12-07 10:05:56.575] [ERROR] bpm - submit taskid: 500Failed to invoke JerseyResourcesComponent{camunda-rest-apiFlow2.component.181035697}. Component that caused exception is: JerseyResourcesComponent{camunda-rest-apiFlow2.component.181035697}. Message payload is of type: ChunkedInputStream
+[2020-12-07 10:07:49.185] [ERROR] bpm - submit taskid: 500Failed to invoke JerseyResourcesComponent{camunda-rest-apiFlow2.component.181035697}. Component that caused exception is: JerseyResourcesComponent{camunda-rest-apiFlow2.component.181035697}. Message payload is of type: ChunkedInputStream
+[2020-12-07 10:07:59.969] [ERROR] bpm - submit taskid: 500Failed to invoke JerseyResourcesComponent{camunda-rest-apiFlow2.component.181035697}. Component that caused exception is: JerseyResourcesComponent{camunda-rest-apiFlow2.component.181035697}. Message payload is of type: ChunkedInputStream
+[2020-12-07 10:09:13.824] [ERROR] bpm - submit taskid: 500Failed to invoke JerseyResourcesComponent{camunda-rest-apiFlow2.component.181035697}. Component that caused exception is: JerseyResourcesComponent{camunda-rest-apiFlow2.component.181035697}. Message payload is of type: ChunkedInputStream
+[2020-12-07 10:10:25.855] [ERROR] bpm - submit taskid: 500Failed to invoke JerseyResourcesComponent{camunda-rest-apiFlow2.component.181035697}. Component that caused exception is: JerseyResourcesComponent{camunda-rest-apiFlow2.component.181035697}. Message payload is of type: ChunkedInputStream
+[2020-12-07 10:45:42.866] [ERROR] bpm - submit taskid: 500{"type":"RestException","message":"Cannot complete task 93a93623-383e-11eb-8421-0050568c22a6: ${HSEArray}' didn't resolve to a Collection"}
+[2020-12-09 14:20:24.618] [ERROR] app - { title: 'bpm pipehttp://10.20.46.23:9999/default/bpm-rest-api/task/count?assignee=FEPV000559',
+  message: 
+   { Error: connect ECONNREFUSED 10.20.46.23:9999
+       at Object.exports._errnoException (util.js:1022:11)
+       at exports._exceptionWithHostPort (util.js:1045:20)
+       at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1087:14)
+     code: 'ECONNREFUSED',
+     errno: 'ECONNREFUSED',
+     syscall: 'connect',
+     address: '10.20.46.23',
+     port: 9999 } }
+[2020-12-29 12:47:41.100] [ERROR] bpm - submit taskid: 500{"type":"RestException","message":"Cannot complete task 759ad5f7-498d-11eb-b0b0-0050568c22a6: Unknown property used in expression: ${LeaderAgree=='NO' || LeaderAgree=='Cancel'}. Cause: Cannot resolve identifier 'LeaderAgree'"}
+[2020-12-29 12:47:48.496] [ERROR] bpm - submit taskid: 500{"type":"RestException","message":"Cannot complete task 759ad5f7-498d-11eb-b0b0-0050568c22a6: Unknown property used in expression: ${LeaderAgree=='NO' || LeaderAgree=='Cancel'}. Cause: Cannot resolve identifier 'LeaderAgree'"}
+[2020-12-29 12:47:54.049] [ERROR] bpm - submit taskid: 500{"type":"RestException","message":"Cannot complete task 759ad5f7-498d-11eb-b0b0-0050568c22a6: Unknown property used in expression: ${LeaderAgree=='NO' || LeaderAgree=='Cancel'}. Cause: Cannot resolve identifier 'LeaderAgree'"}
+[2020-12-29 12:48:02.766] [ERROR] bpm - submit taskid: 500{"type":"RestException","message":"Cannot complete task 759ad5f7-498d-11eb-b0b0-0050568c22a6: Unknown property used in expression: ${LeaderAgree=='NO' || LeaderAgree=='Cancel'}. Cause: Cannot resolve identifier 'LeaderAgree'"}
+[2021-01-05 14:46:52.264] [ERROR] bpm - submit taskid: 500{"type":"RestException","message":"Cannot complete task cd97fac4-4f1c-11eb-b0b0-0050568c22a6: No outgoing sequence flow of the exclusive gateway 'exclusivegateway1' could be selected for continuing the process"}
+[2021-01-05 14:49:58.916] [ERROR] bpm - submit taskid: 500{"type":"RestException","message":"Cannot complete task cd97fac4-4f1c-11eb-b0b0-0050568c22a6: No outgoing sequence flow of the exclusive gateway 'exclusivegateway1' could be selected for continuing the process"}
+[2021-01-05 14:50:22.741] [ERROR] bpm - submit taskid: 500{"type":"RestException","message":"Cannot complete task cd97fac4-4f1c-11eb-b0b0-0050568c22a6: No outgoing sequence flow of the exclusive gateway 'exclusivegateway1' could be selected for continuing the process"}
+[2021-01-11 11:05:09.640] [ERROR] bpm - submit taskid: 500{"type":"RestException","message":"Cannot complete task aa687d3f-53c1-11eb-b0b0-0050568c22a6: Unknown property used in expression: ${LeaderAgree=='YES'}. Cause: Cannot resolve identifier 'LeaderAgree'"}
+[2021-01-11 11:06:36.945] [ERROR] bpm - submit taskid: 500{"type":"RestException","message":"Cannot complete task aa687d3f-53c1-11eb-b0b0-0050568c22a6: Unknown property used in expression: ${LeaderAgree=='YES'}. Cause: Cannot resolve identifier 'LeaderAgree'"}

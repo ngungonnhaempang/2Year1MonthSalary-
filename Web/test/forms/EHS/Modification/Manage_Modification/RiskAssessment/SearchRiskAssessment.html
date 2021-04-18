@@ -1,0 +1,109 @@
+<style>
+    .modal-lg {
+        width: 900px;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    .ui-grid-icon-plus-squared:before {
+        color: green;
+    }
+
+    .title {
+        width: 100%;
+        background-color: #ececec;
+        padding: 5px 0px 5px 10px;
+        border: 1px solid #ececec;
+        border-radius: 6px;
+    }
+</style>
+
+<div class="col-md-12">
+    <form class="form-horizontal" novalidate name="form">
+        <legend>
+            <h2 class="title"><img src="/css/image/RiskApp.png" style="width:50px;">
+                {{'RiskAppManage'|translate}} - 5VEXXHR042</h2>
+        </legend>
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label">{{'From'|translate}}</label>
+            <div class="col-sm-3">
+                <div class='input-group date'>
+                    <input type='text' class="form-control" ng-model="query.FromDate" date-picker />
+                    <span class="input-group-addon">
+                        <label class="glyphicon glyphicon-calendar" style="color: grey"></label>
+                    </span>
+                </div>
+            </div>
+
+            <label class="col-sm-2 control-label">{{'To'|translate}}</label>
+            <div class="col-sm-3">
+                <div class='input-group date'>
+                    <input type='text' class="form-control" ng-model="query.ToDate" date-picker />
+                    <span class="input-group-addon">
+                        <label class="glyphicon glyphicon-calendar" style="color: grey"></label>
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label">{{'MD_ProjectID'|translate}}</label>
+            <div class="col-sm-3">
+                <input class="form-control" type="text" ng-model="query.MD_ProjectID" />
+            </div>
+
+            <label class="col-sm-2 control-label">{{'MD_Name'|translate}}</label>
+            <div class="col-sm-3">
+                <input class="form-control" type="text" ng-model="query.MD_Name" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label">{{'Status'|translate}}</label>
+            <div class="col-sm-3">
+                <select class="form-control" ng-model="query.Status"
+                    ng-options="iso.Status as iso.Remark for iso in StatusList">
+                    <option value="">-- {{'Show All'|translate}} --</option>
+                </select>
+            </div>
+
+            <label class="col-sm-2 control-label">{{'Dept_Proposed'|translate}}</label>
+            <div class="col-sm-3">
+                <select class="form-control" ng-model="query.DepartmentID"
+                    ng-options="c.DepartmentID as c.Specification for c in DepartmentList">
+                    <option value="">-- {{'Show All'|translate}} --</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-offset-7 col-sm-3 control-label">
+                <button class="btn btn-primary" data-ng-click="searchRiskAssessment()">
+                    <i class="glyphicon glyphicon-search"></i>
+                    {{'Search'|translate}}
+                </button>
+            </div>
+        </div>
+
+        <div style="width: 100%;">
+            <div id="Grid" ui-grid="gridOptions" class="grid" ui-grid-selection ui-grid-pagination
+                ui-grid-resize-columns ui-grid-core ui-grid-exporter external-scopes="gridHandlers">
+            </div>
+        </div>
+
+        <hr>
+        <h3>{{'Flowchart'|translate}}</h3>
+        <hr>
+        <div ng-if="Language=='EN'" style="text-align: center;"><img src="/css/image/41-42-en.png" style="width:100%;">
+        </div>
+
+        <div ng-if="Language!='EN'" style="text-align: center;"><img src="/css/image/41-42-vn.png" style="width:100%;">
+        </div>
+
+    </form>
+</div>
+
+<div ng-include="'forms/EHS/Modification/ConfirmDelete.html'"></div>

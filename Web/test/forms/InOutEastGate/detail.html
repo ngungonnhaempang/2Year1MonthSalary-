@@ -1,0 +1,144 @@
+<style>
+    .table th {
+        background-color: #F3F3F3;
+    }
+
+    .processlog th {
+        background-color: #E8F5FE;
+    }
+</style>
+<form class="form-horizontal" role="form" name="checkform" novalidate>
+    <legend>
+        <h3 class="title font">📌 {{'RegistrationInfo'|translate}} </h3>
+    </legend>
+    <table class="table table-bordered">
+        <tr>
+            <th style="width:18%;">{{'VoucherID'|translate}}</th>
+            <td style="width:30%;"> {{data.VoucherID}}</td>
+            <th style="width:15%;">{{'CreateBy'|translate}}</th>
+            <td> {{data.Creator}} - {{data.CreatorName}}</td>
+        </tr>
+
+        <tr>
+            <th>{{'Department'|translate}}</th>
+            <td> {{data.DeptName}}</td>
+           
+            <th>{{'ContactInfo'|translate}}</th>
+            <td>{{data.InternalNumber}}</td>
+            
+        </tr>
+
+        <tr>
+            <th>{{'MD_StartDate'|translate}}</th>
+            <td> {{data.StartDate}}</td>
+            <th>{{'MD_EndDate'|translate}}</th>
+            <td> {{data.EndDate}}</td>
+        </tr>
+
+        <tr>
+            <th>{{'RegisterReason'|translate}}</th>
+            <td colspan="3" style="white-space:pre-line">{{data.RegisterReason}}</td>
+        </tr>
+
+        <tr ng-if="!checker">
+            <th>{{'FingerPrintAppointment'|translate}}</th>
+            <td colspan="3"><mark>{{data.AppointmentDate}}</mark></td>
+        </tr>
+
+    </table>
+
+    <legend>
+        <h3 class="title font">📌 {{'EmployeeList'|translate}} </h3>
+    </legend>
+
+    <div style="width: 101%;">
+        <div id="Grid" ui-grid="gridRegistration" class="grid" ui-grid-selection ui-grid-resize-columns ui-grid-core
+            ui-grid-exporter></div>
+    </div>
+
+    <p ng-if="showProcessLog" style="font-size: larger; font-weight: bold; margin-top: 25px;"><img
+            src="/css/image/process_log.png" style="width:35px;">
+        <a ng-if="ProcessInstanceId!=null" href="#/processlog/{{ProcessInstanceId}}"
+            target="_blank">{{'Approval_log'|translate}}</a>
+        <a ng-if="ProcessInstanceId==null" href="#" target="_blank">{{'Approval_log'|translate}}</a>
+    </p>
+
+    <table class="table table-bordered processlog" style="margin-top:20px" ng-if="showProcessLog">
+        <tr>
+            <th style="width:22%">{{'Unit_inCharge'|translate}}</th>
+            <th style="width:25%">{{'PersonInCharge'|translate}}</th>
+            <th style="width:15%">{{'Approval_time'|translate}}</th>
+            <th style="width:15%">{{'IsPass'|translate}}</th>
+            <th>{{'Remark'|translate}}</th>
+        </tr>
+
+        <tr ng-repeat="l in processLogs.Logs">
+            <td>{{l.TaskName|translate}}</td>
+            <td>{{l.UserId}} - {{l.UserName}}</td>
+            <td>{{l.FormatStamp}} </td>
+            <td>
+                <p ng-repeat="h in l.HistoryField">
+                    <span
+                        ng-if="!h.Name.contains('Reason') && h.Name!='SendVicePresident' && l.TaskName!='起始表单'">{{h.Value}}
+                    </span>
+                </p>
+            </td>
+            <td>
+                <p ng-repeat="h in l.HistoryField" style="margin-top: -10px;">
+                    <span ng-if="h.Name.contains('Reason')"
+                        style="color: crimson; font-weight: bold; white-space: pre-line;">{{h.Value}}
+                    </span>
+                </p>
+            </td>
+        </tr>
+    </table>
+
+
+
+    <div ng-if="!showProcessLog" style="margin-top:30px">
+
+        <div class="form-group">
+            <label class="col-sm-3 control-label">{{'IsPass'|translate}}</label>
+            <div class="col-sm-3">
+                <select class="form-control" ng-model="data.IsAgree" required>
+                    <option value="YES">{{'leaderCheck'|translate}}</option>
+                    <option value="NO">{{'notAgree'|translate}}</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group" ng-if="data.IsAgree == 'YES' && checker=='SecurityStaff'" style="margin-top: 15px;">
+            <label class="col-sm-3 control-label">*{{'FingerPrintAppointment'|translate}}</label>
+            <div class="col-sm-3">
+                <div class='input-group date'>
+                    <input type='text' class="form-control" ng-model="data.AppointmentDate" min="0" date-picker
+                        field-validate data-toggle="popover"
+                        data-content="{{'AppointmentLess_MSG'|translate}}" data-placement="top"
+                        ng-blur="checkDate(data.AppointmentDate)" required />
+                    <span class="input-group-addon">
+                        <label class="glyphicon glyphicon-calendar" style="color: grey"></label>
+                    </span>
+                </div>
+                </textarea>
+            </div>
+        </div>
+
+        <div class="form-group" ng-if="data.IsAgree == 'NO'" style="margin-top: 15px;">
+            <label class="col-sm-3 control-label">*{{'DenyReason'|translate}}</label>
+            <div class="col-sm-6">
+                <textarea class="form-control" type="text" ng-model="data.DenyReason" field-validate rows="3" required>
+            </textarea>
+            </div>
+        </div>
+
+        <div class="form-group" style="margin-top: 15px;">
+            <div class="col-sm-offset-3 col-sm-2">
+                <button class="btn btn-warning buttonApp" ng-click="saveSubmit()"
+                    ng-disabled="checkform.$invalid || dateInvalid">
+                    <img src="/css/image/send.png" style="width:25px;">
+                    {{'submit'|translate}}
+                </button>
+            </div>
+        </div>
+    </div>
+</form>

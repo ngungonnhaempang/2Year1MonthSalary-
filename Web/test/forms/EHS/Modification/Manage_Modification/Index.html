@@ -1,0 +1,238 @@
+<style>
+    .modal-lg {
+        width: 900px;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    .notification {
+        border-radius: 50%;
+        padding: 40px 10px;
+        background: #CAE5F8;
+        text-align: center;
+        width: 170px;
+        height: 150px;
+        border: 2px solid;
+        border-color: #81A3CB;
+        color: black;
+        box-shadow: 4px 2px 2px 2px #999
+    }
+
+    .notification:hover {
+        background-color: rgb(173, 217, 246);
+    }
+
+    .title {
+        width: 80%;
+        background-color: #ececec;
+        padding: 5px 0px 5px 10px;
+        border: 1px solid #ececec;
+        border-radius: 6px;
+        margin-bottom: 30px;
+        margin-left: 120px;
+        font-size: x-large;
+        text-transform: uppercase;
+    }
+
+    .bottom {
+        margin-bottom: 0px;
+    }
+
+    .countFrame {
+        width: 16%;
+        margin-left: 5%;
+    }
+
+    .appName{
+        white-space: pre-line;
+    }
+</style>
+
+<div class="container">
+    <div class="row" style="padding-top: 20px; ">
+        <h2 class="title"><img src="/css/image/documentChange.png" style="width:50px;border-radius: 50%;"> 
+            {{'MDManage'|translate}}</h2>
+        <div class="form-group">
+            <div class="col-sm-12" style="text-align: center;">
+                <a class="btn notification" href="#/Manage_Modification/Modification">
+                    <span class="appName"> {{'MD_App_Manage'|translate}}<br>(5VEXXHR041)</span>
+                </a>
+
+                <img src="/css/image/Actions-next.png">
+
+                <a class="btn notification" href="#/Manage_Modification/RiskAssessment">
+                    <span class="appName">{{'Risk_App_Manage'|translate}}<br>(5VEXXHR042)</span>                     
+
+                </a>
+
+                <img src="/css/image/Actions-next.png">
+
+                <a class="btn  notification" href="#/Manage_Modification/BeforeOperateEvaluation">
+                    <span class="appName"> {{'BeforeOperate_App_Manage'|translate}}<br>(5VEXXHR045)</span>
+                </a>
+
+                <img src="/css/image/Actions-next.png">
+
+                <a class="btn  notification" href="#/Manage_Modification/ClosingEvaluation">
+                    <span class="appName"> {{'Closing_App_Manage'|translate}}<br>(5VEXXHR046)</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="row" style="padding-top: 20px;" ng-if="_isHSE">
+        <div class="col-sm-offset-1 col-sm-2 countFrame" style="margin-left: 11%;">
+            <ul class="list-group">
+                <li class="list-group-item" style="background:powderblue;">
+                    <p class="nav-list bottom">
+                        {{ 'Total_Voucher' | translate }}
+                        <span class="badge" style="background-color:white; color:black;">{{data.MD_Sum}}</span>
+                    </p>
+                </li>
+
+                <li class="list-group-item">
+                    <p class="nav-list bottom">
+                        {{ 'Draft' | translate }}
+                        <span class="badge" style="background-color:rgb(65, 160, 250);">{{data.MD_draft}}</span>
+                    </p>
+                </li>
+                <li class="list-group-item">
+                    <p class="nav-list bottom">
+                        {{ 'Signing' | translate }}
+                        <span class="badge" style="background:powderblue; color: black;">{{data.MD_Signing}}</span>
+                    </p>
+                </li>
+
+                <li class="list-group-item">
+                    <p class="nav-list bottom">
+                        {{ 'Signed' | translate }}
+                        <span class="badge" style="background-color:#1afa52; color: black;">{{data.MD_Signed}}</span>
+                    </p>
+                </li>
+
+                <li class="list-group-item">
+                    <p class="nav-list bottom">
+                        {{ 'MD_Cancel' | translate }}
+                        <span class="badge" style="background-color:red; color: white;">{{data.MD_Cancel}}</span>
+                    </p>
+                </li>
+            </ul>
+        </div>
+
+        <div class="col-sm-3 countFrame">
+            <ul class="list-group">
+                <li class="list-group-item" style="background:powderblue;">
+                    <p class="nav-list bottom">
+                        {{ 'Total_Voucher' | translate }}
+                        <span class="badge" style="background-color:white; color:black;">{{data.Risk_Sum}}</span>
+                    </p>
+                </li>
+                <li class="list-group-item">
+                    <p class="nav-list bottom">
+                        {{ 'Draft' | translate }}
+                        <span class="badge" style="background-color:rgb(65, 160, 250);">{{data.Risk_draft}}</span>
+                    </p>
+                </li>
+                <li class="list-group-item">
+                    <p class="nav-list bottom">
+                        {{ 'Signing' | translate }}
+                        <span class="badge" style="background:powderblue; color: black;">{{data.Risk_Signing}}</span>
+                    </p>
+                </li>
+                <li class="list-group-item">
+                    <p class="nav-list bottom">
+                        {{ 'Signed' | translate }}
+                        <span class="badge" style="background-color:#1afa52; color: black;">{{data.Risk_Signed}}</span>
+                    </p>
+                </li>
+                <li class="list-group-item">
+                    <p class="nav-list bottom">
+                        {{ 'Evaluated' | translate }}
+                        <span class="badge" style="background-color:yellow; color:black">{{data.Risk_Evalua}}</span>
+                    </p>
+                </li>
+
+                <li class="list-group-item">
+                    <p class="nav-list bottom">
+                        {{ 'MD_Cancel' | translate }}
+                        <span class="badge" style="background-color:red; color: white;">{{data.Risk_Cancel}}</span>
+                    </p>
+                </li>
+            </ul>
+        </div>
+
+        <div class="col-sm-3 countFrame">
+            <ul class="list-group">
+                <li class="list-group-item" style="background:powderblue;">
+                    <p class="nav-list bottom">
+                        {{ 'Total_Voucher' | translate }}
+                        <span class="badge" style="background-color:white; color:black;">{{data.Evalua_Sum}}</span>
+                    </p>
+                </li>
+                <li class="list-group-item">
+                    <p class="nav-list bottom">
+                        {{ 'Draft' | translate }}
+                        <span class="badge" style="background-color:rgb(65, 160, 250);">{{data.Evalua_draft}}</span>
+                    </p>
+                </li>
+                <li class="list-group-item">
+                    <p class="nav-list bottom">
+                        {{ 'Signing' | translate }}
+                        <span class="badge" style="background:powderblue; color: black;">{{data.Evalua_Signing}}</span>
+                    </p>
+                </li>
+                <li class="list-group-item">
+                    <p class="nav-list bottom">
+                        {{ 'Signed' | translate }}
+                        <span class="badge"
+                            style="background-color:#1afa52; color: black;">{{data.Evalua_Signed}}</span>
+                    </p>
+                </li>
+                <li class="list-group-item">
+                    <p class="nav-list bottom">
+                        {{ 'MD_Cancel' | translate }}
+                        <span class="badge" style="background-color:red; color: white;">{{data.Evalua_Cancel}}</span>
+                    </p>
+                </li>
+            </ul>
+        </div>
+
+        <div class="col-sm-2 countFrame">
+            <ul class="list-group">
+                <li class="list-group-item" style="background:powderblue;">
+                    <p class="nav-list bottom">
+                        {{ 'Total_Voucher' | translate }}
+                        <span class="badge" style="background-color:white; color:black;">{{data.Close_Sum}}</span>
+                    </p>
+                </li>
+                <li class="list-group-item">
+                    <p class="nav-list bottom">
+                        {{ 'Draft' | translate }}
+                        <span class="badge" style="background-color:rgb(65, 160, 250);"> {{data.Close_draft}}</span>
+                    </p>
+                </li>
+                <li class="list-group-item">
+                    <p class="nav-list bottom">
+                        {{ 'Signing' | translate }}
+                        <span class="badge" style="background:powderblue; color: black;">{{data.Close_Signing}}</span>
+                    </p>
+                </li>
+                <li class="list-group-item">
+                    <p class="nav-list  bottom">
+                        {{ 'Signed' | translate }}
+                        <span class="badge" style="background-color:#1afa52; color: black;">{{data.Close_Signed}}</span>
+                    </p>
+                </li>
+                <li class="list-group-item">
+                    <p class="nav-list bottom">
+                        {{ 'MD_Cancel' | translate }}
+                        <span class="badge" style="background-color:red; color: white;">{{data.Close_Cancel}}</span>
+                    </p>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+</div>

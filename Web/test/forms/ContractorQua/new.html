@@ -1,0 +1,535 @@
+<style>
+        .title {
+                width: 101%;
+                background-color: #ececec;
+                padding: 5px 0px 5px 10px;
+                border: 1px solid #ececec;
+                border-radius: 6px;
+        }
+
+        .form-group {
+                margin-top: 10px;
+        }
+
+        a:hover {
+                text-decoration: none;
+                cursor: pointer;
+                color: #428BCA;
+        }
+
+        .btn-ct-ac {
+                font-weight: bold;
+                font-family: tahoma;
+        }
+
+        .isvalid,
+        .isnull {
+                background-color: red;
+                color: white;
+                font-weight: bold;
+        }
+
+        .isMultiple {
+                background-color: yellow;
+                color: black;
+                font-weight: bold;
+        }
+
+        select#region {
+                border: 0px;
+                outline: 0px;
+                -webkit-appearance: none;
+                width: auto;
+        }
+
+        select#region:disabled {
+                background-color: white;
+        }
+
+
+        div.tableFixHead {
+                overflow-x: auto;
+        }
+
+        .tableFixHead thead th {
+                position: sticky;
+                top: 0;
+                background: #eee;
+        }
+
+
+        .tableFixHead td:last-child,
+        th:last-child {
+                position: sticky;
+                top: 0;
+                right: 0;
+                z-index: 1;
+                background: #eee;
+        }
+
+        .tableFixHead th:last-child {
+                z-index: 2;
+                background-color: #eee;
+        }
+
+        #tblCustomers {
+                border-collapse: collapse;
+                table-layout: auto;
+                white-space: nowrap;
+                text-align-last: center;
+        }
+
+        .col {
+                padding-right: 5px
+        }
+</style>
+
+<H4 class="title" ng-if="modify">{{'ContractorQua'|translate}}</H4>
+<form class="form-horizontal model-form " name="Contractorform" style="margin-top:15px;" enctype="multipart/form-data"
+        novalidate ng-show="modify">
+
+        <div class="form-group">
+                <a id="topPage"></a>
+                <label class="col-sm-3 control-label">*{{'ContractorBelong'|translate}}</label>
+                <div class="col-sm-3 ">
+                        <select style="width:100%" ui-select2 ng-model="record.ContractorName"
+                                name="eventStart_Employer" ng-change="validDate(record.ContractorName)"
+                                ng-disabled="_IsUpdate" required>
+                                <option ng-repeat="value in ContractorList" value="{{value.ContractorID}}">
+                                        {{value.ContractorName}}
+                                </option>
+                        </select>
+                </div>
+
+                <label class="col-sm-3 control-label">*{{'TypeVoucher'|translate}}</label>
+                <div class="col-sm-3">
+                        <select class="form-control" type="text" name="Foreign" ng-model="record.Foreign"
+                                ng-disabled="_IsUpdate" required>
+                                <option value="0">{{'RegisterVN' | translate}}</option>
+                                <option value="1">{{'Foreign' | translate}}</option>
+                        </select>
+                </div>
+        </div>
+
+        <div class="form-group">
+                <label class="col-sm-3 control-label">*{{'Contractor_Stardate'|translate}}</label>
+                <div class="col-sm-3">
+                        <input class="form-control" type="input" disabled required name="Start"
+                                ng-model="record.StartDate" field-validate />
+                </div>
+
+                <label class="col-sm-3 control-label">*{{'Contractor_Enddate'|translate}}</label>
+                <div class="col-sm-3">
+                        <input class="form-control" type="input" disabled required name="End" ng-model="record.EndDate"
+                                field-validate />
+                </div>
+        </div>
+
+        <div class="form-group">
+                <label class="col-sm-3 control-label">{{'UploadFileEcxel'|translate}}</label>
+                <div class="col-sm-1">
+                        <div class="btn btn-success my-btn-file" ng-disabled="_showUploadButton || IsChange">
+                                <img src="/css/image/Excel.png"> Excel
+                                <input id="div-fileupload" type="file" accept=".xls,.xlsx" upload-file />
+                        </div>
+                </div>
+                <div class="col-sm-2">
+                        <p class="col-sm-12 control-label" style="color:#4A90CC; text-align: left;margin-left: 20px;">
+                                {{filename}}</p>
+                </div>
+
+                <label class="col-sm-3 control-label" ng-show="!IsVietnamese">*{{'File'|translate}}</label>
+                <div class="col-sm-1" ng-if="!IsVietnamese">
+                        <div class="btn btn-info  my-btn-file" ng-disabled="IsChange">
+                                <i class="glyphicon glyphicon-folder-open"></i> Browse…
+                                <input type="file" ng-file-select="onFileSelect($files)">
+                        </div>
+                </div>
+        </div>
+
+        <div class="form-group">
+
+                <div class="col-sm-offset-9 col-sm-3" ng-if="!IsVietnamese && fileAttached!=''">
+                        <a href="\{{fileAttached}}" target="_blank">{{formatFileName(fileAttached)}}</a>
+                        <a class="btn btn-danger btn-xs" role="button" ng-hide="IsChange"
+                                ng-click="getRemoveFileName()">X</a>
+                </div>
+        </div>
+</form>
+
+<H4 class="title">{{'Contractor_list'|translate}}</H4>
+
+<form class="form-horizontal" role="form" name="ContractorEmployeeList" novalidate>
+        <div ng-if="IsVietnamese">
+                <div class="form-group">
+                        <label class="col-sm-2 control-label">* {{'IdCard' | translate}} </label>
+                        <div class="col-lg-2">
+                                <input class="form-control" ng-blur='checkIDNoFromTextbox()' type="text"
+                                        ng-disabled="IsChange" ng-model="event.IdCard" required />
+                                <span ng-show="checkremove" class="glyphicon glyphicon-remove" style="color: red; position: absolute;
+                                        right: 5px;"></span>
+                        </div>
+
+                        <label class="col-sm-2 control-label">* {{'ConName' | translate}} </label>
+                        <div class="col-lg-2">
+                                <input class="form-control" type="text" ng-disabled="IsChange"
+                                        ng-blur='checkIDNoFromTextbox()' ng-model="event.Name" required>
+                        </div>
+
+                        <label class=" col-sm-2  control-label "> * {{'Sex' | translate}} </label>
+                        <div class="col-lg-2">
+                                <select class="form-control" ng-disabled="IsChange" ng-model="event.Sex" required>
+                                        <option value="Nam">{{'Male' | translate}}</option>
+                                        <option value="Nữ">{{'Female' | translate}}</option>
+                                </select>
+                        </div>
+
+                </div>
+
+                <div class="form-group">
+                        <label class=" col-sm-2 control-label">* {{'Birthday' | translate}} </label>
+                        <div class="col-lg-2">
+                                <input type="text" id="age" class="form-control" name="Birthday" date-picker max=0
+                                        ng-disabled="IsChange" ng-model="event.Birthday" required />
+                        </div>
+
+                        <label class="col-sm-2 control-label">* {{'Job' | translate}} </label>
+                        <div class="col-lg-2">
+                                <select class="form-control" type="text" name="Job" ng-disabled="IsChange"
+                                        ng-model="event.Job" required>
+                                        <option value="Giám sát an toàn 安衛人員">{{'SafetySupervision' | translate}}
+                                        </option>
+                                        <option value="Quản lý công trình/dự án 工程管理人">{{'Management' | translate}}
+                                        </option>
+                                        <option value="Nhân viên thi công 施工人員">{{'ConstructionWorker' | translate}}
+                                        </option>
+                                        <option value="Tài xế 司機">{{'Driver' | translate}}</option>
+                                </select>
+                        </div>
+
+                        <label class="col-sm-2 control-label">* {{'ConQua_Region' | translate}} </label>
+                        <div class="col-lg-2">
+                                <select class="form-control" type="text" name="Region" ng-disabled="IsChange"
+                                        ng-model="event.Region" required
+                                        ng-options="t.ContractorRegionID as t.ContractorRegion for t in RegionList">
+                                </select>
+                        </div>
+
+                </div>
+
+                <div class="form-group">
+                        <label class="col-sm-2 control-label">* {{'Insurance' | translate}} </label>
+                        <div class="col-lg-2">
+                                <input type="text" class="form-control" id="Insurance" date-picker min="1"
+                                        ng-model="event.InsuranceDuration" required />
+                        </div>
+
+                        <label class="col-sm-2 control-label"> {{'SafetyCer' | translate}} </label>
+                        <div class="col-lg-2">
+                                <input type="text" class="form-control" id="SafetyCer" date-picker min="1"
+                                        ng-model="event.SafetyCerDuration" />
+                        </div>
+
+                        <label class="col-sm-2 control-label ">* {{'phone' | translate}} </label>
+                        <div class="col-lg-2">
+                                <input class="form-control" type="text" ng-disabled="IsChange" ng-model="event.Phone"
+                                        required />
+                        </div>
+
+
+                </div>
+
+                <div class="form-group">
+                        <label class="col-sm-2 control-label">{{'Remark' | translate}} </label>
+                        <div class="col-lg-2">
+                                <input class="form-control" type="text" ng-disabled="IsChange"
+                                        ng-model="event.Remark" />
+                        </div>
+                </div>
+        </div>
+
+        <div ng-if="!IsVietnamese">
+                <div class="form-group">
+                        <label class="col-sm-2 control-label">* {{'PP_No' | translate}} </label>
+                        <div class="col-lg-2">
+                                <input class="form-control" ng-blur='checkIDNoFromTextbox()' type="text"
+                                        ng-disabled="IsChange" ng-model="event.IdCard" required />
+                                <span ng-show="checkremove" class="glyphicon glyphicon-remove" style="color: red; position: absolute;
+                                        right: 5px;"></span>
+                        </div>
+
+                        <label class=" col-sm-2 control-label">* {{'PassPort_Expiry' | translate}}
+                        </label>
+                        <div class="col-lg-2">
+                                <input type="text" id="pp_expiry" class="form-control" name="PassPort_Expiry"
+                                        date-picker min=0 ng-disabled="IsChange" ng-model="event.PassPort_Expiry"
+                                        required />
+                        </div>
+
+                        <label class="col-sm-2 control-label">* {{'Nationality' | translate}} </label>
+                        <div class="col-lg-2">
+                                <input class="form-control" type="text" ng-disabled="IsChange"
+                                        ng-model="event.PassPort_Nationality" required>
+                        </div>
+                </div>
+
+                <div class="form-group">
+                        <label class="col-sm-2 control-label">* {{'ConName' | translate}} </label>
+                        <div class="col-lg-2">
+                                <input class="form-control" type="text" ng-disabled="IsChange" ng-model="event.Name"
+                                        ng-blur='checkIDNoFromTextbox()' required>
+                        </div>
+
+                        <label class=" col-sm-2  control-label "> * {{'Sex' | translate}} </label>
+                        <div class="col-lg-2">
+                                <select class="form-control" ng-disabled="IsChange" ng-model="event.Sex" required>
+                                        <option value="Nam">{{'Male' | translate}}</option>
+                                        <option value="Nữ">{{'Female' | translate}}</option>
+                                </select>
+                        </div>
+
+                        <label class=" col-sm-2 control-label ">* {{'Birthday' | translate}} </label>
+                        <div class="col-lg-2">
+                                <input type="text" id="age" class="form-control" name="Birthday" date-picker max=0
+                                        ng-disabled="IsChange" ng-model="event.Birthday" required />
+                        </div>
+                </div>
+
+                <div class="form-group">
+                        <label class="col-sm-2 control-label ">* {{'Job' | translate}} </label>
+                        <div class="col-lg-2">
+                                <select class="form-control" type="text" name="Job" ng-disabled="IsChange"
+                                        ng-model="event.Job" required>
+                                        <option value="Giám sát an toàn 安衛人員">{{'SafetySupervision' | translate}}
+                                        </option>
+                                        <option value="Quản lý công trình/dự án 工程管理人">{{'Management' | translate}}
+                                        </option>
+                                        <option value="Nhân viên thi công 施工人員">{{'ConstructionWorker' | translate}}
+                                        </option>
+                                        <option value="Tài xế 司機">{{'Driver' | translate}}</option>
+                                </select>
+                        </div>
+                        <label class="col-sm-2 control-label ">* {{'ConQua_Region' | translate}} </label>
+                        <div class="col-lg-2">
+                                <select class="form-control" type="text" name="Region" ng-disabled="IsChange"
+                                        ng-model="event.Region" required
+                                        ng-options="t.ContractorRegionID as t.ContractorRegion for t in RegionList">
+                                </select>
+                        </div>
+                        <label class="col-sm-2 control-label ">* {{'Insurance' | translate}} </label>
+                        <div class="col-lg-2">
+                                <input type="text" class="form-control" id="Insurance" date-picker min="1"
+                                        ng-model="event.InsuranceDuration" required
+                                        ng-disabled="!IsChangeFR && IsChange" />
+                        </div>
+
+                </div>
+                <div class="form-group">
+                        <label class=" col-sm-2 control-label ">* {{'CategoryCard' | translate}} </label>
+                        <div class="col-lg-2">
+                                <select class="form-control" ng-disabled="IsChangeFR" ng-model="event.CategoryCard"
+                                        required>
+                                        <option value="Visa">{{'Visa' | translate}}</option>
+                                        <option value="Thẻ tạm trú">{{'TempCard' | translate}}</option>
+                                </select>
+                        </div>
+                        <label class=" col-sm-2 control-label ">* {{'Card_Type' | translate}} </label>
+                        <div class="col-lg-2">
+                                <input class="form-control" type="text" ng-disabled="IsChangeFR"
+                                        ng-model="event.Card_Type" required>
+
+                        </div>
+                        <label class="col-sm-2 control-label "> {{'SafetyCer' | translate}} </label>
+                        <div class="col-lg-2">
+                                <input type="text" class="form-control" id="SafetyCer" date-picker min="1"
+                                        ng-model="event.SafetyCerDuration" ng-disabled="!IsChangeFR && IsChange" />
+                        </div>
+                </div>
+                <div class="form-group">
+                        <label class="col-sm-2 control-label ">* {{'Card_No' | translate}} </label>
+                        <div class="col-lg-2">
+                                <input class="form-control" type="text" ng-blur='checkIDNoFromTextbox()'
+                                        ng-disabled="IsChangeFR" ng-model="event.Card_No" required>
+                        </div>
+                        <label class="col-sm-2 control-label "> {{'WorkPermit_No' | translate}} </label>
+                        <div class="col-lg-2">
+                                <input class="form-control" type="text" ng-blur='checkIDNoFromTextbox()'
+                                        ng-disabled="IsChange" ng-model="event.WorkPermit_No">
+                        </div>
+
+                        <label class="col-sm-2 control-label ">* {{'phone' | translate}} </label>
+                        <div class="col-lg-2">
+                                <input class="form-control" type="text" ng-disabled="IsChange" ng-model="event.Phone"
+                                        required />
+                        </div>
+
+
+                </div>
+
+                <div class="form-group">
+
+                        <label class=" col-sm-2 control-label">* {{'Card_Start' | translate}} </label>
+                        <div class="col-lg-2">
+                                <input type="text" id="VT_start" class="form-control" date-picker
+                                        ng-disabled="IsChangeFR" ng-model="event.Card_Start" />
+                        </div>
+
+                        <label class=" col-sm-2 control-label "> {{'WorkPermit_Start' | translate}}
+                        </label>
+                        <div class="col-lg-2">
+                                <input type="text" id="wp_start" class="form-control" date-picker ng-disabled="IsChange"
+                                        ng-model="event.WorkPermit_Start" />
+                        </div>
+
+                        <label class="col-sm-2 control-label ">{{'Remark' | translate}} </label>
+                        <div class="col-lg-2">
+                                <input class="form-control" type="text" ng-disabled="IsChange"
+                                        ng-model="event.Remark" />
+                        </div>
+
+                </div>
+
+                <div class="form-group">
+                        <label class=" col-sm-2 control-label">* {{'Card_End' | translate}} </label>
+                        <div class="col-lg-2">
+                                <input type="text" id="VT_end" class="form-control" date-picker min=0
+                                        ng-disabled="IsChangeFR" ng-model="event.Card_End" required />
+                        </div>
+                        <label class=" col-sm-2 control-label "> {{'WorkPermit_End' | translate}} </label>
+                        <div class="col-lg-2">
+                                <input type="text" id="wp_end" class="form-control" date-picker ng-disabled="IsChange"
+                                        ng-model="event.WorkPermit_End" />
+                        </div>
+                </div>
+        </div>
+
+        <div class="form-group">
+                <div class="col-sm-12 control-label">
+                        <button type="button" class="btn btn-primary"
+                                ng-disabled="ContractorEmployeeList.$invalid || checkremove" ng-click="addEmployee()">
+                                {{'Add'|translate}}
+                        </button>
+                </div>
+        </div>
+
+</form>
+
+<div class="form-group" style="margin-bottom:20px; margin-top:20px;">
+        <div class="tableFixHead">
+                <table id="tblCustomers" class="table table-bordered">
+                        <thead>
+                                <tr>
+                                        <th>No.</th>
+                                        <th>{{'ConName'|translate}}</th>
+                                        <th ng-if="IsVietnamese">{{'IdCard'|translate}}</th>
+                                        <th ng-if="!IsVietnamese">{{'PP_No'|translate}}</th>
+                                        <th>{{'Sex'|translate}}</th>
+                                        <th>{{'Birthday'|translate}}</th>
+                                        <th ng-if="!IsVietnamese">{{'Nationality'|translate}}</th>
+                                        <th ng-if="!IsVietnamese">{{'PassPort_Expiry'|translate}}</th>
+                                        <th ng-if="!IsVietnamese">{{'CategoryCard'|translate}}</th>
+                                        <th ng-if="!IsVietnamese">{{'Card_Type'|translate}}</th>
+                                        <th ng-if="!IsVietnamese">{{'Card_No'|translate}}</th>
+                                        <th ng-if="!IsVietnamese">{{'Card_Start'|translate}}</th>
+                                        <th ng-if="!IsVietnamese">{{'Card_End'|translate}}</th>
+                                        <th ng-if="!IsVietnamese">{{'WorkPermit_No'|translate}}</th>
+                                        <th ng-if="!IsVietnamese">{{'WorkPermit_Start'|translate}}</th>
+                                        <th ng-if="!IsVietnamese">{{'WorkPermit_End'|translate}}</th>
+                                        <th>{{'Job'|translate}}</th>
+                                        <th>{{'Insurance'|translate}}</th>
+                                        <th>{{'SafetyCer'|translate}}</th>
+                                        <th>{{'ConQua_Region'|translate}}</th>
+                                        <th>{{'phone'|translate}}</th>
+                                        <th>{{'Remark'|translate}}</th>
+                                        <th ng-if="isReturn==true">{{'DenyReason'|translate}}</th>
+                                        <th>{{'Edit'|translate}} - {{'Delete'|translate}} </th>
+                                </tr>
+                        </thead>
+                        <tbody ng-repeat="data in EmployeeList"
+                                ng-class="{'isvalid': data.Isvalid == false, 'isMultiple': data.IsMultiple == false}">
+                                <tr>
+
+                                        <td>{{$index + 1}}</td>
+                                        <td>{{data.Name}}</td>
+                                        <td>{{data.IdCard}}</td>
+                                        <td ng-class="{'isnull': data.IsnullSex == false}">{{data.Sex}}</td>
+                                        <td ng-class="{'isnull': data.IsnullBd == false}">{{data.Birthday}}</td>
+                                        <td ng-class="{'isnull': data.IsnullNation == false}" ng-if="!IsVietnamese">
+                                                {{data.PassPort_Nationality}}</td>
+                                        <td ng-class="{'isnull': data.IsnullPPDate == false}" ng-if="!IsVietnamese">
+                                                {{data.PassPort_Expiry}}</td>
+                                        <td ng-class="{'isnull': data.IsnullCategoryCard == false}"
+                                                ng-if="!IsVietnamese">
+                                                {{data.CategoryCard|translate}}</td>
+                                        <td ng-class="{'isnull': data.IsnullCardType == false}" ng-if="!IsVietnamese">
+                                                {{data.Card_Type}}</td>
+                                        <td ng-class="{'isnull': data.IsnullCardNo == false}" ng-if="!IsVietnamese">
+                                                {{data.Card_No}}</td>
+                                        <td ng-class="{'isnull': data.IsnullCardStart == false}" ng-if="!IsVietnamese">
+                                                {{data.Card_Start}}</td>
+                                        <td ng-class="{'isnull': data.IsnullCardEnd == false}" ng-if="!IsVietnamese">
+                                                {{data.Card_End}}</td>
+                                        <td ng-if="!IsVietnamese">{{data.WorkPermit_No}}</td>
+                                        <td ng-if="!IsVietnamese">{{data.WorkPermit_Start}}</td>
+                                        <td ng-if="!IsVietnamese">{{data.WorkPermit_End}}</td>
+                                        <td ng-class="{'isnull': data.IsnullJob == false}">{{data.Job}}</td>
+                                        <td ng-class="{'isnull': data.Isnull == false}">{{data.InsuranceDuration}}</td>
+                                        <td>{{data.SafetyCerDuration}}</td>
+                                        <td ng-class="{'isnull': data.IsnullRegion == false}">
+                                                <select class="form-control" type="text" id="region"
+                                                        ng-model="data.Region" disabled required
+                                                        ng-options="t.ContractorRegionID as t.ContractorRegion for t in RegionList">
+                                                </select>
+                                        </td>
+                                        <td ng-class="{'isnull': data.IsnullPhone == false}">{{data.Phone}}</td>
+                                        <td>{{data.Remark}}</td>
+                                        <td ng-if="isReturn==true">{{data.ReasonReturn}}</td>
+                                        <td>
+                                                <button ng-click="getEmployee($index)" class="btn-xs btn btn-success">
+                                                        <span class="glyphicon glyphicon-pencil" style="color: white;">
+                                                        </span>
+                                                </button>
+                                                <button ng-click="deleteEmployee($index)" class="btn-xs btn btn-danger">
+                                                        <span class="glyphicon glyphicon-trash" style="color: white;">
+                                                        </span>
+                                                </button>
+
+
+                                        </td>
+                                </tr>
+                        </tbody>
+                </table>
+        </div>
+
+</div>
+
+<div class="modal-footer" ng-if="modify">
+        <div class="form-group" style="display: table-header-group;">
+                <a id="bottomPage"></a>
+                <label style="float: left; text-align: left; font-size: x-large;" ng-show="IsNotice">
+                        <span class="badge" style="background-color:#f5f107; color: black; font-size: 15px">
+                                {{'yellow'|translate}} {{'Emp_Other_MSG'|translate}}
+                        </span><br>
+                        <span class="badge" style="background-color:#f50707; font-size: 15px">
+                                {{'red'|translate}}
+                        </span>
+                </label>
+        </div>
+
+        <div class="form-group">
+                <button class="btn btn-primary btn-ct-ac" ng-click="saveDraft()" ng-show="IsChange"
+                        ng-disabled="checkEmployeeList()">{{'Save'|translate}}
+                </button>
+
+                <button class="btn btn-warning btn-ct-ac" ng-click="saveDraft()" ng-show="!IsChange"
+                        ng-disabled="checkEmployeeList()">{{'saveDraft'|translate}}
+                </button>
+                <button class="btn btn-primary btn-ct-ac" ng-click="saveSubmit()" ng-show="!IsChange"
+                        ng-disabled="checkEmployeeList()">{{'submit'|translate}}
+                </button>
+
+                <button type="button" class="btn btn-default btn-ct-ac" ng-click="ResetEmployeeModal()"
+                        data-dismiss="modal"><i class="glyphicon glyphicon-remove"
+                                style="color: grey;vertical-align: text-bottom;"></i> {{'Close'|translate}}</button>
+        </div>
+</div>

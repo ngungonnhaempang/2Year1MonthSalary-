@@ -1,0 +1,49 @@
+.checkboxPseudo {
+    display: block;
+    position: relative;
+    padding-left: 20px;
+    font-weight: normal;
+}
+
+/* Hide the browser's default checkbox button */
+.checkboxPseudo input {
+    position: absolute;
+    opacity: 0;
+    margin-left: -16px;
+
+}
+
+/* Create a custom checkbox button */
+.checked {
+    position: absolute;
+    margin: 6px 1px 0px -20px;
+    width: 15px;
+    height: 15px;
+    background-color: white;
+    border: 1px solid black;
+    cursor: not-allowed;
+}
+
+/* Create the indicator (the dot/tick - hidden when not checked) */
+.checked:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the indicator (dot/tick) when checked */
+.checkboxPseudo input:checked~.checked:after {
+    display: block;
+}
+
+/* Style the indicator (dot/tick) */
+.checkboxPseudo .checked:after {
+    left: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid black;
+    border-width: 0 2px 2px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}

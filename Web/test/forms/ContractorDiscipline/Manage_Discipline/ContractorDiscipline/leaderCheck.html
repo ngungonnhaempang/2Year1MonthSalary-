@@ -1,0 +1,15 @@
+<script type="text/javascript">
+    function Discipline_Leadercheck($scope, $routeParams, EngineApi, $http, $timeout, Notifications, $upload, $compile, $filter, Auth, GateGuest, ConQuaService, $translatePartialLoader, $translate) {
+        console.log($scope.variable);
+        $scope.detail = true;
+        $scope.viewdetail = false;
+        $routeParams.code = 'Print';
+        $routeParams.DisciplineID = $scope.variable.VoucherID;
+        $scope.checker = "Leader";
+
+    }
+</script>
+
+<div ng-controller="Discipline_Leadercheck">
+    <view-discipline></view-discipline>
+</div>

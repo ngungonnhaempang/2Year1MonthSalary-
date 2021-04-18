@@ -1,0 +1,202 @@
+<style>
+    .form-horizontal {
+        font-size: 13pt;
+        font-family: 'Times New Roman', 'DFKai-SB';
+    }
+
+    .buttonApp {
+        font-weight: bold;
+        font-family: tahoma, 'DFKai-SB';
+        box-shadow: 4px 2px 2px 2px #999
+    }
+
+    .ui-grid-icon-on {
+        content: url(css/image/submit20.png);
+        vertical-align: top;
+    }
+
+    .popover {
+        background: black;
+        color: white
+    }
+
+    .popover.top .arrow:after {
+        border-top-color: black;
+    }
+</style>
+<H4 class="title">{{'Category_Info'|translate}}</H4>
+<form class="form-horizontal model-form " autocomplete="off" name="Categoryform" style="margin-top:15px;"
+    enctype="multipart/form-data" novalidate>
+    <div class="form-group">
+        <label class="col-sm-4 control-label">*{{'Rank'|translate}}</label>
+        <div class="col-sm-6">
+            <select class="form-control" type="text" ng-model="data.Level" ng-options="data for data in LevelList"
+                ng-change="getParentCategory()" ng-disabled="_isUpgrade || _isUpdate || NotSubmit" required>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group" ng-if="data.Level=='0'">
+        <label class="col-sm-4 control-label">*{{'Category_type'|translate}}</label>
+        <div class="col-sm-6">
+            <select class="form-control" ng-model="data.CategoryType" ng-disabled="NotApplicable" ng-options="t.ID as t.Name for t in TypeList"
+                required>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group" ng-if="showParent">
+        <label class="col-sm-4 control-label">*{{'LargeCategory'|translate}}</label>
+        <div class="col-sm-6">
+            <select class="form-control" ng-model="data.Parent"
+                ng-options="a.Code as a.Content for a in ParentCategoryList" ng-disabled="_isUpgrade || _isUpdate"
+                required>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group" ng-if="_isUpgrade">
+        <label class="col-sm-4 control-label">* {{'MD_Version'|translate}}</label>
+        <div class="col-sm-6">
+            <input class="form-control" type="text" ng-model="data.Version" disabled />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-4 control-label">* {{'Position'|translate}}</label>
+        <div class="col-sm-6">
+            <input class="form-control" type="number" min="1" ng-model="data.Index" required />
+        </div>
+    </div>
+
+
+
+    <div class="form-group">
+        <label class="col-sm-4 control-label"><u>{{'Category_name'|translate}}:</u></label>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-4 control-label">* {{'Numbering'|translate}}</label>
+        <div class="col-sm-6">
+            <input class="form-control" type="text" min="1" ng-model="data.Numbering"
+                ng-keyup="checkDuplicateNumbering()" ng-disabled="NotApplicable" required />
+        </div>
+    </div>
+
+    <div class="form-group" ng-if="duplicateNumbering">
+        <code class="col-sm-offset-4 col-sm-6">⚠️ {{'ExistNumbering'|translate}}</code>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-4 control-label">*{{'VN'|translate}}</label>
+        <div class="col-sm-6">
+            <textarea class="form-control" type="text" rows='5' ng-model="data.ContentVN" ng-disabled="NotApplicable"
+                required></textarea>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-4 control-label">*{{'CN'|translate}}</label>
+        <div class="col-sm-6">
+            <textarea class="form-control" type="text" rows='5' ng-model="data.ContentTW" ng-disabled="NotApplicable"
+                required></textarea>
+        </div>
+    </div>
+
+    <div class="form-group" ng-if="showFine">
+        <label class="col-sm-4 control-label"> {{'Fine'|translate}}</label>
+        <div class="col-sm-5">
+            <input class="form-control" type="text" ng-model="data.Fine" ng-disabled="NotApplicable" />
+        </div>
+        <div class="col-sm-1"> VND </div>
+    </div>
+    <div class="form-group" ng-if="_isUpgrade || _isUpdate">
+        <label class="col-sm-4 control-label">*{{'MD_StartDate'|translate}}</label>
+        <div class='input-group date col-sm-6'>
+            <input type='text' class="form-control" ng-model="data.StartDate" date-picker min="0" data-toggle="popover"
+                data-content="{{'StartDateLess_MSG'|translate}}" data-placement="top"
+                ng-blur="checkDate(data.StartDate)" ng-disabled="NotApplicable" ng-required="_isUpgrade || _isUpdate" />
+            <span class="input-group-addon">
+                <label class="glyphicon glyphicon-calendar" style="color: grey" for='DATE'></label>
+            </span>
+        </div>
+    </div>
+
+    <div class="form-group" ng-if="_isUpgrade || _isUpdate">
+        <label class="col-sm-4 control-label">*{{'MD_EndDate'|translate}}</label>
+        <div class='input-group date col-sm-6'>
+            <input type='text' class="form-control" date-picker ng-model="data.EndDate"
+                ng-required="_isUpgrade || _isUpdate" readonly />
+            <span class="input-group-addon">
+                <label class="glyphicon glyphicon-calendar" style="color: grey" for='DATE'></label>
+            </span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-4 control-label">{{'Remark'|translate}}</label>
+        <div class="col-sm-6">
+            <textarea class="form-control" type="text" ng-model="data.Remark"></textarea>
+        </div>
+    </div>
+
+    <div class="form-group" ng-if="_isUpdate">
+        <label class="col-sm-4 control-label">* {{'Reason_edit'|translate}}</label>
+        <div class="col-sm-6">
+            <input class="form-control" type="text" ng-model="data.ModifyReason" required />
+        </div>
+    </div>
+
+    <div class="form-group" ng-if="_isUpgrade">
+        <label class="col-sm-4 control-label">* {{'Reason_upgrade'|translate}}</label>
+        <div class="col-sm-6">
+            <input class="form-control" type="text" ng-model="data.UpgradeReason" required />
+        </div>
+    </div>
+
+
+    <div class="form-group" ng-if="data.RejectReason">
+        <label class="col-sm-4 control-label"> ❗ <span
+                style="background-color: yellow;">{{'DenyReason'|translate}}</span></label>
+        <label class="col-sm-6" style="margin-top: 7px; color: crimson;">{{data.RejectReason}}</label>
+
+    </div>
+
+    <div class="form-group" ng-if="_isUpdate || _isUpgrade">
+        <label class="col-sm-4 control-label">*{{'Select_next_approver'|translate}}</label>
+        <div class='col-sm-6'>
+            <select class="form-control" ng-model="data.LeaderID" required>
+                <option value="{{Safety[0].Person}}">{{'Safety'|translate}}: {{Safety[0].Person}} - {{Safety[0].Name}}
+                </option>
+                <option value="{{Environment[0].Person}}">{{'Environment'|translate}}: {{Environment[0].Person}} -
+                    {{Environment[0].Name}}</option>
+                <option value="{{FireProtection[0].Person}}">{{'FireProtection'|translate}}:
+                    {{FireProtection[0].Person}} - {{FireProtection[0].Name}}</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="modal-footer">
+        <button type="button" class="btn btn-primary buttonApp" ng-show="!_isUpdate && !_isUpgrade && !NotSubmit"
+            ng-click="saveCategory(false)" ng-disabled="Categoryform.$invalid || dateInvalid || duplicateNumbering">
+            {{'Save'|translate}}
+        </button>
+
+        <button type="button" class="btn btn-success buttonApp" ng-show="!_isUpdate && !_isUpgrade"
+            ng-click="saveCategory(true)" ng-disabled="Categoryform.$invalid || dateInvalid || duplicateNumbering">
+            {{'Save_Close'|translate}}
+        </button>
+
+        <button class="btn btn-warning buttonApp"
+            ng-disabled="Categoryform.$invalid || dateInvalid || duplicateNumbering" ng-show="_isUpdate || _isUpgrade"
+            ng-click="UpdateOrUpgradeSubmit()">
+            <img src="/css/image/send.png" style="width:20px;">
+            {{'submit'|translate}}
+        </button>
+
+        <button class="btn btn-default buttonApp" data-dismiss="modal" ng-click="resetCategoryModal()">
+            <i class="glyphicon glyphicon-remove" style="color: grey;vertical-align: text-bottom;"></i>
+            {{'Close'|translate}}
+        </button>
+    </div>
+</form>

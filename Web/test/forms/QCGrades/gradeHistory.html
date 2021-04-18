@@ -1,0 +1,342 @@
+<style>
+    .tooltip-multiline {
+        height: auto;
+        width: auto;
+    }
+
+    table.ex1 {
+        table-layout: auto;
+    }
+
+    colorfull {
+        background: red;
+    }
+
+    /* colorStyle to class */
+    .lastversion {
+        background-color: #ffff66;
+    }
+
+    .currenversion {
+        background-color: #9898e6;
+    }
+
+    .processversion {
+        background-color: #80bfff;
+    }
+    @media print {
+        @page
+        {
+            size: auto;
+            margin: 0;
+            /* this affects the margin in the printer settings */
+
+        }
+        .modal-contents {
+            position: relative;
+            background-color: #ffffff;
+            outline: none;
+            -webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+            background-clip: padding-box;
+            height: 900px;
+
+
+        }
+        body * {
+            visibility: hidden;
+        }
+
+        .print-content * {
+            visibility: visible;
+            overflow: visible;
+
+        }
+
+
+
+        #mainPage * {
+            display: none;
+        }
+
+        .modal {
+
+            left: 0;
+            top: 0px;
+            margin: 0;
+            padding: 0;
+            visibility: visible;
+
+            /**Remove scrollbar for printing.**/
+            overflow: visible !important;
+        }
+
+        /*.print-content .table-custom-footer {*/
+
+        /*    width: 100%;*/
+        /*    table-layout: auto;*/
+        /*    position: relative;*/
+        /*    bottom: 60px;*/
+
+        /*}*/
+
+        li {
+            page-break-after: auto;
+        }
+        .onPrint {
+            display:none;
+        }
+        .container {
+            width: auto;
+        }
+
+
+
+    }
+    .modal-contents {
+        position: relative;
+        background-color: #ffffff;
+        outline: none;
+        -webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+        box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+        background-clip: padding-box;
+
+
+    }
+
+    .table-custom {
+
+        width: 100%;
+        margin-bottom: 20px;
+        margin-top: 20px;
+
+
+    }
+    .table-custom-footer {
+
+        width: 100%;
+        margin-bottom: 20px;
+        margin-top: 20px;
+        table-layout: auto;
+        position: relative;
+        bottom: 50px;
+
+    }
+    .table-custom-footer td{
+        height: 100px;
+        text-align:center;
+        text-align:center;
+        border-right: 1px solid;
+        border-bottom: 1px solid;
+        border-top: 1px solid;
+        border-left: 1px solid;
+        font-size: 13px;
+    }
+    .table-custom-footer th {
+        width: auto;height: 30px;
+        white-space:nowrap;
+        text-align:center;
+        border-right: 1px solid;
+        border-bottom: 1px solid;
+        border-top: 1px solid;
+        border-left: 1px solid;
+        font-size: 13px;
+    }
+	
+
+
+
+</style>
+
+<div class="container">
+    <table class="table" border="1px solid blue" style="table-layout: auto">
+        <thead class="thead-light">
+            <tr>
+                <th></th>
+                <th style="width: auto;white-space:nowrap; text-align:center" ng-repeat="headers in header">{{headers |
+                    translate}}</th>
+            </tr>
+
+        </thead>
+        <tr ng-repeat="value in finalData">
+            <td style="width:auto;white-space:nowrap;"  >
+                <button type="button"  class="btn btn-primary"
+                        ng-click="Report(value['ValidDate'],value['id'])">{{'Report'|translate}}</button>
+
+               </td>
+            <td style="width:auto;white-space:nowrap;" ng-repeat="hder in header" ng-class="value['Status'].contains('S') && value['Version'].contains(MaxVersion)
+                        ? 'currenversion' : 
+                    value['Status'].contains('P')
+                        ? 'processversion': 'lastversion' ">
+                <span style="cursor: hand;cursor: pointer;width: auto" ng-click="" tooltip-grade-version="value[hder]">{{value[hder].ValueSpec}}</span>
+                <p>{{value[hder]}}</p>
+            </td>
+        </tr>
+
+    </table>
+    <h3>Description</h3>
+    <p>Color by {{'Version' | translate}} </p>
+    <table class="table">
+        <tbody>
+            <tr>
+                <td class="lastversion">Last Version</td>
+                <td class="currenversion">Curren Version</td>
+                <td class="processversion">Processing Version</td>
+
+            </tr>
+
+        </tbody>
+    </table>
+</div>
+
+<div >
+    <div class="modal fade" id="myModal" tabindex="-1" role="form" aria-labelledby="myModalLabel" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog " style="width: 80%;"  role="document">
+            <div class="modal-contents" style="width: auto;" >
+                <div class="container print-content" style="width: auto">
+
+                        <div style="text-align:center; ">
+                            <div style="padding-top: 10px">
+                                <h3>
+                                    遠東紡纖(越南)有限公司 - 化纖廠
+                                    </br> CÔNG TY TNHH POLYTEX FAR EASTERN (VN) - XƯỞNG HÓA SỢI
+                                    </br> 品質規格表
+                                    </br> BẢNG QUY CÁCH CHẤT LƯỢNG
+
+                                </h3>
+
+
+                            </div>
+
+                            <table class="table-custom"    style="table-layout: auto; font-size: 13px" >
+                                <tbody>
+                                <thead class="thead-light">
+                                <tr  style=" border-bottom: 1px solid;border-top: 1px solid;border-left: 1px solid;border-right: 1px solid">
+
+                                    <th style="width: auto;white-space:nowrap; text-align:center;border-right: 1px solid" >
+                                        類型<br>Loại hình
+                                    </th>
+                                    <th style="width: auto;white-space:nowrap; text-align:center;border-right: 1px solid" colspan="2" >
+                                        {{RawData.Type[0].TypeName}}
+                                    </th>
+                                    <th style="white-space:nowrap; text-align:center;border-right: 1px solid" >
+                                        單位 / 種類<br>Đơn vị/Chủng loại
+                                    </th>
+                                    <th style="width: auto;white-space:nowrap; text-align:center;border-right: 1px solid" colspan="200" >
+                                        {{RawData.sampleName['Description_'+RawData.Lang]}}
+                                    </th>
+
+                                </tr>
+                                <tr  style=" border-bottom: 1px solid;border-top: 1px solid;border-left: 1px solid;border-right: 1px solid">
+
+                                    <th style="width: auto;white-space:nowrap; text-align:center;border-right: 1px solid" >
+                                        規格<br>Quy cách
+                                    </th>
+                                    <th style="width: auto;white-space:nowrap; text-align:center;border-right: 1px solid" colspan="2" >
+                                        {{RawData.lotNo}}
+                                    </th>
+                                    <th style="white-space:nowrap; text-align:center;border-right: 1px solid" >
+                                        生效日期<br>Ngày hiệu lực
+                                    </th>
+                                    <th style="width: auto;white-space:nowrap; text-align:center;border-right: 1px solid" colspan="2" >
+                                    {{ValidDate}}
+                                    </th>
+                                    <th style="white-space:nowrap; text-align:center;border-right: 1px solid" >
+                                        版本<br>Version
+                                    </th>
+                                    <th style="width: auto;white-space:nowrap; text-align:center;border-right: 1px solid" colspan="200" >
+                                        {{MaxVersionModal}}
+                                    </th>
+                                </tr>
+                                <tr  style=" border-bottom: 1px solid;border-top: 1px solid;border-left: 1px solid;border-right: 1px solid">
+
+                                    <th style="width: auto;white-space:nowrap; text-align:center;border-right: 1px solid" ng-repeat="headers in headerModal">{{headers |
+                                        translate}}</th>
+                                </tr>
+
+                                </thead>
+                                <tr  ng-repeat="value in finalDataModal" ng-style="value['Grade']!==undefined && value['Grade']!==''
+                                ? {'height':'31px','border-bottom': '1px solid','border-top': '1px solid','border-left': '1px solid','border-right': '1px solid'}
+                                : {'height':'31px','border-bottom': '0','border-top': '0','border-left': '1px solid','border-right': '0'}">
+
+                                    <td   ng-if="value[Enable] ==undefined" ng-repeat="hder in headerModal" ng-style="value['Grade']!==undefined && value['Grade']!==''
+                                    ? {'border-bottom': '1px solid','border-top': '1px solid','border-left': '1px solid','border-right': '1px solid'}
+                                    :$index==headerModal.length-1?{'border-bottom': '0','border-top': '0','border-left': '0','border-right': '1px solid'}:{'border-bottom': '0','border-top': '0','border-left': '0','border-right': '0'}">
+                                        <span style="cursor: hand;cursor: pointer;width: auto" ng-click="" tooltip-grade-version="value[hder]">{{value[hder].ValueSpec}}</span>
+                                        <p ng-if="hder!='Enable'">{{value[hder]}}</p>
+                                        <input  style="width: 70%" ng-if="hder=='Enable' && value[hder]!=undefined" type="checkbox" ng-checked="{{value[hder]}}" disabled>
+
+                                    </td>
+
+                                </tr>
+                                </tbody>
+
+                            </table>
+
+                            <table class="table-custom-footer" >
+
+                                    <tr>
+
+                                        <th>
+                                            簽核人8<br>Kí duyệt 8
+                                        </th>
+                                        <th>
+                                            簽核人7<br>Kí duyệt 7
+                                        </th>
+                                        <th>
+                                            簽核人6<br>Kí duyệt 6
+                                        </th>
+                                        <th>
+                                            簽核人5<br>Kí duyệt 5
+                                        </th>
+                                        <th>
+                                            簽核人4<br>Kí duyệt 4
+                                        </th>
+                                        <th>
+                                            簽核人3<br>Kí duyệt 3
+                                        </th>
+                                        <th>
+                                            簽核人2<br>Kí duyệt 2
+                                        </th>
+                                        <th>
+                                            簽核人1<br>Kí duyệt 1
+                                        </th>
+
+
+                                    </tr>
+
+                                    <tr>
+                                        <td>{{receiver[7].UserName}}<br> {{receiver[7].FormatStamp}}</td>
+                                        <td>{{receiver[6].UserName}}<br> {{receiver[6].FormatStamp}}</td>
+                                        <td>{{receiver[5].UserName}}<br> {{receiver[5].FormatStamp}}</td>
+                                        <td>{{receiver[4].UserName}}<br> {{receiver[4].FormatStamp}}</td>
+                                        <td>{{receiver[3].UserName}}<br> {{receiver[3].FormatStamp}}</td>
+                                        <td>{{receiver[2].UserName}}<br> {{receiver[2].FormatStamp}}</td>
+                                        <td>{{receiver[1].UserName}}<br> {{receiver[1].FormatStamp}}</td>
+                                        <td>{{receiver[0].UserName}}<br> {{receiver[0].FormatStamp}}</td>
+
+                                    </tr>
+                                <tr>
+                                <td colspan="123" style="border-right: 0;border-bottom: 0;border-top: 0; border-left: 0">
+                                    <p style="padding-top: 10px">主管 Chủ quản :                                                  製表 Người lập:</p>
+                                    <h4 style="text-align: right;margin-right: 40px;padding-top: 25px">5VGAAQR090-01</h4>
+                                </td>
+                                </tr>
+                                </table>
+
+                        </div>
+
+
+                </div>
+                <div class="modal-footer" style="margin-top: -50px">
+                    <button type="button" class="btn btn-default" ng-click="Close()">{{'Close'|translate}} </button>
+                    <button type="button" class="btn btn-primary"
+                            ng-click="print()" >{{'Print'|translate}}</button>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

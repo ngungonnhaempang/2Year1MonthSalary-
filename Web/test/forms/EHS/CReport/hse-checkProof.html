@@ -1,0 +1,168 @@
+<script>
+    function HSE_hseCheckProofController(
+        $scope, EngineApi, $http, Notifications, $compile, $filter, Auth, $resource,
+        Auth, GateGuest, $translate, CReportService, $filter, $q) {
+        var lang = window.localStorage.lang;
+        $scope.username = Auth.username;
+        $scope.show = {
+            isHSEUser: true
+        }
+        $scope.recordAC = {};
+        $scope.recordIC = {};
+
+        $translate.refresh();
+        $scope.isShowDate =true;
+        $scope.passOrNot = [{
+            "name": $translate.instant('Evaluate_Y'),
+            "value": "YES"
+        }
+            ,
+            {
+                "name": $translate.instant('Evaluate_N'),
+                "value": "NO"
+            }
+        ];
+        // $scope.disableSubmit = Auth.username.indexOf('FEPVNN') > -1 ? false : false;
+        $scope.loading = false;
+        $scope.Save = function (isSubmit) {
+            $scope.loading = true;
+            if ($scope.ISCheckProof == 'NO') {
+                CReportService.GetInfoBasic.UpdateImprovementStatus({Rp_ID: $scope.variable.Rp_ID,
+                    IsUpdateImprove:'false'
+                }, {})
+                    .$promise.then(function (rs) {
+                        debugger
+                    if (rs){
+                        CReportService.SubmitStatus({
+                                Rp_ID: $scope.variable.Rp_ID, //chosen
+                                Rp_Status: 'PW'
+                            },
+                            function (res) {
+                                if (res.Success) {
+                                    SaveBpmn();
+                                }
+                            },
+                            function (err) {
+                                Notifications.addError({
+                                    'status': 'error',
+                                    'message': 'Save Error' + err
+                                });
+                            }
+                        );
+                    }
+
+                }, function (Error) {
+
+                })
+                 //end changestatusservice
+            } //end if
+            else SaveBpmn();
+        } //save
+
+        function SaveBpmn() {
+            // if ($scope.checkList && checkList.length >= 0) {
+
+            $scope.formVariables.push({
+                name: 'ISCheckProof',
+                value: $scope.ISCheckProof //chosen
+            });
+            $q.all([$scope.submit()]).then(function () {
+                if ($scope.ISCheckProof != 'NO') {
+                    var reminder_parrams = {
+                        Rp_ID: $scope.variable.Rp_ID,
+                        fromuser: Auth.username,
+                        kinds: $scope.ReportDetail.Rp_SubmitTypeCode||'',
+                        formkey: 'hse-check-proof'
+                    }
+                    // debugger;
+                    CReportService.GetInfoBasic.sendSubmitMessage(reminder_parrams, function (res) {
+                        if (res.Success) return
+                    }, function (error) {
+                        Notifications.addError({
+                            'status': 'error',
+                            'message': $translate.instant('saveError') + error
+                        });
+                    })
+                }
+            });
+        }
+    }
+</script>
+<div ng-controller="HSE_hseCheckProofController">
+    <!-- REPORT DIRECTIVE -->
+    <div ng-show="false">
+        <create_ic_report></create_ic_report>
+    </div>
+    <receive-report Rp_ID='{{variable.Rp_ID}}' style="width: 85%"></receive-report>
+
+
+
+    <!-- CHOOSE FORM -->
+    <evaluate-update-creport></evaluate-update-creport>
+    <form class="form-horizontal" role="form" novalidate name="form">
+        <!-- RECEVEIVE AND PROCESS FORM -->
+        <div class="form-group">
+            <label class="col-sm-2 control-label">{{'IsPass'|translate}}:</label>
+            <div class="col-sm-4">
+                <select class="form-control" history-field="ISCheckProof" form-field name="ISCheckProof" ng-model="ISCheckProof"
+                        ng-options="c.value as c.name for c in passOrNot" required> </select>
+            </div>
+
+            <div class="col-sm-6 ">
+                <button ng-click="LoadImprovementInfo()" class="btn btn-warning btn-ct-ac" data-toggle="modal"
+                        data-target="#modal_Improvement">👨🏻‍🚒
+                    {{'Update_Improvement'|translate}} </button>
+
+
+
+
+                <strong class="pull-right">
+                    {{variable.Rp_ID}}
+                </strong>
+            </div>
+
+
+
+        </div>
+
+        <!--        &lt;!&ndash; DENY TEXTAREA &ndash;&gt;-->
+                <div class="form-group" ng-if="ISCheckProof=='NO'">
+                    <label class="col-sm-2  control-label">*{{'DenyReason'|translate}}:</label>
+                    <div class="col-sm-6">
+                        <textarea class="form-control" name="leadercheck_remark" type="text" form-field required
+                                  history-field="DenyReason" ng-model="leadercheck_remark" rows="3" />
+                    </div>
+                </div>
+
+        <!-- leader remark show if returned -->
+        <!-- <div>
+            <h3 style="color:red;">
+                {{variable.leadername}} Remark: {{variable.leadercheck_remark}}
+            </h3>
+        </div> -->
+        <!-- NEXT CANDIDATE -->
+        <div class="form-group" style="padding-left: 3%">
+            <div>
+                <h4>{{'NextStep'|translate}}</h4>
+            </div>
+            <div  ehs-leader-check
+
+
+                  flow-key="CReportHSE"
+                  kinds="{{ReportDetail.Rp_SubmitTypeCode}}"
+                  user-name="{{username}}" formkey="receive"></div>
+        </div>
+
+
+    </form>
+    <!-- BUTTON OF SUBMITTING -->
+    <div class="form-group" ng-hide="recod.Status=='K'">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button class="btn btn-primary" ng-click="Save(true)"
+                    ng-disabled="form.$invalid">
+                {{'Save Submit'|translate}}
+            </button>
+        </div>
+    </div>
+
+</div>

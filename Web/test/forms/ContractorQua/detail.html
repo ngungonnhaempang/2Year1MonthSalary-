@@ -1,0 +1,154 @@
+<style>
+    div.tableFixHead {
+        overflow-y: auto;
+        height: 300px;
+    }
+
+    div.tableFixHead thead th {
+        position: sticky;
+        top: 0;
+        background: #eee;
+    }
+
+    #tabledetail {
+        white-space: nowrap;
+        text-align-last: center;
+    }
+</style>
+<style ng-if="detail">
+    #footer {
+        display: none;
+    }
+
+    .navbar-inverse {
+        display: none;
+    }
+
+    .clear {
+        clear: both
+    }
+</style>
+<form class="form-horizontal" role="form" name="form" novalidate>
+    <legend>
+        <h3>{{'ConQua_Info'|translate}} </h3>
+    </legend>
+
+    <table class="table table-bordered">
+        <tr>
+            <th style="width:20%;">{{'VoucherID'|translate}}:</th>
+            <td style="width:25%;"> {{note.VoucherID}}</td>
+            <th style="width:20%;">{{'ConQua_CType'|translate}}:</th>
+            <td style="width:25%;"> {{note.ContracorType}}</td>
+        </tr>
+        <tr>
+            <th>{{'ContractorName'|translate}}:</th>
+            <td> {{note.ContractorName}}</td>
+
+            <th>{{'ConQua_CKind'|translate}}:</th>
+            <td> {{note.ContracorKind }}</td>
+        </tr>
+        <tr>
+            <th>{{'Contractor_Stardate'|translate}}:</th>
+            <td> {{note.StartDate}}</td>
+            <th>{{'Contractor_Enddate'|translate}}:</th>
+            <td> {{note.EndDate}}</td>
+        </tr>
+        <tr ng-if="note.FileName!='' && !detail">
+            <th>{{'File'|translate}}:</th>
+            <td><a href="\{{note.FileName}}" target="_blank">{{note.FileName}}</a>
+            </td>
+        </tr>
+    </table>
+    <legend>
+        <h3>{{'Contractor_list'|translate}} </h3>
+    </legend>
+    <div class="tableFixHead">
+        <table class="table table-bordered" id="tabledetail">
+            <thead>
+                <tr>
+                    <th>No.</th>
+                    <th>{{'ConName'|translate}}</th>
+                    <th ng-if="!IsForeign">{{'IdCard'|translate}}</th>
+                    <th ng-if="IsForeign">{{'PP_No'|translate}}</th>
+                    <th ng-if="IsForeign">{{'Nationality'|translate}}</th>
+                    <th ng-if="IsForeign">{{'PassPort_Expiry'|translate}}</th>
+                    <th ng-if="IsForeign">{{'CategoryCard'|translate}}</th>
+                    <th ng-if="IsForeign">{{'Card_Type'|translate}}</th>
+                    <th ng-if="IsForeign">{{'Card_No'|translate}}</th>
+                    <th ng-if="IsForeign">{{'Card_Start'|translate}}</th>
+                    <th ng-if="IsForeign">{{'Card_End'|translate}}</th>
+                    <th ng-if="IsForeign">{{'WorkPermit_No'|translate}}</th>
+                    <th ng-if="IsForeign">{{'WorkPermit_Start'|translate}}</th>
+                    <th ng-if="IsForeign">{{'WorkPermit_End'|translate}}</th>
+                    <th>{{'Job'|translate}}</th>
+                    <th>{{'Insurance'|translate}}</th>
+                    <th>{{'SafetyCer'|translate}}</th>
+                    <th>{{'ConQua_Region'|translate}}</th>
+                    <th>{{'Sex'|translate}}</th>
+                    <th>{{'Birthday'|translate}}</th>
+                    <th>{{'phone'|translate}}</th>
+                    <th>{{'Remark'|translate}}</th>
+                    <th ng-if="detail"> {{'Status'|translate}}</th>
+                </tr>
+            </thead>
+            <tbody ng-repeat="data in EmployeeList">
+                <tr>
+                    <td>{{$index + 1}}</td>
+                    <td>{{data.Name}}</td>
+                    <td>{{data.IdCard}}</td>
+                    <td ng-if="IsForeign">{{data.PassPort_Nationality}}</td>
+                    <td ng-if="IsForeign">{{data.PassPort_Expiry}}</td>
+                    <td ng-if="IsForeign">{{data.CategoryCard|translate}}</td>
+                    <td ng-if="IsForeign">{{data.Card_Type}}</td>
+                    <td ng-if="IsForeign">{{data.Card_No}}</td>
+                    <td ng-if="IsForeign">{{data.Card_Start}}</td>
+                    <td ng-if="IsForeign">{{data.Card_End}}</td>
+                    <td ng-if="IsForeign">{{data.WorkPermit_No}}</td>
+                    <td ng-if="IsForeign">{{data.WorkPermit_Start}}</td>
+                    <td ng-if="IsForeign">{{data.WorkPermit_End}}</td>
+                    <td>{{data.Job}}</td>
+                    <td>{{data.InsuranceDuration}}</td>
+                    <td>{{data.SafetyCerDuration}}</td>
+                    <td>{{data.Region}} </td>
+                    <td>{{data.Sex}}</td>
+                    <td>{{data.Birthday}}</td>
+                    <td>{{data.Phone}}</td>
+                    <td>{{data.Remark}}</td>
+                    <td ng-if="detail">{{data.StatusRemark}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <table class="table table-bordered" ng-if="detail">
+        <tr>
+            <th><a ng-if="processList!=null" href="#/processlog/{{processList.ProcessInstanceId}}"
+                    target="_blank">{{'DoneTask'|translate}}
+                </a>
+            </th>
+            <th>{{'DoneTaskUserName'|translate}}</th>
+            <th>{{'Stamp'|translate}}</th>
+            <th>{{'Suggest'|translate}}</th>
+        </tr>
+        <tbody ng-repeat="log in processLogs.Logs">
+            <tr ng-if="log.TaskName=='EHS Check'">
+                <td>{{log.UserId }}</td>
+                <td>{{log.UserName}}</td>
+                <td>{{log.FormatStamp }}</td>
+                <td>{{log.HistoryField[0].Name}}: {{log.HistoryField[0].Value}}</td>
+            </tr>
+            <tr ng-if="log.TaskName=='Leader check' && log.HistoryField[0].Value=='YES'">
+                <td>{{log.UserId }}</td>
+                <td>{{log.UserName}}</td>
+                <td>{{log.FormatStamp }}</td>
+                <td>{{log.HistoryField[0].Name}}: {{log.HistoryField[0].Value}}</td>
+            </tr>
+            <tr ng-if="log.TaskName=='起始表单'">
+                <td>{{log.UserId }}</td>
+                <td>{{log.UserName }}</td>
+                <td>{{log.FormatStamp }}</td>
+                <td>{{log.HistoryField[0].Name}}: {{log.HistoryField[0].Value}}</td>
+            </tr>
+        </tbody>
+    </table>
+</form>

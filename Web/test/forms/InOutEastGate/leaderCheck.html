@@ -1,0 +1,14 @@
+<script type="text/javascript">
+        function InOutEastGateProcess_Leadercheck($scope, $routeParams, EngineApi, $http, $timeout, Notifications, $upload, $compile, $filter, Auth, GateGuest, ConQuaService, $translatePartialLoader, $translate) {
+                console.log($scope.variable);
+                $scope.detail = true;
+                $routeParams.code = 'Checker';
+                $routeParams.VoucherID=$scope.variable.VoucherID;
+                $scope.checker="Leader";
+            
+        }
+</script>
+
+<div ng-controller="InOutEastGateProcess_Leadercheck">
+        <view-east-gate-voucher></view-east-gate-voucher>
+</div>

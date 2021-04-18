@@ -1,0 +1,161 @@
+<div class="modal fade" id="WasteGenerationModal" role="dialog" aria-labelledby="myLargeModalLabel"
+     data-backdrop="static"
+     data-keyboard="false">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-body" style="padding-bottom:3px">
+
+                <form class="form-horizontal model-form " name="WasteGemerationForm">
+                    <H4 style="background-color: #ececec; padding: 5px">{{'Waste Generation Unit'|translate}}</H4>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">{{'GUnitID'|translate}}</label>
+
+                        <div class="col-sm-4">
+                            <input class="form-control" name="GenerationUnitID" ng-model="note.GenerationUnitID"
+                                   disabled/>
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">{{'Area'|translate}}</label>
+
+                        <div class="col-sm-4">
+                            <select class="form-control" name="Area" ng-model="note.AreaID"
+                                    ng-options="c.AreaID as c.AreaName for c in AreaData"></select>
+
+                        </div>
+
+
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">{{'Roots'|translate}}</label>
+
+                        <div class="col-sm-4">
+                            <select class="form-control" name="Roots" ng-model="note.RootID"
+                                    ng-options="c.RootID as c.RootName for c in RootsData"></select>
+                        </div>
+
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">{{'PartsArisingContractorsArising'|translate}}</label>
+                        <div class="col-sm-6">
+                            <textarea class="form-control" name="PartsArisingNContractorsArising"
+                                      ng-model="note.PartsArisingNContractorsArising"
+                                      required
+                            />
+
+                        </div>
+
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" >{{'Describe'|translate}}</label>
+                        <div class="col-sm-6">
+                        <textarea class="form-control" name="Description" ng-model="note.Description"/>
+                        </div>
+                    </div>
+
+                </form>
+
+                <div class="modal-footer">
+                    <div class="col-sm-5 ">
+                    </div>
+                    <div class="col-sm-6 buttonFooter">
+                        <button type="button" class="btn btn-default" ng-click="closeModal()">{{'Close'|translate}}
+                        </button>
+
+                        <button type="button" class="btn btn-primary" ng-click="submitGenerationUnit()"
+                                ng-disabled="formNormal.$invalid">{{'saveSubmit'|translate}}
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+    <!-- /.modal-content -->
+</div>
+<!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<div class="modal fade" id="UpdateWasteGenerationModal" role="dialog" aria-labelledby="myLargeModalLabel"
+     data-backdrop="static"
+     data-keyboard="false">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-body" style="padding-bottom:3px">
+
+                <form class="form-horizontal model-form " name="WasteGemerationForm">
+                    <H4 style="background-color: #ececec; padding: 5px">{{'Waste Generation Unit'|translate}}</H4>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">{{'GUnitID'|translate}}</label>
+
+                        <div class="col-sm-4">
+                            <input class="form-control" name="GenerationUnitID" ng-model="note.GenerationUnitID"
+                                   disabled/>
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">{{'Area'|translate}}</label>
+
+                        <div class="col-sm-4">
+                            <select class="form-control" name="Area" ng-model="note.AreaID"
+                                    ng-options="c.AreaID as c.AreaName for c in AreaData"></select>
+
+                        </div>
+
+
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">{{'Roots'|translate}}</label>
+
+                        <div class="col-sm-4">
+                            <select class="form-control" name="Roots" ng-model="note.RootID"
+                                    ng-options="c.RootID as c.RootName for c in RootsData"></select>
+                        </div>
+
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">{{'PartsArisingContractorsArising'|translate}}</label>
+                        <div class="col-sm-6">
+                            <textarea class="form-control" name="PartsArisingNContractorsArising"
+                                      ng-model="note.PartsArisingNContractorsArising"
+                                      required
+                            />
+
+                        </div>
+
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" >{{'Describe'|translate}}</label>
+                        <div class="col-sm-6">
+                            <textarea class="form-control" name="Description" ng-model="note.Description"/>
+                        </div>
+                    </div>
+
+                </form>
+
+                <div class="modal-footer">
+                    <div class="col-sm-5 ">
+                    </div>
+                    <div class="col-sm-6 buttonFooter">
+                        <button type="button" class="btn btn-default" ng-click="closeUpdateModal()">{{'Close'|translate}}
+                        </button>
+
+                        <button type="button" class="btn btn-primary" ng-click="UpdateGenerationUnit()"
+                                ng-disabled="formNormal.$invalid">{{'saveSubmit'|translate}}
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+    <!-- /.modal-content -->
+</div>
+<!-- /.modal-dialog -->
+</div><!-- /.modal -->

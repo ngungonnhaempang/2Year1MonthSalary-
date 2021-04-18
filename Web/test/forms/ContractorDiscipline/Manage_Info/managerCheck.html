@@ -1,0 +1,30 @@
+<script type="text/javascript">
+    function DisciplineCategories_Manager($scope, $routeParams, EngineApi, $http, $timeout, Notifications, $upload, $compile, $filter, Auth, GateGuest, $translatePartialLoader, $translate) {
+        console.log($scope.variable);
+        $scope.checker = "Manager";
+          }
+</script>
+
+<style>
+     .form-horizontal {
+        font-size: 13pt;
+        font-family: 'Times New Roman', 'DFKai-SB';
+    }
+
+    .buttonApp {
+        font-weight: bold;
+        font-family: tahoma, 'DFKai-SB';
+        box-shadow: 4px 2px 2px 2px #999
+    }
+
+</style>
+
+<div ng-controller="DisciplineCategories_Manager">
+    <h2>
+        <img src="css/image/contractor/Law_book.png" style="width:45px"> {{'ReviewDisciplineCategories'|translate}}
+    </h2>
+
+    <hr style="border: 1px solid #AA6F41">
+
+    <category-submit-view></category-submit-view>
+</div>

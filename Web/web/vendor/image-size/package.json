@@ -1,0 +1,156 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "image-size",
+        "scope": null,
+        "escapedName": "image-size",
+        "name": "image-size",
+        "rawSpec": "",
+        "spec": "latest",
+        "type": "tag"
+      },
+      "D:\\Beling"
+    ]
+  ],
+  "_from": "image-size@latest",
+  "_hasShrinkwrap": false,
+  "_id": "image-size@0.9.3",
+  "_inCache": true,
+  "_location": "/image-size",
+  "_nodeVersion": "14.12.0",
+  "_npmOperationalInternal": {
+    "host": "s3://npm-registry-packages",
+    "tmp": "tmp/image-size_0.9.3_1603730806615_0.04536085728635508"
+  },
+  "_npmUser": {
+    "name": "netroy",
+    "email": "npm@netroy.in"
+  },
+  "_npmVersion": "6.14.7",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "image-size",
+    "scope": null,
+    "escapedName": "image-size",
+    "name": "image-size",
+    "rawSpec": "",
+    "spec": "latest",
+    "type": "tag"
+  },
+  "_requiredBy": [
+    "#USER"
+  ],
+  "_resolved": "https://registry.npmjs.org/image-size/-/image-size-0.9.3.tgz",
+  "_shasum": "f7efce6b0a1649b44b9bc43b9d9a5acf272264b6",
+  "_shrinkwrap": null,
+  "_spec": "image-size",
+  "_where": "D:\\Beling",
+  "author": {
+    "name": "netroy",
+    "email": "aditya@netroy.in",
+    "url": "http://netroy.in/"
+  },
+  "bin": {
+    "image-size": "bin/image-size.js"
+  },
+  "bugs": {
+    "url": "https://github.com/image-size/image-size/issues"
+  },
+  "dependencies": {
+    "queue": "6.0.1"
+  },
+  "description": "get dimensions of any image file",
+  "devDependencies": {
+    "@types/chai": "4.2.14",
+    "@types/glob": "7.1.3",
+    "@types/mocha": "8.0.3",
+    "@types/node": "14.11.10",
+    "@types/sinon": "9.0.8",
+    "@typescript-eslint/eslint-plugin": "4.4.1",
+    "@typescript-eslint/parser": "4.4.1",
+    "chai": "4.2.0",
+    "eslint": "7.11.0",
+    "glob": "7.1.6",
+    "mocha": "8.2.0",
+    "nyc": "15.1.0",
+    "sinon": "9.2.0",
+    "ts-node": "9.0.0",
+    "typedoc": "0.19.2",
+    "typescript": "4.0.3"
+  },
+  "directories": {},
+  "dist": {
+    "integrity": "sha512-5SakFa79uhUVSjKeQE30GVzzLJ0QNzB53+I+/VD1vIesD6GP6uatWIlgU0uisFNLt1u0d6kBydp7yfk+lLJhLQ==",
+    "shasum": "f7efce6b0a1649b44b9bc43b9d9a5acf272264b6",
+    "tarball": "https://registry.npmjs.org/image-size/-/image-size-0.9.3.tgz",
+    "fileCount": 46,
+    "unpackedSize": 42983,
+    "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJflv13CRA9TVsSAnZWagAAE6AP/i2qr1qx59ybCLiCuI2x\n8ByUvF2rYcZt9mVb4lEMkplCwQ3b9UcU/r5yIkv+ePIEfSu7loEElQX2KpA1\nlgWzvaOX8FuCViG9HItC3uR43E73Lt+ohktJVJkY0G6ES1dcLqhrfG1pTtaV\nGujf/9QOcgmwoH0N11XrhKC4/0uhvhXLS2UVXE9Iie6Adggu/xtWRaHfw502\nQbYzt+Y9BJegXSO1wPrJBrowi0p2xMUI4/3TWp+/QwSXeT24DPjjdUTF6q8J\nU2X+tdYpw64mbsE+Yb1ou7ggui1wX2GsKJwtWYyI+LOdq1GNv98qzIupeZDN\n2qwF7Fefr6D60lhKMIy0PJgNKUyW8GuSee0+F/m4uAITJ5XF5VnjMS3h/hVQ\nsCVGKT6TX/LeoL8qzPeTCjWUkPYm1AadtOCYt/qyYJAI0YNTMHyArUfMfw+k\n9xPKJspfQQaV+ASo0+sWKR67GHVoiH8OVzU8wTOQnJIikGT3zIwJIYlei44m\n6gGUl2SvJ89FaSUq3A0xmFUOHLZU25HhqiP/tZbouTNXBX1tR4LiLvZjrvTt\nDTcI1Qt1UBl1+kq6fmoup4ezA6JR0mxVWZlXEbPqsIDb2lODyETVQcjjZtLb\nYO305JtIIuMmDYYDjLE1TqtEwWBXL4SaPvf4DrjqViUMUAP2P7GyKSvbUGg8\nFLc6\r\n=TDeq\r\n-----END PGP SIGNATURE-----\r\n"
+  },
+  "engines": {
+    "node": ">=10.18.0"
+  },
+  "gitHead": "931b8a8af957f413f6f08ffaf9c1ad9ac9d99cec",
+  "homepage": "https://github.com/image-size/image-size#readme",
+  "keywords": [
+    "image",
+    "size",
+    "dimensions",
+    "resolution",
+    "width",
+    "height",
+    "png",
+    "jpeg",
+    "bmp",
+    "gif",
+    "psd",
+    "tiff",
+    "webp",
+    "svg",
+    "icns",
+    "ico",
+    "cur"
+  ],
+  "license": "MIT",
+  "main": "dist/index.js",
+  "maintainers": [
+    {
+      "name": "netroy",
+      "email": "npm@netroy.in"
+    }
+  ],
+  "name": "image-size",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/image-size/image-size.git"
+  },
+  "scripts": {
+    "build": "tsc",
+    "clean": "rm -rf dist docs",
+    "generate-docs": "typedoc",
+    "prepack": "npm run clean && npm run build",
+    "pretest": "eslint --ext .ts,.js bin lib specs",
+    "test": "nyc mocha"
+  },
+  "types": "dist/index.d.ts",
+  "version": "0.9.3",
+  "warnings": [
+    {
+      "code": "ENOTSUP",
+      "required": {
+        "node": ">=10.18.0"
+      },
+      "pkgid": "image-size@0.9.3"
+    },
+    {
+      "code": "ENOTSUP",
+      "required": {
+        "node": ">=10.18.0"
+      },
+      "pkgid": "image-size@0.9.3"
+    }
+  ]
+}
