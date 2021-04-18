@@ -1,0 +1,6 @@
+D:\FEPVWebApiOwinHost\Release\MISInterfaceDAL.dll.config
+D:\FEPVWebApiOwinHost\Release\MISInterfaceDAL.dll
+D:\FEPVWebApiOwinHost\Release\MISInterfaceDAL.pdb
+D:\FEPVWebApiOwinHost\MISInterfaceDAL\obj\Debug\MISInterfaceDAL.dll
+D:\FEPVWebApiOwinHost\MISInterfaceDAL\obj\Debug\MISInterfaceDAL.pdb
+D:\FEPVWebApiOwinHost\MISInterfaceDAL\obj\Debug\MISInterfaceDAL.csprojAssemblyReference.cache

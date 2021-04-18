@@ -1,0 +1,70 @@
+2020-10-22 14:11:19
+System.Runtime.InteropServices.COMException (0x800A03EC): A workbook must contain at least one visible worksheet. 
+
+To hide, delete, or move the selected sheet(s), you must first insert a new sheet or unhide a sheet that is already hidden.
+   at Microsoft.Office.Interop.Excel._Worksheet.Delete()
+   at FEPVWebApiOwinHost.ContractorInfoController.ExportDataSetToExcel(DataSet ds, String strPath, String startdate, String enddate, String Gate, String vendor) in D:\FEPVWebApiOwinHost\FEPVWebApiOwinHost\ContracotrInfoController.cs:line 897
+2020-10-22 14:11:19
+System.Exception: A workbook must contain at least one visible worksheet. 
+
+To hide, delete, or move the selected sheet(s), you must first insert a new sheet or unhide a sheet that is already hidden.
+   at FEPVWebApiOwinHost.ContractorInfoController.ExportDataSetToExcel(DataSet ds, String strPath, String startdate, String enddate, String Gate, String vendor) in D:\FEPVWebApiOwinHost\FEPVWebApiOwinHost\ContracotrInfoController.cs:line 913
+   at FEPVWebApiOwinHost.ContractorInfoController.ExportLog(String Contractor, String IdCard, String startdate, String enddate, String Gate, String EmpName, String vendor) in D:\FEPVWebApiOwinHost\FEPVWebApiOwinHost\ContracotrInfoController.cs:line 745
+2020-10-22 14:15:43
+System.Runtime.InteropServices.COMException (0x800A03EC): A workbook must contain at least one visible worksheet. 
+
+To hide, delete, or move the selected sheet(s), you must first insert a new sheet or unhide a sheet that is already hidden.
+   at Microsoft.Office.Interop.Excel._Worksheet.Delete()
+   at FEPVWebApiOwinHost.ContractorInfoController.ExportDataSetToExcel(DataSet ds, String strPath, String startdate, String enddate, String Gate, String vendor) in D:\FEPVWebApiOwinHost\FEPVWebApiOwinHost\ContracotrInfoController.cs:line 897
+2020-10-22 14:15:43
+System.Exception: A workbook must contain at least one visible worksheet. 
+
+To hide, delete, or move the selected sheet(s), you must first insert a new sheet or unhide a sheet that is already hidden.
+   at FEPVWebApiOwinHost.ContractorInfoController.ExportDataSetToExcel(DataSet ds, String strPath, String startdate, String enddate, String Gate, String vendor) in D:\FEPVWebApiOwinHost\FEPVWebApiOwinHost\ContracotrInfoController.cs:line 913
+   at FEPVWebApiOwinHost.ContractorInfoController.ExportLog(String Contractor, String IdCard, String startdate, String enddate, String Gate, String EmpName, String vendor) in D:\FEPVWebApiOwinHost\FEPVWebApiOwinHost\ContracotrInfoController.cs:line 745
+2020-10-22 14:22:36
+System.Runtime.InteropServices.COMException (0x800A03EC): A workbook must contain at least one visible worksheet. 
+
+To hide, delete, or move the selected sheet(s), you must first insert a new sheet or unhide a sheet that is already hidden.
+   at Microsoft.Office.Interop.Excel._Worksheet.Delete()
+   at FEPVWebApiOwinHost.ContractorInfoController.ExportDataSetToExcel(DataSet ds, String strPath, String startdate, String enddate, String Gate, String vendor) in D:\FEPVWebApiOwinHost\FEPVWebApiOwinHost\ContracotrInfoController.cs:line 897
+2020-10-22 14:22:36
+System.Exception: A workbook must contain at least one visible worksheet. 
+
+To hide, delete, or move the selected sheet(s), you must first insert a new sheet or unhide a sheet that is already hidden.
+   at FEPVWebApiOwinHost.ContractorInfoController.ExportDataSetToExcel(DataSet ds, String strPath, String startdate, String enddate, String Gate, String vendor) in D:\FEPVWebApiOwinHost\FEPVWebApiOwinHost\ContracotrInfoController.cs:line 913
+   at FEPVWebApiOwinHost.ContractorInfoController.ExportLog(String Contractor, String IdCard, String startdate, String enddate, String Gate, String EmpName, String vendor) in D:\FEPVWebApiOwinHost\FEPVWebApiOwinHost\ContracotrInfoController.cs:line 745
+2020-10-22 14:24:37
+System.Runtime.InteropServices.COMException (0x800A03EC): The file could not be accessed. Try one of the following:
+
+• Make sure the specified folder exists. 
+• Make sure the folder that contains the file is not read-only.
+• Make sure the file name does not contain any of the following characters:  <  >  ?  [  ]  :  | or  *
+• Make sure the file/path name doesn't contain more than 218 characters.
+   at Microsoft.Office.Interop.Excel.WorkbookClass.SaveAs(Object Filename, Object FileFormat, Object Password, Object WriteResPassword, Object ReadOnlyRecommended, Object CreateBackup, XlSaveAsAccessMode AccessMode, Object ConflictResolution, Object AddToMru, Object TextCodepage, Object TextVisualLayout, Object Local)
+   at FEPVWebApiOwinHost.ContractorInfoController.ExportDataSetToExcel(DataSet ds, String strPath, String startdate, String enddate, String Gate, String vendor) in D:\FEPVWebApiOwinHost\FEPVWebApiOwinHost\ContracotrInfoController.cs:line 897
+2020-10-22 14:24:37
+System.Exception: The file could not be accessed. Try one of the following:
+
+• Make sure the specified folder exists. 
+• Make sure the folder that contains the file is not read-only.
+• Make sure the file name does not contain any of the following characters:  <  >  ?  [  ]  :  | or  *
+• Make sure the file/path name doesn't contain more than 218 characters.
+   at FEPVWebApiOwinHost.ContractorInfoController.ExportDataSetToExcel(DataSet ds, String strPath, String startdate, String enddate, String Gate, String vendor) in D:\FEPVWebApiOwinHost\FEPVWebApiOwinHost\ContracotrInfoController.cs:line 907
+   at FEPVWebApiOwinHost.ContractorInfoController.ExportLog(String Contractor, String IdCard, String startdate, String enddate, String Gate, String EmpName, String vendor) in D:\FEPVWebApiOwinHost\FEPVWebApiOwinHost\ContracotrInfoController.cs:line 745
+2020-10-22 22:22:43
+System.Runtime.InteropServices.COMException (0x800A03EC): Exception from HRESULT: 0x800A03EC
+   at Microsoft.Office.Interop.Excel.WorkbookClass.SaveAs(Object Filename, Object FileFormat, Object Password, Object WriteResPassword, Object ReadOnlyRecommended, Object CreateBackup, XlSaveAsAccessMode AccessMode, Object ConflictResolution, Object AddToMru, Object TextCodepage, Object TextVisualLayout, Object Local)
+   at FEPVWebApiOwinHost.ContractorInfoController.ExportStatisticToExcel(DataSet ds, String strPath, String startdate, String enddate) in D:\FEPVWebApiOwinHost\FEPVWebApiOwinHost\ContracotrInfoController.cs:line 1077
+2020-10-22 22:22:55
+System.Exception: Exception from HRESULT: 0x800A03EC
+   at FEPVWebApiOwinHost.ContractorInfoController.ExportStatisticToExcel(DataSet ds, String strPath, String startdate, String enddate) in D:\FEPVWebApiOwinHost\FEPVWebApiOwinHost\ContracotrInfoController.cs:line 1085
+   at FEPVWebApiOwinHost.ContractorInfoController.ExportStatistic(String Contractor, String startdate, String enddate) in D:\FEPVWebApiOwinHost\FEPVWebApiOwinHost\ContracotrInfoController.cs:line 949
+2020-10-22 22:23:04
+System.Runtime.InteropServices.COMException (0x800A03EC): Exception from HRESULT: 0x800A03EC
+   at Microsoft.Office.Interop.Excel.WorkbookClass.SaveAs(Object Filename, Object FileFormat, Object Password, Object WriteResPassword, Object ReadOnlyRecommended, Object CreateBackup, XlSaveAsAccessMode AccessMode, Object ConflictResolution, Object AddToMru, Object TextCodepage, Object TextVisualLayout, Object Local)
+   at FEPVWebApiOwinHost.ContractorInfoController.ExportLogToExcel(DataSet ds, String strPath, String startdate, String enddate, String Gate, String vendor) in D:\FEPVWebApiOwinHost\FEPVWebApiOwinHost\ContracotrInfoController.cs:line 904
+2020-10-22 22:23:04
+System.Exception: Exception from HRESULT: 0x800A03EC
+   at FEPVWebApiOwinHost.ContractorInfoController.ExportLogToExcel(DataSet ds, String strPath, String startdate, String enddate, String Gate, String vendor) in D:\FEPVWebApiOwinHost\FEPVWebApiOwinHost\ContracotrInfoController.cs:line 912
+   at FEPVWebApiOwinHost.ContractorInfoController.ExportLog(String Contractor, String IdCard, String startdate, String enddate, String Gate, String EmpName, String vendor) in D:\FEPVWebApiOwinHost\FEPVWebApiOwinHost\ContracotrInfoController.cs:line 746

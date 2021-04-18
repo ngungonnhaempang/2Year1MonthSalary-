@@ -1,0 +1,18 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="MISInterfaceDAL.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="MISInterfaceDAL_VehicleTransfer_ZFEPV_GetBLInfo" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://10.17.215.200:8006/ZFEPV_GetBLInfo.asmx</Value>
+    </Setting>
+    <Setting Name="MISInterfaceDAL_ShippingOrderDate_WA27N6MIS001" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://10.20.50.128/A27N6Service/WA27N6Connect/WA27N6MIS001.asmx</Value>
+    </Setting>
+    <Setting Name="MISInterfaceDAL_VehicleInformationInput_WA27N6MIS002" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://10.20.50.128/A27N6Service/WA27N6Connect/WA27N6MIS002.asmx</Value>
+    </Setting>
+    <Setting Name="MISInterfaceDAL_UploadPickInfo_FEPV_GetSOInfo" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://10.17.213.167:8007/FEPV_GetSOInfo.asmx</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

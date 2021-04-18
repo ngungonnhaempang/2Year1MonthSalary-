@@ -1,0 +1,15 @@
+D:\FEPVWebApiOwinHost\LIMS\QC.DAL\obj\Debug\QC.DAL.csprojAssemblyReference.cache
+D:\FEPVWebApiOwinHost\LIMS\QC.DAL\bin\Debug\QC.DAL.dll
+D:\FEPVWebApiOwinHost\LIMS\QC.DAL\bin\Debug\QC.DAL.pdb
+D:\FEPVWebApiOwinHost\LIMS\QC.DAL\bin\Debug\LIMS.Model.dll
+D:\FEPVWebApiOwinHost\LIMS\QC.DAL\bin\Debug\Newtonsoft.Json.dll
+D:\FEPVWebApiOwinHost\LIMS\QC.DAL\bin\Debug\Interop.SpeechLib.dll
+D:\FEPVWebApiOwinHost\LIMS\QC.DAL\bin\Debug\ICSharpCode.SharpZipLib.dll
+D:\FEPVWebApiOwinHost\LIMS\QC.DAL\bin\Debug\Newtonsoft.Json.Net20.dll
+D:\FEPVWebApiOwinHost\LIMS\QC.DAL\bin\Debug\LIMS.Model.pdb
+D:\FEPVWebApiOwinHost\LIMS\QC.DAL\obj\Debug\QC.DAL.csproj.CopyComplete
+D:\FEPVWebApiOwinHost\LIMS\QC.DAL\obj\Debug\QC.DAL.dll
+D:\FEPVWebApiOwinHost\LIMS\QC.DAL\obj\Debug\QC.DAL.pdb
+D:\FEPVWebApiOwinHost\LIMS\QC.DAL\bin\Debug\GenuineChannels.dll
+D:\FEPVWebApiOwinHost\LIMS\QC.DAL\bin\Debug\QC.Model.dll
+D:\FEPVWebApiOwinHost\LIMS\QC.DAL\bin\Debug\QC.Model.pdb

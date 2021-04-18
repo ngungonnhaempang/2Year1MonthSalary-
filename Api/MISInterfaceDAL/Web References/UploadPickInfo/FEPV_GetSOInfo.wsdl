@@ -1,0 +1,597 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="zFEPV_ZSDO2701_SO_INFO">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="basetableList" type="tns:Base_Table" />
+            <s:element minOccurs="0" maxOccurs="1" name="T_SDHEADER" type="tns:ArrayOfT_SDHEADER" />
+            <s:element minOccurs="0" maxOccurs="1" name="T_SDITEMS" type="tns:ArrayOfT_SDITEMS" />
+            <s:element minOccurs="1" maxOccurs="1" name="EP_SUCC" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="EP_MESS" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Base_Table">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="MESSAGEID" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="MESSAGETEXT" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="MESSAGETYPE" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="SENDTIME" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="TOKEN" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="FROMSYSID" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="TOSYSID" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfT_SDHEADER">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="T_SDHEADER" nillable="true" type="tns:T_SDHEADER" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="T_SDHEADER">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="VBELN" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="AUART" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="BUKRS" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="VKORG" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="VTWEG" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="SPART" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="KUNNR1" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="TXTPA1" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="KUNNR2" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="TXTPA2" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="KOSTL" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="KWMENG_T" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="VRKME" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="WAERK" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="KURSK" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="TRMTYP" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="BEZEI" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="VKGRP" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="INCO1" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="INCO2" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="VTEXT" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="PARVW" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ZTERM" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ERDAT" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="PRCTR" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="KETDAT" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="VSBED" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="TRATY" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="BSTKD" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="LAND1" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ZTYPE" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="STATE" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DEL" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfT_SDITEMS">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="T_SDITEMS" nillable="true" type="tns:T_SDITEMS" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="T_SDITEMS">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="VBELN" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="POSNR" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="WERKS" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="MATWA" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ARKTX" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="KBETR_BG" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="KOEIN_BG" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="KPEIN_BG" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="KMEIN_BG" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="KWERT_BG" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="WAERK_BG" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="KBET1_BG" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="KOEI1_BG" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="KUMNE_BG" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="MEINS_BG" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="KBETR_YH" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="KOEIN_YH" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="KPEIN_YH" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="KMEIN_YH" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="KWERT_YH" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="WAERK_YH" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="UMVKN1" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="VRKME1" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="UMVKZ1" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="MEINS1" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="KWMENG" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="VRKME" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="NTGEW" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="BRGEW" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="GEWEI" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="VOLUM" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="VOLEH" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CHARG" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="UEBTO" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="UNTTO" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="AESKD" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="zFEPV_ZSDO2701_SO_INFOResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="UploadSOInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ds">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UploadSOInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UploadSOInfoResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UploadStockInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ds">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UploadStockInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UploadStockInfoResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UploadStockInfo_Chemical">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ds">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UploadStockInfo_ChemicalResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UploadStockInfo_ChemicalResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetEstPackingInfo_SSP">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ds">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetEstPackingInfo_SSPResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetEstPackingInfo_SSPResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetEstPackingInfo_SSPBySONO">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ds">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetEstPackingInfo_SSPBySONOResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetEstPackingInfo_SSPBySONOResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UploadStockInfo_TestAteam">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ds">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UploadStockInfo_TestAteamResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UploadStockInfo_TestAteamResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendATeamMSG">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ds">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendATeamMSGResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="SendATeamMSG2">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ds">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="0" maxOccurs="1" name="SystemCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AcceptUserIDS" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MessagePart1" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MessagePart2" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="SystemDescription" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CompanyCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MessageTypeCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MessageTypeDescription" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendATeamMSG2Response">
+        <s:complexType />
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="zFEPV_ZSDO2701_SO_INFOSoapIn">
+    <wsdl:part name="parameters" element="tns:zFEPV_ZSDO2701_SO_INFO" />
+  </wsdl:message>
+  <wsdl:message name="zFEPV_ZSDO2701_SO_INFOSoapOut">
+    <wsdl:part name="parameters" element="tns:zFEPV_ZSDO2701_SO_INFOResponse" />
+  </wsdl:message>
+  <wsdl:message name="UploadSOInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:UploadSOInfo" />
+  </wsdl:message>
+  <wsdl:message name="UploadSOInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:UploadSOInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="UploadStockInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:UploadStockInfo" />
+  </wsdl:message>
+  <wsdl:message name="UploadStockInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:UploadStockInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="UploadStockInfo_ChemicalSoapIn">
+    <wsdl:part name="parameters" element="tns:UploadStockInfo_Chemical" />
+  </wsdl:message>
+  <wsdl:message name="UploadStockInfo_ChemicalSoapOut">
+    <wsdl:part name="parameters" element="tns:UploadStockInfo_ChemicalResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetEstPackingInfo_SSPSoapIn">
+    <wsdl:part name="parameters" element="tns:GetEstPackingInfo_SSP" />
+  </wsdl:message>
+  <wsdl:message name="GetEstPackingInfo_SSPSoapOut">
+    <wsdl:part name="parameters" element="tns:GetEstPackingInfo_SSPResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetEstPackingInfo_SSPBySONOSoapIn">
+    <wsdl:part name="parameters" element="tns:GetEstPackingInfo_SSPBySONO" />
+  </wsdl:message>
+  <wsdl:message name="GetEstPackingInfo_SSPBySONOSoapOut">
+    <wsdl:part name="parameters" element="tns:GetEstPackingInfo_SSPBySONOResponse" />
+  </wsdl:message>
+  <wsdl:message name="UploadStockInfo_TestAteamSoapIn">
+    <wsdl:part name="parameters" element="tns:UploadStockInfo_TestAteam" />
+  </wsdl:message>
+  <wsdl:message name="UploadStockInfo_TestAteamSoapOut">
+    <wsdl:part name="parameters" element="tns:UploadStockInfo_TestAteamResponse" />
+  </wsdl:message>
+  <wsdl:message name="SendATeamMSGSoapIn">
+    <wsdl:part name="parameters" element="tns:SendATeamMSG" />
+  </wsdl:message>
+  <wsdl:message name="SendATeamMSGSoapOut">
+    <wsdl:part name="parameters" element="tns:SendATeamMSGResponse" />
+  </wsdl:message>
+  <wsdl:message name="SendATeamMSG2SoapIn">
+    <wsdl:part name="parameters" element="tns:SendATeamMSG2" />
+  </wsdl:message>
+  <wsdl:message name="SendATeamMSG2SoapOut">
+    <wsdl:part name="parameters" element="tns:SendATeamMSG2Response" />
+  </wsdl:message>
+  <wsdl:portType name="FEPV_GetSOInfoSoap">
+    <wsdl:operation name="zFEPV_ZSDO2701_SO_INFO">
+      <wsdl:input message="tns:zFEPV_ZSDO2701_SO_INFOSoapIn" />
+      <wsdl:output message="tns:zFEPV_ZSDO2701_SO_INFOSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UploadSOInfo">
+      <wsdl:input message="tns:UploadSOInfoSoapIn" />
+      <wsdl:output message="tns:UploadSOInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UploadStockInfo">
+      <wsdl:input message="tns:UploadStockInfoSoapIn" />
+      <wsdl:output message="tns:UploadStockInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UploadStockInfo_Chemical">
+      <wsdl:input message="tns:UploadStockInfo_ChemicalSoapIn" />
+      <wsdl:output message="tns:UploadStockInfo_ChemicalSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEstPackingInfo_SSP">
+      <wsdl:input message="tns:GetEstPackingInfo_SSPSoapIn" />
+      <wsdl:output message="tns:GetEstPackingInfo_SSPSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEstPackingInfo_SSPBySONO">
+      <wsdl:input message="tns:GetEstPackingInfo_SSPBySONOSoapIn" />
+      <wsdl:output message="tns:GetEstPackingInfo_SSPBySONOSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UploadStockInfo_TestAteam">
+      <wsdl:input message="tns:UploadStockInfo_TestAteamSoapIn" />
+      <wsdl:output message="tns:UploadStockInfo_TestAteamSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendATeamMSG">
+      <wsdl:input message="tns:SendATeamMSGSoapIn" />
+      <wsdl:output message="tns:SendATeamMSGSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendATeamMSG2">
+      <wsdl:input message="tns:SendATeamMSG2SoapIn" />
+      <wsdl:output message="tns:SendATeamMSG2SoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="FEPV_GetSOInfoSoap" type="tns:FEPV_GetSOInfoSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="zFEPV_ZSDO2701_SO_INFO">
+      <soap:operation soapAction="http://tempuri.org/zFEPV_ZSDO2701_SO_INFO" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadSOInfo">
+      <soap:operation soapAction="http://tempuri.org/UploadSOInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadStockInfo">
+      <soap:operation soapAction="http://tempuri.org/UploadStockInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadStockInfo_Chemical">
+      <soap:operation soapAction="http://tempuri.org/UploadStockInfo_Chemical" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEstPackingInfo_SSP">
+      <soap:operation soapAction="http://tempuri.org/GetEstPackingInfo_SSP" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEstPackingInfo_SSPBySONO">
+      <soap:operation soapAction="http://tempuri.org/GetEstPackingInfo_SSPBySONO" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadStockInfo_TestAteam">
+      <soap:operation soapAction="http://tempuri.org/UploadStockInfo_TestAteam" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendATeamMSG">
+      <soap:operation soapAction="http://tempuri.org/SendATeamMSG" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendATeamMSG2">
+      <soap:operation soapAction="http://tempuri.org/SendATeamMSG2" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="FEPV_GetSOInfoSoap12" type="tns:FEPV_GetSOInfoSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="zFEPV_ZSDO2701_SO_INFO">
+      <soap12:operation soapAction="http://tempuri.org/zFEPV_ZSDO2701_SO_INFO" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadSOInfo">
+      <soap12:operation soapAction="http://tempuri.org/UploadSOInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadStockInfo">
+      <soap12:operation soapAction="http://tempuri.org/UploadStockInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadStockInfo_Chemical">
+      <soap12:operation soapAction="http://tempuri.org/UploadStockInfo_Chemical" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEstPackingInfo_SSP">
+      <soap12:operation soapAction="http://tempuri.org/GetEstPackingInfo_SSP" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEstPackingInfo_SSPBySONO">
+      <soap12:operation soapAction="http://tempuri.org/GetEstPackingInfo_SSPBySONO" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadStockInfo_TestAteam">
+      <soap12:operation soapAction="http://tempuri.org/UploadStockInfo_TestAteam" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendATeamMSG">
+      <soap12:operation soapAction="http://tempuri.org/SendATeamMSG" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendATeamMSG2">
+      <soap12:operation soapAction="http://tempuri.org/SendATeamMSG2" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="FEPV_GetSOInfo">
+    <wsdl:port name="FEPV_GetSOInfoSoap" binding="tns:FEPV_GetSOInfoSoap">
+      <soap:address location="http://10.17.215.200:8007/FEPV_GetSOInfo.asmx" />
+    </wsdl:port>
+    <wsdl:port name="FEPV_GetSOInfoSoap12" binding="tns:FEPV_GetSOInfoSoap12">
+      <soap12:address location="http://10.17.215.200:8007/FEPV_GetSOInfo.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

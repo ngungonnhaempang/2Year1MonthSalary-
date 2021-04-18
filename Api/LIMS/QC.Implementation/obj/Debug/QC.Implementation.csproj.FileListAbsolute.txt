@@ -1,0 +1,6 @@
+D:\FEPVWebApiOwinHost\LIMS\QC.Implementation\obj\Debug\QC.Implementation.csprojAssemblyReference.cache
+D:\FEPVWebApiOwinHost\LIMS\Release\QC.Implementation.dll
+D:\FEPVWebApiOwinHost\LIMS\Release\QC.Implementation.pdb
+D:\FEPVWebApiOwinHost\LIMS\QC.Implementation\obj\Debug\QC.Implementation.csproj.CopyComplete
+D:\FEPVWebApiOwinHost\LIMS\QC.Implementation\obj\Debug\QC.Implementation.dll
+D:\FEPVWebApiOwinHost\LIMS\QC.Implementation\obj\Debug\QC.Implementation.pdb

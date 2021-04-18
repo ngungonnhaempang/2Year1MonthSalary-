@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="GetListProfile">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="dateHireFrom" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="dateHireTo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="dateUpdateFrom" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="dateUpdateTo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Status" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userLogin" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetListProfileResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetListProfileResult" type="tns:ArrayOfHREmpInfoBean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfHREmpInfoBean">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="HREmpInfoBean" nillable="true" type="tns:HREmpInfoBean" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="HREmpInfoBean">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="TotalRow" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CompanyCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CompanyName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CompanyShortName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NameVN" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="WorkNo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NameCN" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NameEN" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SexType" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IDNo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Birthday" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CellPhoneNo_Home" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CellPhoneNo_Office" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CellPhoneNo_Mobile" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CostCentreCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CostCentreName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CostCentreNameCN" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PositionCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PositionName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HomeAddress" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Status" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BankAccount" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BankName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BankSwift_Code" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CardNo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DepartureDate" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="JoinDate" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Country" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BadList" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ReasonOfBadList" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DateQuit" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DateUpdate" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="WorkPlaceName" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetListProfileThaCo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="datehirefrom" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="datehireto" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="updatedatefrom" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="updatedateto" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userLogin" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetListProfileThaCoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetListProfileThaCoResult" type="tns:ArrayOfHREmpInfoBean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ArrayOfHREmpInfoBean" nillable="true" type="tns:ArrayOfHREmpInfoBean" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetListProfileSoapIn">
+    <wsdl:part name="parameters" element="tns:GetListProfile" />
+  </wsdl:message>
+  <wsdl:message name="GetListProfileSoapOut">
+    <wsdl:part name="parameters" element="tns:GetListProfileResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetListProfileThaCoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetListProfileThaCo" />
+  </wsdl:message>
+  <wsdl:message name="GetListProfileThaCoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetListProfileThaCoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetListProfileHttpGetIn">
+    <wsdl:part name="dateHireFrom" type="s:string" />
+    <wsdl:part name="dateHireTo" type="s:string" />
+    <wsdl:part name="dateUpdateFrom" type="s:string" />
+    <wsdl:part name="dateUpdateTo" type="s:string" />
+    <wsdl:part name="Status" type="s:string" />
+    <wsdl:part name="userLogin" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetListProfileHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfHREmpInfoBean" />
+  </wsdl:message>
+  <wsdl:message name="GetListProfileThaCoHttpGetIn">
+    <wsdl:part name="datehirefrom" type="s:string" />
+    <wsdl:part name="datehireto" type="s:string" />
+    <wsdl:part name="updatedatefrom" type="s:string" />
+    <wsdl:part name="updatedateto" type="s:string" />
+    <wsdl:part name="userLogin" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetListProfileThaCoHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfHREmpInfoBean" />
+  </wsdl:message>
+  <wsdl:message name="GetListProfileHttpPostIn">
+    <wsdl:part name="dateHireFrom" type="s:string" />
+    <wsdl:part name="dateHireTo" type="s:string" />
+    <wsdl:part name="dateUpdateFrom" type="s:string" />
+    <wsdl:part name="dateUpdateTo" type="s:string" />
+    <wsdl:part name="Status" type="s:string" />
+    <wsdl:part name="userLogin" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetListProfileHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfHREmpInfoBean" />
+  </wsdl:message>
+  <wsdl:message name="GetListProfileThaCoHttpPostIn">
+    <wsdl:part name="datehirefrom" type="s:string" />
+    <wsdl:part name="datehireto" type="s:string" />
+    <wsdl:part name="updatedatefrom" type="s:string" />
+    <wsdl:part name="updatedateto" type="s:string" />
+    <wsdl:part name="userLogin" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetListProfileThaCoHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfHREmpInfoBean" />
+  </wsdl:message>
+  <wsdl:portType name="WebServiceHRSoap">
+    <wsdl:operation name="GetListProfile">
+      <wsdl:input message="tns:GetListProfileSoapIn" />
+      <wsdl:output message="tns:GetListProfileSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetListProfileThaCo">
+      <wsdl:input message="tns:GetListProfileThaCoSoapIn" />
+      <wsdl:output message="tns:GetListProfileThaCoSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="WebServiceHRHttpGet">
+    <wsdl:operation name="GetListProfile">
+      <wsdl:input message="tns:GetListProfileHttpGetIn" />
+      <wsdl:output message="tns:GetListProfileHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetListProfileThaCo">
+      <wsdl:input message="tns:GetListProfileThaCoHttpGetIn" />
+      <wsdl:output message="tns:GetListProfileThaCoHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="WebServiceHRHttpPost">
+    <wsdl:operation name="GetListProfile">
+      <wsdl:input message="tns:GetListProfileHttpPostIn" />
+      <wsdl:output message="tns:GetListProfileHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetListProfileThaCo">
+      <wsdl:input message="tns:GetListProfileThaCoHttpPostIn" />
+      <wsdl:output message="tns:GetListProfileThaCoHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WebServiceHRSoap" type="tns:WebServiceHRSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetListProfile">
+      <soap:operation soapAction="http://tempuri.org/GetListProfile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetListProfileThaCo">
+      <soap:operation soapAction="http://tempuri.org/GetListProfileThaCo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WebServiceHRSoap12" type="tns:WebServiceHRSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetListProfile">
+      <soap12:operation soapAction="http://tempuri.org/GetListProfile" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetListProfileThaCo">
+      <soap12:operation soapAction="http://tempuri.org/GetListProfileThaCo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WebServiceHRHttpGet" type="tns:WebServiceHRHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="GetListProfile">
+      <http:operation location="/GetListProfile" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetListProfileThaCo">
+      <http:operation location="/GetListProfileThaCo" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WebServiceHRHttpPost" type="tns:WebServiceHRHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="GetListProfile">
+      <http:operation location="/GetListProfile" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetListProfileThaCo">
+      <http:operation location="/GetListProfileThaCo" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WebServiceHR">
+    <wsdl:port name="WebServiceHRSoap" binding="tns:WebServiceHRSoap">
+      <soap:address location="http://10.20.46.20:8333/WebServiceHR.asmx" />
+    </wsdl:port>
+    <wsdl:port name="WebServiceHRSoap12" binding="tns:WebServiceHRSoap12">
+      <soap12:address location="http://10.20.46.20:8333/WebServiceHR.asmx" />
+    </wsdl:port>
+    <wsdl:port name="WebServiceHRHttpGet" binding="tns:WebServiceHRHttpGet">
+      <http:address location="http://10.20.46.20:8333/WebServiceHR.asmx" />
+    </wsdl:port>
+    <wsdl:port name="WebServiceHRHttpPost" binding="tns:WebServiceHRHttpPost">
+      <http:address location="http://10.20.46.20:8333/WebServiceHR.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

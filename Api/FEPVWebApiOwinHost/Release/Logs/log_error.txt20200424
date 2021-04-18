@@ -1,0 +1,13 @@
+2020-04-24 11:05:56
+System.IO.IOException: Unexpected end of MIME multipart stream. MIME multipart message is not complete.
+   at System.Net.Http.Formatting.Parsers.MimeMultipartBodyPartParser.<ParseBuffer>d__0.MoveNext()
+   at System.Net.Http.HttpContentMultipartExtensions.<MultipartReadAsync>d__8.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Net.Http.HttpContentMultipartExtensions.<ReadAsMultipartAsync>d__0`1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at FEPVWebApiOwinHost.ContractorInfoController.<UploadFileAsync>d__26.MoveNext() in D:\FEPVWebApiOwinHost\FEPVWebApiOwinHost\ContracotrInfoController.cs:line 613

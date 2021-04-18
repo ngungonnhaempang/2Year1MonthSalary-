@@ -1,0 +1,216 @@
+2020-03-23 08:55:00
+System.Runtime.InteropServices.COMException (0x800A03EC): The file could not be accessed. Try one of the following:
+
+• Make sure the specified folder exists. 
+• Make sure the folder that contains the file is not read-only.
+• Make sure the file name does not contain any of the following characters:  <  >  ?  [  ]  :  | or  *
+• Make sure the file/path name doesn't contain more than 218 characters.
+   at Microsoft.Office.Interop.Excel.WorkbookClass.SaveAs(Object Filename, Object FileFormat, Object Password, Object WriteResPassword, Object ReadOnlyRecommended, Object CreateBackup, XlSaveAsAccessMode AccessMode, Object ConflictResolution, Object AddToMru, Object TextCodepage, Object TextVisualLayout, Object Local)
+   at FEPVWebApiOwinHost.ContractorController.ExportDataSetToExcel(DataSet ds, String strPath) in D:\FEPVWebApiOwinHost\FEPVWebApiOwinHost\ContractorController.cs:line 854
+2020-03-23 08:57:39
+System.Exception: The file could not be accessed. Try one of the following:
+
+• Make sure the specified folder exists. 
+• Make sure the folder that contains the file is not read-only.
+• Make sure the file name does not contain any of the following characters:  <  >  ?  [  ]  :  | or  *
+• Make sure the file/path name doesn't contain more than 218 characters.
+   at FEPVWebApiOwinHost.ContractorController.ExportDataSetToExcel(DataSet ds, String strPath) in D:\FEPVWebApiOwinHost\FEPVWebApiOwinHost\ContractorController.cs:line 862
+   at FEPVWebApiOwinHost.ContractorController.ConfirmdMail(String ContractorID, String VoucherID, String Mailkind, String Datetime) in D:\FEPVWebApiOwinHost\FEPVWebApiOwinHost\ContractorController.cs:line 583
+2020-03-23 08:57:40
+System.Runtime.InteropServices.COMException (0x800A03EC): The file could not be accessed. Try one of the following:
+
+• Make sure the specified folder exists. 
+• Make sure the folder that contains the file is not read-only.
+• Make sure the file name does not contain any of the following characters:  <  >  ?  [  ]  :  | or  *
+• Make sure the file/path name doesn't contain more than 218 characters.
+   at Microsoft.Office.Interop.Excel.WorkbookClass.SaveAs(Object Filename, Object FileFormat, Object Password, Object WriteResPassword, Object ReadOnlyRecommended, Object CreateBackup, XlSaveAsAccessMode AccessMode, Object ConflictResolution, Object AddToMru, Object TextCodepage, Object TextVisualLayout, Object Local)
+   at FEPVWebApiOwinHost.ContractorController.ExportDataSetToExcel(DataSet ds, String strPath) in D:\FEPVWebApiOwinHost\FEPVWebApiOwinHost\ContractorController.cs:line 854
+2020-03-23 08:57:40
+System.Exception: The file could not be accessed. Try one of the following:
+
+• Make sure the specified folder exists. 
+• Make sure the folder that contains the file is not read-only.
+• Make sure the file name does not contain any of the following characters:  <  >  ?  [  ]  :  | or  *
+• Make sure the file/path name doesn't contain more than 218 characters.
+   at FEPVWebApiOwinHost.ContractorController.ExportDataSetToExcel(DataSet ds, String strPath) in D:\FEPVWebApiOwinHost\FEPVWebApiOwinHost\ContractorController.cs:line 862
+   at FEPVWebApiOwinHost.ContractorController.ConfirmdMail(String ContractorID, String VoucherID, String Mailkind, String Datetime) in D:\FEPVWebApiOwinHost\FEPVWebApiOwinHost\ContractorController.cs:line 583
+2020-03-23 08:58:44
+System.Runtime.InteropServices.COMException (0x800A03EC): The file could not be accessed. Try one of the following:
+
+• Make sure the specified folder exists. 
+• Make sure the folder that contains the file is not read-only.
+• Make sure the file name does not contain any of the following characters:  <  >  ?  [  ]  :  | or  *
+• Make sure the file/path name doesn't contain more than 218 characters.
+   at Microsoft.Office.Interop.Excel.WorkbookClass.SaveAs(Object Filename, Object FileFormat, Object Password, Object WriteResPassword, Object ReadOnlyRecommended, Object CreateBackup, XlSaveAsAccessMode AccessMode, Object ConflictResolution, Object AddToMru, Object TextCodepage, Object TextVisualLayout, Object Local)
+   at FEPVWebApiOwinHost.ContractorController.ExportDataSetToExcel(DataSet ds, String strPath) in D:\FEPVWebApiOwinHost\FEPVWebApiOwinHost\ContractorController.cs:line 854
+2020-03-23 08:59:06
+System.Exception: The file could not be accessed. Try one of the following:
+
+• Make sure the specified folder exists. 
+• Make sure the folder that contains the file is not read-only.
+• Make sure the file name does not contain any of the following characters:  <  >  ?  [  ]  :  | or  *
+• Make sure the file/path name doesn't contain more than 218 characters.
+   at FEPVWebApiOwinHost.ContractorController.ExportDataSetToExcel(DataSet ds, String strPath) in D:\FEPVWebApiOwinHost\FEPVWebApiOwinHost\ContractorController.cs:line 862
+   at FEPVWebApiOwinHost.ContractorController.ConfirmdMail(String ContractorID, String VoucherID, String Mailkind, String Datetime) in D:\FEPVWebApiOwinHost\FEPVWebApiOwinHost\ContractorController.cs:line 583
+2020-03-23 09:06:17
+System.Runtime.InteropServices.COMException (0x800A03EC): The file could not be accessed. Try one of the following:
+
+• Make sure the specified folder exists. 
+• Make sure the folder that contains the file is not read-only.
+• Make sure the file name does not contain any of the following characters:  <  >  ?  [  ]  :  | or  *
+• Make sure the file/path name doesn't contain more than 218 characters.
+   at Microsoft.Office.Interop.Excel.WorkbookClass.SaveAs(Object Filename, Object FileFormat, Object Password, Object WriteResPassword, Object ReadOnlyRecommended, Object CreateBackup, XlSaveAsAccessMode AccessMode, Object ConflictResolution, Object AddToMru, Object TextCodepage, Object TextVisualLayout, Object Local)
+   at FEPVWebApiOwinHost.ContractorController.ExportDataSetToExcel(DataSet ds, String strPath) in D:\FEPVWebApiOwinHost\FEPVWebApiOwinHost\ContractorController.cs:line 854
+2020-03-23 09:06:17
+System.Exception: The file could not be accessed. Try one of the following:
+
+• Make sure the specified folder exists. 
+• Make sure the folder that contains the file is not read-only.
+• Make sure the file name does not contain any of the following characters:  <  >  ?  [  ]  :  | or  *
+• Make sure the file/path name doesn't contain more than 218 characters.
+   at FEPVWebApiOwinHost.ContractorController.ExportDataSetToExcel(DataSet ds, String strPath) in D:\FEPVWebApiOwinHost\FEPVWebApiOwinHost\ContractorController.cs:line 862
+   at FEPVWebApiOwinHost.ContractorController.ConfirmdMail(String ContractorID, String VoucherID, String Mailkind, String Datetime) in D:\FEPVWebApiOwinHost\FEPVWebApiOwinHost\ContractorController.cs:line 583
+2020-03-23 09:06:26
+System.Runtime.InteropServices.COMException (0x800A03EC): The file could not be accessed. Try one of the following:
+
+• Make sure the specified folder exists. 
+• Make sure the folder that contains the file is not read-only.
+• Make sure the file name does not contain any of the following characters:  <  >  ?  [  ]  :  | or  *
+• Make sure the file/path name doesn't contain more than 218 characters.
+   at Microsoft.Office.Interop.Excel.WorkbookClass.SaveAs(Object Filename, Object FileFormat, Object Password, Object WriteResPassword, Object ReadOnlyRecommended, Object CreateBackup, XlSaveAsAccessMode AccessMode, Object ConflictResolution, Object AddToMru, Object TextCodepage, Object TextVisualLayout, Object Local)
+   at FEPVWebApiOwinHost.ContractorController.ExportDataSetToExcel(DataSet ds, String strPath) in D:\FEPVWebApiOwinHost\FEPVWebApiOwinHost\ContractorController.cs:line 854
+2020-03-23 09:06:26
+System.Exception: The file could not be accessed. Try one of the following:
+
+• Make sure the specified folder exists. 
+• Make sure the folder that contains the file is not read-only.
+• Make sure the file name does not contain any of the following characters:  <  >  ?  [  ]  :  | or  *
+• Make sure the file/path name doesn't contain more than 218 characters.
+   at FEPVWebApiOwinHost.ContractorController.ExportDataSetToExcel(DataSet ds, String strPath) in D:\FEPVWebApiOwinHost\FEPVWebApiOwinHost\ContractorController.cs:line 862
+   at FEPVWebApiOwinHost.ContractorController.ConfirmdMail(String ContractorID, String VoucherID, String Mailkind, String Datetime) in D:\FEPVWebApiOwinHost\FEPVWebApiOwinHost\ContractorController.cs:line 583
+2020-03-23 09:06:26
+System.Runtime.InteropServices.COMException (0x800A03EC): The file could not be accessed. Try one of the following:
+
+• Make sure the specified folder exists. 
+• Make sure the folder that contains the file is not read-only.
+• Make sure the file name does not contain any of the following characters:  <  >  ?  [  ]  :  | or  *
+• Make sure the file/path name doesn't contain more than 218 characters.
+   at Microsoft.Office.Interop.Excel.WorkbookClass.SaveAs(Object Filename, Object FileFormat, Object Password, Object WriteResPassword, Object ReadOnlyRecommended, Object CreateBackup, XlSaveAsAccessMode AccessMode, Object ConflictResolution, Object AddToMru, Object TextCodepage, Object TextVisualLayout, Object Local)
+   at FEPVWebApiOwinHost.ContractorController.ExportDataSetToExcel(DataSet ds, String strPath) in D:\FEPVWebApiOwinHost\FEPVWebApiOwinHost\ContractorController.cs:line 854
+2020-03-23 09:06:26
+System.Exception: The file could not be accessed. Try one of the following:
+
+• Make sure the specified folder exists. 
+• Make sure the folder that contains the file is not read-only.
+• Make sure the file name does not contain any of the following characters:  <  >  ?  [  ]  :  | or  *
+• Make sure the file/path name doesn't contain more than 218 characters.
+   at FEPVWebApiOwinHost.ContractorController.ExportDataSetToExcel(DataSet ds, String strPath) in D:\FEPVWebApiOwinHost\FEPVWebApiOwinHost\ContractorController.cs:line 862
+   at FEPVWebApiOwinHost.ContractorController.ConfirmdMail(String ContractorID, String VoucherID, String Mailkind, String Datetime) in D:\FEPVWebApiOwinHost\FEPVWebApiOwinHost\ContractorController.cs:line 583
+2020-03-23 09:07:49
+System.Runtime.InteropServices.COMException (0x800A03EC): The file could not be accessed. Try one of the following:
+
+• Make sure the specified folder exists. 
+• Make sure the folder that contains the file is not read-only.
+• Make sure the file name does not contain any of the following characters:  <  >  ?  [  ]  :  | or  *
+• Make sure the file/path name doesn't contain more than 218 characters.
+   at Microsoft.Office.Interop.Excel.WorkbookClass.SaveAs(Object Filename, Object FileFormat, Object Password, Object WriteResPassword, Object ReadOnlyRecommended, Object CreateBackup, XlSaveAsAccessMode AccessMode, Object ConflictResolution, Object AddToMru, Object TextCodepage, Object TextVisualLayout, Object Local)
+   at FEPVWebApiOwinHost.ContractorController.ExportDataSetToExcel(DataSet ds, String strPath) in D:\FEPVWebApiOwinHost\FEPVWebApiOwinHost\ContractorController.cs:line 854
+2020-03-23 09:08:22
+System.Exception: The file could not be accessed. Try one of the following:
+
+• Make sure the specified folder exists. 
+• Make sure the folder that contains the file is not read-only.
+• Make sure the file name does not contain any of the following characters:  <  >  ?  [  ]  :  | or  *
+• Make sure the file/path name doesn't contain more than 218 characters.
+   at FEPVWebApiOwinHost.ContractorController.ExportDataSetToExcel(DataSet ds, String strPath) in D:\FEPVWebApiOwinHost\FEPVWebApiOwinHost\ContractorController.cs:line 862
+   at FEPVWebApiOwinHost.ContractorController.ConfirmdMail(String ContractorID, String VoucherID, String Mailkind, String Datetime) in D:\FEPVWebApiOwinHost\FEPVWebApiOwinHost\ContractorController.cs:line 583
+2020-03-23 09:10:17
+System.Runtime.InteropServices.COMException (0x800A03EC): The file could not be accessed. Try one of the following:
+
+• Make sure the specified folder exists. 
+• Make sure the folder that contains the file is not read-only.
+• Make sure the file name does not contain any of the following characters:  <  >  ?  [  ]  :  | or  *
+• Make sure the file/path name doesn't contain more than 218 characters.
+   at Microsoft.Office.Interop.Excel.WorkbookClass.SaveAs(Object Filename, Object FileFormat, Object Password, Object WriteResPassword, Object ReadOnlyRecommended, Object CreateBackup, XlSaveAsAccessMode AccessMode, Object ConflictResolution, Object AddToMru, Object TextCodepage, Object TextVisualLayout, Object Local)
+   at FEPVWebApiOwinHost.ContractorController.ExportDataSetToExcel(DataSet ds, String strPath) in D:\FEPVWebApiOwinHost\FEPVWebApiOwinHost\ContractorController.cs:line 854
+2020-03-23 09:37:33
+System.Runtime.InteropServices.COMException (0x800A03EC): The file could not be accessed. Try one of the following:
+
+• Make sure the specified folder exists. 
+• Make sure the folder that contains the file is not read-only.
+• Make sure the file name does not contain any of the following characters:  <  >  ?  [  ]  :  | or  *
+• Make sure the file/path name doesn't contain more than 218 characters.
+   at Microsoft.Office.Interop.Excel.WorkbookClass.SaveAs(Object Filename, Object FileFormat, Object Password, Object WriteResPassword, Object ReadOnlyRecommended, Object CreateBackup, XlSaveAsAccessMode AccessMode, Object ConflictResolution, Object AddToMru, Object TextCodepage, Object TextVisualLayout, Object Local)
+   at FEPVWebApiOwinHost.ContractorController.ExportDataSetToExcel(DataSet ds, String strPath) in D:\FEPVWebApiOwinHost\FEPVWebApiOwinHost\ContractorController.cs:line 854
+2020-03-23 09:37:33
+System.Exception: The file could not be accessed. Try one of the following:
+
+• Make sure the specified folder exists. 
+• Make sure the folder that contains the file is not read-only.
+• Make sure the file name does not contain any of the following characters:  <  >  ?  [  ]  :  | or  *
+• Make sure the file/path name doesn't contain more than 218 characters.
+   at FEPVWebApiOwinHost.ContractorController.ExportDataSetToExcel(DataSet ds, String strPath) in D:\FEPVWebApiOwinHost\FEPVWebApiOwinHost\ContractorController.cs:line 862
+   at FEPVWebApiOwinHost.ContractorController.ConfirmdMail(String ContractorID, String VoucherID, String Mailkind, String Datetime) in D:\FEPVWebApiOwinHost\FEPVWebApiOwinHost\ContractorController.cs:line 583
+2020-03-23 09:37:33
+System.Runtime.InteropServices.COMException (0x800A03EC): The file could not be accessed. Try one of the following:
+
+• Make sure the specified folder exists. 
+• Make sure the folder that contains the file is not read-only.
+• Make sure the file name does not contain any of the following characters:  <  >  ?  [  ]  :  | or  *
+• Make sure the file/path name doesn't contain more than 218 characters.
+   at Microsoft.Office.Interop.Excel.WorkbookClass.SaveAs(Object Filename, Object FileFormat, Object Password, Object WriteResPassword, Object ReadOnlyRecommended, Object CreateBackup, XlSaveAsAccessMode AccessMode, Object ConflictResolution, Object AddToMru, Object TextCodepage, Object TextVisualLayout, Object Local)
+   at FEPVWebApiOwinHost.ContractorController.ExportDataSetToExcel(DataSet ds, String strPath) in D:\FEPVWebApiOwinHost\FEPVWebApiOwinHost\ContractorController.cs:line 854
+2020-03-23 09:37:33
+System.Exception: The file could not be accessed. Try one of the following:
+
+• Make sure the specified folder exists. 
+• Make sure the folder that contains the file is not read-only.
+• Make sure the file name does not contain any of the following characters:  <  >  ?  [  ]  :  | or  *
+• Make sure the file/path name doesn't contain more than 218 characters.
+   at FEPVWebApiOwinHost.ContractorController.ExportDataSetToExcel(DataSet ds, String strPath) in D:\FEPVWebApiOwinHost\FEPVWebApiOwinHost\ContractorController.cs:line 862
+   at FEPVWebApiOwinHost.ContractorController.ConfirmdMail(String ContractorID, String VoucherID, String Mailkind, String Datetime) in D:\FEPVWebApiOwinHost\FEPVWebApiOwinHost\ContractorController.cs:line 583
+2020-03-23 09:41:17
+System.Runtime.InteropServices.COMException (0x800A03EC): The file could not be accessed. Try one of the following:
+
+• Make sure the specified folder exists. 
+• Make sure the folder that contains the file is not read-only.
+• Make sure the file name does not contain any of the following characters:  <  >  ?  [  ]  :  | or  *
+• Make sure the file/path name doesn't contain more than 218 characters.
+   at Microsoft.Office.Interop.Excel.WorkbookClass.SaveAs(Object Filename, Object FileFormat, Object Password, Object WriteResPassword, Object ReadOnlyRecommended, Object CreateBackup, XlSaveAsAccessMode AccessMode, Object ConflictResolution, Object AddToMru, Object TextCodepage, Object TextVisualLayout, Object Local)
+   at FEPVWebApiOwinHost.ContractorController.ExportDataSetToExcel(DataSet ds, String strPath) in D:\FEPVWebApiOwinHost\FEPVWebApiOwinHost\ContractorController.cs:line 854
+2020-03-23 09:41:17
+System.Exception: The file could not be accessed. Try one of the following:
+
+• Make sure the specified folder exists. 
+• Make sure the folder that contains the file is not read-only.
+• Make sure the file name does not contain any of the following characters:  <  >  ?  [  ]  :  | or  *
+• Make sure the file/path name doesn't contain more than 218 characters.
+   at FEPVWebApiOwinHost.ContractorController.ExportDataSetToExcel(DataSet ds, String strPath) in D:\FEPVWebApiOwinHost\FEPVWebApiOwinHost\ContractorController.cs:line 862
+   at FEPVWebApiOwinHost.ContractorController.ConfirmdMail(String ContractorID, String VoucherID, String Mailkind, String Datetime) in D:\FEPVWebApiOwinHost\FEPVWebApiOwinHost\ContractorController.cs:line 583
+2020-03-23 09:50:06
+System.Runtime.InteropServices.COMException (0x800A03EC): The file could not be accessed. Try one of the following:
+
+• Make sure the specified folder exists. 
+• Make sure the folder that contains the file is not read-only.
+• Make sure the file name does not contain any of the following characters:  <  >  ?  [  ]  :  | or  *
+• Make sure the file/path name doesn't contain more than 218 characters.
+   at Microsoft.Office.Interop.Excel.WorkbookClass.SaveAs(Object Filename, Object FileFormat, Object Password, Object WriteResPassword, Object ReadOnlyRecommended, Object CreateBackup, XlSaveAsAccessMode AccessMode, Object ConflictResolution, Object AddToMru, Object TextCodepage, Object TextVisualLayout, Object Local)
+   at FEPVWebApiOwinHost.ContractorController.ExportDataSetToExcel(DataSet ds, String strPath) in D:\FEPVWebApiOwinHost\FEPVWebApiOwinHost\ContractorController.cs:line 856
+2020-03-23 09:53:19
+System.Runtime.InteropServices.COMException (0x800A03EC): The file could not be accessed. Try one of the following:
+
+• Make sure the specified folder exists. 
+• Make sure the folder that contains the file is not read-only.
+• Make sure the file name does not contain any of the following characters:  <  >  ?  [  ]  :  | or  *
+• Make sure the file/path name doesn't contain more than 218 characters.
+   at Microsoft.Office.Interop.Excel.WorkbookClass.SaveAs(Object Filename, Object FileFormat, Object Password, Object WriteResPassword, Object ReadOnlyRecommended, Object CreateBackup, XlSaveAsAccessMode AccessMode, Object ConflictResolution, Object AddToMru, Object TextCodepage, Object TextVisualLayout, Object Local)
+   at FEPVWebApiOwinHost.ContractorController.ExportDataSetToExcel(DataSet ds, String strPath) in D:\FEPVWebApiOwinHost\FEPVWebApiOwinHost\ContractorController.cs:line 856
+2020-03-23 09:53:28
+System.Exception: The file could not be accessed. Try one of the following:
+
+• Make sure the specified folder exists. 
+• Make sure the folder that contains the file is not read-only.
+• Make sure the file name does not contain any of the following characters:  <  >  ?  [  ]  :  | or  *
+• Make sure the file/path name doesn't contain more than 218 characters.
+   at FEPVWebApiOwinHost.ContractorController.ExportDataSetToExcel(DataSet ds, String strPath) in D:\FEPVWebApiOwinHost\FEPVWebApiOwinHost\ContractorController.cs:line 864
+   at FEPVWebApiOwinHost.ContractorController.ConfirmdMail(String ContractorID, String VoucherID, String Mailkind, String Datetime) in D:\FEPVWebApiOwinHost\FEPVWebApiOwinHost\ContractorController.cs:line 585

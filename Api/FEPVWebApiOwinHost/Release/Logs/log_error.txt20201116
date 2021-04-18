@@ -1,0 +1,8 @@
+2020-11-16 08:56:03
+System.IndexOutOfRangeException: There is no row at position 0.
+   at System.Data.RBTree`1.GetNodeByIndex(Int32 userIndex)
+   at FEPVWebApiOwinHost.ShowContractorController.getContractorInfoByEmployeeID(String employeeId, Int32 IsCompanyEmployee) in D:\FEPVWebApiOwinHost\FEPVWebApiOwinHost\ShowContractorController.cs:line 33
+2020-11-16 08:56:41
+System.IndexOutOfRangeException: There is no row at position 0.
+   at System.Data.RBTree`1.GetNodeByIndex(Int32 userIndex)
+   at FEPVWebApiOwinHost.ShowContractorController.getContractorInfoByEmployeeID(String employeeId, Int32 IsCompanyEmployee) in D:\FEPVWebApiOwinHost\FEPVWebApiOwinHost\ShowContractorController.cs:line 33

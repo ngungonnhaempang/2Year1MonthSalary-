@@ -1,0 +1,12 @@
+F:\FEPV\WEB_API\HRMSInterfaceDAL\bin\Debug\HRMSInterfaceDAL.dll.config
+F:\FEPV\WEB_API\HRMSInterfaceDAL\bin\Debug\HRMSInterfaceDAL.dll
+F:\FEPV\WEB_API\HRMSInterfaceDAL\bin\Debug\HRMSInterfaceDAL.pdb
+F:\FEPV\WEB_API\HRMSInterfaceDAL\obj\Debug\HRMSInterfaceDAL.csprojAssemblyReference.cache
+F:\FEPV\WEB_API\HRMSInterfaceDAL\obj\Debug\HRMSInterfaceDAL.dll
+F:\FEPV\WEB_API\HRMSInterfaceDAL\obj\Debug\HRMSInterfaceDAL.pdb
+D:\FEPVWebApiOwinHost\HRMSInterfaceDAL\bin\Debug\HRMSInterfaceDAL.dll.config
+D:\FEPVWebApiOwinHost\HRMSInterfaceDAL\bin\Debug\HRMSInterfaceDAL.dll
+D:\FEPVWebApiOwinHost\HRMSInterfaceDAL\bin\Debug\HRMSInterfaceDAL.pdb
+D:\FEPVWebApiOwinHost\HRMSInterfaceDAL\obj\Debug\HRMSInterfaceDAL.dll
+D:\FEPVWebApiOwinHost\HRMSInterfaceDAL\obj\Debug\HRMSInterfaceDAL.pdb
+D:\FEPVWebApiOwinHost\HRMSInterfaceDAL\obj\Debug\HRMSInterfaceDAL.csprojAssemblyReference.cache

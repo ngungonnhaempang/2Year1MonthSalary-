@@ -1,0 +1,6 @@
+D:\FEPVWebApiOwinHost\LIMS\Release\QC.Model.dll
+D:\FEPVWebApiOwinHost\LIMS\Release\QC.Model.pdb
+D:\FEPVWebApiOwinHost\LIMS\QC.Model\obj\Debug\QC.Model.csproj.CopyComplete
+D:\FEPVWebApiOwinHost\LIMS\QC.Model\obj\Debug\QC.Model.dll
+D:\FEPVWebApiOwinHost\LIMS\QC.Model\obj\Debug\QC.Model.pdb
+D:\FEPVWebApiOwinHost\LIMS\QC.Model\obj\Debug\QC.Model.csprojAssemblyReference.cache

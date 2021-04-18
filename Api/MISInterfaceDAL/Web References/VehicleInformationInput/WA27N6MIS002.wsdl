@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="SetOUTDATC">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="dsData">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetOUTDATCResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SetOUTDATCResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="SetOUTDATCSoapIn">
+    <wsdl:part name="parameters" element="tns:SetOUTDATC" />
+  </wsdl:message>
+  <wsdl:message name="SetOUTDATCSoapOut">
+    <wsdl:part name="parameters" element="tns:SetOUTDATCResponse" />
+  </wsdl:message>
+  <wsdl:portType name="WA27N6MIS002Soap">
+    <wsdl:operation name="SetOUTDATC">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">說明：&lt;br&gt;(MIS) 回傳車行資料至ERP</wsdl:documentation>
+      <wsdl:input message="tns:SetOUTDATCSoapIn" />
+      <wsdl:output message="tns:SetOUTDATCSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WA27N6MIS002Soap" type="tns:WA27N6MIS002Soap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SetOUTDATC">
+      <soap:operation soapAction="http://tempuri.org/SetOUTDATC" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WA27N6MIS002Soap12" type="tns:WA27N6MIS002Soap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SetOUTDATC">
+      <soap12:operation soapAction="http://tempuri.org/SetOUTDATC" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WA27N6MIS002">
+    <wsdl:port name="WA27N6MIS002Soap" binding="tns:WA27N6MIS002Soap">
+      <soap:address location="http://10.20.50.108/A27N6Service/WA27N6Connect/WA27N6MIS002.asmx" />
+    </wsdl:port>
+    <wsdl:port name="WA27N6MIS002Soap12" binding="tns:WA27N6MIS002Soap12">
+      <soap12:address location="http://10.20.50.108/A27N6Service/WA27N6Connect/WA27N6MIS002.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
