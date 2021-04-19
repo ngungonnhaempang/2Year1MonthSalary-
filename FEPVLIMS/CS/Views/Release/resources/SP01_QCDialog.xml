@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Form>
+  <!--DataTable:LanguageSetting-->
+  <DataTable TableName="LanguageSetting" CountOfRows="10" CountOfColumns="5">
+    <ClomunName Column0="ID" Column1="EN" Column2="CN" Column3="TW" Column4="VN" />
+	<Row0 Column0="lblSampleName" Column1="Sample Name:" Column2="Sample Name:" Column3="Sample Name:" Column4="Tên mẫu:" />
+	<Row1 Column0="lblLabName" Column1="Lab Name:" Column2="Lab Name:" Column3="Lab Name:" Column4="Tên phòng thí nghiệm:" />
+	<Row2 Column0="lblTypeName" Column1="Type Name:" Column2="Type Name:" Column3="Type Name:" Column4="Loại mẫu:" />
+	<Row3 Column0="lblDesEN" Column1="Description (EN) :" Column2="Description (EN)" Column3="Description (EN)" Column4="Thông tin miêu tả (EN) :" />
+	<Row4 Column0="lblDesTW" Column1="Description (TW) :" Column2="Description (TW)" Column3="Description (TW)" Column4="Thông tin miêu tả (TW) :" />
+	<Row5 Column0="lblDesCN" Column1="Description (CN) :" Column2="Description (CN)" Column3="Description (CN)" Column4="Thông tin miêu tả (CN) :" />
+	<Row6 Column0="lblDesVN" Column1="Description (VN) :" Column2="Description (VN)" Column3="Description (VN)" Column4="Thông tin miêu tả (VN) :" />
+	<Row7 Column0="btYes" Column1="OK" Column2="OK" Column3="OK" Column4="Xác nhận" />
+	<Row8 Column0="btNO" Column1="Cancel" Column2="Cancel" Column3="Cancel" Column4="Thoát" />
+	<Row9 Column0="lbReason" Column1="Please enter the information:" Column2="Please enter the information:" Column3="Please enter the information:" Column4="Vui lòng nhập đầy đủ thông tin: " />
+  </DataTable>
+</Form>

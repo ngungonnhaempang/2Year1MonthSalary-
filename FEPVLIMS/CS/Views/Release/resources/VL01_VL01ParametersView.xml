@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Form>
+  <!--DataTable:LanguageSetting-->
+  <DataTable TableName="LanguageSetting" CountOfRows="7" CountOfColumns="5">
+    <ClomunName Column0="ID" Column1="EN" Column2="CN" Column3="TW" Column4="VN" />
+	<Row0 Column0="groupPanel1" Column1="Prameters" Column2="参数" Column3="参数" Column4="Tham Số:" />
+    <Row1 Column0="label1" Column1="Date From:" Column2="日期从:" Column3="日期从:" Column4="Từ ngày:" />
+	<Row2 Column0="label2" Column1="To:" Column2="到:" Column3="到:" Column4="Đến" />
+    <Row3 Column0="label6" Column1="Delivery No:" Column2="单据号:" Column3="单据号:" Column4="Mã Giao Hàng:" />
+    <Row4 Column0="label5" Column1=" Material:" Column2="物料号:" Column3="物料號:" Column4="Vật liệu:" />
+    <Row5 Column0="label8" Column1="Plant:" Column2="工厂:" Column3="工廠:" Column4="Nhà Máy:" />
+    <Row6 Column0="label9" Column1="Batch:" Column2="批次:" Column3="批次:" Column4="Lô:" />
+    <Row7 Column0="label4" Column1="Cost Center:" Column2="成本中心:" Column3="成本中心:" Column4="T.Tâm chi phí:" />   
+    <Row8 Column0="label3" Column1="State:" Column2= "狀態:" Column3="狀態:"  Column4="Trạng thái:" />  
+    <Row9 Column0="groupPanel2" Column1="Additional Parameters:" Column2="其他参数:" Column3="其他参数:" Column4="Bổ sung Tham Số:" />
+    <Row10 Column0="label12" Column1="Voucher Type:" Column2="单据类型:" Column3="單據類型:" Column4="Loại Voucher:" />
+    <Row11 Column0="label10" Column1="Customer Number:" Column2="客户代码:" Column3="客戶代碼:" Column4="Mã khách hàng:" />
+    <Row12 Column0="label7" Column1="Customer Name:" Column2="客户名称:" Column3="客户名称:" Column4="Tên Khách Hàng:" />  
+    <Row12 Column0="lbShip" Column1="Ship Code:" Column2="船期编号:" Column3="船期编号:" Column4="Mã Tàu:" />  
+  </DataTable>
+ </Form>

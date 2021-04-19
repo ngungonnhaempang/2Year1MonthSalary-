@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Form>
+  <!--DataTable:LanguageSetting-->
+  <DataTable TableName="LanguageSetting" CountOfRows="7" CountOfColumns="5">
+    <ClomunName Column0="ID" Column1="EN" Column2="CN" Column3="TW" Column4="VN" />
+	<Row0 Column0="btSearchPlan" Column1="Search" Column2="查詢" Column3="查询" Column4="Tìm" />
+	<Row1 Column0="btAdd" Column1="Plan No Barcode" Column2="添加计划" Column3="添加计划" Column4="Thêm mới" />
+	<Row2 Column0="btAddPlan" Column1="加测" Column2="加测" Column3="加测" Column4="Thêm kế hoạch" />
+	<Row3 Column0="btDelete" Column1="Delete" Column2="删除文件" Column3="删除文件" Column4="Xóa" />
+	<Row4 Column0="btReturn" Column1="Exit" Column2="退出" Column3="退出" Column4="Thoát" />
+
+  </DataTable>
+</Form>

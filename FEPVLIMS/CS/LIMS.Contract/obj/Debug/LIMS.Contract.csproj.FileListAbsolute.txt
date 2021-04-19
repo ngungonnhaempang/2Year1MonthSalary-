@@ -1,0 +1,5 @@
+D:\FEPVLIMS\CS\Release\LIMS.Contract.dll
+D:\FEPVLIMS\CS\Release\LIMS.Contract.pdb
+D:\FEPVLIMS\CS\LIMS.Contract\obj\Debug\LIMS.Contract.csprojResolveAssemblyReference.cache
+D:\FEPVLIMS\CS\LIMS.Contract\obj\Debug\LIMS.Contract.dll
+D:\FEPVLIMS\CS\LIMS.Contract\obj\Debug\LIMS.Contract.pdb

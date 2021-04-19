@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CVALUE>
+  <COLUMN>
+    <LOT_NO>sadaw</LOT_NO>
+    <L>31</L>
+    <a>312</a>
+    <b>12</b>
+  </COLUMN>
+  <COLUMN>
+    <LOT_NO>SSP</LOT_NO>
+    <L>-0</L>
+    <a>-2.4</a>
+    <b>0.4</b>
+  </COLUMN>
+  <COLUMN>
+    <LOT_NO>CP-A30</LOT_NO>
+    <L>6</L>
+    <a>1</a>
+    <b>-1.231s</b>
+  </COLUMN>
+  <COLUMN>
+    <LOT_NO>CP-A36</LOT_NO>
+    <L>-1.0</L>
+    <a>-0.3</a>
+    <b>0.26</b>
+  </COLUMN>
+  <COLUMN>
+    <LOT_NO>CP-A20A</LOT_NO>
+    <L>-1.0</L>
+    <a>-1.1</a>
+    <b>2</b>
+  </COLUMN>
+</CVALUE>

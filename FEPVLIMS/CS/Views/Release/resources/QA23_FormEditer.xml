@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Form>
+  <!--DataTable:LanguageSetting-->
+  <DataTable TableName="LanguageSetting" CountOfRows="5" CountOfColumns="5">
+    <ClomunName Column0="ID" Column1="EN" Column2="TW" Column3="CN" Column4="VN" />
+      <Row1 Column0="btAccept" Column1="Accept" Column2="接 收" Column3="接 收" Column4="Chấp nhận" />
+      <Row2 Column0="btReject" Column1="Reject" Column2="拒绝并删除" Column3="拒绝并删除" Column4="Từ chối và xóa" />
+      <Row3 Column0="btCancel" Column1="Cancel" Column2="取消" Column3="取消" Column4="Hủy" />
+  </DataTable>
+	 <!--GridTable:gridView1-->
+  <GridTable TableName="gridView1" CountOfRows="7" CountOfColumns="5" >
+  	 <ClomunName Column0="ID" Column1="EN" Column2="CN" Column3="TW" Column4="VN" />
+	<Row0 Column0="VoucherID" Column1="VoucherID" Column2="單據號" Column3="单据号" Column4="Mã đơn" />
+	<Row1 Column0="LOT_NO" Column1="MaterialNo" Column2="物料號" Column3="物料号" Column4="Mã vật liệu"/>
+	<Row2 Column0="LINE" Column1="LINE" Column2="線別" Column3="线别" Column4="Line" />
+	<Row3 Column0="SheetDate" Column1="SheetDate" Column2="SheetDate" Column3="SheetDate" Column4="Ngày tạo" />
+	
+	<Row4 Column0="SampleID" Column1="SampleID" Column2="SampleID" Column3="SampleID" Column4="Mã mẫu" />
+	<Row5 Column0="State" Column1="State" Column2="狀態" Column3="状态" Column4="Trạng thái" />
+	<Row6 Column0="SampleName" Column1="SampleName" Column2="樣品名稱" Column3="样品名称" Column4="Tên mẫu" />
+	<Row7 Column0="Purpose" Column1="Purpose" Column2="Purpose" Column3="Purpose" Column4="Mục đích" />
+	<Row8 Column0="ProdDate" Column1="ProdDate" Column2="創建日期" Column3="创建日期" Column4="Ngày tạo" />
+	<Row9 Column0="CreateType" Column1="CreateType" Column2="CreateType" Column3="CreateType" Column4="Phân loại" />
+	<Row10 Column0="CompanyOfferSample" Column1="CompanyOfferSample" Column2="CompanyOfferSample" Column3="CompanyOfferSample" Column4="Công ty cung cấp mẫu"/>
+	<Row11 Column0="CompanyProduce" Column1="CompanyProduce" Column2="CompanyProduce" Column3="CompanyProduce" Column4="Công ty sản xuất" />
+	<Row12 Column0="GradeVersion" Column1="GradeVersion" Column2="GradeVersion" Column3="GradeVersion" Column4="Phiên bản" />
+	
+  </GridTable>
+
+	</Form>

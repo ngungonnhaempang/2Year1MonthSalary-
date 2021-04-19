@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Form>
+  <!--DataTable:LanguageSetting-->
+  <DataTable TableName="LanguageSetting" CountOfRows="11" CountOfColumns="11">
+    <ClomunName Column0="ID" Column1="EN" Column2="TW" Column3="CN" Column4="VN" />
+	<Row0 Column0="lblMaterialSpec" Column1="Material Spec	:" Column2="物料规格:" Column3="物料規格:" Column4="Thông số kỹ thuật:" />
+	<Row1 Column0="lblProductDate" Column1="ProdDate:" Column2="生产日期:" Column3="生产日期:" Column4="Ngày sản xuất:" />
+	<Row2 Column0="lblSupplier" Column1="Manufacture:" Column2="厂商:" Column3="厂商:" Column4="Công ty cung ứng:" />
+	<Row3 Column0="lblQuantity" Column1="Quantity:" Column2="收货数量:" Column3="收货数量:" Column4="Số lượng:" />
+	<Row4 Column0="lblVoucherID" Column1="DOC No:" Column2="單據號:" Column3="单据号:" Column4="Mã đơn:" />
+	<Row5 Column0="lblOrderNo" Column1="Order No:" Column2="收货凭证:" Column3="收货凭证:" Column4="Mã tài chính:" />
+	<Row6 Column0="lblUnit" Column1="Unit:" Column2="單位:" Column3="單位:" Column4="Đơn vị:" />
+	<Row7 Column0="lblTotalSamples" Column1="Total Samples:" Column2="总样品:" Column3="总样品:" Column4="Tổng số mẫu:" />
+	<Row8 Column0="lblRemark" Column1="Remark:" Column2="備註:" Column3="备注:" Column4="Ghi chú:" />
+	<Row9 Column0="btYes" Column1="Yes" Column2="保存" Column3="保存" Column4="Xác nhận" />
+	<Row10 Column0="btNO" Column1="NO" Column2="取 消:" Column3="备注" Column4="Hủy bỏ" />
+  </DataTable>
+</Form>

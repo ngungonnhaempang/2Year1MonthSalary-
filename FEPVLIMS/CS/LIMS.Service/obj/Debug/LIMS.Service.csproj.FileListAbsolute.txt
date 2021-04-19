@@ -1,0 +1,5 @@
+D:\FEPVLIMS\CS\Release\LIMS.Service.dll
+D:\FEPVLIMS\CS\Release\LIMS.Service.pdb
+D:\FEPVLIMS\CS\LIMS.Service\obj\Debug\LIMS.Service.dll
+D:\FEPVLIMS\CS\LIMS.Service\obj\Debug\LIMS.Service.pdb
+D:\FEPVLIMS\CS\LIMS.Service\obj\Debug\LIMS.Service.csprojResolveAssemblyReference.cache

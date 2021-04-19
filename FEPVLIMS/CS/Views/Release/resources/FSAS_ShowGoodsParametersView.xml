@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Form>
+  <!--DataTable:LanguageSetting-->
+  <DataTable TableName="LanguageSetting" CountOfRows="12" CountOfColumns="5">
+    <ClomunName Column0="ID" Column1="EN" Column2="CN" Column3="TW" Column4="VN" />
+    <Row0 Column0="_ParameterPanel" Column1="[Credentials parameter]" Column2="[凭证参数]" Column3="[凭证参数]" Column4="[Tham số thông tin]" />
+    <Row1 Column0="label5" Column1="Transactiontype" Column2="事务类型" Column3="事务类型" Column4="Loại giao dịch" />
+    <Row2 Column0="label22" Column1="material" Column2="物料" Column3="物料" Column4="Vật liệu" />
+    <Row3 Column0="label15" Column1="Grade" Column2="等级" Column3="等级" Column4="Grade" />
+    <Row4 Column0="label3" Column1="特代" Column2="特代" Column3="特代" Column4="Grades" />
+    <Row5 Column0="label2" Column1="线别" Column2="线别" Column3="线别" Column4="Line" />
+    <Row6 Column0="label12" Column1="plant" Column2="工厂" Column3="工厂" Column4="Xưởng" />
+    <Row7 Column0="label4" Column1="place" Column2="地点" Column3="地点" Column4="Địa điểm" />
+    <Row8 Column0="label9" Column1="version0" Column2="版本" Column3="版本" Column4="Version" />
+    <Row9 Column0="label14" Column1="version" Column2="前道版本" Column3="前道版本" Column4="Version cũ" />
+    <Row10 Column0="label7" Column1="Packets" Column2="总包数" Column3="总包数" Column4="Tổng số" />
+    <Row11 Column0="label6" Column1="Weight" Column2="总重量" Column3="总重量" Column4="Tổng lượng" />
+  </DataTable>
+ </Form>

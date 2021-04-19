@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Form>
+  <!--DataTable:LanguageSetting-->
+  <DataTable TableName="LanguageSetting" CountOfRows="1" CountOfColumns="5">
+    <ClomunName Column0="ID" Column1="EN" Column2="CN" Column3="TW" Column4="VN" />
+    
+  </DataTable>
+  <!--GridTable:gridViewGood1-->
+  <GridTable TableName="gvData" CountOfRows="26" CountOfColumns="5">
+    <ClomunName Column0="ID" Column1="EN" Column2="CN" Column3="TW" Column4="VN" />
+      <Row0 Column0="MaterialNO" Column1="Material NO" Column2="物料号" Column3="物料號" Column4="Mã vật phẩm" />
+      <Row1 Column0="CenterID" Column1="Cost Center" Column2="成本中心" Column3="成本中心" Column4="Trung tâm chi phí" />
+      <Row2 Column0="Plan" Column1="Plan" Column2="工厂" Column3="工廠" Column4="Xưởng" />
+      <Row3 Column0="Loc" Column1="Location" Column2="库位" Column3="庫位" Column4="Vị trí" />
+      <Row4 Column0="Batch" Column1="Batch" Column2="批次" Column3="批次" Column4="Lô hàng" />
+      <Row5 Column0="packageType" Column1="Package Type" Column2="包装方式" Column3="包装方式" Column4="Loại đóng bao" />
+      <Row6 Column0="LINE" Column1="LINE" Column2="线别" Column3="线别" Column4="Chuyền" />
+      <Row7 Column0="MFBFInMNum"  Column1="MFBFInMNum" Column2="本月缴库" Column3="本月繳庫" Column4="Nhập kho trong tháng" />
+      <Row8 Column0="MFBFInMCount"  Column1="MFBFInMNum" Column2="本月缴库数量" Column3="本月繳庫數量" Column4="Số lượng nhập kho trong tháng" />
+      <Row9 Column0="MFBFInDNum" Column1="MFBFInDNum" Column2="本日缴库" Column3="本日缴库" Column4="Nhập kho trong ngày" />
+      <Row10 Column0="MFBFInDCount" Column1="MFBFInDCount" Column2="本日缴库数量" Column3="本日繳庫數量" Column4="Số lượng nhập kho trong ngày " />
+      <Row11 Column0="TransferInMNum" Column1="TransferInMNum" Column2="本月调拨" Column3="本月調撥" Column4="Chuyển kho trong tháng" />
+      <Row12 Column0="TransferInMCount" Column1="TransferInMCount" Column2="本月调拨调数量" Column3="本月調撥數量" Column4="Số lượng chuyển kho trong tháng" />
+      <Row13 Column0="TransferInDNum" Column1="TransferInDNum" Column2="本日调拨" Column3="本日調撥" Column4="Chuyển kho trong ngày" />
+      <Row14 Column0="TransferInDCount" Column1="TransferInDCount" Column2="本日调拨数量" Column3="本日調撥數量" Column4="Số lượng chuyển kho trong ngày" />
+      <Row15 Column0="MigoInMNum" Column1="MigoInMNum" Column2="本月采购" Column3="本月採購" Column4="Thu mua trong tháng" />
+      <Row16 Column0="MigoInMCount" Column1="MigoInMCount" Column2="本月采购数量" Column3="本月採購數量" Column4="Số lượng thu mua trong tháng" />
+      <Row17 Column0="MigoInDNum" Column1="MigoInDNum" Column2="本日采购" Column3="本日採購" Column4="Thu mua trong ngày" />
+      <Row18 Column0="MigoInDCount" Column1="MigoInDCount" Column2="本日采购数量" Column3="本日採購數量" Column4="Số lượng thu mua trong ngày" />
+      <Row19 Column0="TOTALNUMBarCode" Column1="Total BarCode" Column2="结存" Column3="結存" Column4="Tổng số" />
+      <Row20 Column0="TOTALBarCode" Column1="Total BarCode Number" Column2="包号" Column3="包號" Column4="Tổng SL mã vạch" />
+
+    
+  </GridTable>
+</Form>

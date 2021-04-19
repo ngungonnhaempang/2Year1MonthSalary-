@@ -1,0 +1,10 @@
+D:\FEPVLIMS\CS\Release\LIMS.Model.dll
+D:\FEPVLIMS\CS\Release\LIMS.Model.pdb
+D:\LIMS\FEPVWebApiOwinHost\FEPVWebApiOwinHost\Release\LIMS.Model.dll
+D:\LIMS\FEPVWebApiOwinHost\FEPVWebApiOwinHost\Release\LIMS.Model.pdb
+D:\LIMS\FEPVWebApiOwinHost\FEPVWebApiOwinHost\bin\Release\LIMS.Model.dll
+D:\LIMS\FEPVWebApiOwinHost\FEPVWebApiOwinHost\bin\Release\LIMS.Model.pdb
+D:\FEPVLIMS\CS\LIMS.Model\obj\Debug\LIMS.Model.dll
+D:\FEPVLIMS\CS\LIMS.Model\obj\Debug\LIMS.Model.pdb
+D:\FEPVLIMS\CS\LIMS.Model\obj\Debug\LIMS.Model.csproj.CopyComplete
+D:\FEPVLIMS\CS\LIMS.Model\obj\Debug\LIMS.Model.csprojAssemblyReference.cache

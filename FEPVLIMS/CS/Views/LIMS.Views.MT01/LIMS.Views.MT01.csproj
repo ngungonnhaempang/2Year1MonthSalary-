@@ -1,0 +1,164 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{36D95FEB-79B2-4286-A45D-F93D9FA50574}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>LIMS.Views</RootNamespace>
+    <AssemblyName>LIMS.Views.MT01</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\Release\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BasicLanuage">
+      <HintPath>..\..\..\..\MIS\FEPVMESClient\Lib\BasicLanuage.dll</HintPath>
+    </Reference>
+    <Reference Include="DevComponents.DotNetBar2">
+      <HintPath>..\..\..\..\MIS\FEPVMESClient\Lib\DevComponents.DotNetBar2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Data.v12.1, Version=12.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\FEPVLIMS\CS\Lib\DevExpress\DevExpress.Data.v12.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Design.v12.1, Version=12.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\FEPVLIMS\CS\Lib\DevExpress\DevExpress.Design.v12.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Utils.v12.1, Version=12.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\FEPVLIMS\CS\Lib\DevExpress\DevExpress.Utils.v12.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraEditors.v12.1, Version=12.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\FEPVLIMS\CS\Lib\DevExpress\DevExpress.XtraEditors.v12.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraGrid.v12.1, Version=12.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\FEPVLIMS\CS\Lib\DevExpress\DevExpress.XtraGrid.v12.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraLayout.v12.1, Version=12.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\FEPVLIMS\CS\Lib\DevExpress\DevExpress.XtraLayout.v12.1.dll</HintPath>
+    </Reference>
+    <Reference Include="GenuineChannels">
+      <HintPath>..\..\..\..\MIS\FEPVMESClient\Lib\GenuineChannels.dll</HintPath>
+    </Reference>
+    <Reference Include="Infrastructure.BaseForm">
+      <HintPath>..\..\..\..\MIS\FEPVMESClient\Lib\Infrastructure.BaseForm.dll</HintPath>
+    </Reference>
+    <Reference Include="Infrastructure.Library, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\FEPVMES\LIB\Infrastructure.Library.dll</HintPath>
+    </Reference>
+    <Reference Include="LIMS.BLL">
+      <HintPath>..\..\..\..\MIS\FEPVMESClient\DLL\LIMS.BLL.dll</HintPath>
+    </Reference>
+    <Reference Include="LIMS.Model">
+      <HintPath>..\..\..\..\MIS\FEPVMESClient\DLL\LIMS.Model.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.CompositeUI">
+      <HintPath>..\..\..\..\MIS\FEPVMESClient\Lib\Microsoft.Practices.CompositeUI.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.CompositeUI.WinForms">
+      <HintPath>..\..\..\..\MIS\FEPVMESClient\Lib\Microsoft.Practices.CompositeUI.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="MIS.Utility">
+      <HintPath>..\..\..\..\MIS\FEPVMESClient\Lib\MIS.Utility.dll</HintPath>
+    </Reference>
+    <Reference Include="NBear.Common, Version=4.7.2.6, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Lib\NBear.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="NBear.Data, Version=4.7.2.6, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Lib\NBear.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>C:\Users\ctthuy\source\repos\Solution1\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WeifenLuo.WinFormsUI.Docking">
+      <HintPath>..\..\..\..\MIS\FEPVMESClient\Lib\WeifenLuo.WinFormsUI.Docking.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="MT01.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MT01.Designer.cs">
+      <DependentUpon>MT01.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MT01Biz.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MT01View.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MT01View.Designer.cs">
+      <DependentUpon>MT01View.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="MT01Dialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MT01Dialog.Designer.cs">
+      <DependentUpon>MT01Dialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="unittest.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="MT01.resx">
+      <DependentUpon>MT01.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MT01View.resx">
+      <DependentUpon>MT01View.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="MT01Dialog.resx">
+      <DependentUpon>MT01Dialog.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

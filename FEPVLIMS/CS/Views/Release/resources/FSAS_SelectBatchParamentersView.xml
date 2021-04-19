@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Form>
+  <!--DataTable:LanguageSetting-->
+  <DataTable TableName="LanguageSetting" CountOfRows="11" CountOfColumns="5">
+    <ClomunName Column0="ID" Column1="EN" Column2="CN" Column3="TW" Column4="VN" />
+    <Row0 Column0="_ParameterPanel" Column1="[Batch parameters]" Column2="[批次参数]" Column3="[批次参数]" Column4="[批次参数]" />
+    <Row1 Column0="label27" Column1="StartTime" Column2="区间日期" Column3="区间日期" Column4="区间日期" />
+    <Row2 Column0="label26" Column1="TO" Column2="到" Column3="到" Column4="到" />
+    <Row3 Column0="label25" Column1="material" Column2="物料" Column3="物料" Column4="物料" />
+    <Row4 Column0="label5" Column1="plant" Column2="工厂" Column3="工厂" Column4="工厂" />
+    <Row5 Column0="label4" Column1="level" Column2="等级" Column3="等级" Column4="等级" />
+    <Row6 Column0="label1" Column1="place" Column2="地点" Column3="地点" Column4="地点" />
+    <Row7 Column0="label3" Column1="特代" Column2="特代" Column3="特代" Column4="特代" />
+    <Row8 Column0="label2" Column1="线别" Column2="线别" Column3="线别" Column4="线别" />
+    <Row9 Column0="label28" Column1="OrderNumber" Column2="单号" Column3="单号" Column4="单号" />
+    <Row10 Column0="label6" Column1="BarCode" Column2="包号" Column3="包号" Column4="包号" />
+  </DataTable>
+ </Form>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Form>
+  <!--DataTable:LanguageSetting-->
+  <DataTable TableName="LanguageSetting" CountOfRows="5" CountOfColumns="5">
+    <ClomunName Column0="ID" Column1="EN" Column2="TW" Column3="CN" Column4="VN" />
+	<Row0 Column0="label1" Column1="Date Form" Column2="创建日期" Column3="創建日期" Column4="Từ ngày" />
+	<Row1 Column0="label2" Column1="To" Column2="到" Column3="到" Column4="Đến" />
+	<Row2 Column0="lblLabName" Column1="DraftID" Column2="委託單號" Column3="委托单号" Column4="Đơn ủy thác:" />
+	<Row3 Column0="lblMaterial" Column1="Material" Column2="物料号" Column3="物料號" Column4="Mã vật liệu" />
+	<Row4 Column0="lblSampleName" Column1="Sample Name:" Column2="Sample Name:" Column3="Sample Name:" Column4="Tên mẫu:" />
+  </DataTable>
+  
+  <!--GridTable:gridView1-->
+  <GridTable TableName="gridView1" CountOfRows="7" CountOfColumns="5">
+    <ClomunName Column0="ID" Column1="EN" Column2="TW" Column3="CN" Column4="VN" />
+    <Row0 Column0="MBLNR" Column1="Receive No" Column2="單據號" Column3="单据号" Column4="Mã đơn" />
+	<Row1 Column0="MJAHR" Column1="Year" Column2="年" Column3="年" Column4="Năm" />
+	<Row2 Column0="ZEILE" Column1="Items" Column2="物品编号" Column3="物品编号" Column4="Số thứ tự" />
+	<Row3 Column0="MATNR" Column1="Material No" Column2="物料號" Column3="物料号" Column4="Mã vật liệu" />
+	<Row4 Column0="MAKTX" Column1="Material Spec" Column2="物料規格" Column3="物料规格" Column4="Thông số kỹ thuật" />
+	<Row5 Column0="NAME1" Column1="Manufacturer" Column2="客户" Column3="客戶" Column4="Nhà cung ứng" />
+	<Row6 Column0="MENGE" Column1="Quanlity" Column2="數量" Column3="数量" Column4="Số lượng" />
+	<Row5 Column0="MEINS" Column1="Unit" Column2="單位" Column3="單位" Column4="Đơn vị" />
+	<Row6 Column0="EBELN" Column1="PO_NO" Column2="訂單號" Column3="订单号" Column4="Mã tài chính" />
+	<Row5 Column0="BUDAT" Column1="Posting Date" Column2="发布日期" Column3="发布日期" Column4="Ngày nhập" />
+	<Row6 Column0="LGORT" Column1="Plant" Column2="工厂" Column3="工廠" Column4="Xưởng" />
+  </GridTable>
+ <GridTable TableName="gridView2" CountOfRows="17" CountOfColumns="5">
+    <ClomunName Column0="ID" Column1="EN" Column2="TW" Column3="CN" Column4="VN" />
+    <Row0 Column0="VoucherID" Column1="VoucherID" Column2="單據號" Column3="单据号" Column4="Mã đơn" />
+	<Row1 Column0="SampleName" Column1="SampleID" Column2="样品编码" Column3="樣品編碼" Column4="Mã mẫu" />
+	<Row2 Column0="LOT_NO" Column1="Material" Column2="物料号" Column3="物料號" Column4="Mã vật liệu" />
+	<Row3 Column0="MJAH" Column1="MJAH" Column2="生产日期" Column3="生产日期" Column4="Năm nhập  vật liệu" />
+	
+	<Row4 Column0="ZEIL" Column1="ZEIL" Column2="项目号" Column3="项目号" Column4="Số thứ tự" />
+	<Row5 Column0="Remark" Column1="Remark" Column2="備註" Column3="备注" Column4="Ghi chú" />
+	<Row6 Column0="Vendor" Column1="Vendor" Column2="厂商" Column3="厂商" Column4="Nhà cung ứng" />
+	<Row7 Column0="Quatity" Column1="Quatity" Column2="收货数量" Column3="收货数量" Column4="Số lượng đơn" />
+	<Row8 Column0="SampleQuantity" Column1="SampleQuantity" Column2="数量" Column3="数量" Column4="Số lượng" />
+	<Row9 Column0="GR_NO" Column1="GR_NO (SAP)" Column2="收货单号(SAP)" Column3="收货单号(SAP)" Column4="Mã đơn SAP" />
+	<Row10 Column0="GR_Date" Column1="GR_Date" Column2="订单日期" Column3="订单日期" Column4="Ngày tạo đơn" />
+	<Row11 Column0="PO_NO" Column1="PO_NO" Column2="訂單號" Column3="订单号" Column4="Mã tài chính" />
+	<Row12 Column0="GR_Unit" Column1="GR_Unit" Column2="单位" Column3="单位" Column4="Đơn vị" />
+	<Row13 Column0="Grade" Column1="Grade" Column2="等級" Column3="等级" Column4="Loại Hàng" />
+	<Row14 Column0="State" Column1="State" Column2="状态" Column3="状态" Column4="Trạng thái" />
+	<Row15 Column0="Remark" Column1="Remark" Column2="備註" Column3="备注" Column4="Ghi chú" />
+	<Row16 Column0="SheetDate" Column1="SheetDate" Column2="创建日期" Column3="创建日期" Column4="Ngày tạo SHEET" />
+
+  
+	</Form>

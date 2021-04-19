@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Form>
+  <!--DataTable:LanguageSetting-->
+  <DataTable TableName="LanguageSetting" CountOfRows="5" CountOfColumns="5" >
+    <ClomunName Column0="ID" Column1="EN" Column2="CN" Column3="TW" Column4="VN" />
+    <Row0 Column0="btnQuery" Column1="Search" Column2="查询" Column3="查詢" Column4="Tìm Kiếm" />
+    <Row1 Column0="btPrint" Column1="Print" Column2="打印" Column3="打印" Column4="In" />
+    <Row2 Column0="gpMainPanel" Column1="[Query Parameters]" Column2="[查询条件]" Column3="[查詢條件]" Column4="[Thông số]" />
+    <Row3 Column0="btIsPrint" Column1="Is Details" Column2="详情" Column3="詳情" Column4="Chi tiết" />
+    <Row4 Column0="lblDateFrom" Column1="From" Column2="日期" Column3="日期" Column4="Ngày" />
+    <Row5 Column0="lblDateTo" Column1="To" Column2="到" Column3="到" Column4="Đến" />
+    <Row6 Column0="lbType" Column1="Type" Column2="类型" Column3="類型" Column4="Phân loại" />
+    <Row7 Column0="lblCostcenter" Column1="Cost center" Column2="成本中心" Column3="成本中心" Column4="Trung tâm chi phí" />
+    <Row8 Column0="lblMaterialNo" Column1="Material NO" Column2="物料号" Column3="物料號" Column4="Mã vật liệu" />
+    <Row9 Column0="lblPlant" Column1="Plant" Column2="工厂" Column3="工廠" Column4="Xưởng" />
+    <Row10 Column0="lblBatch" Column1="Batch" Column2="批次" Column3="批次" Column4="Số lô" />
+    <Row11 Column0="lbVoucherID" Column1="VoucherID" Column2="单号" Column3="單號" Column4="Mã đơn" />
+    <Row12 Column0="lbState" Column1="State" Column2="状态" Column3="狀態" Column4="Trạng thái" />
+  </DataTable>
+
+
+  <!--GridTable:gridView3-->
+  <GridTable TableName="gridView3" CountOfRows="14" CountOfColumns="5">
+    <ClomunName Column0="ID" Column1="EN" Column2="CN" Column3="TW" Column4="VN" />
+    	<Row0 Column0="TransID" Column1="Trans ID" Column2="事务ID" Column3="事務ID" Column4="Lưu trình" />
+    	<Row1 Column0="VoucherID" Column1="Voucher ID" Column2="单号" Column3="單號" Column4="Mã đơn" />
+	<Row2 Column0="MaterialNO" Column1="Material NO" Column2="物料号" Column3="物料號" Column4="Mã vật liệu" />
+	<Row3 Column0="ProdSpec" Column1="Prod Spec" Column2="规格" Column3="規格" Column4="Quy cách" />
+    	<Row4 Column0="Batch" Column1="Batch" Column2="批次" Column3="批次" Column4="Số lô" />
+	<Row5 Column0="Plant" Column1="Plant" Column2="工厂" Column3="工廠" Column4="Xưởng" />
+	<Row6 Column0="CenterID" Column1="Cost Center" Column2="成本中心" Column3="成本中心" Column4="Trung tâm chi phí" />
+	<Row7 Column0="AccDate" Column1="Acc Date" Column2="创建日期" Column3="創建日期" Column4="Ngày tạo" />
+    	<Row8 Column0="TotalNum" Column1="Tota lNum" Column2="拣配量" Column3="揀配量" Column4="Tổng trọng lượng" />
+    	<Row9 Column0="TotalCount" Column1="Total Count" Column2="包数" Column3="包數" Column4="Số bao" />
+    	<Row10 Column0="Version0" Column1="Version" Column2="版本" Column3="版本" Column4="Phiên bản" />
+	<Row11 Column0="MoveType" Column1="Move Type" Column2="类型" Column3="類型" Column4="Phân loại" />
+	<Row12 Column0="STATE" Column1="STATE" Column2="状态" Column3="狀態" Column4="Trạng thái" />
+    	<Row13 Column0="ReasonSpec" Column1="Reason Spec" Column2="原因" Column3="原因" Column4="Nguyên nhân" />
+  </GridTable>
+</Form>

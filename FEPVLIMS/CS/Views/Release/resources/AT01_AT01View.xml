@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Form>
+  <!--DataTable:LanguageSetting-->
+  <DataTable TableName="LanguageSetting" CountOfRows="6" CountOfColumns="5">
+    <ColumnName Column0="ID" Column1="EN" Column2="CN" Column3="TW" Column4="VN" />    
+    <Row1 Column0="lblSampleName" Column1="Sample Name:" Column2="样品名称：" Column3="樣品名稱：" Column4="Tên mẫu" />
+    <Row2 Column0="lblTypeName" Column1="Type Name:" Column2="类型：" Column3="類型：" Column4="Phân loại" />
+    <Row3 Column0="lblLabName" Column1="Lab Name:" Column2="化验室：" Column3="化驗室：" Column4="Phòng thí nghiệm:" />
+    <Row4 Column0="_Result" Column1="[Result]" Column2="[结果]" Column3="[結果]" Column4="[Kết quả]" />
+    <Row5 Column0="_Parameter" Column1="[Parameter]" Column2="[参数]" Column3="[參數]" Column4="[Thông số]" />  
+  </DataTable>
+  <!--GridTable:gridView1-->
+  <GridTable TableName="gridView1" CountOfRows="15" CountOfColumns="5">
+    <ColumnName Column0="ID" Column1="EN" Column2="CN" Column3="TW" Column4="VN" />
+    <Row0 Column0="SampleName" Column1="SampleName" Column2="样品名称" Column3="樣品名稱" Column4="Tên mẫu" />
+    <Row1 Column0="SampleDescription" Column1="SampleDescription" Column2="样品描述" Column3="樣品描述" Column4="Mô tả mẫu" />
+    <Row2 Column0="LabName" Column1="LabName" Column2="化验室" Column3="化驗室" Column4="Phòng thí nghiệm" />
+    <Row3 Column0="TypeName" Column1="TypeName" Column2="类型" Column3="類型" Column4="Phân loại" />
+    <Row4 Column0="PropertyName" Column1="PropertyName" Column2="属性名称" Column3="屬性名稱" Column4="Thuộc tính" />
+    <Row5 Column0="Description_EN" Column1="Description_EN" Column2="描述_EN" Column3="描述_EN" Column4="Mô tả_EN" />
+    <Row6 Column0="Description_TW" Column1="Description_TW" Column2="描述_TW" Column3="描述_TW" Column4="Mô tả_TW" />
+    <Row7 Column0="Description_CN" Column1="Description_CN" Column2="描述_CN" Column3="描述_CN" Column4="Mô tả_CN" />
+    <Row8 Column0="Description_VN" Column1="Description_VN" Column2="描述_VN" Column3="描述_VN" Column4="Mô tả_VN" />
+    <Row9 Column0="Unit" Column1="Unit" Column2="单位" Column3="單位" Column4="Đơn vị" />
+    <Row10 Column0="Prec" Column1="Precision" Column2="精度" Column3="精度" Column4="Độ chính xác" />
+    <Row11 Column0="Remark" Column1="Remark" Column2="备注" Column3="備註" Column4="Ghi chú" />
+    <Row12 Column0="EnRemark" Column1="EnRemark" Column2="英文备注" Column3="英文備註" Column4="Ghi chú_EN" />
+    <Row13 Column0="JPNRemark" Column1="JPNRemark" Column2="日文备注" Column3="日文備註" Column4="Ghi chú_JPN" />
+    <Row14 Column0="OrderBy" Column1="OrderBy" Column2="OrderBy" Column3="OrderBy" Column4="OrderBy" />
+  </GridTable>
+</Form>

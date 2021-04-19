@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Form>
+  <!--DataTable:LanguageSetting-->
+  <DataTable TableName="LanguageSetting" CountOfRows="4" CountOfColumns="5">
+    <ClomunName Column0="ID" Column1="EN" Column2="CN" Column3="TW" Column4="VN" />
+    <Row0 Column0="lblFrom" Column1="From:" Column2="From:" Column3="From:" Column4="Từ:" />
+    <Row1 Column0="lblTo" Column1="To:" Column2="To:" Column3="To:" Column4="Đến:" />
+    <Row2 Column0="lblMaterial" Column1="Material:" Column2="Material:" Column3="Material:" Column4="Vật liệu:" />
+    <Row3 Column0="lblVoucherID" Column1="VoucherID" Column2="进厂计划单号:" Column3="進廠計劃單號:" Column4="Số nhập xưởng:" />
+  </DataTable>
+   <!--GridTable:gridView1-->
+  <GridTable TableName="gridView1" CountOfRows="18" CountOfColumns="5">
+    <ClomunName Column0="ID" Column1="EN" Column2="CN" Column3="TW" Column4="VN" />
+    <Row0 Column0="TableName" Column1="TableName" Column2="TableName" Column3="TableName" Column4="Tên bảng" />
+    <Row1 Column0="VoucherID" Column1="VoucherID" Column2="VoucherID" Column3="VoucherID" Column4="Mã đơn" />
+    <Row2 Column0="VehicleType" Column1="VehicleType" Column2="VehicleType" Column3="VehicleType" Column4="Loại phương tiện" />
+    <Row3 Column0="VehicleNO" Column1="VehicleNO" Column2="VehicleNO" Column3="VehicleNO" Column4="Biển số xe" />
+    <Row4 Column0="Manufacturer" Column1="Manufacturer" Column2="Manufacturer" Column3="Manufacturer" Column4="Nhà sản xuất" />
+    <Row5 Column0="OrderNO" Column1="OrderNO" Column2="OrderNO" Column3="OrderNO" Column4="Số đơn đặt hàng" />
+    <Row6 Column0="Material" Column1="Material" Column2="Material" Column3="Material" Column4="Vật liệu" />
+    <Row7 Column0="ExpectIn" Column1="ExpectIn" Column2="预约进厂日期" Column3="預約進廠日期" Column4="Ngày dự kiến vào xưởng" />
+    <Row8 Column0="LinkMan" Column1="LinkMan" Column2="联系人" Column3="聯繫人" Column4="Người liên hệ" />
+    <Row9 Column0="LinkPhone" Column1="Link Phone" Column2="联系电话" Column3="聯系電話" Column4="Điện thoại liên hệ" />
+    <Row10 Column0="StorageNO" Column1="StorageNO" Column2="StorageNO" Column3="StorageNO" Column4="Số kho" />
+	<Row11 Column0="FirstWeight" Column1="FirstWeight" Column2="进厂过磅" Column3="進廠過磅" Column4="Trọng lượng vào" />
+    <Row12 Column0="FirstTime" Column1="FirstTime" Column2="进厂过磅时间" Column3="進廠過磅時間" Column4="Thời gian qua cân vào xưởng" />
+    <Row13 Column0="SecondWeight" Column1="SecondWeight" Column2="出厂过磅" Column3="出廠過磅" Column4="Trọng lượng ra" />
+    <Row14 Column0="SecondTime" Column1="SecondTime" Column2="出厂过磅时间" Column3="出廠過磅時間" Column4="Thời gian qua cân xuất xưởng" />  
+    <Row15 Column0="Status" Column1="Status" Column2="Status" Column3="Status" Column4="Trạng thái" />
+    <Row16 Column0="ImportBatch" Column1="ImportBatch" Column2="ImportBatch" Column3="ImportBatch" Column4="Dẫn nhập lô hàng" />
+    <Row17 Column0="Container" Column1="Container" Column2="原因说明" Column3="原因說明" Column4="Nguyên nhân" />
+  </GridTable>
+</Form>

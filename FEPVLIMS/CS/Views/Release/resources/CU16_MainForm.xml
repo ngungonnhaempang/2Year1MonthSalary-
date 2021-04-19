@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Form>
+  <!--DataTable:LanguageSetting-->
+  <DataTable TableName="LanguageSetting" CountOfRows="16" CountOfColumns="5">
+    <ClomunName Column0="ID" Column1="EN" Column2="CN" Column3="TW" Column4="VN" />
+    <Row0 Column0="btSearch" Column1="Search" Column2="查询" Column3="查询" Column4="查询VN" />
+    <Row1 Column0="btAdd" Column1="Add" Column2="添加" Column3="添加TW" Column4="添加VN" />
+    <Row2 Column0="btSet" Column1="Setting" Column2="设置" Column3="设置TW" Column4="设置VN" />
+   
+    <Row10 Column0="lbUser" Column1="UserName" Column2="用户" Column3="用户TW" Column4="用户VN" />
+    <Row11 Column0="btAssign" Column1="Assign" Column2="分配" Column3="分配TW" Column4="分配VN" />
+    
+  </DataTable>
+</Form>

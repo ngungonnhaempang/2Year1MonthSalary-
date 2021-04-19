@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Form>
+  <!--DataTable:LanguageSetting-->
+  <DataTable TableName="LanguageSetting" CountOfRows="8" CountOfColumns="5" >
+    <ClomunName Column0="ID" Column1="EN" Column2="CN" Column3="TW" Column4="VN" />
+	<Row0 Column0="ceMaterial" Column1="Material:" Column2="物料:" Column3="物料:" Column4="Vật liệu:" />
+	<Row1 Column0="ceGrade" Column1="Grade:" Column2="等级:" Column3="等級:" Column4="Grade:" />
+    <Row2 Column0="ceGrades" Column1="Grades:" Column2="特代:" Column3="特代:" Column4="Grades:" />
+	<Row3 Column0="ceLine" Column1="Line:" Column2="线别:" Column3="線別:" Column4="Line:" />
+	<Row4 Column0="ceChip" Column1="Chip:" Column2="酯别:" Column3="酯别:" Column4="Chip:" />
+	<Row5 Column0="ceNum" Column1="Num:" Column2="包数:" Column3="包數:" Column4="Số lượng:" />
+	<Row6 Column0="ceGwt" Column1="GWT:" Column2="皮重:" Column3="皮重:" Column4="Bao bì:" />
+	<Row7 Column0="ceSilo" Column1="SILO:" Column2="SILO:" Column3="SILO:" Column4="SILO:" />
+  </DataTable>
+</Form>

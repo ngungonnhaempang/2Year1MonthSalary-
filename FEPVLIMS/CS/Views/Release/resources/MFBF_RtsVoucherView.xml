@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Form>
+  <!--DataTable:LanguageSetting-->
+  <DataTable TableName="LanguageSetting" CountOfRows="13" CountOfColumns="5">
+    <ClomunName Column0="ID" Column1="EN" Column2="CN" Column3="TW" Column4="VN" />
+	<Row0 Column0="lblTransType" Column1="TransID:" Column2="事务ID" Column3="事務ID" Column4="Mã vận tải:" />
+	<Row1 Column0="lblBatchFrom" Column1="Batch:" Column2="批次" Column3="批次" Column4="Batch:" />
+	<Row2 Column0="lblBatchTo" Column1="-->" Column2="-->" Column3="-->" Column4="-->" />
+	<Row3 Column0="lblCenterIDFrom" Column1="CenterID" Column2="成本中心" Column3="成本中心" Column4="CenterID" />
+	<Row4 Column0="lblCenterIDTo" Column1="-->" Column2="-->" Column3="-->" Column4="-->" />
+	<Row5 Column0="lblPlantFrom" Column1="Plant" Column2="工厂" Column3="工廠" Column4="Plant" />
+	<Row6 Column0="lblPlantTo" Column1="-->" Column2="-->" Column3="-->" Column4="-->" />
+	<Row7 Column0="lblLocFrom" Column1="Loc" Column2="库位" Column3="庫位" Column4="Loc" />
+	<Row8 Column0="lblLocTo" Column1="-->" Column2="-->" Column3="-->" Column4="-->" />
+	<Row9 Column0="lblGrade" Column1="Grade:" Column2="等级" Column3="等級" Column4="Grade:" />
+	<Row10 Column0="lblLine" Column1="Line" Column2="线别" Column3="線別" Column4="Line:" />
+	<Row11 Column0="lblMaterial" Column1="Material:" Column2="物料" Column3="物料" Column4="Mã vật liệu:" />
+	<Row12 Column0="_ParameterPanel" Column1="[Parameters]" Column2="[批次参数]" Column3="[批次參數]" Column4="[Chi tiết vật liệu]" />
+  </DataTable>
+</Form>

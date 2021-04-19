@@ -1,0 +1,5 @@
+D:\FEPVLIMS\CS\Views\LIMS.Views.GD01\obj\Debug\LIMS.Views.GD01.csprojResolveAssemblyReference.cache
+D:\FEPVLIMS\CS\Views\LIMS.Views.GD01\obj\Debug\LIMS.Views.GD01.resources
+D:\FEPVLIMS\CS\Views\LIMS.Views.GD01\obj\Debug\LIMS.Views.GD01View.resources
+D:\FEPVLIMS\CS\Views\LIMS.Views.GD01\obj\Debug\LIMS.Views.GD01.csproj.GenerateResource.Cache
+D:\FEPVLIMS\CS\Views\LIMS.Views.GD01\obj\Debug\LIMS.Views.GD01.dll.licenses

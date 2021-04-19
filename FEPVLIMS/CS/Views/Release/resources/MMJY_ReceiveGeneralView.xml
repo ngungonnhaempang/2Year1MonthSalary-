@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Form>
+  <!--DataTable:LanguageSetting-->
+  <DataTable TableName="LanguageSetting" CountOfRows="0" CountOfColumns="5">
+    <ClomunName Column0="ID" Column1="EN" Column2="CN" Column3="TW" Column4="VN" />
+  </DataTable>
+
+<!--GridTable:gridView1-->
+  <GridTable TableName="gridView1" CountOfRows="17" CountOfColumns="5">
+    <ClomunName Column0="ID" Column1="EN" Column2="CN" Column3="TW" Column4="VN" />
+    	<Row0 Column0="VoucherID" Column1="VoucherID" Column2="单据号" Column3="單據號" Column4="VoucherID" />
+    	<Row1 Column0="SampleName" Column1="SampleName" Column2="样品" Column3="樣品" Column4="SampleName" />
+    	<Row2 Column0="LOT_NO" Column1="LOT_NO" Column2="物料" Column3="物料" Column4="LOT_NO" />
+		<Row3 Column0="Grade" Column1="Grade" Column2="等级" Column3="等級" Column4="Grade" />
+		<Row4 Column0="State" Column1="State" Column2="状态" Column3="狀態" Column4="State" />		
+		<Row5 Column0="Remark" Column1="Receipt batch" Column2="收货批次" Column3="收货批次" Column4="Nhận hàng loạt" />
+		<Row6 Column0="SheetDate" Column1="SheetDate" Column2="单据日期" Column3="單據日期" Column4="SheetDate" />
+		<Row7 Column0="GradeVersion" Column1="GradeVersion" Column2="等级版本" Column3="等級版本" Column4="GradeVersion" />
+    	<Row8 Column0="UserID" Column1="UserID" Column2="创建人" Column3="創建人" Column4="UserID" />		
+		<Row9 Column0="EBELN" Column1="EBELN" Column2="采购单号" Column3="採購單號" Column4="EBELN" />
+		<Row10 Column0="EBELP" Column1="EBELP" Column2="项次" Column3="項次" Column4="EBELP" />
+		<Row11 Column0="Vendor" Column1="Vendor" Column2="供应商" Column3="供應商" Column4="Vendor" />
+		<Row12 Column0="SampleQuantity" Column1="SampleQuantity" Column2="样品数量" Column3="樣品數量" Column4="SampleQuantity" />
+		<Row13 Column0="GR_NO" Column1="GR_NO" Column2="收货单号" Column3="收貨單號" Column4="GR_NO" />
+		<Row14 Column0="Quatity" Column1="Quatity" Column2="收货数量" Column3="收貨數量" Column4="Quatity" />
+		<Row15 Column0="GR_Date" Column1="GR_Date" Column2="收货日期" Column3="收貨日期" Column4="GR_Date" />
+		<Row16 Column0="GR_Unit" Column1="GR_Unit" Column2="单位" Column3="單位" Column4="GR_Unit" />
+  </GridTable>
+</Form>

@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Form>
+  <!--DataTable:LanguageSetting-->
+  <DataTable TableName="LanguageSetting" CountOfRows="8" CountOfColumns="5">
+    <ClomunName Column0="ID" Column1="EN" Column2="CN" Column3="TW" Column4="VN" />
+    <Row0 Column0="btQuerySAH" Column1="Query" Column2="查询" Column3="査詢" Column4="Tìm Kiếm" />
+    <Row1 Column0="btRockback" Column1="Report" Column2="冲销" Column3="沖銷" Column4="Đảo ngược" />
+    <Row2 Column0="butSAPUnPick" Column1="UnPick" Column2="解锁拣配" Column3="解锁拣配" Column4="UnPick" />
+    <Row3 Column0="butDelete" Column1="SAP Delete" Column2="SAP解锁删除单据" Column3="SAP解锁删除单据" Column4="Xóa SAP" />
+    <Row4 Column0="bt2txt" Column1="Export2Text" Column2="导出EXCEL" Column3="导出到EXCEL" Column4="Xuất Excel" />
+    <Row5 Column0="btPrint" Column1="Print" Column2="打印" Column3="打印" Column4="In" />    
+	<Row6 Column0="btRollback" Column1="Rollback" Column2="回滾" Column3="回滾" Column4="Trả lại" />    	
+    <Row7 Column0="btReturn" Column1="Return" Column2="返回" Column3="返回" Column4="Trở Về" />  
+	<Row7 Column0="butCancelContainer" Column1="CancelContainer" Column2="取消上传柜号" Column3="取消上传柜号" Column4="Hủy số Cont" />  
+  </DataTable>
+ </Form>

@@ -1,0 +1,10 @@
+D:\FEPVLIMS\CS\Views\Release\LIMS.Views.MT01.exe
+D:\FEPVLIMS\CS\Views\Release\LIMS.Views.MT01.pdb
+D:\FEPVLIMS\CS\Views\LIMS.Views.MT01\obj\Debug\LIMS.Views.MT01.resources
+D:\FEPVLIMS\CS\Views\LIMS.Views.MT01\obj\Debug\LIMS.Views.MT01View.resources
+D:\FEPVLIMS\CS\Views\LIMS.Views.MT01\obj\Debug\LIMS.Views.MT01Dialog.resources
+D:\FEPVLIMS\CS\Views\LIMS.Views.MT01\obj\Debug\LIMS.Views.MT01.csproj.GenerateResource.cache
+D:\FEPVLIMS\CS\Views\LIMS.Views.MT01\obj\Debug\LIMS.Views.MT01.exe.licenses
+D:\FEPVLIMS\CS\Views\LIMS.Views.MT01\obj\Debug\LIMS.Views.MT01.exe
+D:\FEPVLIMS\CS\Views\LIMS.Views.MT01\obj\Debug\LIMS.Views.MT01.pdb
+D:\FEPVLIMS\CS\Views\Release\LIMS.Views.MT01.exe.config

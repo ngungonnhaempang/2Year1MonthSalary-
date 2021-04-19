@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Form>
+  <!--DataTable:LanguageSetting-->
+  <DataTable TableName="LanguageSetting" CountOfRows="4" CountOfColumns="5">
+    <ClomunName Column0="ID" Column1="EN" Column2="CN" Column3="TW" Column4="VN" />
+    	<Row0 Column0="btSearch" Column1="SearchMIS" Column2="查询MIS库存" Column3="查詢MIS庫存" Column4="SearchMIS" />
+    	<Row1 Column0="btSAP" Column1="SearchSAP" Column2="查询SAP库存" Column3="查詢SAP庫存" Column4="SearchSAP" />
+    	<Row2 Column0="BtExcel" Column1="Export" Column2="导出" Column3="導出" Column4="Export" />
+	<Row3 Column0="btBack" Column1="Back" Column2="返回" Column3="返回" Column4="Back" />
+  </DataTable>
+</Form>

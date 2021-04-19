@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Form>
+  <!--DataTable:LanguageSetting-->
+  <DataTable TableName="LanguageSetting" CountOfRows="8" CountOfColumns="5">
+    <ClomunName Column0="ID" Column1="EN" Column2="CN" Column3="TW" Column4="VN" />
+    <Row0 Column0="_ParameterPanel" Column1="[Query conditions]" Column2="[查询条件]" Column3="[查詢條件]" Column4="[Điều kiện tìm kiếm]" />
+    <Row2 Column0="label1" Column1="StartTime" Column2="区间时间" Column3="区间时间" Column4="区间时间" />
+    <Row3 Column0="label2" Column1="TO" Column2="到" Column3="到" Column4="到" />
+    <Row4 Column0="label6" Column1="material" Column2="物料" Column3="物料" Column4="物料" />
+    <Row5 Column0="label19" Column1="plant" Column2="工厂" Column3="工厂" Column4="工厂" />
+    <Row6 Column0="label4" Column1="batch" Column2="批次" Column3="批次" Column4="批次" />
+    <Row7 Column0="label3" Column1="place" Column2="地点" Column3="地点" Column4="地点" />
+  </DataTable>
+ </Form>

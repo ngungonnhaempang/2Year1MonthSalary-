@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Form>
+  <!--DataTable:LanguageSetting-->
+  <DataTable TableName="LanguageSetting" CountOfRows="11" CountOfColumns="5">
+    <ClomunName Column0="ID" Column1="EN" Column2="TW" Column3="CN" Column4="VN" />
+	<Row0 Column0="lbReason" Column1="Confirm:" Column2="確認信息:" Column3="确认信息:" Column4="Xác nhận thông tin:" />
+	<Row1 Column0="lblRemark" Column1="Remark:" Column2="備註:" Column3="备注：" Column4="Ghi chú:" />
+	<Row2 Column0="btYes" Column1="OK" Column2="確認" Column3="确认" Column4="Xác nhận" />
+	<Row3 Column0="btNO" Column1="Cancel:" Column2="取 消" Column3="取 消" Column4="Hủy" />
+  </DataTable>
+</Form>

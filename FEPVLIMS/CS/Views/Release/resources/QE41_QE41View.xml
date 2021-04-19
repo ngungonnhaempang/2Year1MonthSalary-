@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Form>
+  <DataTable TableName="LanguageSetting" CountOfRows="5" CountOfColumns="5">
+    <ClomunName Column0="ID" Column1="EN" Column2="TW" Column3="CN" Column4="VN" />
+	
+	<Row0 Column0="_Parameter" Column1="[Query Parameters]" Column2="[搜索條件]:" Column3="[搜索条件]:" Column4="[Nội dung tìm kiếm]" />
+	<Row1 Column0="_DOCList" Column1="[DOC List]" Column2="[單據列表]" Column3="[单据列表]" Column4="[Danh sách đơn]" />
+	<Row2 Column0="_ItemsList" Column1="[Items List]" Column2="[屬性]" Column3="[属性]" Column4="[Thuộc tính]" />
+	<Row3 Column0="lblDateFrom" Column1="Date From:" Column2="日期：" Column3="日期：" Column4="Từ ngày :" />
+	<Row4 Column0="lblDateTo" Column1="Date To:" Column2="到：" Column3="到：" Column4="Đến ngày:" />
+	<Row5 Column0="lblVoucherID" Column1="VoucherID:" Column2="單據號：" Column3="单据号：" Column4="Mã đơn:" />
+	<Row6 Column0="lblSampleID" Column1=" SampleNO::" Column2="樣品編號" Column3="样品编号" Column4="Mã số:" />
+	<Row5 Column0="lblSampleName" Column1="SampleID::" Column2="樣品編碼:" Column3="样品编码:" Column4="Mã mẫu:" />
+	<Row6 Column0="lblMaterialNo" Column1=" Material No:" Column2="物料號:" Column3="物料号:" Column4="Mã vật liệu:" />
+	
+  </DataTable>
+   <GridTable TableName="gridView1" CountOfRows="7" CountOfColumns="5">
+ <ClomunName Column0="ID" Column1="EN" Column2="TW" Column3="CN" Column4="VN" />
+ 
+	<Row0 Column0="VoucherID" Column1="VoucherID" Column2="單據號" Column3="单据号" Column4="Mã đơn" />
+	<Row1 Column0="SampleName" Column1="SampleID" Column2="樣品編碼" Column3="样品编码" Column4="Mã mẫu" />
+	<Row2 Column0="SampleDescription" Column1="SampleDescription" Column2="樣品描述" Column3="样品描述" Column4="Miêu tả" />
+	<Row3 Column0="LOT_NO" Column1="MaterialNo" Column2="物料號" Column3="物料号" Column4="Mã vật liệu" />
+	<Row4 Column0="ADATE" Column1="ProdDate" Column2="創建日期" Column3="创建日期" Column4="Ngày tạo" />
+	<Row5 Column0="VoucherState" Column1="State" Column2="狀態" Column3="状态" Column4="Trạng thái" />
+	<Row6 Column0="ProfileState" Column1="State" Column2="狀態" Column3="状态" Column4="Trạng thái" />
+
+    </GridTable>
+  
+    <GridTable TableName="gridView2" CountOfRows="7" CountOfColumns="5">
+    <ClomunName Column0="ID" Column1="EN" Column2="TW" Column3="CN" Column4="VN" />
+  
+	<Row0 Column0="PropertyName" Column1="PropertyName" Column2="屬性名稱" Column3="属性名称" Column4="Tên thuộc tính" />
+	<Row1 Column0="Result" Column1="Result" Column2="檢測結果" Column3="检测结果" Column4="Nhập dữ liệu" />
+	<Row2 Column0="OutRange" Column1="OutRange" Column2="超限" Column3="超限" Column4="Vượt quá" />
+	<Row3 Column0="ValueSpec" Column1="ValueSpec" Column2="允許值" Column3="允许值" Column4="Giá trị cho phép" />
+	<Row4 Column0="MinValue" Column1="MinValue" Column2="最小值" Column3="最小值" Column4="Giá trị nhỏ nhất" />
+	<Row5 Column0="MaxValue" Column1="MaxValue" Column2="最大值" Column3="最大值" Column4="Giá trị lớn nhất" />
+	<Row6 Column0="JudgeItem" Column1="JudgeItem" Column2="判等項" Column3="判等项" Column4="Sử dụng tính toán" />
+	<Row7 Column0="Prec" Column1="Prec" Column2="精度" Column3="精度" Column4="Độ chính xác" />
+	<Row8 Column0="Unit" Column1="Unit" Column2="單位" Column3="单位" Column4="Đơn vị" />
+	<Row9 Column0="State" Column1="ProfileState" Column2="狀態" Column3="状态" Column4="Trạng thái" />
+  </GridTable>
+	</Form>

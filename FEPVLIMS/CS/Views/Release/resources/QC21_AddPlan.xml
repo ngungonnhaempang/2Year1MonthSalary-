@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Form>
+  <!--DataTable:LanguageSetting-->
+  <DataTable TableName="LanguageSetting" CountOfRows="11" CountOfColumns="5">
+    <ClomunName Column0="ID" Column1="EN" Column2="TW" Column3="CN" Column4="VN" />
+	<Row0 Column0="lblSampleName" Column1="Sample Name:" Column2="樣品編號:" Column3="样品编号:" Column4="Mã mẫu:" />
+	<Row1 Column0="lblMaterialSpec" Column1="Material Spec:" Column2="物料規格:" Column3="物料规格:" Column4="Quy cách:" />
+	<Row2 Column0="lblLine" Column1="Line:" Column2="線別:" Column3="线别:" Column4="Line:" />
+	<Row3 Column0="lblProdDate" Column1="Produce Date:" Column2="取樣時間:" Column3="取样时间:" Column4="T.gian lấy mẫu:" />
+	<Row4 Column0="lblRemark" Column1="Remark:" Column2="備註：" Column3="备注：" Column4="Ghi chú:" />
+	<Row5 Column0="lblSampleID" Column1="Sample NO:" Column2="樣品編號:" Column3="样品编号:" Column4="Mã mẫu:" />
+	<Row6 Column0="lblCompanyOffer" Column1="Company Offer:" Column2="供樣廠商:" Column3="供样厂商:" Column4="Nhà cung cấp mẫu:" />
+	<Row7 Column0="lblCompanyProd" Column1="Company Prod:" Column2="生產廠商:" Column3="生产厂商:" Column4="Nhà sản xuất:" />
+	<Row8 Column0="lblPOYLOTTO" Column1="POY Lotto:" Column2="POY原絲號:" Column3="POY原丝号:" Column4="Số POY gốc:" />
+	<Row9 Column0="btYes" Column1="OK" Column2="確認:" Column3="确认:" Column4="Xác nhận" />
+	<Row10 Column0="btNO" Column1="Cancel" Column2="取 消:" Column3="取 消:" Column4="Hủy" />
+	<Row10 Column0="lblCreateType" Column1="CreateType" Column2="創建類型:" Column3="创建类型:" Column4="Loại tạo:" />
+	<Row10 Column0="lblTypeName" Column1="Type Name" Column2="分類:" Column3="分类:" Column4="Phân loại:" />
+  </DataTable>
+</Form>

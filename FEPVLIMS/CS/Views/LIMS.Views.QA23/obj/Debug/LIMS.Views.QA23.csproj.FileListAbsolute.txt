@@ -1,0 +1,7 @@
+D:\FEPVLIMS\CS\Views\LIMS.Views.QA23\obj\Debug\LIMS.Views.QA23.csprojResolveAssemblyReference.cache
+D:\FEPVLIMS\CS\Views\LIMS.Views.QA23\obj\Debug\LIMS.Views.Properties.Resources.resources
+D:\FEPVLIMS\CS\Views\LIMS.Views.QA23\obj\Debug\LIMS.Views.QA23.resources
+D:\FEPVLIMS\CS\Views\LIMS.Views.QA23\obj\Debug\LIMS.Views.QA23Dialog.resources
+D:\FEPVLIMS\CS\Views\LIMS.Views.QA23\obj\Debug\LIMS.Views.QA23View.resources
+D:\FEPVLIMS\CS\Views\LIMS.Views.QA23\obj\Debug\LIMS.Views.QA23.csproj.GenerateResource.Cache
+D:\FEPVLIMS\CS\Views\LIMS.Views.QA23\obj\Debug\LIMS.Views.QA23.exe.licenses

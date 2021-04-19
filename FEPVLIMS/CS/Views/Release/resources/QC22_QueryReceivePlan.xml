@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Form>
+  <!--DataTable:LanguageSetting-->
+  <DataTable TableName="LanguageSetting" CountOfRows="4" CountOfColumns="5">
+    <ClomunName Column0="ID" Column1="EN" Column2="CN" Column3="TW" Column4="VN" />
+    <Row0 Column0="lblFrom" Column1="From:" Column2="From:" Column3="From:" Column4="Từ ngày:" />
+    <Row1 Column0="lblTo" Column1="To:" Column2="To:" Column3="To:" Column4="Đến:" />
+    <Row2 Column0="lblMaterial" Column1="Material:" Column2="Material:" Column3="Material:" Column4="Vật liệu:" />
+    <Row3 Column0="lblVoucherID" Column1="VoucherID:" Column2="VoucherID:" Column3="VoucherID:" Column4="Mã đơn:" />
+  </DataTable>
+   <!--GridTable:gridView1-->
+  <GridTable TableName="gridView1" CountOfRows="5" CountOfColumns="5">
+    <ClomunName Column0="ID" Column1="EN" Column2="CN" Column3="TW" Column4="VN" />
+    <Row0 Column0="VoucherID" Column1="VoucherID" Column2="VoucherID" Column3="VoucherID" Column4="Mã đơn" />
+    <Row1 Column0="GatePlanID" Column1="GatePlanID" Column2="GatePlanID" Column3="GatePlanID" Column4="Mã kế hoạch" />
+    <Row2 Column0="LOT_NO" Column1="LOT_NO" Column2="LOT_NO" Column3="LOT_NO" Column4="Quy cách" />
+    <Row3 Column0="State" Column1="State" Column2="State" Column3="State" Column4="Trạng thái" />
+    <Row4 Column0="SheetDate" Column1="SheetDate" Column2="SheetDate" Column3="SheetDate" Column4="Ngày tạo" />
+  </GridTable>
+</Form>

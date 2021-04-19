@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Form>
+  <!--DataTable:LanguageSetting-->
+  <DataTable TableName="LanguageSetting" CountOfRows="9" CountOfColumns="5">
+    <ColumnName Column0="ID" Column1="EN" Column2="CN" Column3="TW" Column4="VN" />
+    <Row0 Column0="TEXT" Column1="FEIT" Column2="FEIT" Column3="FEIT" Column4="FEIT" />
+    <Row1 Column0="label2" Column1="To:" Column2="到：" Column3="到：" Column4="Đến:" />
+    <Row2 Column0="label3" Column1="Reason:" Column2="原因:" Column3="原因:" Column4="Nguyên nhân:" />
+    <Row3 Column0="label1" Column1="SampleName:" Column2="样品名称:" Column3="樣品名稱:" Column4="Tên mẫu:" />
+    <Row4 Column0="lblVoucherID" Column1="Voucher ID:" Column2="单号：" Column3="單號：" Column4="Mã đơn:" />
+    <Row5 Column0="btNo" Column1="Cancel" Column2="取消" Column3="取消" Column4="Hủy" />
+    <Row6 Column0="btYes" Column1="Confirm" Column2="保存" Column3="保存" Column4="Lưu" />
+    <Row7 Column0="ceMaterial" Column1="Material:" Column2="物料:" Column3="物料:" Column4="Vật liệu:" />
+    <Row8 Column0="lbReason" Column1="Please enter the information:" Column2="请输入信息：" Column3="請輸入信息：" Column4="Vui lòng nhập vào thông tin: " />
+  </DataTable>
+</Form>

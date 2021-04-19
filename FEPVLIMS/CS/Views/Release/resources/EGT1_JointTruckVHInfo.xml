@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Form>
+  <!--DataTable:LanguageSetting-->
+  <DataTable TableName="LanguageSetting" CountOfRows="12" CountOfColumns="5">
+    <ClomunName Column0="ID" Column1="EN" Column2="CN" Column3="TW" Column4="VN" />
+    <Row0 Column0="lblVoucherID" Column1="VoucherID" Column2="单据号" Column3="單據號" Column4="Mã đơn" />
+    <Row1 Column0="lblVehicleShape" Column1="VehicleShape" Column2="车型" Column3="車型" Column4="Loại xe" />
+    <Row2 Column0="lblTransferCompany" Column1="TransferCompany" Column2="车行" Column3="車行" Column4="Công ty vận chuyển" />
+    <Row3 Column0="lblVehicleNO" Column1="VehicleNO" Column2="车号" Column3="車號" Column4="Số xe" />
+    <Row4 Column0="lblDriver" Column1="Driver" Column2="司机" Column3="司機" Column4="Tài xế" />
+    <Row5 Column0="lblDriverPhone" Column1="DriverPhone" Column2="司机电话" Column3="司機電話" Column4="Đt tài xế" />
+    <Row6 Column0="lblExpectIn" Column1="ExpectIn" Column2="进厂日期" Column3="進廠日期" Column4="T.gian vào" />
+    <Row7 Column0="lblValidatePeriod" Column1="ValidatePeriod" Column2="有效期" Column3="有效期" Column4="T.gian hiệu lực" />
+    <Row8 Column0="lblMaterielType" Column1="MaterielType" Column2="物料" Column3="物料" Column4="Loại vật liệu" />
+    <Row9 Column0="lblRemark" Column1="Remark" Column2="备注" Column3="備註" Column4="Ghi chú" />
+    <Row10 Column0="btYes" Column1="Save" Column2="保存" Column3="保存" Column4="Lưu" />
+    <Row11 Column0="btNO" Column1="Cancel" Column2="取消" Column3="取消" Column4="Hủy bỏ" />
+  </DataTable>
+</Form>

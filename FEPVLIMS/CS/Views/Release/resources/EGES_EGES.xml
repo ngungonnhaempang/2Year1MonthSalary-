@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Form>
+  <!--DataTable:LanguageSetting-->
+  <DataTable TableName="LanguageSetting" CountOfRows="5" CountOfColumns="5">
+    <ClomunName Column0="ID" Column1="EN" Column2="CN" Column3="TW" Column4="VN" />
+    <Row0 Column0="tabPageTruck" Column1="[Truck in factory]" Column2="[厂内车辆]" Column3="[廠內車輛]" Column4="[Xe trong xưởng]" />
+    <Row1 Column0="tabPageContainer" Column1="[Cont in factory]" Column2="[厂内柜号]" Column3="[廠內櫃號]" Column4="[Cont trong xưởng]" />
+    <Row2 Column0="btnSearchTruck" Column1="Search" Column2="查询" Column3="查询" Column4="Tìm" />
+    <Row3 Column0="butTruckInfactory" Column1="Update TruckNO" Column2="修改厂内车号" Column3="修改廠內車號" Column4="Chỉnh sửa số xe" />
+    <Row4 Column0="butQueryContainer" Column1="Search" Column2="查询" Column3="查詢" Column4="Tìm" />
+    <Row4 Column0="butContainerInFactory" Column1="Update ContainerNO" Column2="修改厂内柜号" Column3="修改廠內櫃號" Column4="Chỉnh sửa số cont" />
+
+  </DataTable>
+</Form>

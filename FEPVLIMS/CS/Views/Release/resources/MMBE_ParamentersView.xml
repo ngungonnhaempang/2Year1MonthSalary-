@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Form>
+  <!--DataTable:LanguageSetting-->
+  <DataTable TableName="LanguageSetting" CountOfRows="5" CountOfColumns="5">
+    <ClomunName Column0="ID" Column1="EN" Column2="CN" Column3="TW" Column4="VN" />
+    	<Row0 Column0="_ParameterPanel" Column1="Query parameters" Column2="查询参数" Column3="查詢參數" Column4="Query parameters" />
+    	<Row1 Column0="lblMaterialNo" Column1="MaterialNo" Column2="物料" Column3="物料" Column4="MaterialNo" />
+    	<Row2 Column0="lblPlant" Column1="Plant" Column2="工厂" Column3="工廠" Column4="Plant" />
+	<Row3 Column0="lblBatch" Column1="Batch" Column2="批次" Column3="批次" Column4="Batch" />
+	<Row4 Column0="lblLoc" Column1="Location" Column2="地点" Column3="地點" Column4="Location" />
+  </DataTable>
+</Form>

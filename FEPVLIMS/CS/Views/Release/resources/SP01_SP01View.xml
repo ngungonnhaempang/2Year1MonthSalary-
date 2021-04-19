@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Form>
+  <!--DataTable:LanguageSetting-->
+  <DataTable TableName="LanguageSetting" CountOfRows="5" CountOfColumns="5">
+    <ClomunName Column0="ID" Column1="EN" Column2="CN" Column3="TW" Column4="VN" />
+	<Row0 Column0="_Parameter" Column1="[Query Parameters]" Column2="[Query Parameters]" Column3="[Query Parameters]" Column4="[Nội dung tìm kiếm]" />
+	<Row1 Column0="_Result" Column1="[Result]" Column2="[Result]" Column3="[Result]" Column4="[Nội dung hiển thị]" />
+	<Row2 Column0="lblLabName" Column1="Lab Name:" Column2="Lab Name:" Column3="Lab Name:" Column4="Phòng thí nghiệm:" />
+	<Row3 Column0="lblTypeName" Column1="Type Name:" Column2="Type Name:" Column3="Type Name:" Column4="Loại mẫu:" />
+	<Row4 Column0="lblSampleName" Column1="Sample Name:" Column2="Sample Name:" Column3="Sample Name:" Column4="Tên mẫu:" />
+  </DataTable>
+  
+  <!--GridTable:gridView1-->
+  <GridTable TableName="gridView1" CountOfRows="7" CountOfColumns="5">
+    <ClomunName Column0="ID" Column1="EN" Column2="CN" Column3="TW" Column4="VN" />
+    <Row0 Column0="SampleName" Column1="SampleName" Column2="SampleName" Column3="SampleName" Column4="Tên mẫu" />
+	<Row1 Column0="LabName" Column1="LabName" Column2="LabName" Column3="LabName" Column4="Phòng thí nghiệm" />
+	<Row2 Column0="TypeName" Column1="TypeName" Column2="TypeName" Column3="TypeName" Column4="Loại mẫu" />
+	<Row3 Column0="Description_EN" Column1="Description_EN" Column2="Description_EN" Column3="Description_EN" Column4="Miêu tả (EN)" />
+	<Row4 Column0="Description_TW" Column1="Description_TW" Column2="Description_TW" Column3="Description_TW" Column4="Miêu tả (TW)" />
+	<Row5 Column0="Description_CN" Column1="Description_CN" Column2="Description_CN" Column3="Description_CN" Column4="Miêu tả (CN)" />
+	<Row6 Column0="Description_VN" Column1="Description_VN" Column2="Description_VN" Column3="Description_VN" Column4="Miêu tả (VN)" />
+
+	<Row7 Column0="LabID" Column1="LabID" Column2="LabID" Column3="LabID" Column4="LabID" />
+		<Row8 Column0="TypeID" Column1="TypeID" Column2="TypeID" Column3="TypeID" Column4="TypeID" />
+		<Row8 Column0="AB" Column1="AB" Column2="AB" Column3="AB" Column4="AB" />
+  </GridTable>
+</Form>

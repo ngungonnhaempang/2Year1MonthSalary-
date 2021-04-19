@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Form>
+  <!--DataTable:LanguageSetting-->
+  <DataTable TableName="LanguageSetting" CountOfRows="11" CountOfColumns="11">
+    <ClomunName Column0="ID" Column1="EN" Column2="TW" Column3="CN" Column4="VN" />
+	<Row0 Column0="btnGetSAPReceive" Column1="Get SAP Receive" Column2="SAP查詢" Column3="SAP查询" Column4="Lấy dữ liệu từ SAP" />
+	<Row1 Column0="btTransfer" Column1="Release SAP Transfer" Column2="释放库位" Column3="释放库位" Column4="Trả về SAP" />
+	<Row2 Column0="btCreateAuto" Column1="Create Automatic" Column2="自动单据" Column3="自动单据" Column4="Tự tạo đơn" />
+	<Row3 Column0="btCreateManual" Column1="Create Manually" Column2="手动单据" Column3="手动单据" Column4="Tạo đơn thủ công" />
+	<Row4 Column0="btReturn" Column1="Exit" Column2="退出" Column3="退出" Column4="Thoát" />
+	<Row5 Column0="btDelete" Column1="Delete" Column2="删除文件" Column3="删除文件" Column4="Xóa" />
+	<Row5 Column0="btSearchPlan" Column1="Search" Column2="查詢" Column3="查询" Column4="Tìm" />
+  </DataTable>
+</Form>

@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Form>
+  <!--DataTable:LanguageSetting-->
+  <DataTable TableName="LanguageSetting" CountOfRows="21" CountOfColumns="5" >
+    <ClomunName Column0="ID" Column1="EN" Column2="CN" Column3="TW" Column4="VN" />
+    <Row0 Column0="label12" Column1="Delivery No:" Column2="交货单号:" Column3="交貨單號:" Column4="Mã giao hàng:" />
+    <Row1 Column0="label4" Column1="Items:" Column2="行项次:" Column3="行項次:" Column4="Vật phẩm:" />
+	<Row2 Column0="label9" Column1="Voucher ID:" Column2="单据号:" Column3="单据號:" Column4="Mã đơn:" />
+	<Row3 Column0="label2" Column1="Delivery side:" Column2="送貨方:" Column3="送貨方:" Column4="Bên giao hàng:" />
+	<Row4 Column0="label11" Column1="TransID:" Column2="事务ID:" Column3="事務ID:" Column4="Mã giao dịch:" />
+	<Row5 Column0="label1" Column1="Name/Address:" Column2="名称/地址:" Column3="名稱/地址:" Column4="Tên/Địa chỉ:" />
+	<Row6 Column0="label16" Column1="Dealership:" Column2="车行:" Column3="車行:" Column4="Đại lý:" />
+	<Row7 Column0="label13" Column1="Car number:" Column2="车号:" Column3="車號:" Column4="Số xe:" />
+	<Row8 Column0="label10" Column1="Container No:" Column2="柜号:" Column3="櫃號:" Column4="Mã Công-ten-nơ:" />
+	<Row9 Column0="label14" Column1="Driver:" Column2=":" Column3="司機:" Column4="Tài xế:" />
+	<Row10 Column0="label7" Column1="Driver Phone:" Column2="司机电话:" Column3="司機電話" Column4="ĐT tài xế:" />
+	<Row11 Column0="label15" Column1="Total Box:" Column2="总箱数:" Column3="總箱數:" Column4="Tổng thùng:" />
+	<Row12 Column0="label5" Column1="Total Pallets:" Column2="栈板数量:" Column3="栈板数量:" Column4="Tổng Pallets:" />
+	<Row13 Column0="label17" Column1="Weight:" Column2="重量:" Column3="重量:" Column4="Trọng lượng:" />
+	<Row14 Column0="label6" Column1="Pallet weight:" Column2="栈板重量:" Column3="栈板重量:" Column4="T.lượng Pallet:" />
+	
+	<Row16 Column0="label18" Column1="Post date:" Column2="过账日期:" Column3="过账日期:" Column4="Ngày gửi:" />
+	<Row17 Column0="lbVehicleType" Column1="VehicleType:" Column2="车型:" Column3="車型:" Column4="Phương tiện:" />
+	<Row18 Column0="IscbPick" Column1="is Selected?" Column2="是否已拣配" Column3="是否已拣配" Column4="Được chọn chưa?" />
+	<Row19 Column0="_ParameterPanel" Column1="Parameters" Column2="参数" Column3="參數" Column4="Thông số" />
+	<Row20 Column0="groupPanel1" Column1="Additional Items" Column2="补充参数" Column3="補充參數" Column4="Thêm thông số" />
+	<Row10 Column0="label8" Column1="Seal No:" Column2="封箱号:" Column3="封箱號:" Column4="Số Seal:" />
+	<Row21 Column0="label3" Column1="/ 1 Pack" Column2="/ 1 包" Column3="/ 1 包" Column4="/ 1 Bao" />
+  </DataTable>
+     <GridTable TableName="gridView4" CountOfRows="12" CountOfColumns="5">
+    <ClomunName Column0="ID" Column1="EN" Column2="CN" Column3="TW" Column4="VN" />
+		<Row0 Column0="BarCode" Column1="BarCode" Column2="包号" Column3="包號" Column4="Mã vạch" />		
+		<Row1 Column0="MaterialNO" Column1="MaterialNO" Column2="物料" Column3="物料" Column4="Mã vật liệu" />	
+		<Row2 Column0="ProdSpec" Column1="ProdSpec" Column2="物料描述" Column3="物料描述" Column4="Miêu tả" />	
+		<Row3 Column0="Batch" Column1="Batch" Column2="批次" Column3="批次" Column4="Lô" />				
+		<Row4 Column0="Num" Column1="Num" Column2="净重" Column3="淨重" Column4="K.lượng tịnh" />	
+		<Row5 Column0="GWT" Column1="GWT" Column2="毛重" Column3="毛重" Column4="Tổng tr.lượng" />	
+		<Row6 Column0="ProdDate" Column1="ProdDate" Column2="生产日期" Column3="生產日期" Column4="Ngày s.xuất" />	
+		<Row7 Column0="State" Column1="State" Column2="状态" Column3="狀態" Column4="Trạng thái" />	
+		<Row8 Column0="UserID" Column1="UserID" Column2="用户ID" Column3="用户ID" Column4="Người tạo đơn" />	
+		<Row9 Column0="Counter" Column1="Counter" Column2="打印次数" Column3="列印次數" Column4="Số lần in" />	
+		<Row10 Column0="SILO" Column1="SILO" Column2="SILO" Column3="SILO" Column4="SILO" />	
+		<Row11 Column0="Store" Column1="Store" Column2="库位" Column3="庫位" Column4="Kho" />	
+    </GridTable>
+</Form>

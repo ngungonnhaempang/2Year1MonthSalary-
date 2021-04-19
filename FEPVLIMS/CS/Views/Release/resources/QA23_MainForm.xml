@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Form>
+  <!--DataTable:LanguageSetting-->
+  <DataTable TableName="LanguageSetting" CountOfRows="13" CountOfColumns="5">
+    <ClomunName Column0="ID" Column1="EN" Column2="CN" Column3="TW" Column4="VN" />
+    <Row0 Column0="butReqQuery" Column1="Entrustment documents inquiry" Column2="委托单据查询" Column3="委托單據查詢" Column4="Tìm đơn ủy thác" />
+    <Row1 Column0="btAcceptDraft" Column1="Receipt of a consignment form" Column2="按委托单接收" Column3="按委托單接收" Column4="Chấp nhận đơn ủy thác" />
+    <Row2 Column0="btAcceptVoucher" Column1="Receive by sample " Column2="按样品接收" Column3="按樣品接收" Column4="Chấp nhận theo mẫu" />
+    <Row3 Column0="btPlanAddConfirm" Column1="Online plus test confirmation" Column2="在线加测确认" Column3="在線加測確認" Column4="Chấp nhận yêu cầu phân tích" />
+    <Row4 Column0="btRejectDraft" Column1="Return by the entrustment form" Column2="按委托单退回" Column3="按委托單退回" Column4="Trả đơn ủy thác" />
+    <Row5 Column0="btRejectVoucher" Column1="Return to the sample" Column2="按样品退回" Column3="按樣品退回" Column4="Trả theo mẫu" />
+    <Row6 Column0="lblDateFrom" Column1="Date From:" Column2="Date From:" Column3="Date From:" Column4="Từ ngày:" />
+    <Row7 Column0="lblDateTo" Column1="To:" Column2="To:" Column3="To:" Column4="Đến:" />
+    <Row8 Column0="label2" Column1="Entrustment number" Column2="委托编号" Column3="委托編號" Column4="Mã ủy thác" />
+    <Row9 Column0="label3" Column1="MXQ" Column2="MXQ" Column3="MXQ" Column4="MXQ" />
+    <Row10 Column0="label1" Column1="Sample number" Column2="样品编号" Column3="樣品編號" Column4="Mã mẫu" />
+    <Row11 Column0="label5" Column1="RMXQ" Column2="RMXQ" Column3="RMXQ" Column4="RMXQ" />
+    <Row12 Column0="label9" Column1="Reasons for the rejection of the sample" Column2="样品拒收原因" Column3="樣品拒收原因" Column4="Nguyên nhân từ chối mẫu" />
+  </DataTable>
+   <!--GridTable:gridView1-->
+  <GridTable TableName="gridView1" CountOfRows="17" CountOfColumns="5">
+    <ClomunName Column0="ID" Column1="EN" Column2="CN" Column3="TW" Column4="VN" />
+    <Row0 Column0="DraftID" Column1="DraftID" Column2="DraftID" Column3="DraftID" Column4="Bản nháp" />
+    <Row1 Column0="VoucherID" Column1="VoucherID" Column2="VoucherID" Column3="VoucherID" Column4="Mã đơn" />
+    <Row2 Column0="SampleName" Column1="SampleName" Column2="SampleName" Column3="SampleName" Column4="Tên mẫu" />
+    <Row3 Column0="LOT_NO" Column1="LOT_NO" Column2="LOT_NO" Column3="LOT_NO" Column4="Mã vật liệu" />
+    <Row4 Column0="Description_CN" Column1="Description_CN" Column2="Description_CN" Column3="Description_CN" Column4="Mô tả_CN" />
+    <Row5 Column0="Description_EN" Column1="Description_EN" Column2="Description_EN" Column3="Description_EN" Column4="Mô tả_EN" />
+    <Row6 Column0="Description_TW" Column1="Description_TW" Column2="Description_TW" Column3="Description_TW" Column4="Mô tả_TW" />
+    <Row7 Column0="Description_VN" Column1="Description_VN" Column2="Description_VN" Column3="Description_VN" Column4="Mô tả_VN" />
+    <Row8 Column0="Purpose" Column1="Purpose" Column2="Purpose" Column3="Purpose" Column4="Mục đích" />
+    <Row9 Column0="SampleFrom" Column1="SampleFrom" Column2="SampleFrom" Column3="SampleFrom" Column4="Mẫu từ" />
+    <Row10 Column0="RequireDate" Column1="RequireDate" Column2="RequireDate" Column3="RequireDate" Column4="Ngày yêu cầu" />
+    <Row11 Column0="SendDate" Column1="SendDate" Column2="SendDate" Column3="SendDate" Column4="Ngày gửi" />
+    <Row12 Column0="GetDate" Column1="GetDate" Column2="GetDate" Column3="GetDate" Column4="Ngày nhận" />
+    <Row13 Column0="Remark" Column1="Remark" Column2="Remark" Column3="Remark" Column4="Ghi chú" />
+    <Row14 Column0="Owner" Column1="Owner" Column2="Owner" Column3="Owner" Column4="Chủ sở hữu" />
+    <Row15 Column0="CreateDate" Column1="CreateDate" Column2="CreateDate" Column3="CreateDate" Column4="Ngày tạo" />
+    <Row16 Column0="State" Column1="State" Column2="State" Column3="State" Column4="Trạng thái" />
+  </GridTable>
+   <!--GridTable:gridView2-->
+  <GridTable TableName="gridView2" CountOfRows="5" CountOfColumns="5">
+    <ClomunName Column0="ID" Column1="EN" Column2="CN" Column3="TW" Column4="VN" />
+    <Row0 Column0="PropertyName" Column1="PropertyName" Column2="PropertyName" Column3="PropertyName" Column4="Tên thuộc tính" />
+    <Row1 Column0="Unit" Column1="Unit" Column2="Unit" Column3="Unit" Column4="Đơn vị" />
+    <Row2 Column0="Prec" Column1="Prec" Column2="Prec" Column3="Prec" Column4="Độ chính xác" />
+    <Row3 Column0="Prec1" Column1="Prec1" Column2="Prec1" Column3="Prec1" Column4="Độ chính xác 1" />
+    <Row4 Column0="ValueSpec" Column1="ValueSpec" Column2="ValueSpec" Column3="ValueSpec" Column4="Giá trị chi tiết" />
+	</GridTable>
+</Form>

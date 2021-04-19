@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Form>
+  <!--DataTable:LanguageSetting-->
+  <DataTable TableName="LanguageSetting" CountOfRows="5" CountOfColumns="5">
+    <ClomunName Column0="ID" Column1="EN" Column2="TW" Column3="CN" Column4="VN" />
+	<Row0 Column0="_Parameter" Column1="[Query Parameters]" Column2="创建日期" Column3="創建日期" Column4="Ngày tạo" />
+	<Row1 Column0="_Result" Column1="[Result]" Column2="到" Column3="到" Column4="Đến" />
+	<Row2 Column0="cbFavourite" Column1="Favourite Only" Column2="常用" Column3="常用" Column4="Thường dùng" />
+	<Row3 Column0="lblLabName" Column1="Lab Name:" Column2="實驗室名稱：" Column3="实验室名称：" Column4="Phòng thí nghiệm:" />
+	<Row4 Column0="lblMaterial" Column1="Material:" Column2="物料號：" Column3="物料号：" Column4="Mã vật liệu:" />
+	<Row5 Column0="lblSampleName" Column1="Sample Name:" Column2="樣品編號:" Column3="样品编号:" Column4="Mã mẫu:" />
+	<Row6 Column0="lblTypeName" Column1="Type Name:" Column2="分類:" Column3="分类:" Column4="Phân loại:" />
+	<Row7 Column0="lblVoucherID" Column1="VoucherID:" Column2="單據號：" Column3="單據號：" Column4="Mã đơn:" />
+	
+  </DataTable>
+  
+  <!--GridTable:gridView1-->
+  <GridTable TableName="gridView1" CountOfRows="7" CountOfColumns="5">
+    <ClomunName Column0="ID" Column1="EN" Column2="CN" Column3="TW" Column4="VN" />
+    <Row0 Column0="VoucherID" Column1="VoucherID" Column2="单据号" Column3="單據號" Column4="Mã đơn" />
+	<Row1 Column0="SDescription" Column1="SampleDesc" Column2="樣品編碼" Column3="样品编码" Column4="Mã mẫu" />
+	<Row2 Column0="LDescription" Column1="MaterialDesc" Column2="物料號" Column3="物料号" Column4="Mã vật liệu" />
+	<Row3 Column0="Line" Column1="Line" Column2="線別" Column3="线别" Column4="Line" />
+	<Row4 Column0="SheetDate" Column1="取样日期" Column2="取样日期" Column3="取样日期" Column4="Ngày lấy mẫu" />
+	<Row4 Column0="PlanAddID" Column1="PlanAddID" Column2="加测单号" Column3="加测单号" Column4="Số đơn phân tích" />
+	<Row5 Column0="SampleID" Column1="SampleNO" Column2="樣品編號" Column3="样品编号" Column4="Mã hàng" />
+	<Row6 Column0="State" Column1="State" Column2="狀態" Column3="状态" Column4="Trạng thái" />
+	<Row7 Column0="Grade" Column1="Grade" Column2="等級" Column3="等级" Column4="Grades" />
+	<Row8 Column0="Remark" Column1="Remark" Column2="備註" Column3="备注" Column4="Ghi chú" />
+	<Row4 Column0="ProdDate" Column1="Produce Date" Column2="創建日期" Column3="创建日期" Column4="Ngày tạo" />
+	<Row4 Column0="HasChart" Column1="HasChart" Column2="是否显示图表" Column3="是否显示图表" Column4="Hiển thị sơ đồ" />
+	<Row4 Column0="VersionSpc" Column1="Version" Column2="版本" Column3="版本" Column4="Phiên bản" />
+	<Row4 Column0="CreateType" Column1="CreateType" Column2="创建类型" Column3="创建类型" Column4="Loại tạo" />
+	<Row4 Column0="UserID" Column1="UserID" Column2="创建用户" Column3="创建用户" Column4="Tạo người dùng" />
+	
+
+	
+  </GridTable>
+
+  
+	</Form>	

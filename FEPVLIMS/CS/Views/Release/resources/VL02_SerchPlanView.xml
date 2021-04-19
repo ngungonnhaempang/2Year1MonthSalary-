@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Form>
+  <!--DataTable:LanguageSetting-->
+  <DataTable TableName="LanguageSetting" CountOfRows="1" CountOfColumns="5">
+    <ClomunName Column0="ID" Column1="EN" Column2="CN" Column3="TW" Column4="VN" />
+    <Row0 Column0="_ParameterPanel" Column1="Parameters" Column2="查询结果" Column3="查詢結果" Column4="Tổng thể dự án" />
+	<Row1 Column0="label1" Column1="Date From" Column2="开始时间" Column3="开始时间" Column4="Từ ngày" />
+	<Row2 Column0="label2" Column1="To" Column2="到" Column3="到" Column4="Đến" />
+    <Row3 Column0="label6" Column1="Delivery NO" Column2="单据号" Column3="单据号" Column4="Mã giao hàng" />
+    <Row4 Column0="label5" Column1=" Material NO" Column2="物料号" Column3="物料號" Column4="Vật liệu" />
+	<Row5 Column0="label4" Column1="Cost Center" Column2="成本中心" Column3="成本中心" Column4="Trung tâm chi phí" />   
+	<Row6 Column0="label3" Column1="State" Column2="状态" Column3="狀態" Column4="Trạng thái" />
+  </DataTable>
+  <!--GridTable:gridView1-->
+  <GridTable TableName="gridView3" CountOfRows="25" CountOfColumns="5">
+    <ClomunName Column0="ID" Column1="EN" Column2="CN" Column3="TW" Column4="VN" />
+      <Row0 Column0="VBELN" Column1="VBELN" Column2="交货单号" Column3="交貨單號" Column4="Mã Voucher" />
+	<Row1 Column0="VoucherID" Column1="VoucherID" Column2="凭证号" Column3="物料憑證號" Column4="Mã Voucher" />
+    <Row2 Column0="LFART" Column1="LFART" Column2="交货类型" Column3="交貨類型" Column4="Loại giao hàng" />
+    <Row3 Column0="KUNNR" Column1="KUNNR" Column2="送达方" Column3="送達方" Column4="Bên giao hàng" />
+    <Row4 Column0="WADAT" Column1="WADAT" Column2="计划发货日" Column3="計畫發貨日" Column4="Ngày vận chuyển" />
+    <Row5 Column0="STATE" Column1="State" Column2="状态" Column3="狀態" Column4="Trạng thái" />
+    <Row6 Column0="KUNAG" Column1="KUNAG" Column2="客户代码" Column3="客户代码" Column4="Mã khách hàng" />
+    <Row7 Column0="VTEXT1" Column1="Packing" Column2="包装方式" Column3="包裝方式" Column4="Đóng gói" />
+    <Row7 Column0="VTEXT2" Column1="Shipping Condition" Column2="装运条件" Column3="裝運條件" Column4="Tiêu chuẩn Vận chuyển" />
+    <Row8 Column0="BEZEI" Column1="Shipping type" Column2="装运类型" Column3="裝運類型" Column4="Loại Vận chuyển" />
+    <Row9 Column0="BTGEW" Column1="Total weight" Column2="总重量" Column3="總重量" Column4="Tổng trọng lượng" />
+    <Row10 Column0="GEWEI" Column1="Unit" Column2="单位" Column3="單位" Column4="Đơn vị" />
+	<Row11 Column0="NTGEW" Column1="Net Weight" Column2="净重量" Column3="淨重量" Column4="Trọng lượng tịnh" />
+	<Row12 Column0="BEZEI1" Column1="Salesman" Column2="业务员" Column3="業務員" Column4="Người bán" />
+	<Row13 Column0="BEZEI2" Column1="Business Assistant" Column2="业务助理" Column3="業務助理" Column4="Trợ lý kinh doanh" />
+	<Row14 Column0="NAME11" Column1="NAME11" Column2="送达方名称1-0（英文）" Column3="送達方名稱1-0（英文）" Column4="Bên g.hàng 1-0（T.Anh）" />
+	<Row15 Column0="NAME12" Column1="NAME12" Column2="送达方名称1-1（越文）" Column3="送達方名稱1-1（越文）" Column4="Bên g.hàng1-1（T.Việt）" />
+	<Row16 Column0="NAME22" Column1="NAME22" Column2="售达方名称2-1（越文）" Column3="售達方名稱2-1（越文）" Column4="Bên bán hàng 2-1（T.Việt）" />
+	<Row17 Column0="STREET1" Column1="STREET1" Column2="街道-0（英文）" Column3="街道-0（英文）" Column4="Đường-0（T.Anh）" />
+	<Row18 Column0="INCO1" Column1="International Trade Conditions 2" Column2="国际贸易条件" Column3="國際貿易條件" Column4="Đ/K Thương mại Quốc tế 1"  />
+	<Row19 Column0="TruckCompany" Column1="Transport Company" Column2="运输公司" Column3="運輸公司" Column4="Cty Vận chuyển" />
+	<Row20 Column0="TuckID" Column1="Car Number" Column2="车号" Column3="車號" Column4="Số xe" />
+	<Row21 Column0="CounterID" Column1="Cabinet Number" Column2="柜号" Column3="櫃號" Column4="Số Cont" />
+	<Row22 Column0="Driver" Column1="Driver" Column2="司机" Column3="司機" Column4="Tài xế"  />
+  </GridTable>
+</Form>

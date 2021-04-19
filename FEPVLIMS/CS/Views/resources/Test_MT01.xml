@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Form>
+  <!--DataTable:LanguageSetting-->
+  <DataTable TableName="LanguageSetting" CountOfRows="0" CountOfColumns="5">
+    <ClomunName Column0="ID" Column1="EN" Column2="CN" Column3="TW" Column4="VN" />
+	<Row0 Column0="lblLocation" Column1="Location" Column2="地点" Column3="地點" Column4="Phòng thí nghiệm" />
+	<Row1 Column0="lblType" Column1="Type" Column2="分类" Column3="分類" Column4="Loại" />
+	<Row2 Column0="lblSampleItem" Column1="Sample Item" Column2="样品名称" Column3="樣品名稱" Column4="Tên mẫu" />
+	<Row3 Column0="lblMaterialNo" Column1="Material No" Column2="物料号" Column3="物料號" Column4="Mã vật liệu" />
+	<Row4 Column0="btnNew" Column1="New" Column2="添加" Column3="添加" Column4="Thêm mới" />
+	<Row5 Column0="btnDelete" Column1="Delete" Column2="删除" Column3="刪除" Column4="Xóa" />
+	<Row6 Column0="btnExit" Column1="Exit" Column2="关闭" Column3="關閉" Column4="Thoát"  />
+	<Row7 Column0="gpQuery" Column1="Query" Column2="查询" Column3="查詢" Column4="Tìm kiếm"  />
+	<Row8 Column0="gpResult" Column1="Result" Column2="结果" Column3="結果" Column4="Kết quả"  />
+  </DataTable>
+  <!--GridTable:gridView1-->
+  <GridTable TableName="gwSample" CountOfRows="7" CountOfColumns="5">
+    <ClomunName Column0="ID" Column1="EN" Column2="CN" Column3="TW" Column4="VN" />
+    <Row0 Column0="SampleName" Column1="SampleName" Column2="样品名称" Column3="樣品名稱" Column4="Tên mẫu" />
+	<Row1 Column0="LOT_NO" Column1="Material NO" Column2="物料号" Column3="物料號" Column4="Mã vật liệu" />
+	<Row2 Column0="Spec" Column1="Specification" Column2="规格" Column3="規格" Column4="Đặc điểm" />
+	<Row3 Column0="Description_VN" Column1="Description(VN)" Column2="说明(VN)" Column3="說明(VN)" Column4="Miêu tả(VN)" />
+	<Row4 Column0="Description_CN" Column1="Description(CN)" Column2="说明(CN)" Column3="說明(CN)" Column4="Miêu tả(CN)" />
+	<Row5 Column0="Description_EN" Column1="Description(EN)" Column2="说明(EN)" Column3="說明(EN)" Column4="Miêu tả(EN)" />
+	<Row6 Column0="Description_TW" Column1="Description(TW)" Column2="说明(TW)" Column3="說明(TW)" Column4="Miêu tả(TW)" />
+	</GridTable>
+</Form>

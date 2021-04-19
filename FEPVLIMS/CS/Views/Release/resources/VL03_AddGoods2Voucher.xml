@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Form>
+  <!--DataTable:LanguageSetting-->
+  <DataTable TableName="LanguageSetting" CountOfRows="12" CountOfColumns="5" >
+    <ClomunName Column0="ID" Column1="EN" Column2="CN" Column3="TW" Column4="VN" />
+    <Row0 Column0="_ParameterPanel" Column1="QueryParameters:" Column2="[查询参数]" Column3="[査詢參數]" Column4="[Đ.kiện tìm kiếm]" />
+    <Row1 Column0="label27" Column1="DateRange" Column2="区间日期:" Column3="區間日期:" Column4="Ngày từ:" />
+	<Row2 Column0="label26" Column1="TO" Column2="到" Column3="到" Column4="Đến" />
+	<Row3 Column0="label1" Column1="BarCode" Column2="包号:" Column3="包號:" Column4="Mã vạch:" />
+	<Row4 Column0="label2" Column1="VoucherID" Column2="单号:" Column3="單號:" Column4="Mã đơn:" />
+	<Row5 Column0="btSerch" Column1="SearchBarCode" Column2=">>查找包号" Column3=">>查找包號" Column4=">>Tìm mã vạch" />
+	<Row6 Column0="label3" Column1="FilePath" Column2="文件路径:" Column3="檔案路徑:" Column4="Đường dẫn:" />
+	<Row7 Column0="btBrowns" Column1="browse" Column2="浏览..." Column3="瀏覽…" Column4="Duyệt..." />
+	<Row8 Column0="groupPanel1" Column1="ImportParameters" Column2="[导入参数]" Column3="[導入參數]" Column4="[Đ.kiện Nhập]" />
+	<Row9 Column0="groupPanel2" Column1="ImportParameters" Column2="[导入参数]" Column3="[導入參數]" Column4="[Đ.kiện Nhập]" />
+	<Row10 Column0="label4" Column1="FilePath" Column2="文件路径" Column3="檔案路徑" Column4="Đường dẫn" />
+	<Row11 Column0="btBrownsTH" Column1="browse" Column2="浏览..." Column3="瀏覽…" Column4="Duyệt..." />
+  </DataTable>
+     <GridTable TableName="gridView1" CountOfRows="11" CountOfColumns="5">
+    <ClomunName Column0="ID" Column1="EN" Column2="CN" Column3="TW" Column4="VN" />
+		<Row0 Column0="BarCode" Column1="BarCode" Column2="包号" Column3="包號" Column4="Mã vạch" />		
+		<Row1 Column0="CenterID" Column1="CenterID" Column2="CenterID" Column3="CenterID" Column4="CenterID" />	
+		<Row2 Column0="Batch" Column1="Batch" Column2="Batch" Column3="Batch" Column4="Batch" />		
+		<Row3 Column0="Num" Column1="Num" Column2="净重" Column3="淨重" Column4="Tr.lượng tịnh" />	
+		<Row5 Column0="ProdDate" Column1="ProdDate" Column2="生产日期" Column3="生產日期" Column4="Ngày s.xuất" />	
+		<Row6 Column0="UserID" Column1="UserID" Column2="UserID" Column3="UserID" Column4="UserID" />	
+		<Row7 Column0="LastVouID" Column1="LastVouID" Column2="LastVouID" Column3="LastVouID" Column4="LastVouID" />	
+		
+    </GridTable>
+</Form>

@@ -1,0 +1,10 @@
+D:\FEPVLIMS\CS\Views\LIMS.Views.AT01\obj\Debug\LIMS.Views.AT01.csprojResolveAssemblyReference.cache
+D:\FEPVLIMS\CS\Views\LIMS.Views.AT01\obj\Debug\LIMS.Views.AT01.resources
+D:\FEPVLIMS\CS\Views\LIMS.Views.AT01\obj\Debug\LIMS.Views.AT01View.resources
+D:\FEPVLIMS\CS\Views\LIMS.Views.AT01\obj\Debug\LIMS.Views.AT01Dialog.resources
+D:\FEPVLIMS\CS\Views\LIMS.Views.AT01\obj\Debug\LIMS.Views.AT01.csproj.GenerateResource.Cache
+D:\FEPVLIMS\CS\Views\LIMS.Views.AT01\obj\Debug\LIMS.Views.AT01.exe.licenses
+D:\FEPVLIMS\CS\Views\Release\LIMS.Views.AT01.exe
+D:\FEPVLIMS\CS\Views\Release\LIMS.Views.AT01.pdb
+D:\FEPVLIMS\CS\Views\LIMS.Views.AT01\obj\Debug\LIMS.Views.AT01.exe
+D:\FEPVLIMS\CS\Views\LIMS.Views.AT01\obj\Debug\LIMS.Views.AT01.pdb

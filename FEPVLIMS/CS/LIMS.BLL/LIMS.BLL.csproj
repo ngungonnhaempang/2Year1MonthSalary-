@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\..\..\FEPVMES\FEPV\packages\NUnit3TestAdapter.3.9.0\build\net35\NUnit3TestAdapter.props" Condition="Exists('..\..\..\FEPVMES\FEPV\packages\NUnit3TestAdapter.3.9.0\build\net35\NUnit3TestAdapter.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D5A83785-02DA-4340-AF45-BF9C8C83D7EF}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>LIMS.Service</RootNamespace>
+    <AssemblyName>LIMS.BLL</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\Release\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\..\..\LIMS\FEPVWebApiOwinHost\lib\EntityFramework.6.1.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\..\..\LIMS\FEPVWebApiOwinHost\lib\EntityFramework.6.1.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="GenuineChannels">
+      <HintPath>Lib\GenuineChannels.dll</HintPath>
+    </Reference>
+    <Reference Include="LIMS.Contract, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Views\Release\LIMS.Contract.dll</HintPath>
+    </Reference>
+    <Reference Include="LIMS.Model, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Views\Release\LIMS.Model.dll</HintPath>
+    </Reference>
+    <Reference Include="MIS.Utility">
+      <HintPath>..\Lib\MIS.Utility.dll</HintPath>
+    </Reference>
+    <Reference Include="NBear.Common">
+      <HintPath>Lib\NBear.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="NBear.Data">
+      <HintPath>Lib\NBear.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AttributeBiz.cs" />
+    <Compile Include="CourseBiz.cs" />
+    <Compile Include="DOCPlanTimeJobBiz.cs" />
+    <Compile Include="Huy\RegisterBiz.cs" />
+    <Compile Include="ManageBiz.cs" />
+    <Compile Include="DOCRequisitionBiz.cs" />
+    <Compile Include="DOCPlanAddBiz.cs" />
+    <Compile Include="ProfileBiz.cs" />
+    <Compile Include="DOCBiz.cs" />
+    <Compile Include="DOCReceiveBiz.cs" />
+    <Compile Include="DOCPlanBiz.cs" />
+    <Compile Include="ChartBiz.cs" />
+    <Compile Include="GradeBiz.cs" />
+    <Compile Include="MaterialBiz.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QCReporting.cs" />
+    <Compile Include="SampleBiz.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

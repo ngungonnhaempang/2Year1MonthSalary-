@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Form>
+  <!--DataTable:LanguageSetting-->
+  <DataTable TableName="LanguageSetting" CountOfRows="6" CountOfColumns="5">
+    <ClomunName Column0="ID" Column1="EN" Column2="CN" Column3="TW" Column4="VN" />
+    <Row0 Column0="label1" Column1="Startdate of Receipt" Column2="开始收货日期" Column3="开始收货日期" Column4="Ngày nhận" />
+    <Row1 Column0="label2" Column1="TO" Column2="到" Column3="到" Column4="Đến" />
+    <Row2 Column0="label6" Column1="PO NO." Column2="PO NO." Column3="PO NO." Column4="PO NO." />
+    <Row2 Column0="label5" Column1="Order" Column2="内销交货单" Column3="内销交货单" Column4="Đơn giao hàng" />
+     <Row2 Column0="lblTypeName" Column1="TypeName" Column2="类型" Column3="类型" Column4="Phân loại" />
+      <Row2 Column0="label4" Column1="SampleName" Column2="样品名称" Column3="样品名称" Column4="Tên mẫu" />
+     <Row2 Column0="cbMySelf" Column1="Myself" Column2="查询自己申请" Column3="查询自己申请" Column4="Chỉ xem đơn của tôi" />
+       <Row2 Column0="chkAll" Column1="chkAll" Column2="ALL" Column3="ALL" Column4="ALL" />
+  </DataTable>
+  <!--GridTable:Table-->
+  <GridTable TableName="gridView1" CountOfRows="13" CountOfColumns="5">
+    <ColumnName Column0="ID" Column1="EN" Column2="CN" Column3="TW" Column4="VN" />
+    <Row0 Column0="GR_NO" Column1="GR_NO" Column2="PONO." Column3="PONO" Column4="PONO" />
+    <Row1 Column0="EBELN" Column1="EBELN" Column2="采购订单" Column3="采购订单" Column4="Đơn thu mua" />
+	<Row1 Column0="EBELP" Column1="EBELP" Column2="EBELP" Column3="EBELP" Column4="EBELP" />
+    <Row2 Column0="ImportBatch" Column1="ImportBatch" Column2="导入批次" Column3="导入批次" Column4="Số lô" />
+    <Row3 Column0="ReceiveDate" Column1="ReceiveDate" Column2="接收日期" Column3="接收日期" Column4="Ngày nhận" />
+    <Row4 Column0="ReceiveNum" Column1="ReceiveNum" Column2="接收量" Column3="接收量" Column4="Lượng nhận" />
+    <Row5 Column0="SampleName" Column1="SampleName" Column2="样品名称" Column3="样品名称" Column4="Tên mẫu" />
+    <Row6 Column0="ReceiveID" Column1="ReceiveID" Column2="接收ID" Column3="接收ID" Column4="Mã tiếp nhận" />
+    <Row7 Column0="SheetDate" Column1="SheetDate" Column2="检验日期" Column3="检验日期" Column4="Ngày kiểm nghiệm" />
+    <Row8 Column0="DepartmentDes" Column1="部门描述" Column2="部门描述" Column3="部门描述" Column4="Tên bộ phận" />
+     <Row9 Column0="NAME1" Column1="NAME1" Column2="NAME" Column3="NAME" Column4="NAME" />
+    <Row9 Column0="UserId" Column1="UserId" Column2="用户ID" Column3="用户ID" Column4="Người tạo" />
+    <Row10 Column0="MATNR" Column1="MATNR" Column2="MATNR" Column3="MATNR" Column4="MATNR" />
+   <Row10 Column0="LOTNOSPc" Column1="LOTNOSPc" Column2="物料描述" Column3="物料描述" Column4="Quy cách" />
+    <Row10 Column0="LOT_NO" Column1="LOT_NO" Column2="物料号" Column3="物料號" Column4="Mã vật liệu" />
+     <Row10 Column0="Status" Column1="Status" Column2="状态" Column3="狀態" Column4="Trạng thái" />
+     <Row10 Column0="Vendor" Column1="Vendor" Column2="Vendor" Column3="Vendor" Column4="Vendor" />
+       <Row10 Column0="GR_Date" Column1="GR_Date" Column2="GR_Date" Column3="GR_Date" Column4="GR_Date" />
+          <Row10 Column0="WERKS" Column1="WERKS" Column2="WERKS" Column3="WERKS" Column4="WERKS" />
+    <Row10 Column0="Quatity" Column1="Quatity" Column2="数量" Column3="數量" Column4="Số lượng" />
+      <Row10 Column0="GR_Unit" Column1="GR_Unit" Column2="GR_Unit" Column3="GR_Unit" Column4="GR_Unit" />
+       <Row10 Column0="DepartmentID" Column1="DepartmentID" Column2="成本中心" Column3="成本中心" Column4="Trung tâm chi phí" />
+         <Row10 Column0="VoucherID" Column1="VoucherID" Column2="单号" Column3="單號" Column4="Mã đơn" />
+  </GridTable>
+</Form>

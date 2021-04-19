@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Form>
+  <!--DataTable:LanguageSetting-->
+  <DataTable TableName="LanguageSetting" CountOfRows="1" CountOfColumns="5">
+    <ClomunName Column0="ID" Column1="EN" Column2="CN" Column3="TW" Column4="VN" />
+    <Row0 Column0="xtraTabPage1" Column1="Show Data" Column2="查询结果" Column3="查詢結果" Column4="Kết quả tìm kiếm" />
+  </DataTable>
+  <!--GridTable:gridView1-->
+  <GridTable TableName="gridView1" CountOfRows="29" CountOfColumns="5">
+    <ClomunName Column0="ID" Column1="EN" Column2="CN" Column3="TW" Column4="VN" />
+	<Row0 Column0="BarCode" Column1="BarCode" Column2="包号" Column3="包號" Column4="Mã đơn" />
+    <Row1 Column0="Num" Column1="Num" Column2="净重" Column3="净重" Column4="Trọng lượng tịnh" />
+    <Row2 Column0="GrossWeight" Column1="GrossWeight" Column2="毛重" Column3="毛重" Column4="Tổng" />
+    <Row3 Column0="Store" Column1="Store" Column2="Store" Column3="Store" Column4="Store" />
+    <Row4 Column0="ProdDate" Column1="ProdDate" Column2="生产日期" Column3="生產日期" Column4="Ngày sản xuất" />
+    <Row5 Column0="SCANTIME" Column1="SCANTIME" Column2="扫描时间" Column3="掃描時間" Column4="Thời gian scan" />
+    <Row6 Column0="PICKID" Column1="PICKID" Column2="拣配员" Column3="揀配員" Column4="Người Pickup" />
+  </GridTable>
+</Form>

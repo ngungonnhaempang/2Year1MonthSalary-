@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Form>
+  <!--DataTable:LanguageSetting-->
+  <DataTable TableName="LanguageSetting" CountOfRows="8" CountOfColumns="5">
+    <ColumnName Column0="ID" Column1="EN" Column2="CN" Column3="TW" Column4="VN" />
+    <Row2 Column0="label3" Column1="The" Column2="The" Column3="The" Column4="The" />
+    <Row3 Column0="label2" Column1="month(s)" Column2="month(s)" Column3="month(s)" Column4="month(s)" />
+    <Row4 Column0="label1" Column1="day of" Column2="day of" Column3="day of" Column4="day of" />
+    <Row5 Column0="seMonths" Column1="1" Column2="1" Column3="1" Column4="1" />
+    <Row6 Column0="seMonthlyDay" Column1="seMonthlyDay" Column2="seMonthlyDay" Column3="seMonthlyDay" Column4="seMonthlyDay" />
+    <Row7 Column0="_Parameter" Column1="[Parameter]" Column2="[Parameter]" Column3="[Parameter]" Column4="[Parameter]" />
+  </DataTable>
+</Form>

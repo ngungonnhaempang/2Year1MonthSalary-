@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Form>
+  <!--DataTable:LanguageSetting-->
+  <DataTable TableName="LanguageSetting" CountOfRows="3" CountOfColumns="5">
+    <ClomunName Column0="ID" Column1="EN" Column2="CN" Column3="TW" Column4="VN" />
+    	<Row0 Column0="groupPanel2" Column1="Parameter" Column2="[计划参数]" Column3="[計劃參數]" Column4="Thông số" />
+    	<Row1 Column0="lblVbelv" Column1="EBELN" Column2="采购凭证号:" Column3="採購憑證號:" Column4="Mã đơn mua hàng" />
+    	<Row2 Column0="xtraTabPage1" Column1="Project Overview" Column2="项目总览" Column3="項目總覽" Column4="Tổng quan" />
+  </DataTable>
+
+  
+<!--GridTable:gridView1-->
+  <GridTable TableName="gridView1" CountOfRows="9" CountOfColumns="5">
+    <ClomunName Column0="ID" Column1="EN" Column2="CN" Column3="TW" Column4="VN" />
+    	<Row0 Column0="EBELN" Column1="EBELN" Column2="采购凭证号" Column3="採購憑證號" Column4="Mã đơn mua hàng" />
+    	<Row1 Column0="LIFNR" Column1="LIFNR" Column2="供应商帐户号" Column3="供應商帳戶號" Column4="Nhà cung ứng" />
+	<Row2 Column0="NAME1" Column1="NAME1" Column2="名称" Column3="名稱" Column4="Tên" />
+	<Row3 Column0="EKORG" Column1="EKORG" Column2="采购组织" Column3="採購組織" Column4="Cơ cấu mua hàng" />
+	<Row4 Column0="BUKRS" Column1="BUKRS" Column2="公司代码" Column3="公司代碼" Column4="Mã công ty" />
+	<Row5 Column0="BSART" Column1="BSART" Column2="订单类型" Column3="訂單類型" Column4="Loại đơn hàng" />
+	<Row6 Column0="BEDAT" Column1="BEDAT" Column2="采购订单日期" Column3="採購訂單日期" Column4="Ngày đặt đơn hàng" />
+	<Row7 Column0="NTotalNum" Column1="NTotalNum" Column2="己提交量" Column3="已提交量" Column4="Lượng đã gửi" />
+	<Row8 Column0="TotalNum" Column1="TotalNum" Column2="剩余量" Column3="剩餘量" Column4="Tổng số" />
+  </GridTable>
+
+<!--GridTable:gridView2-->
+  <GridTable TableName="gridView3" CountOfRows="23" CountOfColumns="5">
+    <ClomunName Column0="ID" Column1="EN" Column2="CN" Column3="TW" Column4="VN" />
+    	<Row0 Column0="EBELN" Column1="EBELN" Column2="采购凭证号" Column3="採購憑證號" Column4="Mã đơn mua hàng" />
+    	<Row1 Column0="EBELP" Column1="EBELP" Column2="项目编号" Column3="項目編號" Column4="Mã sản phẩm" />
+	<Row2 Column0="VoucherID" Column1="VoucherID" Column2="单号" Column3="單號" Column4="Mã đơn" />
+	<Row3 Column0="State" Column1="State" Column2="状态" Column3="狀態" Column4="Trạng thái" />
+    	<Row4 Column0="MaterialNO" Column1="MaterialNo" Column2="物料" Column3="物料" Column4="Vật liệu" />
+	<Row5 Column0="MaterialSpec" Column1="MaterialSpec" Column2="物料描述" Column3="物料描述" Column4="Mô tả" />
+	<Row6 Column0="Plant" Column1="Plant" Column2="工厂" Column3="工廠" Column4="Xưởng" />
+	<Row7 Column0="Batch" Column1="Batch" Column2="批次" Column3="批次" Column4="Lô" />
+	<Row8 Column0="CenterID" Column1="CenterID" Column2="成本中心" Column3="成本中心" Column4="Trung tâm chi phí" />
+	<Row9 Column0="MENGE" Column1="MENGE" Column2="预收量" Column3="預收量" Column4="Lượng dự kiến" />
+    	<Row10 Column0="PickNum" Column1="PickNum" Column2="拣配量" Column3="揀配量" Column4="Lượng Pickup" />
+    	<Row11 Column0="MEINS" Column1="MEINS" Column2="单位" Column3="單位" Column4="Đơn vị" />
+	<Row12 Column0="AFNAM" Column1="AFNAM" Column2="需求者" Column3="需求者" Column4="Người yêu cầu" />
+	<Row13 Column0="EINDT" Column1="EINDT" Column2="项目交货日期" Column3="項目交貨日期" Column4="Ngày giao hàng" />
+	<Row14 Column0="KNTTP" Column1="KNTTP" Column2="科目设置类型" Column3="科目設置類型" Column4="Phân loại mục lục" />
+	<Row15 Column0="PSTYP" Column1="PSTYP" Column2="项目类别" Column3="項目類別" Column4="Phân loại hàng" />
+	<Row16 Column0="MATKL" Column1="MATKL" Column2="物料组" Column3="物料組" Column4="Nhóm vật liệu" />
+	<Row17 Column0="LOEKZ" Column1="LOEKZ" Column2="资产类别作删除标记" Column3="資產類別作刪除標記" Column4="Loại tài sản xóa ký hiệu" />
+	<Row18 Column0="AEDAT" Column1="AEDAT" Column2="上次更改的日期" Column3="上次更改的日期" Column4="Ngày chỉnh sửa gần nhất" />
+	<Row19 Column0="VBELN" Column1="VBELN" Column2="销售与分销单据号" Column3="銷售與分銷單據號" Column4="Mã đơn bán hàng &amp; phân phối" />
+	<Row20 Column0="VBELP" Column1="VBELP" Column2="销售凭证项目" Column3="銷售憑證項目" Column4="Sản phẩm bán" />
+	<Row21 Column0="MATDOCUMENTYEAR" Column1="MATDOCUMENTYEAR" Column2="物料凭证年度" Column3="物料憑證年度" Column4="Niên độ vật liệu" />
+	<Row22 Column0="MATERIALDOCUMENT" Column1="MATERIALDOCUMENT" Column2="物料凭证编号" Column3="物料憑證編號" Column4="Mã vật liệu" />
+  </GridTable>
+</Form>

@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Form>
+  <!--DataTable:LanguageSetting-->
+  <DataTable TableName="LanguageSetting" CountOfRows="15" CountOfColumns="5">
+    <ColumnName Column0="ID" Column1="EN" Column2="CN" Column3="TW" Column4="VN" />   
+    <Row0 Column0="label1" Column1="OrderBy:" Column2="OrderBy:" Column3="OrderBy:" Column4="OrderBy:" />
+    <Row1 Column0="lblJapaneseNote" Column1="Japanese Notes:" Column2="日文备注：" Column3="日文備註" Column4="Ghi chú_JPN" />
+    <Row2 Column0="lblEnglishNote" Column1="English Notes:" Column2="英文备注：" Column3="英文備註" Column4="Ghi chú_EN" />
+    <Row3 Column0="lblDesVN" Column1="Description (VN):" Column2="描述（VN）" Column3="描述（VN）" Column4="Mô tả(VN)" />
+    <Row4 Column0="lblChineseNote" Column1="Chinese Notes:" Column2="中文备注" Column3="中文備註" Column4="Ghi chú_CN" />
+    <Row5 Column0="lblDesCN" Column1="Description (CN):" Column2="描述（CN）" Column3="描述（CN）" Column4="Mô tả(CN)" />
+    <Row6 Column0="lblPrecision" Column1="Precision:" Column2="精度：" Column3="精度：" Column4="Độ chính xác:" />
+    <Row7 Column0="lblDesTW" Column1="Description (TW):" Column2="描述（TW）" Column3="描述（TW）" Column4="Mô tả(TW)" />
+    <Row8 Column0="lblUnit" Column1="Unit:" Column2="单位：" Column3="單位：" Column4="Đơn vị:" />
+    <Row9 Column0="lblDesEN" Column1="Description (EN):" Column2="描述（EN）" Column3="描述（EN）" Column4="Mô tả(EN)" />
+    <Row10 Column0="lblPropertyName" Column1="Property Name:" Column2="属性名称：" Column3="屬性名稱：" Column4="Thuộc tính" />
+    <Row11 Column0="lblSampleName" Column1="Sample Name:" Column2="样品名称：" Column3="樣品名稱：" Column4="Tên mẫu" />   
+    <Row12 Column0="btCancel" Column1="Cancel" Column2="取消" Column3="取消" Column4="Hủy" />
+    <Row13 Column0="btSave" Column1="Save" Column2="保存" Column3="保存" Column4="Lưu" /> 
+    <Row14 Column0="lbReason" Column1="Please enter the information:" Column2="请输入信息" Column3="請輸入信息" Column4="Nhập thông tin" />  
+  </DataTable>
+</Form>

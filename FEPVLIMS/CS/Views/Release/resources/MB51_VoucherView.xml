@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Form>
+  <!--DataTable:LanguageSetting-->
+  <DataTable TableName="LanguageSetting" CountOfRows="1" CountOfColumns="5">
+    <ClomunName Column0="ID" Column1="EN" Column2="CN" Column3="TW" Column4="VN" />
+    <Row0 Column0="xtraTabPage1" Column1="result" Column2="查询结果" Column3="查詢結果" Column4="result" />
+  </DataTable>
+  <!--GridTable:gridView1-->
+  <GridTable TableName="gridData" CountOfRows="15" CountOfColumns="5">
+    <ClomunName Column0="ID" Column1="EN" Column2="CN" Column3="TW" Column4="VN" />
+    <Row0 Column0="VoucherID" Column1="VoucherID" Column2="单据号" Column3="單據號" Column4="Mã đơn" />
+    <Row1 Column0="MT" Column1="Move Type" Column2="移动类型" Column3="移動類型" Column4="Mã vị trí" />
+    <Row2 Column0="MaterialNO" Column1="MaterialNO" Column2="物料号" Column3="物料號" Column4="Mã vật phẩm" />
+    <Row3 Column0="Plant" Column1="Plant" Column2="工厂" Column3="工廠" Column4="Nhà máy" />
+    <Row4 Column0="Loc" Column1="Location" Column2="地点" Column3="地點" Column4="Vị trí" />
+    <Row5 Column0="Batch" Column1="Batch" Column2="批次" Column3="批次" Column4="Lô hàng" />
+    <Row6 Column0="AccDate" Column1="AccDate" Column2="单据日期" Column3="單據日期" Column4="Ngày tạo" />
+    <Row7 Column0="TotalNum" Column1="TotalNum" Column2="重量" Column3="重量" Column4="Tổng trọng lượng hàng" />
+    <Row8 Column0="TotalCount" Column1="Number of packs" Column2="包数" Column3="包數" Column4="Số lượng mã vạch" />
+    <Row9 Column0="state" Column1="State" Column2="状态" Column3="狀態" Column4="Trang thái" />
+	<Row10 Column0="remark" Column1="Remark" Column2="备注" Column3="備註" Column4="Ghi chú" />
+	<Row11 Column0="Master" Column1="Delivery" Column2="通知单" Column3="通知單" Column4="Giao Hàng" />
+	<Row12 Column0="UserID" Column1="UserID" Column2="用户" Column3="用戶" Column4="Mã nhân viên" />
+	<Row13 Column0="CenterID" Column1="Cost Center" Column2="成本中心" Column3="成本中心" Column4="Trung tâm chi phí" />
+	<Row14 Column0="Sysnc" Column1="Sysnc" Column2="Sysnc" Column3="Sysnc" Column4="Sysnc" />
+  </GridTable>
+</Form>

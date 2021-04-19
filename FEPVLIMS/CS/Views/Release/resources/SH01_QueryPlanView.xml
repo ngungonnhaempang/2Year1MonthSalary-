@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Form>
+	<!--DataTable:LanguageSetting-->
+    <DataTable TableName="LanguageSetting" CountOfRows="2" CountOfColumns="5">
+    <ClomunName Column0="ID" Column1="EN" Column2="CN" Column3="TW" Column4="VN" />
+    <Row0 Column0="lblDeliveryNo" Column1="Delivery No:" Column2="交货单号:" Column3="交貨單號:" Column4="Mã đơn giao hàng:" />
+    <Row1 Column0="_ParameterPanel" Column1="Parameters" Column2="参数" Column3="參數" Column4="Thông số" />
+    </DataTable>
+
+  <!--GridTable:gridView1-->
+  <GridTable TableName="gridView1" CountOfRows="29" CountOfColumns="5">
+    <ClomunName Column0="ID" Column1="EN" Column2="CN" Column3="TW" Column4="VN" />
+    <Row0 Column0="VBELN" Column1="VBELN" Column2="交货单号" Column3="交貨單號" Column4="Mã đơn giao hàng" />
+    <Row1 Column0="LFART" Column1="LFART" Column2="交货类型" Column3="交貨類型" Column4="Loại giao hàng" />
+    <Row2 Column0="KUNNR" Column1="KUNNR" Column2="送达方" Column3="送達方" Column4="Bên giao hàng" />
+    <Row3 Column0="EPEFLAG" Column1="EPEFLAG" Column2="是否为EPE客户" Column3="是否為EPE客戶" Column4="Khách hàng EPE" />
+    <Row4 Column0="WADAT" Column1="WADAT" Column2="计划发货日" Column3="計畫發貨日" Column4="Ngày vận chuyển" />
+    <Row5 Column0="KUNAG" Column1="KUNAG" Column2="客户代码" Column3="客户代码" Column4="Mã khách hàng" />
+    <Row6 Column0="NAME11" Column1="NAME11" Column2="送达方名称1-0（英文）" Column3="送達方名稱1-0（英文）" Column4="Bên g.hàng 1-0（T.Anh）" />
+    <Row7 Column0="NAME12" Column1="NAME12" Column2="送达方名称1-1（越文）" Column3="送達方名稱1-1（越文）" Column4="Bên g.hàng1-1（T.Việt）" />
+    <Row8 Column0="NAME21" Column1="NAME21" Column2="售达方名称2-0（英文）" Column3="售達方名稱2-0（英文）" Column4="Bên bán hàng 2-0（T.Anh）" />
+    <Row9 Column0="NAME22" Column1="NAME22" Column2="售达方名称2-1（越文）" Column3="售達方名稱2-1（越文）" Column4="Bên bán hàng 2-1（T.Việt）" />
+    <Row10 Column0="STREET1" Column1="STREET1" Column2="街道-0（英文）" Column3="街道-0（英文）" Column4="Đường dẫn-0（T.Anh）" />
+    <Row11 Column0="STREET2" Column1="STREET2" Column2="街道-0（越文）" Column3="街道-0（越文）" Column4="Đường dẫn-0（T.Việt）" />
+    <Row12 Column0="INCO1" Column1="INCO1" Column2="国际贸易条件" Column3="國際貿易條件" Column4="Điều khoản thương mại quốc tế" />
+    <Row13 Column0="INCO2" Column1="INCO2" Column2="国际贸易条件2" Column3="國際貿易條件2" Column4="Điều khoản thương mại quốc tế 2" />
+    <Row14 Column0="VTEXT1" Column1="VTEXT1" Column2="包装方式" Column3="包裝管道" Column4="Hình thức đóng gói" />
+    <Row15 Column0="VTEXT2" Column1="VTEXT2" Column2="装运条件" Column3="裝運條件" Column4="Điều kiện vận chuyển" />
+    <Row16 Column0="BEZEI" Column1="BEZEI" Column2="装运类型" Column3="裝運類型" Column4="Hình thức vận chuyển" />
+    <Row17 Column0="BTGEW" Column1="BTGEW" Column2="总重量" Column3="總重量" Column4="Tổng lượng" />
+    <Row18 Column0="GEWEI" Column1="GEWEI" Column2="单位" Column3="單位" Column4="Đơn vị" />
+    <Row19 Column0="NTGEW" Column1="NTGEW" Column2="净重" Column3="淨重" Column4="Trọng lượng tịnh" />
+    <Row20 Column0="BEZEI1" Column1="BEZEI1" Column2="业务员" Column3="業務員" Column4="Sale" />
+    <Row21 Column0="BEZEI2" Column1="BEZEI2" Column2="业务助理" Column3="業務助理" Column4="Trợ lý Sale" />
+    <Row22 Column0="REMARK" Column1="REMARK" Column2="备注" Column3="備註" Column4="Ghi chú" />
+    <Row23 Column0="TuckID" Column1="TuckID" Column2="车号" Column3="車號" Column4="Số xe" />
+    <Row24 Column0="TruckCompany" Column1="运输公司" Column2="运输公司" Column3="运输公司" Column4="Công ty vận chuyển" />
+    <Row25 Column0="CounterID" Column1="CounterID" Column2="柜号" Column3="櫃號" Column4="Số Cont" />
+    <Row26 Column0="Driver" Column1="Driver" Column2="司机" Column3="司機" Column4="Tài xế" />
+    <Row27 Column0="Tel" Column1="Tel" Column2="电话" Column3="電話" Column4="Điện thoại" />
+	<Row28 Column0="VehicleType" Column1="Vehicle Type" Column2="车辆类型" Column3="车辆类型" Column4="Loại phương tiện" />
+<Row29 Column0="SealNO" Column1="Seal NO" Column2="车辆类型" Column3="车辆类型" Column4="Mã Seal" />
+<Row30 Column0="BSTKD" Column1="Purchase Number" Column2="车辆类型" Column3="车辆类型" Column4="Mã Thu Mua" />
+  </GridTable>
+   <GridTable TableName="gridView3" CountOfRows="32" CountOfColumns="5">
+    <ClomunName Column0="ID" Column1="EN" Column2="CN" Column3="TW" Column4="VN" />
+		<Row0 Column0="VBELN" Column1="VBELN" Column2="交货单号" Column3="交貨單號" Column4="Mã đơn giao hàng" />		
+		<Row1 Column0="POSNR" Column1="POSNR" Column2="项目号" Column3="項目號" Column4="Mã hàng" />	
+		<Row2 Column0="VoucherID" Column1="VoucherID" Column2="凭证号" Column3="憑證號" Column4="Mã đơn" />	
+		<Row3 Column0="AB" Column1="AB" Column2="产品别" Column3="產品別" Column4="Loại sản phẩm" />				
+		<Row4 Column0="CenterID" Column1="CenterID" Column2="成本中心" Column3="成本中心" Column4="Trung tâm chi phí" />	
+		<Row5 Column0="MaterialNO" Column1="MaterialNO" Column2="物料号" Column3="物料號" Column4="Vật liệu" />	
+		<Row6 Column0="ProdSpec" Column1="ProdSpec" Column2="物料描述" Column3="物料描述" Column4="Mô tả" />	
+		<Row7 Column0="Plant" Column1="Plant" Column2="工厂" Column3="工廠" Column4="Xưởng" />	
+		<Row8 Column0="Loc" Column1="Loc" Column2="地点" Column3="地點" Column4="Địa điểm" />	
+		<Row9 Column0="Batch" Column1="Batch" Column2="批次" Column3="批次" Column4="Lô" />	
+		<Row10 Column0="TotalCount" Column1="TotalCount" Column2="包数" Column3="包数" Column4="Số bao" />	
+		<Row11 Column0="PickNum" Column1="PickNum" Column2="净重" Column3="净重" Column4="Trọng lượng tịnh" />	
+		<Row12 Column0="VRKME" Column1="VRKME" Column2="销售单位" Column3="銷售單位" Column4="Đơn vị bán hàng" />	
+		<Row13 Column0="UserID" Column1="User" Column2="用户" Column3="用戶" Column4="Người tạo" />	
+		<Row14 Column0="AccDate" Column1="PostDate" Column2="过账日期" Column3="过账日期" Column4="Ngày xuất phiếu" />	
+		<Row15 Column0="State" Column1="State" Column2="状态" Column3="狀態" Column4="Trạng thái" />	
+		<Row16 Column0="SAP" Column1="SAP" Column2="SAP" Column3="SAP" Column4="SAP" />	
+		<Row17 Column0="TransID" Column1="TransID" Column2="事务ID" Column3="事務ID" Column4="Loại vận chuyển" />	
+		<Row18 Column0="AESKD" Column1="AESKD" Column2="船期编号" Column3="船期編號" Column4="Mã tàu" />	
+		<Row19 Column0="VTWEG" Column1="VTWEG" Column2="分销渠道" Column3="分銷管道" Column4="Kênh phân phối" />	
+		<Row20 Column0="SPART" Column1="AESKD" Column2="产品组" Column3="產品組" Column4="Nhóm sản phẩm" />	
+		<Row21 Column0="VGBEL" Column1="VGBEL" Column2="参考订单" Column3="參攷訂單" Column4="Đơn hàng tham khảo" />	
+		<Row22 Column0="VGPOS" Column1="VGPOS" Column2="参考项目" Column3="參攷項目" Column4="Mục tham khảo" />	
+		<Row23 Column0="ARKTX" Column1="ARKTX" Column2="物料名称" Column3="物料名稱" Column4="Tên vật liệu" />	
+		<Row24 Column0="WADAT" Column1="WADAT" Column2="交货日期" Column3="交貨日期" Column4="Ngày giao hàng" />	
+		<Row25 Column0="MATKL" Column1="MATKL" Column2="物料组" Column3="物料組" Column4="Nhóm vật liệu" />	
+		<Row26 Column0="VRKME1" Column1="VRKME1" Column2="单位" Column3="單位" Column4="Đơn vị" />	
+		<Row27 Column0="PSW" Column1="PSW" Column2="应发量" Column3="應發量" Column4="Trọng lượng dự kiến" />	
+		<Row28 Column0="SAPPickDate" Column1="SAPPickDate" Column2="SAP拣配日期" Column3="SAP拣配日期" Column4="Ngày Pickup SAP" />	
+		<Row29 Column0="GEWEI" Column1="GEWEI" Column2="单位" Column3="单位" Column4="Đơn vị" />	
+		<Row30 Column0="TotalNum" Column1="TotalNum" Column2="净重" Column3="净重" Column4="Trọng lượng tịnh" />	
+		<Row31 Column0="TotalCount1" Column1="TotalCount1" Column2="包数" Column3="包数" Column4="Số lượng" />	
+    </GridTable>
+</Form>

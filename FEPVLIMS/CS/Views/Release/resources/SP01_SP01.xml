@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Form>
+  <!--DataTable:LanguageSetting-->
+  <DataTable TableName="LanguageSetting" CountOfRows="0" CountOfColumns="5">
+    <ClomunName Column0="ID" Column1="EN" Column2="CN" Column3="TW" Column4="VN" />
+	<Row0 Column0="btSearch" Column1="Search" Column2="Search" Column3="Search" Column4="Truy vấn" />
+	<Row1 Column0="btAdd" Column1="Add" Column2="Add" Column3="Add" Column4="Thêm" />
+	<Row2 Column0="btDelete" Column1="Delete" Column2="Delete" Column3="Delete" Column4="Xóa" />
+	<Row3 Column0="btReturn" Column1="Exit" Column2="Exit" Column3="Exit" Column4="Thoát" />
+  </DataTable>
+</Form>

@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Form>
+  <!--DataTable:LanguageSetting-->
+  <DataTable TableName="LanguageSetting" CountOfRows="12" CountOfColumns="5">
+    <ClomunName Column0="ID" Column1="EN" Column2="CN" Column3="TW" Column4="VN" />
+	<Row0 Column0="QueryIn" Column1="QueryIn:" Column2="查找导入" Column3="查找導入" Column4="Tìm kiếm:" />
+	<Row1 Column0="FileIn" Column1="FileIn:" Column2="文件导入" Column3="文件導入" Column4="Tải lên:" />
+    	<Row2 Column0="_ParameterPanel" Column1="ParameterPanel" Column2="[查询参数]" Column3="[查詢參數]" Column4="Dữ liệu tìm kiếm" />
+    	<Row3 Column0="lblStartTime" Column1="StartTime" Column2="区间日期:" Column3="區間日期" Column4="Ngày bắt đầu" />
+	<Row4 Column0="lblEndTime" Column1="EndTime" Column2="到" Column3="到" Column4="Đến" />
+	<Row5 Column0="lblBarcode" Column1="Barcode" Column2="包号:" Column3="包號" Column4="Mã vạch" />
+	<Row6 Column0="lblVoucherID" Column1="VoucherID" Column2="单号:" Column3="單號" Column4="Mã đơn" />
+	<Row7 Column0="btSerch" Column1=">>Serch" Column2=">>查找包号" Column3=">>查找包號" Column4=">>Tìm kiếm" />
+	<Row8 Column0="groupPanel1" Column1="ParameterPanel" Column2="[导入参数]" Column3="[導入參數]" Column4="Dữ liệu tải lên" />
+	<Row9 Column0="lblFilePath" Column1="FilePath" Column2="文件路径:" Column3="文件路徑" Column4="Địa chỉ" />
+	<Row10 Column0="btBrowns" Column1="Browns..." Column2="浏览..." Column3="瀏覽..." Column4="Tải..." />
+	<Row11 Column0="lblMaterialNo" Column1="MaterialNo" Column2="物料:" Column3="物料" Column4="Vật liệu" />
+  </DataTable>
+
+<!--GridTable:gridView1-->
+  <GridTable TableName="gridView1" CountOfRows="10" CountOfColumns="5">
+    <ClomunName Column0="ID" Column1="EN" Column2="CN" Column3="TW" Column4="VN" />
+    	<Row0 Column0="BarCode" Column1="BarCode" Column2="包号" Column3="包號" Column4="Mã vạch" />
+    	<Row1 Column0="MaterialNO" Column1="MaterialNo" Column2="物料" Column3="物料" Column4="Vật liệu" />
+	<Row2 Column0="ProdSpec" Column1="ProdSpec" Column2="描述" Column3="描述" Column4="Mô tả" />
+	<Row3 Column0="Batch" Column1="Batch" Column2="批次" Column3="批次" Column4="Lô" />
+	<Row4 Column0="Num" Column1="Num" Column2="净重" Column3="淨重" Column4="Trọng lượng tịnh" />
+	<Row5 Column0="ProdDate" Column1="ProdDate" Column2="生产日期" Column3="生產日期" Column4="Ngày sản xuất" />
+	<Row6 Column0="State" Column1="State" Column2="状态" Column3="狀態" Column4="Trạng thái" />
+	<Row7 Column0="UserID" Column1="User" Column2="用户" Column3="用戶" Column4="User" />
+	<Row8 Column0="Counter" Column1="Counter" Column2="打印次数" Column3="打印次數" Column4="Số lần in" />
+	<Row9 Column0="Loc" Column1="Loc" Column2="地点" Column3="地點" Column4="Vị trí" />
+  </GridTable>
+
+<!--GridTable:gridView2-->
+  <GridTable TableName="gridView2" CountOfRows="10" CountOfColumns="5">
+    <ClomunName Column0="ID" Column1="EN" Column2="CN" Column3="TW" Column4="VN" />
+    	<Row0 Column0="BarCode" Column1="BarCode" Column2="包号" Column3="包號" Column4="Mã vạch" />
+    	<Row1 Column0="MaterialNO" Column1="MaterialNo" Column2="物料" Column3="物料" Column4="Vật liệu" />
+	<Row2 Column0="MaterialSpec" Column1="ProdSpec" Column2="描述" Column3="描述" Column4="Mô tả" />
+	<Row4 Column0="Num" Column1="Num" Column2="净重" Column3="淨重" Column4="Trọng lượng tịnh" />
+	<Row4 Column0="GWT" Column1="GWT" Column2="毛重" Column3="毛重" Column4="Bao bì" />
+	<Row5 Column0="ProdDate" Column1="ProdDate" Column2="生产日期" Column3="生產日期" Column4="Ngày sản xuất" />
+	<Row6 Column0="LINE" Column1="Line" Column2="线别" Column3="線別" Column4="Line" />
+	<Row7 Column0="GRADE" Column1="Grade" Column2="等级" Column3="等級" Column4="Grade" />
+	<Row8 Column0="GRADES" Column1="Grades" Column2="特代" Column3="特代" Column4="Grades" />
+	<Row8 Column0="Chip" Column1="Chip" Column2="酯别" Column3="酯别" Column4="Chip" />
+	<Row9 Column0="SILO" Column1="Silo" Column2="槽罐号" Column3="槽罐號" Column4="Silo" />
+	<Row9 Column0="PackageID" Column1="PackageID" Column2="包装编号" Column3="包装编号" Column4="Hình thức đóng gói" />
+	<Row3 Column0="Batch" Column1="Batch" Column2="批次" Column3="批次" Column4="Lô" />
+  </GridTable>
+</Form>

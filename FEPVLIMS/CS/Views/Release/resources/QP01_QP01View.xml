@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Form>
+  <!--DataTable:LanguageSetting-->
+  <DataTable TableName="LanguageSetting" CountOfRows="5" CountOfColumns="5">
+    <ColumnName Column0="ID" Column1="EN" Column2="TW" Column3="CN" Column4="VN" />
+    <Row0 Column0="gridControl1" Column1="gridControl1" Column2="gridControl1" Column3="gridControl1" Column4="gridControl1" />
+    <Row1 Column0="cStartEnable" Column1="Started Job" Column2="Started Jo" Column3="Started Jo" Column4="Started Jo" />
+    <Row2 Column0="_Result" Column1="[Result]" Column2="[Result]" Column3="[Result]" Column4="[Result]" />
+    <Row3 Column0="_Parameter" Column1="[Parameter]" Column2="[Parameter]" Column3="[Parameter]" Column4="[Parameter]" />
+    <Row4 Column0="tableLayoutPanel1" Column1="tableLayoutPanel1" Column2="tableLayoutPanel1" Column3="tableLayoutPanel1" Column4="tableLayoutPanel1" />
+  </DataTable>
+  <!--GridTable:gridView1-->
+  <GridTable TableName="gridView1" CountOfRows="20" CountOfColumns="5">
+    <ColumnName Column0="ID" Column1="EN" Column2="TW" Column3="CN" Column4="VN" />
+    <Row0 Column0="ScheduleName" Column1="ScheduleName" Column2="樣品" Column3="樣品" Column4="Mẫu" />
+    <Row1 Column0="Enabled" Column1="Enabled" Column2="樣品" Column3="樣品" Column4="Mẫu" />
+    <Row2 Column0="PropertyList" Column1="PropertyList" Column2="樣品" Column3="樣品" Column4="Mẫu" />
+    <Row3 Column0="SampleName" Column1="SampleName" Column2="樣品" Column3="樣品" Column4="Mẫu" />
+    <Row4 Column0="SN_Description" Column1="SN_Description" Column2="樣品" Column3="樣品" Column4="Mẫu" />
+    <Row5 Column0="LOT_NO" Column1="LOT_NO" Column2="樣品" Column3="樣品" Column4="Mẫu" />
+    <Row6 Column0="LN_Description" Column1="LN_Description" Column2="樣品" Column3="樣品" Column4="Mẫu" />
+    <Row7 Column0="LINE" Column1="LINE" Column2="樣品" Column3="樣品" Column4="Mẫu" />
+    <Row8 Column0="Remark" Column1="Remark" Column2="樣品" Column3="樣品" Column4="Mẫu" />
+    <Row9 Column0="SuccessCount" Column1="SuccessCount" Column2="樣品" Column3="樣品" Column4="Mẫu" />
+    <Row10 Column0="ErrorCount" Column1="ErrorCount" Column2="樣品" Column3="樣品" Column4="Mẫu" />
+    <Row11 Column0="StartDate" Column1="StartDate" Column2="樣品" Column3="樣品" Column4="Mẫu" />
+    <Row12 Column0="EndDate" Column1="EndDate" Column2="樣品" Column3="樣品" Column4="Mẫu" />
+    <Row13 Column0="StartTime" Column1="StartTime" Column2="樣品" Column3="樣品" Column4="Mẫu" />
+    <Row14 Column0="EndTime" Column1="EndTime" Column2="樣品" Column3="樣品" Column4="Mẫu" />
+    <Row15 Column0="CreateDate" Column1="CreateDate" Column2="樣品" Column3="樣品" Column4="Mẫu" />
+    <Row16 Column0="AccDate" Column1="AccDate" Column2="樣品" Column3="樣品" Column4="Mẫu" />
+    <Row17 Column0="UserID" Column1="UserID" Column2="樣品" Column3="樣品" Column4="Mẫu" />
+    <Row18 Column0="JobID" Column1="JobID" Column2="樣品" Column3="樣品" Column4="Mẫu" />
+    <Row19 Column0="ScheduleUID" Column1="ScheduleUID" Column2="樣品" Column3="樣品" Column4="Mẫu" />
+  </GridTable>
+</Form>

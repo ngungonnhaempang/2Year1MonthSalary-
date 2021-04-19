@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Form>
+  <!--DataTable:LanguageSetting-->
+  <DataTable TableName="LanguageSetting" CountOfRows="8" CountOfColumns="5">
+    <ClomunName Column0="ID" Column1="EN" Column2="CN" Column3="TW" Column4="VN" />
+    	<Row0 Column0="btnQuery" Column1="Search" Column2="查询" Column3="查詢" Column4="Search" />
+    	<Row1 Column0="btnCancelVouID" Column1="Rollback" Column2="冲销" Column3="沖銷" Column4="Rollback" />
+    	<Row2 Column0="btDelete" Column1="Delete" Column2="删除" Column3="刪除" Column4="Delete" />
+	<Row3 Column0="btnBackVouID" Column1="Withdrawal" Column2="审核退回" Column3="審核退回" Column4="Withdrawal" />
+    	<Row4 Column0="groupPanel2" Column1="Parameter" Column2="[计划参数]" Column3="[計劃参数]" Column4="Parameter" />
+	<Row5 Column0="lblBeginTime" Column1="BeginDate" Column2="选择日期:" Column3="選擇日期:" Column4="BeginDate" />
+    	<Row6 Column0="lblEndTime" Column1="EndDate" Column2="到:" Column3="到:" Column4="EndDate" />
+	<Row7 Column0="lblEbeln" Column1="EBELN" Column2="内向交货单号:" Column3="内向交货單號:" Column4="EBELN" />
+  </DataTable>
+
+<!--GridTable:gridView3-->
+  <GridTable TableName="gridView3" CountOfRows="14" CountOfColumns="5">
+    <ClomunName Column0="ID" Column1="EN" Column2="CN" Column3="TW" Column4="VN" />
+    	<Row0 Column0="EBELN" Column1="EBELN" Column2="采购凭证号" Column3="採購憑證號" Column4="EBELN" />
+    	<Row1 Column0="EBELP" Column1="EBELP" Column2="项目编号" Column3="項目編號" Column4="EBELP" />
+	<Row2 Column0="MENGE" Column1="MENGE" Column2="预收量" Column3="預收量" Column4="MENGE" />
+	<Row3 Column0="VoucherID" Column1="VoucherID" Column2="单据号" Column3="單據號" Column4="VoucherID" />
+    	<Row4 Column0="MaterialNO" Column1="MaterialNo" Column2="物料" Column3="物料" Column4="Mã vật liệu" />
+	<Row5 Column0="ProdSpec" Column1="MaterialSpec" Column2="物料描述" Column3="物料描述" Column4="MaterialSpec" />
+	<Row6 Column0="Plant" Column1="Plant" Column2="工厂" Column3="工廠" Column4="Plant" />
+	<Row7 Column0="Batch" Column1="Batch" Column2="批次" Column3="批次" Column4="Kí hiệu" />
+    	<Row8 Column0="TotalNum" Column1="TotalNum" Column2="拣配量" Column3="揀配量" Column4="TotalNum" />
+    	<Row9 Column0="TotalCount" Column1="TotalCount" Column2="包数" Column3="包數" Column4="TotalCount" />
+    	<Row10 Column0="SAP" Column1="SAP" Column2="SAP" Column3="SAP" Column4="SAP" />
+	<Row11 Column0="State" Column1="State" Column2="状态" Column3="狀態" Column4="Trạng thái" />
+	<Row12 Column0="UserID" Column1="UserID" Column2="申请人" Column3="申請人" Column4="UserID" />
+    	<Row13 Column0="AccDate" Column1="AccDate" Column2="创建日期" Column3="創建日期" Column4="AccDate" />
+  </GridTable>
+</Form>

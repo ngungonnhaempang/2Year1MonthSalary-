@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\..\..\FEPVMES\FEPV\packages\NUnit3TestAdapter.3.9.0\build\net35\NUnit3TestAdapter.props" Condition="Exists('..\..\..\FEPVMES\FEPV\packages\NUnit3TestAdapter.3.9.0\build\net35\NUnit3TestAdapter.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{4D9C7AA7-D14C-48E7-BABE-B331F33BC16D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>LIMS.Service</RootNamespace>
+    <AssemblyName>LIMS.Service</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\Release\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\LIMS\FEPVWebApiOwinHost\lib\EntityFramework.6.1.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\LIMS\FEPVWebApiOwinHost\lib\EntityFramework.6.1.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="GenuineChannels, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\LIB\GenuineChannels.dll</HintPath>
+    </Reference>
+    <Reference Include="LIMS.DAL">
+      <HintPath>..\..\..\MIS\FEPV MES Service\LIMS\LIMS.DAL.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net">
+      <HintPath>..\..\..\FEPVMES\LIB\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="MIS.Utility, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\MIS\FEPVMESClient\Lib\MIS.Utility.dll</HintPath>
+    </Reference>
+    <Reference Include="NBear.Common, Version=4.7.2.6, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\LIB\NBear.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="NBear.Data, Version=4.7.2.6, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\LIB\NBear.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\LIB\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="sapnco">
+      <HintPath>..\Lib\SAP\sapnco.dll</HintPath>
+    </Reference>
+    <Reference Include="sapnco_utils">
+      <HintPath>..\Lib\SAP\sapnco_utils.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.ServiceModel">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AttributeService.cs" />
+    <Compile Include="CourseService.cs" />
+    <Compile Include="DOCPlanTimeJobService.cs" />
+    <Compile Include="Huy\RegisterService.cs" />
+    <Compile Include="GradeService.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Huy\MyContext.cs" />
+    <Compile Include="ManageServer.cs" />
+    <Compile Include="DOCRequisitionService.cs" />
+    <Compile Include="DOCPlanAddService.cs" />
+    <Compile Include="MaterialService.cs" />
+    <Compile Include="ProfileService.cs" />
+    <Compile Include="DOCService.cs" />
+    <Compile Include="DOCReceiveService.cs" />
+    <Compile Include="DOCPlanService.cs" />
+    <Compile Include="ChartService.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QCReportService.cs" />
+    <Compile Include="RfcHelper.cs" />
+    <Compile Include="SampleService.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LIMS.BLL\LIMS.BLL.csproj">
+      <Project>{d5a83785-02da-4340-af45-bf9c8c83d7ef}</Project>
+      <Name>LIMS.BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LIMS.Contract\LIMS.Contract.csproj">
+      <Project>{6e53eb0b-c6b6-43f5-b6d7-491a3aac91af}</Project>
+      <Name>LIMS.Contract</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LIMS.Model\LIMS.Model.csproj">
+      <Project>{06cc8b3b-c6ca-48c4-bf98-f94581500c05}</Project>
+      <Name>LIMS.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

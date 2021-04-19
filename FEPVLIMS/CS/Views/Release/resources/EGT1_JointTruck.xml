@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Form>
+  <!--DataTable:LanguageSetting-->
+  <DataTable TableName="LanguageSetting" CountOfRows="5" CountOfColumns="5">
+    <ClomunName Column0="ID" Column1="EN" Column2="CN" Column3="TW" Column4="VN" />
+    <Row0 Column0="groupPanel1" Column1="[Query conditions]" Column2="[查询条件]" Column3="[查詢條件]" Column4="[Điều kiện tìm kiếm]" />
+    <Row1 Column0="groupPanel2" Column1="[Shipping Order Info]" Column2="[发货单信息]" Column3="[发货单信息]" Column4="[Thông tin hóa đơn]" />
+    <Row2 Column0="lbVoucherID" Column1="Voucher ID" Column2="单号 " Column3="單號" Column4="Mã đơn" />
+    <Row3 Column0="lbVehicleNo" Column1="Vehicle" Column2="车号" Column3="車號" Column4="Số xe" />
+    <Row4 Column0="label5" Column1="GuestName" Column2="访客姓名" Column3="訪客姓名" Column4="Tên truy cập" />
+    <Row5 Column0="lbShippingOrder" Column1="Shipping Order" Column2="发货单号" Column3="發貨單號" Column4="Mã vận chuyển" />
+  </DataTable>
+  <!--GridTable:gridViewJointTruck1-->
+  <GridTable TableName="gridViewJointTruck1" CountOfRows="28" CountOfColumns="5">
+    <ClomunName Column0="ID" Column1="EN" Column2="CN" Column3="TW" Column4="VN" />
+    <Row0 Column0="VoucherID" Column1="Voucher ID" Column2="单号" Column3="單號" Column4="Mã chứng từ" />
+    <Row1 Column0="ShippingOrder" Column1="Shipping Order" Column2="发货单号" Column3="發貨單號" Column4="Mã vận chuyển" />
+    <Row2 Column0="Direction" Column1="Direction" Column2="类型" Column3="類型" Column4="Phân loại" />
+    <Row3 Column0="MaterialSpc" Column1="Material Spc" Column2="物料规格" Column3="物料規格" Column4="Thông số kỹ thuật của vật liệu" />
+    <Row4 Column0="PRquan" Column1="PRquan" Column2="预发量" Column3="预发量" Column4="Trọng lượng dự kiến" />
+    <Row5 Column0="Requan" Column1="Requan" Column2="实发量" Column3="實發量" Column4="Trọng lượng thực tế" />
+    <Row6 Column0="Unit" Column1="Unit" Column2="单位" Column3="單位" Column4="Đơn vị" />
+    <Row7 Column0="Isprn" Column1="Isprn" Column2="是否打印" Column3="是否打印" Column4="Có in không" />
+    <Row8 Column0="Stamp" Column1="Stamp" Column2="创建日期" Column3="創建日期" Column4="Ngày tạo vật phẩm" />
+    <Row9 Column0="Status" Column1="Status" Column2="受访人姓名" Column3="受訪人姓名" Column4="Trạng thái" />
+
+  </GridTable>
+</Form>

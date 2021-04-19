@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Form>
+  <!--DataTable:LanguageSetting-->
+  <DataTable TableName="LanguageSetting" CountOfRows="5" CountOfColumns="5">
+    <ClomunName Column0="ID" Column1="EN" Column2="CN" Column3="TW" Column4="VN" />
+	<Row0 Column0="label1" Column1="Date Form" Column2="创建日期" Column3="創建日期" Column4="Từ ngày" />
+	<Row1 Column0="label2" Column1="To" Column2="到" Column3="到" Column4="Đến" />
+	<Row2 Column0="lblLabName" Column1="DraftID" Column2="委託單號" Column3="委托单号" Column4="Đơn ủy thác:" />
+	<Row3 Column0="lblMaterial" Column1="Material" Column2="物料号" Column3="物料號" Column4="Mã vật liệu" />
+	<Row4 Column0="lblSampleName" Column1="Sample Name:" Column2="Sample Name:" Column3="Sample Name:" Column4="Tên mẫu:" />
+  </DataTable>
+  
+  <!--GridTable:gridView1-->
+  <GridTable TableName="gridView1" CountOfRows="7" CountOfColumns="5">
+    <ClomunName Column0="ID" Column1="EN" Column2="CN" Column3="TW" Column4="VN" />
+    <Row0 Column0="VoucherID" Column1="VoucherID" Column2="单据号" Column3="單據號" Column4="Mã đơn" />
+	<Row1 Column0="SampleName" Column1="SampleID" Column2="样品编码" Column3="樣品編碼" Column4="Mã mẫu" />
+	<Row2 Column0="SampleID" Column1="SampleNO" Column2="样品编号" Column3="樣品編號" Column4="Mã số" />
+	<Row3 Column0="Purpose" Column1="Purpose" Column2="生产日期" Column3="生產日期" Column4="Ngày sản xuất" />
+	<Row4 Column0="LOT_NO" Column1="Material" Column2="物料号" Column3="物料號" Column4="Mã vật liệu" />
+	<Row5 Column0="CompanyProduce" Column1="Company Produce" Column2="生产厂商" Column3="生產廠商" Column4="Cty sản xuất" />
+	<Row6 Column0="CompanyOfferSample" Column1="CompanyOfferSample" Column2="供样厂商" Column3="供樣廠商" Column4="Nhà cung cấp mẫu" />
+  </GridTable>
+ <GridTable TableName="gridView2" CountOfRows="13" CountOfColumns="5">
+    <ClomunName Column0="ID" Column1="EN" Column2="CN" Column3="TW" Column4="VN" />
+    <Row0 Column0="DraftID" Column1="DraftID" Column2="委托单号" Column3="委託單號" Column4="Mã đơn ủy thác" />
+	<Row1 Column0="VoucherID" Column1="VoucherID" Column2="单据号" Column3="單據號" Column4="Mã đơn" />
+	<Row2 Column0="SampleName" Column1="SampleID" Column2="样品编码" Column3="樣品編碼" Column4="Mã mẫu" />
+	<Row3 Column0="Purpose" Column1="Purpose" Column2="生产日期" Column3="生產日期" Column4="Ngày sản xuất" />
+	<Row4 Column0="LOT_NO" Column1="Material" Column2="物料号" Column3="物料號" Column4="Mã vật liệu" />
+	<Row5 Column0="SampleFrom" Column1="SampleFrom" Column2="样品来源" Column3="样品来源" Column4="Nơi lấy mẫu" />
+	<Row6 Column0="RequireDate" Column1="RequireDate" Column2="需要日期" Column3="需要日期" Column4="Ngày yêu cầu" />
+	<Row7 Column0="SendDate" Column1="SendDate" Column2="传送日期" Column3="传送日期" Column4="Ngày gửi" />
+	<Row8 Column0="GetDate" Column1="GetDate" Column2="取样时间" Column3="取样时间" Column4="Thời gian lấy mẫu" />
+	<Row9 Column0="Remark" Column1="Remark" Column2="备注" Column3="備註" Column4="Ghi chú" />
+	<Row10 Column0="Owner" Column1="Owner" Column2="创建人" Column3="創建人" Column4="Người tạo" />
+	<Row11 Column0="CreateDate" Column1="CreateDate" Column2="创建日期" Column3="創建日期" Column4="Ngày tạo" />
+	<Row12 Column0="State" Column1="State" Column2="状态" Column3="状态" Column4="Trạng thái" />
+  </GridTable>
+  
+   <GridTable TableName="gridView3" CountOfRows="3" CountOfColumns="5">
+    <ClomunName Column0="ID" Column1="EN" Column2="CN" Column3="TW" Column4="VN" />
+    <Row0 Column0="PropertyName" Column1="PropertyName" Column2="属性名称" Column3="屬性名稱" Column4="Tên thuộc tính" />
+	<Row1 Column0="Unit" Column1="Unit" Column2="单位" Column3="单位" Column4="Đơn Vị" />
+	<Row2 Column0="Prec" Column1="Prec" Column2="精度" Column3="精度" Column4="Prec" />
+	
+  </GridTable>
+	</Form>
