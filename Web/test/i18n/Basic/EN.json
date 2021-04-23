@@ -1104,5 +1104,8 @@
   "CD_Month":"Month",
   "HR management":"Attendance management",
   "Workplace":"Workplace",
-  "Device":"Attendance machine"
+  "Device":"Attendance machine",
+  "Register_Overtime":"Register Overtime",
+  "Overtime_Date":"Overtime Date",
+  "Overtime":"Overtime"
 }

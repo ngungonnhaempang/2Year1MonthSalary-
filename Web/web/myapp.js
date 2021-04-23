@@ -1215,7 +1215,17 @@ define(['angularAMD', 'app', 'services/main', 'directive/main'], function (angul
                     }
                 }
             }))
-
+            .when('/ConQua/overtime', angularAMD.route({  //承揽商资质查询
+                templateUrl: "forms/ConQua/overtime.html",
+                controller: 'ConQuaController',
+                controllerUrl: 'controllers/EHS/ConQuaController',
+                caseInsensitiveMatch: true,
+                resolve: {
+                    User: function (AuthenticationLoader) {
+                        return AuthenticationLoader();
+                    }
+                }
+            }))
 
 
 

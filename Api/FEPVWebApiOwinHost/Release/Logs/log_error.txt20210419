@@ -1,0 +1,3 @@
+2021-04-19 16:38:55
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at FEPVWebApiOwinHost.ContractorInfoController.UpdateContractorInfo(ContractorQualification cq, String& contractorID) in D:\InternShip\2Year1MonthSalary-\Api\FEPVWebApiOwinHost\ContracotrInfoController.cs:line 313

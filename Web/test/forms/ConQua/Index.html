@@ -19,10 +19,12 @@
 <div class="col-md-12">
     <form class="form-horizontal" novalidate name="form" ng-if="bpmnloaded==false">
         <legend>
+            <!-- hình ảnh biểu tượng của page đăng ký nhà thầu-->
             <h2 class="title"><img src="/css/image/contractor/contract.png" style="width:50px;">
                 {{'Register_Contractor'| translate}}
             </h2>
         </legend>
+        <!-- phần list hiển thị cho 2 mục loại nhà thầu và  tên nhà thầu -->
         <div class="form-group">
             <label class="col-sm-2 control-label">{{'ConQua_CType'|translate}}</label>
             <div class="col-sm-3">
@@ -37,7 +39,7 @@
                 <input class="form-control" type="text" ng-model="query.paraEmployer" />
             </div>
         </div>
-
+        <!-- tương tự hiển thị cho phân loại và tình trạng -->
         <div class="form-group">
             <label class="col-sm-2 control-label">{{'Classify'|translate}}</label>
             <div class="col-sm-3">

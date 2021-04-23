@@ -13,3 +13,17 @@ D:\FEPVWebApiOwinHost\LIMS\QC.DAL\obj\Debug\QC.DAL.pdb
 D:\FEPVWebApiOwinHost\LIMS\QC.DAL\bin\Debug\GenuineChannels.dll
 D:\FEPVWebApiOwinHost\LIMS\QC.DAL\bin\Debug\QC.Model.dll
 D:\FEPVWebApiOwinHost\LIMS\QC.DAL\bin\Debug\QC.Model.pdb
+D:\InternShip\2Year1MonthSalary-\Api\LIMS\QC.DAL\obj\Debug\QC.DAL.csprojAssemblyReference.cache
+D:\InternShip\2Year1MonthSalary-\Api\LIMS\QC.DAL\obj\Debug\QC.DAL.dll
+D:\InternShip\2Year1MonthSalary-\Api\LIMS\QC.DAL\obj\Debug\QC.DAL.pdb
+D:\InternShip\2Year1MonthSalary-\Api\LIMS\QC.DAL\bin\Debug\QC.DAL.dll
+D:\InternShip\2Year1MonthSalary-\Api\LIMS\QC.DAL\bin\Debug\QC.DAL.pdb
+D:\InternShip\2Year1MonthSalary-\Api\LIMS\QC.DAL\bin\Debug\LIMS.Model.dll
+D:\InternShip\2Year1MonthSalary-\Api\LIMS\QC.DAL\bin\Debug\Newtonsoft.Json.dll
+D:\InternShip\2Year1MonthSalary-\Api\LIMS\QC.DAL\bin\Debug\QC.Model.dll
+D:\InternShip\2Year1MonthSalary-\Api\LIMS\QC.DAL\bin\Debug\Interop.SpeechLib.dll
+D:\InternShip\2Year1MonthSalary-\Api\LIMS\QC.DAL\bin\Debug\ICSharpCode.SharpZipLib.dll
+D:\InternShip\2Year1MonthSalary-\Api\LIMS\QC.DAL\bin\Debug\Newtonsoft.Json.Net20.dll
+D:\InternShip\2Year1MonthSalary-\Api\LIMS\QC.DAL\bin\Debug\LIMS.Model.pdb
+D:\InternShip\2Year1MonthSalary-\Api\LIMS\QC.DAL\bin\Debug\QC.Model.pdb
+D:\InternShip\2Year1MonthSalary-\Api\LIMS\QC.DAL\obj\Debug\QC.DAL.csproj.CopyComplete

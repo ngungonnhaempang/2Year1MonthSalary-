@@ -85,6 +85,58 @@ define(['myapp', 'angular'], function (myapp) {
                     }
                 }
             });
+            var colOt = 
+            [
+                {
+                    field: 'Code',
+                    width:140,
+                    cellTemplate: "<a ng-click='grid.appScope.getContractorProcessInstanceId(row)' style='padding:5px;display:block; cursor:pointer'>{{COL_FIELD}}</a>",
+                    displayName: $translate.instant('Code'),
+                    minWidth: 100, cellTooltip: true
+                    
+                },
+                {
+                    field: 'StatusRemark',
+                    displayName: $translate.instant('Status'),
+                    width: 140,
+                    minWidth: 80,
+                    cellTooltip: true   
+                },
+                {
+                    field: 'EmployeeName',
+                    displayName: $translate.instant('EmployeeName'),
+                    width: 140,
+                    minWidth: 100,
+                    cellTooltip: true
+                },
+                {
+                    field: 'Id_Card',
+                    displayName: $translate.instant('IdCard'),
+                    width: 140,
+                    minWidth: 100,
+                    cellTooltip: true
+                },
+                {
+                    field: 'ContractorName',
+                    width: 200,
+                    displayName: $translate.instant('ContractorName'),
+                    minWidth: 100, cellTooltip: true
+                },
+                {
+                    field: 'StartDate',
+                    displayName: $translate.instant('Overtime_Date'),
+                    width: 140,
+                    minWidth: 100,
+                    cellTooltip: true
+                },
+                {
+                    field: 'EndDate',
+                    displayName: $translate.instant('Overtime'),
+                    width: 140,
+                    minWidth: 100,
+                    cellTooltip: true
+                }
+            ];
 
 
             var col = [
@@ -212,6 +264,40 @@ define(['myapp', 'angular'], function (myapp) {
                     });
                 }
             }
+
+            $scope.gridOvertime = {
+                columnDefs: colOt,
+                data: [],
+                enableFiltering: true,
+                enableColumnResizing: true,
+                enableFullRowSelection: true,
+                enableSorting: true,
+                showGridFooter: true,
+                enableGridMenu: true,
+                exporterMenuPdf: false,
+                enableSelectAll: false,
+                enableRowHeaderSelection: true,
+                enableRowSelection: true,
+                multiSelect: false,
+                paginationPageSizes: [50, 100, 200, 500],
+                paginationPageSize: 100,
+                enableFiltering: false,
+                exporterOlderExcelCompatibility: true,
+                useExternalPagination: true,
+                enablePagination: true,
+                enablePaginationControls: true,
+                showGridFooter: true,
+                onRegisterApi: function (gridApi) {
+                    $scope.gridApi = gridApi;
+                    EngineApi.getTcodeLink().get({ 'userid': Auth.username, 'tcode': $scope.flowkey }, function (linkres) {
+                        if (linkres.IsSuccess) {
+                            gridApi.core.addToGridMenu(gridApi.grid, gridMenu);
+                        }
+                    })
+                }
+            };
+
+
 
             $scope.gridOptions = {
                 columnDefs: col,

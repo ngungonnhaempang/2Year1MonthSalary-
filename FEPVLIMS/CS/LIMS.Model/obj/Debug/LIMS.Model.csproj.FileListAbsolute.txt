@@ -8,3 +8,9 @@ D:\FEPVLIMS\CS\LIMS.Model\obj\Debug\LIMS.Model.dll
 D:\FEPVLIMS\CS\LIMS.Model\obj\Debug\LIMS.Model.pdb
 D:\FEPVLIMS\CS\LIMS.Model\obj\Debug\LIMS.Model.csproj.CopyComplete
 D:\FEPVLIMS\CS\LIMS.Model\obj\Debug\LIMS.Model.csprojAssemblyReference.cache
+D:\InternShip\2Year1MonthSalary-\LIMS\FEPVWebApiOwinHost\FEPVWebApiOwinHost\bin\Release\LIMS.Model.dll
+D:\InternShip\2Year1MonthSalary-\LIMS\FEPVWebApiOwinHost\FEPVWebApiOwinHost\bin\Release\LIMS.Model.pdb
+D:\InternShip\2Year1MonthSalary-\FEPVLIMS\CS\LIMS.Model\obj\Debug\LIMS.Model.csprojAssemblyReference.cache
+D:\InternShip\2Year1MonthSalary-\FEPVLIMS\CS\LIMS.Model\obj\Debug\LIMS.Model.dll
+D:\InternShip\2Year1MonthSalary-\FEPVLIMS\CS\LIMS.Model\obj\Debug\LIMS.Model.pdb
+D:\InternShip\2Year1MonthSalary-\FEPVLIMS\CS\LIMS.Model\obj\Debug\LIMS.Model.csproj.CopyComplete

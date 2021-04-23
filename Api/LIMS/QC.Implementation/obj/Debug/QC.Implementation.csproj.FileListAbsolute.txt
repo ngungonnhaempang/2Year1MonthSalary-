@@ -4,3 +4,9 @@ D:\FEPVWebApiOwinHost\LIMS\Release\QC.Implementation.pdb
 D:\FEPVWebApiOwinHost\LIMS\QC.Implementation\obj\Debug\QC.Implementation.csproj.CopyComplete
 D:\FEPVWebApiOwinHost\LIMS\QC.Implementation\obj\Debug\QC.Implementation.dll
 D:\FEPVWebApiOwinHost\LIMS\QC.Implementation\obj\Debug\QC.Implementation.pdb
+D:\InternShip\2Year1MonthSalary-\Api\LIMS\Release\QC.Implementation.dll
+D:\InternShip\2Year1MonthSalary-\Api\LIMS\Release\QC.Implementation.pdb
+D:\InternShip\2Year1MonthSalary-\Api\LIMS\QC.Implementation\obj\Debug\QC.Implementation.csprojAssemblyReference.cache
+D:\InternShip\2Year1MonthSalary-\Api\LIMS\QC.Implementation\obj\Debug\QC.Implementation.csproj.CopyComplete
+D:\InternShip\2Year1MonthSalary-\Api\LIMS\QC.Implementation\obj\Debug\QC.Implementation.dll
+D:\InternShip\2Year1MonthSalary-\Api\LIMS\QC.Implementation\obj\Debug\QC.Implementation.pdb

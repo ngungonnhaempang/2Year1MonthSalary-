@@ -10,3 +10,9 @@ D:\FEPVWebApiOwinHost\HRMSInterfaceDAL\bin\Debug\HRMSInterfaceDAL.pdb
 D:\FEPVWebApiOwinHost\HRMSInterfaceDAL\obj\Debug\HRMSInterfaceDAL.dll
 D:\FEPVWebApiOwinHost\HRMSInterfaceDAL\obj\Debug\HRMSInterfaceDAL.pdb
 D:\FEPVWebApiOwinHost\HRMSInterfaceDAL\obj\Debug\HRMSInterfaceDAL.csprojAssemblyReference.cache
+D:\InternShip\2Year1MonthSalary-\Api\HRMSInterfaceDAL\bin\Debug\HRMSInterfaceDAL.dll.config
+D:\InternShip\2Year1MonthSalary-\Api\HRMSInterfaceDAL\bin\Debug\HRMSInterfaceDAL.dll
+D:\InternShip\2Year1MonthSalary-\Api\HRMSInterfaceDAL\bin\Debug\HRMSInterfaceDAL.pdb
+D:\InternShip\2Year1MonthSalary-\Api\HRMSInterfaceDAL\obj\Debug\HRMSInterfaceDAL.csprojAssemblyReference.cache
+D:\InternShip\2Year1MonthSalary-\Api\HRMSInterfaceDAL\obj\Debug\HRMSInterfaceDAL.dll
+D:\InternShip\2Year1MonthSalary-\Api\HRMSInterfaceDAL\obj\Debug\HRMSInterfaceDAL.pdb

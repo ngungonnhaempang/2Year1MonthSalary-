@@ -1104,5 +1104,8 @@
   "CD_Month":"月",
   "HR management":"考勤記錄管理",
   "Workplace":"工作地點",
-  "Device":"考勤機"
+  "Device":"考勤機",
+  "Register_Overtime":"加班申請",
+  "Overtime_Date":"加班日期",
+  "Overtime":"加班時間"
 }

@@ -654,3 +654,16 @@
 [2021-01-05 14:50:22.741] [ERROR] bpm - submit taskid: 500{"type":"RestException","message":"Cannot complete task cd97fac4-4f1c-11eb-b0b0-0050568c22a6: No outgoing sequence flow of the exclusive gateway 'exclusivegateway1' could be selected for continuing the process"}
 [2021-01-11 11:05:09.640] [ERROR] bpm - submit taskid: 500{"type":"RestException","message":"Cannot complete task aa687d3f-53c1-11eb-b0b0-0050568c22a6: Unknown property used in expression: ${LeaderAgree=='YES'}. Cause: Cannot resolve identifier 'LeaderAgree'"}
 [2021-01-11 11:06:36.945] [ERROR] bpm - submit taskid: 500{"type":"RestException","message":"Cannot complete task aa687d3f-53c1-11eb-b0b0-0050568c22a6: Unknown property used in expression: ${LeaderAgree=='YES'}. Cause: Cannot resolve identifier 'LeaderAgree'"}
+[2021-04-22 13:49:34.777] [ERROR] db - Error: failed to connect to [10.20.46.23:27017]
+    at .<anonymous> (D:\InternShip\2Year1MonthSalary-\Web\node_modules\mongodb\lib\mongodb\connection\server.js:553:25)
+    at emitThree (events.js:116:13)
+    at emit (events.js:194:7)
+    at .<anonymous> (D:\InternShip\2Year1MonthSalary-\Web\node_modules\mongodb\lib\mongodb\connection\connection_pool.js:140:15)
+    at emitTwo (events.js:106:13)
+    at emit (events.js:191:7)
+    at Socket.<anonymous> (D:\InternShip\2Year1MonthSalary-\Web\node_modules\mongodb\lib\mongodb\connection\connection.js:512:10)
+    at emitOne (events.js:96:13)
+    at Socket.emit (events.js:188:7)
+    at emitErrorNT (net.js:1278:8)
+    at _combinedTickCallback (internal/process/next_tick.js:74:11)
+    at process._tickDomainCallback (internal/process/next_tick.js:122:9)

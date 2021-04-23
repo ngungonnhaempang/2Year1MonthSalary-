@@ -4,3 +4,9 @@ D:\FEPVWebApiOwinHost\Release\MISInterfaceDAL.pdb
 D:\FEPVWebApiOwinHost\MISInterfaceDAL\obj\Debug\MISInterfaceDAL.dll
 D:\FEPVWebApiOwinHost\MISInterfaceDAL\obj\Debug\MISInterfaceDAL.pdb
 D:\FEPVWebApiOwinHost\MISInterfaceDAL\obj\Debug\MISInterfaceDAL.csprojAssemblyReference.cache
+D:\InternShip\2Year1MonthSalary-\Api\Release\MISInterfaceDAL.dll.config
+D:\InternShip\2Year1MonthSalary-\Api\Release\MISInterfaceDAL.dll
+D:\InternShip\2Year1MonthSalary-\Api\Release\MISInterfaceDAL.pdb
+D:\InternShip\2Year1MonthSalary-\Api\MISInterfaceDAL\obj\Debug\MISInterfaceDAL.csprojAssemblyReference.cache
+D:\InternShip\2Year1MonthSalary-\Api\MISInterfaceDAL\obj\Debug\MISInterfaceDAL.dll
+D:\InternShip\2Year1MonthSalary-\Api\MISInterfaceDAL\obj\Debug\MISInterfaceDAL.pdb

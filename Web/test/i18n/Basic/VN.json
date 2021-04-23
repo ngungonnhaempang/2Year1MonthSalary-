@@ -1048,7 +1048,7 @@
   "SelectParent":"Chọn hạng mục cha",
   "SeeAllCategories":"Xem tất cả hạng mục",
   "Fine":"Số tiền phạt",
-  "Code":"Mã",
+  "Code":"Mã Đơn",
   "VoucherName":"Tên đơn",
   "SelectMultiple":"Có thể chọn nhiều mục",
   "GreaterZero":"Nhập số lớn hơn 0",
@@ -1104,6 +1104,9 @@
   "CD_Month":"Tháng",
   "HR management":"Quản lý dữ liệu chấm công",
   "Workplace":"Nơi làm việc",
-  "Device":"Máy chấm công"
+  "Device":"Máy chấm công",
+  "Register_OverTime":"Đăng ký tăng ca",
+  "Overtime_Date":"Ngày tăng ca",
+  "Overtime":"Thời gian tăng ca"
 
 }

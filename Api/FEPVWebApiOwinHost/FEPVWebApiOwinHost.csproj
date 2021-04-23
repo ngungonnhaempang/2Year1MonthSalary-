@@ -319,6 +319,10 @@
       <Project>{0cd01e5f-4bc8-4fd5-9902-c1e43ff8152d}</Project>
       <Name>QC.DAL</Name>
     </ProjectReference>
+    <ProjectReference Include="..\LIMS\QC.Implementation\QC.Implementation.csproj">
+      <Project>{782ea71a-8319-4830-ae09-95da5d696138}</Project>
+      <Name>QC.Implementation</Name>
+    </ProjectReference>
     <ProjectReference Include="..\LIMS\QC.Model\QC.Model.csproj">
       <Project>{9ed68942-b1ee-49be-b37a-0d2d8dc6c28d}</Project>
       <Name>QC.Model</Name>
